@@ -1,0 +1,161 @@
+body {
+    font-family: sans-serif
+}
+
+.flex-container {
+    display: flex;
+}
+
+.select-button-box {
+    margin-bottom: 0.5em;
+}
+
+.post-button {
+    width: 100%;
+    padding: 10px 0;
+    background: rgba(240, 240, 240, 1);
+    text-align: center;
+    line-height: 1.5em;
+    color: #000;
+    box-shadow: 0 3px 1px gray;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+
+.post-button:hover {
+    background-color: lightgray;
+    box-shadow: 0 3px 0 gray;
+}
+
+.post-button:active {
+    top: 3px;
+    box-shadow: none;
+}
+
+.btn {
+    width: 50%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    background: rgba(240, 240, 240, 1);
+    line-height: 28pt;
+    text-align: center;
+}
+
+.memo {
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#time-range {
+    /*float: right;*/
+    /*width: 70%;*/
+    text-align: center;
+}
+
+#time-range input {
+    width: 250px;
+    text-align: center;
+}
+
+.infowin {
+    line-height: 18px;
+}
+
+#water_filter{
+    /*float: left;*/
+    /*width: 30%;*/
+    text-align: left;
+    position: relative;
+    overflow: auto;
+}
+#filter_options{
+    overflow: visible;
+    margin: 10px;
+}
+
+.owl-carousel .item {
+    text-align: center;
+    padding: 7px;
+    background-color: #cccccc;
+    color: black;
+    /*font-weight: bold;*/
+    line-height: 15px;
+    font-size: 11px;
+    height: 44px;
+}
+
+.owl-carousel .item a {
+    color: black;
+}
+
+
+#slider-range {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#slider-range .ui-slider-range {
+    background: #F79B30;
+}
+
+#slider-range .ui-slider-handle {
+    border-color: #c0c0c0;
+    background: #F79B30;
+    border-radius: 10px;
+    moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+.ui-slider-horizontal {
+    height: 0.3em;
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -.5em;
+    margin-left: -.6em;
+}
+
+
+#water_filter div{
+    float: left;
+    margin: 2px;
+}
+
+#rousui_chk .onoffswitch-inner:before {
+    content: "水漏れ";
+    background-color: #73CB4F;
+}
+#rousui_chk .onoffswitch-inner:after {
+    content: "水漏れ";
+}
+
+#no_chk .onoffswitch-inner:before {
+    content: "出ない";
+    background-color: #D0021B;
+}
+#no_chk .onoffswitch-inner:after {
+    content: "出ない";
+}
+
+#ok_chk .onoffswitch-inner:before {
+    content: "出る";
+    background-color: #164B8A;
+}
+#ok_chk .onoffswitch-inner:after {
+    content: "出る";
+}
+
+#go_chk .onoffswitch-inner:before {
+    content: "提供可能";
+    background-color: #F5A623;
+}
+#go_chk .onoffswitch-inner:after {
+    content: "提供可能";
+}
+
+#notdrink_chk .onoffswitch-inner:before {
+    content: "飲めない";
+    background-color: #939393;
+}
+#notdrink_chk .onoffswitch-inner:after {
+    content: "飲めない";
+}
