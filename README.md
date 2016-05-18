@@ -1,3 +1,9 @@
+## ライブラリのインストール（Composer）
+```
+cd app
+../composer.phar update
+```
+
 ## データベースの設定
 app/config/app.phpの下記の部分を設定（ホスト名・ユーザー名・パスワード名・データベース名）
 ```
