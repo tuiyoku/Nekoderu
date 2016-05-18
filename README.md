@@ -1,3 +1,7 @@
+## 環境
+- PHP 5.6以上
+- MySQL 5.6以上
+
 ## データベースの設定
 app/config/app.phpの下記の部分を設定（ホスト名・ユーザー名・パスワード名・データベース名）
 ```
@@ -27,6 +31,13 @@ app/config/app.phpの下記の部分を設定（ホスト名・ユーザー名�
 ```
 $ chmod 755 composer.phar
 $ cd app && ../composer.phar update
+```
+
+## データベース
+```
+$mysql -u root -p
+> CREATE DATABASE `nekoderu` DEFAULT CHARACTER SET = `utf8`;
+> exit
 ```
 
 ## マイグレーションファイルの実行
