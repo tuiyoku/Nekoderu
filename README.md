@@ -23,14 +23,20 @@ app/config/app.phpの下記の部分を設定（ホスト名・ユーザー名�
             'log' => false,
 ```
 
+## ライブラリ
+```
+$ chmod 755 composer.phar
+$ cd app && ../composer.phar update
+```
+
 ## マイグレーションファイルの実行
 ```
-app/bin/cake migrations migrate
+$ app/bin/cake migrations migrate
 ```
 
 ## ビルトインサーバーの起動
 ```
-app/bin/cake server
+$ app/bin/cake server
 ```
 
 ### URLs
