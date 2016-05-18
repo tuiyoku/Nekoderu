@@ -1,8 +1,6 @@
-## ライブラリのインストール（Composer）
-```
-cd app
-../composer.phar update
-```
+## 環境
+- PHP 5.6以上
+- MySQL 5.6以上
 
 ## データベースの設定
 app/config/app.phpの下記の部分を設定（ホスト名・ユーザー名・パスワード名・データベース名）
@@ -29,18 +27,30 @@ app/config/app.phpの下記の部分を設定（ホスト名・ユーザー名�
             'log' => false,
 ```
 
+## ライブラリ
+```
+$ chmod 755 composer.phar
+$ cd app && ../composer.phar update
+```
+
+## データベース
+```
+$mysql -u root -p
+> CREATE DATABASE `nekoderu` DEFAULT CHARACTER SET = `utf8`;
+> exit
+```
+
 ## マイグレーションファイルの実行
 ```
-app/bin/cake migrations migrate
+$ app/bin/cake migrations migrate
 ```
 
 ## ビルトインサーバーの起動
 ```
-app/bin/cake server
+$ app/bin/cake server
 ```
 
 ### URLs
-
-[トップ](http://localhost:8765/)
-[投稿](http://localhost:8765/add_neko)
-[リスト](http://localhost:8765/cats)
+- [トップ](http://localhost:8765/)
+- [投稿](http://localhost:8765/add_neko)
+- [リスト](http://localhost:8765/cats)
