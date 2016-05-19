@@ -51,7 +51,6 @@ $ app/bin/cake server
 ```
 
 ### URLs
-
-[トップ](http://localhost:8765/)
-[投稿](http://localhost:8765/add_neko)
-[リスト](http://localhost:8765/cats)
+- [トップ](http://localhost:8765/)
+- [投稿](http://localhost:8765/add_neko)
+- [リスト](http://localhost:8765/cats)
