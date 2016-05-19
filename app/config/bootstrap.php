@@ -79,6 +79,11 @@ try {
     exit($e->getMessage() . "\n");
 }
 
+// override default conf
+if (isset($_ENV['CAKE_ENV'])) {
+    Configure::load('app_' . $_ENV['CAKE_ENV'], 'default');
+}
+
 // Load an environment local configuration file.
 // You can use a file like app_local.php to provide local overrides to your
 // shared configuration.
