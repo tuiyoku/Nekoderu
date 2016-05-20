@@ -228,3 +228,6 @@ Type::build('date')
     ->useImmutable();
 Type::build('datetime')
     ->useImmutable();
+
+$dotenv = new Dotenv\Dotenv(__DIR__ . '/../');
+$dotenv->load();

@@ -79,33 +79,37 @@ class PagesController extends AppController
     {
         $this->viewBuilder()->layout('nekoderu');
 
-        if (isset($_POST['submit'])) {
+
+        if ($this->request->is('post')) {
+
+            $data = $this->request->data;
+
             $err = "";
 
             $time = time();
-            $locate = (string)$_POST['locate'];
-            $comment = (string)$_POST['comment'];
+            $locate = (string)$data['locate'];
+            $comment = (string)$data['comment'];
 
             if ($err === "") {
                 $image_url = "";
-//                if (isset($_FILES["image"]) && is_uploaded_file($_FILES["image"]["tmp_name"])) {
-//                    // アップロード処理
-//                    $file = $_FILES["image"];
-//
-//                    $savePath = $this->safeImage($file["tmp_name"], TMP_DIR);
-//                    if ($savePath === "") {
-//                        die("不正な画像がuploadされました");
-//                    }
-//
-//                    $result = $this->s3Upload($savePath, '');
-//
-//                    // 書きだした画像を削除
-//                    @unlink($savePath);
-//
-//                    if ($result) {
-//                        $image_url = $result['ObjectURL'];
-//                    }
-//                }
+                if (isset($data["image"]) && is_uploaded_file($data["image"]["tmp_name"])) {
+                    // アップロード処理
+                    $file = $data["image"];
+
+                    $savePath = $this->safeImage($file["tmp_name"], TMP);
+                    if ($savePath === "") {
+                        die("不正な画像がuploadされました");
+                    }
+
+                    $result = $this->s3Upload($savePath, '');
+
+                    // 書きだした画像を削除
+                    @unlink($savePath);
+
+                    if ($result) {
+                        $image_url = $result['ObjectURL'];
+                    }
+                }
 
                 $query = array(
                     "latlng" => h($locate),
@@ -124,10 +128,11 @@ class PagesController extends AppController
                         "comment" => $comment,
                         "image_url" => $image_url,
                         "address" => $address,
-                        "flg" => 1,
+                        "flg" => 4,
                     ])
                     ->execute();
             }
+            $this->redirect('/');
         }
 
     }
