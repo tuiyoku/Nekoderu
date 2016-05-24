@@ -9,11 +9,11 @@
     <meta http-equiv="content-style-type" content="text/css">
     <meta http-equiv="content-script-type" content="text/javascript">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="<?php echo$this->Url->build('/', true); ?>css/owl.carousel.css">
-    <link rel="stylesheet" href="<?php echo$this->Url->build('/', true); ?>css/jquery.onoff.css">
-    <link rel="stylesheet" href="<?php echo$this->Url->build('/', true); ?>css/base.css">
-    <link rel="stylesheet" href="<?php echo$this->Url->build('/', true); ?>css/index.css">
-    <link rel="stylesheet" href="<?php echo$this->Url->build('/', true); ?>css/post.css">
+    <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/owl.carousel.css">
+    <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/jquery.onoff.css">
+    <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/base.css">
+    <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/index.css">
+    <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/post.css">
     <!-- OGP -->
     <meta property="og:type" content="website">
     <meta property="og:description" content="ネコ出るです。">
