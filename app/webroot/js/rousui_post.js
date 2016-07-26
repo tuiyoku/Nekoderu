@@ -126,7 +126,7 @@
         nowPosition = new google.maps.Marker({
             position: new google.maps.LatLng(n1, n2),
             map: map,
-            icon: 'img/rousui.png'
+            icon: 'img/cat_track.png'
         });
         return true;
     }

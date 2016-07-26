@@ -7,11 +7,7 @@
 
     <div class="memo">
         <br>
-        <img src="<?php echo$this->Url->build('/img', false); ?>/rousui.png"> 水漏れ<span id="rousui_count"></span>&nbsp;
-        <img src="<?php echo$this->Url->build('/img', false); ?>/no.png"> 水出ない<span id="no_count"></span>&nbsp;
-        <img src="<?php echo$this->Url->build('/img', false); ?>/ok.png"> 水出る<span id="ok_count"></span>&nbsp;
-        <img src="<?php echo$this->Url->build('/img', false); ?>/go.png"> 水の提供可能<span id="go_count"></span>&nbsp;
-        <img src="<?php echo$this->Url->build('/img', false); ?>/notdrink.png"> 水出るが飲めない<span id="notdrink_count"></span>&nbsp;&nbsp;&nbsp;
+        <img src="<?php echo$this->Url->build('/img', false); ?>/cat_track.png"> 猫がいる<span id="rousui_count"></span>&nbsp;
         <button id="range-toggle">絞り込み</button>
     </div>
     <div id="filter_options" class="memo" style="display: none;">

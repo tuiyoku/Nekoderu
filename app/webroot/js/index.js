@@ -28,10 +28,10 @@ function attachMessage(marker, post_time, flg, comment, rousui_image_url, rousui
             flg_str = '<img src="img/go.png" > 水の提供可能';
         } else if (flg == "notdrink") {
             flg_str = '<img src="img/notdrink.png" > 水出るが飲めない';
-        } else if (flg == "rousui" && rousui_status == 1) {
+        } else if (flg == "cat_track" && rousui_status == 1) {
             flg_str = '<img src="img/resolve.png" > 解決済み';
-        } else if (flg == "rousui") {
-            flg_str = '<img src="img/rousui.png" > 水漏れ';
+        } else if (flg == "cat_track") {
+            flg_str = '<img src="img/cat_track.png" > 猫がいる';
         }
 
         var comment_str = "";
@@ -42,20 +42,20 @@ function attachMessage(marker, post_time, flg, comment, rousui_image_url, rousui
 
         var resolve_str = "";
         // 漏水の画像があるなら表示
-        if(flg == "rousui" && rousui_status != 1){
+        if(flg == "cat_track" && rousui_status != 1){
             resolve_str = "<br>" + "<a href='' onclick='document.resolve.submit();return false;'>解決済みにする</a>" + "<form name='resolve' method='POST' action='resolve.php'>" + "<input type=hidden name='post_time' value='" + post_time +"'> ";
         }
 
         var rousui_img = "";
         // 漏水の画像があるなら表示
-        if(flg == "rousui" && rousui_image_url !== "" && rousui_image_url !== null && rousui_image_url != "undefined"){
+        if(flg == "cat_track" && rousui_image_url !== "" && rousui_image_url !== null && rousui_image_url != "undefined"){
             rousui_img = "<br>" + "<a href='" + rousui_image_url + "' target='_blank'><img src='" + rousui_image_url + "' width='200' alt='' ></a>";
         }
 
         var now = new Date();
         var del_str = "";
         //5分以内なら削除可能
-        if(flg != "rousui" && parseInt(now.getTime() / 1000) < (parseInt(post_time) + (60 * 5))){
+        if(flg != "cat_track" && parseInt(now.getTime() / 1000) < (parseInt(post_time) + (60 * 5))){
             del_str = "<br><br>" + "<a href='' onclick='document.del.submit();return false;'>この情報を削除する</a>" + "<form name='del' method='POST' action='delete.php'>" + "<input type=hidden name='post_time' value='" + post_time +"'> ";
         }
 
@@ -104,7 +104,7 @@ function plotNews(t_news) {
 }
 function plotData(t_position) {
     // index 3 (marker 3) not exist
-    var markers = ['no', 'ok', 'go', 'notdrink', 'rousui'];
+    var markers = ['no', 'ok', 'go', 'notdrink', 'cat_track'];
 
     var m = document.getElementById('map');
     window.DEFAULT_LAT = 32.7858659;
