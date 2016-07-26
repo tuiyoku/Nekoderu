@@ -190,21 +190,20 @@ class PagesController extends AppController
     }
 
     function s3Upload($file, $s3Dir) {
-
         $ext = $this->extension($file);
         $srcPath = $file;
 
         $timestamp = uniqid();
         $name = $timestamp . "_file." . $ext;
-
-        $s3 = S3Client::factory(
-            array(
-                'key'    => getenv('AWS_BUCKET_KEY'),// 取得したAccess Key IDを使用
-                'secret' => getenv('AWS_BUCKET_SECRET'),// 取得した Secret Access Keyを使用
-                'region' => getenv('AWS_BUCKET_REGION'),
-                'version' => getenv('AWS_BUCKET_VERSION'),
-            )
-        );
+        
+        $s3 = new S3Client([
+            'version'     => getenv('AWS_BUCKET_VERSION'),
+            'region'      => getenv('AWS_BUCKET_REGION'),
+            'credentials' => [
+                'key'    => getenv('AWS_BUCKET_KEY'),
+                'secret' => getenv('AWS_BUCKET_SECRET')
+            ]
+        ]);
 
         try {
             // Upload a file.
@@ -217,7 +216,7 @@ class PagesController extends AppController
 
             return $result;
         }catch (\RuntimeException $e){
-            return false;
+            throw $e;
         }
 
     }
