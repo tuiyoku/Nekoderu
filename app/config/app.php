@@ -226,8 +226,8 @@ return [
              * the following line and set the port accordingly
              */
             'port' => 3306,
-            'username' => 'kei4eva4',
-            'password' => '',
+            'username' => 'root',
+            'password' => 'root',
             'database' => 'nekoderu',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
