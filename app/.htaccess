@@ -3,3 +3,7 @@
     RewriteRule    ^$    webroot/    [L]
     RewriteRule    (.*) webroot/$1    [L]
 </IfModule>
+
+php_value memory_limit 40M
+php_value post_max_size 32M
+php_value upload_max_filesize 32M

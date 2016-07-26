@@ -49,8 +49,8 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'index']);
-    $routes->connect('/add_neko', ['controller' => 'Pages', 'action' => 'addNeko']);
+    $routes->connect('/', ['controller' => 'Pages', 'action' => 'index', '_ssl' =>true]);
+    $routes->connect('/add_neko', ['controller' => 'Pages', 'action' => 'addNeko', '_ssl' =>true]);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
