@@ -1,22 +1,22 @@
 <div id="tools">
     <div class="flex-container select-button-box">
         <a href="<?php echo$this->Url->build('/', false); ?>add_neko" class="post-button">
-            ねこいますか？<br>報告する
+            のら猫がいますか？<br>報告する
         </a>
     </div>
 
     <div class="memo">
         <br>
-        <img src="<?php echo$this->Url->build('/img', false); ?>/cat_track.png"> 猫がいる<span id="rousui_count"></span>&nbsp;
+        <img src="<?php echo$this->Url->build('/img', false); ?>/cat_track.png"> のら猫がいる<span id="rousui_count"></span>&nbsp;
         <button id="range-toggle">絞り込み</button>
     </div>
     <div id="filter_options" class="memo" style="display: none;">
         <div id="water_filter">
             <div id="rousui_chk"><input name="water_flg" type="checkbox" value="4" checked></div>
-            <div id="no_chk"><input name="water_flg" type="checkbox" value="0" checked></div>
-            <div id="ok_chk"><input name="water_flg" type="checkbox" value="1" checked></div>
-            <div id="go_chk"><input name="water_flg" type="checkbox" value="2" checked></div>
-            <div id="notdrink_chk"><input name="water_flg" type="checkbox" value="3" checked></div>
+            <!--<div id="no_chk"><input name="water_flg" type="checkbox" value="0" checked></div>-->
+            <!--<div id="ok_chk"><input name="water_flg" type="checkbox" value="1" checked></div>-->
+            <!--<div id="go_chk"><input name="water_flg" type="checkbox" value="2" checked></div>-->
+            <!--<div id="notdrink_chk"><input name="water_flg" type="checkbox" value="3" checked></div>-->
         </div>
         <div id="time-range">
             <p>

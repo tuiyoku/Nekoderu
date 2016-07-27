@@ -194,6 +194,7 @@ function plotData(t_position) {
             map: map,
             icon: 'img/' + icon + '.png'
         });
+        console.log(icon);
         gmarkers.push(myMarker);
         attachMessage(myMarker, post_time, markers[t_position[i].flg], comment, rousui_image_url, rousui_status);
     }

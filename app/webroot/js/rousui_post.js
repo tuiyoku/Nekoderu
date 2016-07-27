@@ -66,7 +66,7 @@
         // console.log( 'set position : ', e )
         if (nowPosition) nowPosition.setMap(null);
         document.getElementById('locate').value = latlng.lat() + ',' + latlng.lng();
-        nowPosition = createMapMarker(latlng, map, "rousui");
+        nowPosition = createMapMarker(latlng, map, "cat_track");
 
         setTimeout(function () {
             alert('間違いがなければ "投稿" ボタンをクリックしてください．');
@@ -83,7 +83,7 @@
                 var latlng = new google.maps.LatLng(lat, lng);
 
                 if (nowPosition) nowPosition.setMap(null);
-                nowPosition = createMapMarker(latlng, map, "rousui");
+                nowPosition = createMapMarker(latlng, map, "cat_track");
 
                 setTimeout(function () {
                     alert('間違いがなければ "投稿" ボタンをクリックしてください．');
