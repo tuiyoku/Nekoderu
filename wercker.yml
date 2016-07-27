@@ -1,4 +1,6 @@
 box: python
+build:
+  steps:
 deploy:
   steps:
     - hotakasaito/elastic-beanstalk-deploy@1.2.3:
