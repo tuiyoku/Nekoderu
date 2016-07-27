@@ -41,13 +41,13 @@ function attachMessage(marker, post_time, flg, comment, rousui_image_url, rousui
         }
 
         var resolve_str = "";
-        // 漏水の画像があるなら表示
+        // 猫の画像があるなら表示
         if(flg == "cat_track" && rousui_status != 1){
             resolve_str = "<br>" + "<a href='' onclick='document.resolve.submit();return false;'>解決済みにする</a>" + "<form name='resolve' method='POST' action='resolve.php'>" + "<input type=hidden name='post_time' value='" + post_time +"'> ";
         }
 
         var rousui_img = "";
-        // 漏水の画像があるなら表示
+        // 猫の画像があるなら表示
         if(flg == "cat_track" && rousui_image_url !== "" && rousui_image_url !== null && rousui_image_url != "undefined"){
             rousui_img = "<br>" + "<a href='" + rousui_image_url + "' target='_blank'><img src='" + rousui_image_url + "' width='200' alt='' ></a>";
         }

@@ -121,11 +121,11 @@ body {
 }
 
 #rousui_chk .onoffswitch-inner:before {
-    content: "水漏れ";
+    content: "のら猫";
     background-color: #73CB4F;
 }
 #rousui_chk .onoffswitch-inner:after {
-    content: "水漏れ";
+    content: "のら猫";
 }
 
 #no_chk .onoffswitch-inner:before {

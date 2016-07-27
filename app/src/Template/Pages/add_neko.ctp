@@ -1,5 +1,5 @@
 <div style="margin:15px 0;text-align:center">
-    水漏れを報告してください
+    のら猫を報告してください
 </div>
 <form action="" enctype="multipart/form-data" method="POST" id="post" onsubmit="return confirm('送信してもいいですか？');">
     <input type="hidden" id="time" name="time" value="">
@@ -12,7 +12,7 @@
         <div class="memo">本体の設定から位置情報の利用を許可してください．</div>
     </div>
     <div class="box">
-        <div class="memo-title">２．水漏れ箇所の情報を入力する</div>
+        <div class="memo-title">２．のら猫の情報を入力する</div>
         <textarea id="comment" name="comment"></textarea>
     </div>
     <div class="box">
