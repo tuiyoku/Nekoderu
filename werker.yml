@@ -1,0 +1,10 @@
+box: python
+build:
+deploy:
+  steps:
+    - hotakasaito/elastic-beanstalk-deploy@1.2.3
+        key-id: $ACCESS_KEY
+        key-secret: $SECRET_ACCESS_KEY
+        app_name: $APP_NAME
+        env_name: $ENV_NAME
+        region: ap-northeast-1
