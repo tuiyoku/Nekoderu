@@ -6,8 +6,6 @@ deploy:
     - hotakasaito/elastic-beanstalk-deploy@1.2.3:
         key: $ACCESS_KEY
         secret: $ACCESS_SECRET
-        key-id: $ACCESS_KEY_ID
-        key-secret: $ACCESS_KEY_SECRET
         app_name: $APP_NAME
         env_name: $ENV_NAME
         region: ap-northeast-1
