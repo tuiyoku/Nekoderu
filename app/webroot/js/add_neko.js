@@ -1,27 +1,31 @@
  $(function(){
-            var modal = $("#myModal");
-           
-            $(window).click(function(e) {
-                console.log(e);
-                if (e.target == modal) {
-                    modal.css('display', 'none');
-                }
-            });
-            
-            $("#myModal .modal-content .close").click(function(){
-                modal.css('display', 'none');
-            });
-            
-            $("#ear-info").click(function(e){
-                modal.css('display', 'block');
-            });
-        });
-        function showEarInfo(){
-            
-            var modal = $("#myModal");
-            console.log(model);
-            modal.css('display', 'block');
+     
+    
+    setModal("modal-ear", "ear-info");
+    setModal("modal-gps", "gps-info");
+   
+    
+});
 
-            alert('<h3>耳について</h3><div>さくら耳の説明とか書く</div>'); 
-            return false;
+function setModal(id, btn){
+    var modal = $("#"+id);
+   
+    $(window).click(function(e) {
+        //FIXME:なんかうまく動いてない modalとe.targetが一致しない
+        // console.log(modal);
+        // console.log(e.target);
+        if (e.target == modal) {
+            modal.css('display', 'none');
         }
+    });
+    
+    $("#"+id+" .modal-content .close").click(function(){
+        modal.css('display', 'none');
+    });
+    
+     $("#"+btn).click(function(e){
+        var modal = $("#"+id);
+        modal.css('display', 'block');
+    });
+    
+}
