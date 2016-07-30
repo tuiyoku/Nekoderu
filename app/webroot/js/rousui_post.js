@@ -38,8 +38,9 @@
         zoom: currentMap.zoom || 9,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    mapDom.style.width = window.innerWidth + 'px';
+    mapDom.style.width = (window.innerWidth) + 'px';
     var h = (window.innerHeight - (document.getElementById('post').clientHeight));
+    h = (window.innerWidth-80);
     console.log("height:"+h);
     console.log(window.innerHeight);
     console.log(document.getElementById('post').clientHeight);

@@ -1,5 +1,5 @@
 <div style="margin:15px 0;text-align:center">
-    のら猫を報告してください
+    のら猫、地域猫について教えて下さい
 </div>
 <?php
     echo $this->Form->create(null, [
@@ -57,7 +57,7 @@
         <div class="memo-title">３．その他の情報を入力する</div>
         <?php
         echo $this->Form->input('comment', 
-        ['type' => 'textarea', 'id' => 'comment', 'label' => false, 'rows' => 2]);
+            ['type' => 'textarea', 'id' => 'comment', 'label' => false, 'rows' => 2]);
     ?>
     </div>
     <div class="box">
@@ -71,12 +71,11 @@
     </div>
     <div class="box-mini">
         <?php
-        echo $this->Form->input('submit', ['type' => 'submit', 'id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]);
+        echo $this->Form->submit('投稿', ['id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]);
     ?>
     </div>
 <?php echo $this->Form->end(); ?>
-
-    <div id="map"></div>
+        <div id="map"></div>
     <!--<div id="customZoomBtn">-->
     <!--    <div id="small" class="float_l btn">ズームアウト</div>-->
     <!--    <div id="big" class="float_l btn">ズームイン</div>-->

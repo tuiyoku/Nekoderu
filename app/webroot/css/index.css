@@ -31,15 +31,15 @@ body {
     box-shadow: none;
 }
 
-.btn {
-    width: 50%;
-    height: 40px;
-    font-size: 20px;
-    font-weight: bold;
-    background: rgba(240, 240, 240, 1);
-    line-height: 28pt;
-    text-align: center;
-}
+/*.btn {*/
+/*    width: 50%;*/
+/*    height: 40px;*/
+/*    font-size: 20px;*/
+/*    font-weight: bold;*/
+/*    background: rgba(240, 240, 240, 1);*/
+/*    line-height: 28pt;*/
+/*    text-align: center;*/
+/*}*/
 
 .memo {
     font-size: 10px;
