@@ -56,7 +56,8 @@
     <div class="box">
         <div class="memo-title">３．その他の情報を入力する</div>
         <?php
-        echo $this->Form->input('comment', ['type' => 'textarea', 'id' => 'comment', 'label' => false]);
+        echo $this->Form->input('comment', 
+        ['type' => 'textarea', 'id' => 'comment', 'label' => false, 'rows' => 2]);
     ?>
     </div>
     <div class="box">
@@ -73,12 +74,14 @@
         echo $this->Form->input('submit', ['type' => 'submit', 'id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]);
     ?>
     </div>
+<?php echo $this->Form->end(); ?>
 
     <div id="map"></div>
     <!--<div id="customZoomBtn">-->
     <!--    <div id="small" class="float_l btn">ズームアウト</div>-->
     <!--    <div id="big" class="float_l btn">ズームイン</div>-->
     <!--</div>-->
+    <!--<div id="footer">Project NEKODERU</div>-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="<?php echo$this->Url->build('/', false); ?>js/rousui_post.js"></script>

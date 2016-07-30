@@ -1,13 +1,13 @@
 (function () {
     'use strict';
 
-    document.getElementById('small').addEventListener('click', function () {
-        if (map.zoom > 0) map.setZoom(--map.zoom)
-    });
+    // document.getElementById('small').addEventListener('click', function () {
+    //     if (map.zoom > 0) map.setZoom(--map.zoom)
+    // });
 
-    document.getElementById('big').addEventListener('click', function () {
-        map.setZoom(++map.zoom)
-    });
+    // document.getElementById('big').addEventListener('click', function () {
+    //     map.setZoom(++map.zoom)
+    // });
 
     document.getElementById("image").addEventListener("change", function(e){
         e.target.nextSibling.nodeValue = e.target.files.length ? e.target.files[0].name : "写真を選ぶ";
@@ -39,7 +39,12 @@
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
     mapDom.style.width = window.innerWidth + 'px';
-    mapDom.style.height = window.innerHeight - (document.getElementById('post').clientHeight) - 80 + 'px';
+    var h = (window.innerHeight - (document.getElementById('post').clientHeight));
+    console.log("height:"+h);
+    console.log(window.innerHeight);
+    console.log(document.getElementById('post').clientHeight);
+    mapDom.style.height = h+"px";//window.innerHeight - (document.getElementById('post').clientHeight) - 200 + 'px';
+    console.log(document.getElementById('post').clientHeight);
 
     function setStorage(){
         var currentCenter = map.getCenter();
