@@ -54,24 +54,28 @@
         </div>
     </div>
     <div class="box">
-        <div class="memo-title">３．その他の情報を入力する</div>
+        <div class="memo-title">４．その他の情報を入力する</div>
         <?php
         echo $this->Form->input('comment', 
-            ['type' => 'textarea', 'id' => 'comment', 'label' => false, 'rows' => 2]);
+            ['type' => 'textarea', 'id' => 'comment', 'label' => false, 'rows' => 2,
+            'placeholder'=>'猫について教えて下さい。人懐っこい？怖がり？']);
     ?>
     </div>
+    
     <div class="box">
-        <div class="memo-title">４．写真があれば添付してください</div>
-        <label class="button-file">
-        <?php
-            echo $this->Form->input('image', ['type' => 'file', 'id' => 'image', 'class' => 'hide', 'label' => false]);
-        ?>
-        写真を選ぶ
-    </label>
+        <div class="memo-title">３．
+            <label class="button-file">
+            <?php
+                echo $this->Form->input('image', ['type' => 'file', 'id' => 'image', 'class' => 'hide', 'label' => false]);
+            ?>
+            写真があれば選択する
+            </label>
+        </div>
     </div>
     <div class="box-mini">
         <?php
-        echo $this->Form->submit('投稿', ['id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]);
+        echo $this->Form->submit(
+            '投稿', ['id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]);
     ?>
     </div>
 <?php echo $this->Form->end(); ?>
