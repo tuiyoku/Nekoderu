@@ -40,10 +40,10 @@
                         'multiple' => 'checkbox',
                         'type' => 'radio',
                         'options' => [
-                            '0' => $this->Html->image('/img/cat_ears/cat_normal.png', ['width'=>'32px']) . '処置なし', 
-                            '1' => $this->Html->image('/img/cat_ears/cat_donno.png', ['width'=>'32px']) . '不明',
-                            '2' => $this->Html->image('/img/cat_ears/cat_trimmed_right.png', ['width'=>'32px']) . '右耳に印',
-                            '3' => $this->Html->image('/img/cat_ears/cat_trimmed_left.png', ['width'=>'32px']) . '左耳に印'
+                            '0' => $this->Html->image('/img/cat_ears/cat_normal.png', ['width'=>'24px']) . ' 処置なし', 
+                            '1' => $this->Html->image('/img/cat_ears/cat_donno.png', ['width'=>'24px']) . ' 不明',
+                            '2' => $this->Html->image('/img/cat_ears/cat_trimmed_right.png', ['width'=>'24px']) . ' 右耳に印',
+                            '3' => $this->Html->image('/img/cat_ears/cat_trimmed_left.png', ['width'=>'24px']) . ' 左耳に印'
                         ],
                         'escape' => false,
                         'label' => false,
@@ -75,10 +75,10 @@
     </div>
 
     <div id="map"></div>
-    <div id="customZoomBtn">
-        <div id="small" class="float_l btn">ズームアウト</div>
-        <div id="big" class="float_l btn">ズームイン</div>
-    </div>
+    <!--<div id="customZoomBtn">-->
+    <!--    <div id="small" class="float_l btn">ズームアウト</div>-->
+    <!--    <div id="big" class="float_l btn">ズームイン</div>-->
+    <!--</div>-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="<?php echo$this->Url->build('/', false); ?>js/rousui_post.js"></script>

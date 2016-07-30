@@ -35,4 +35,14 @@
     text-decoration: none;
     cursor: pointer;
 }
-       
+
+
+.inline_checkboxes .radio{
+    display: inline;
+    margin-right: 10px;
+}
+
+.inline_checkboxes .radio label{
+    font-size: 9px;
+    margin-left:3px;
+}

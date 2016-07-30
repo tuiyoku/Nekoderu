@@ -160,8 +160,3 @@ body {
     content: "飲めない";
 }
 
-
-.inline_checkboxes .radio{
-    display: inline;
-    margin-right: 10px;
-}
