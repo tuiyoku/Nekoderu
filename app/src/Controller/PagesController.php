@@ -55,6 +55,7 @@ class PagesController extends AppController
         }
         $this->set(compact('page', 'subpage'));
 
+    
         try {
             $this->render(implode('/', $path));
         } catch (MissingTemplateException $e) {
@@ -79,20 +80,22 @@ class PagesController extends AppController
     {
         $this->viewBuilder()->layout('nekoderu');
 
-
         if ($this->request->is('post')) {
 
             $data = $this->request->data;
+            
 
             $err = "";
 
             $time = time();
             $locate = (string)$data['locate'];
             $comment = (string)$data['comment'];
-
+            $ear_shape = $data['ear_shape'];
+            
             if ($err === "") {
                 $image_url = "";
-                if (isset($data["image"]) && is_uploaded_file($data["image"]["tmp_name"])) {
+                
+                if (isset($data["image"]) && $data["image"].length > 0 && is_uploaded_file($data["image"]["tmp_name"])) {
                     // アップロード処理
                     $file = $data["image"];
 
@@ -100,7 +103,7 @@ class PagesController extends AppController
                     if ($savePath === "") {
                         die("不正な画像がuploadされました");
                     }
-
+                 
                     $result = $this->s3Upload($savePath, '');
 
                     // 書きだした画像を削除
@@ -110,7 +113,7 @@ class PagesController extends AppController
                         $image_url = $result['ObjectURL'];
                     }
                 }
-
+                
                 $query = array(
                     "latlng" => h($locate),
                     "language" => "ja",
@@ -121,18 +124,20 @@ class PagesController extends AppController
                 $address = $res["results"][0]["formatted_address"];
 
                 $query = TableRegistry::get('Cats')->query();
-                $query->insert(['time', 'locate', 'comment', 'image_url', 'address', 'flg'])
+                $query->insert(['time', 'locate', 'comment', 'ear_shape', 'image_url', 'address', 'flg'])
                     ->values([
                         "time" => $time,
                         "locate" => $locate,
                         "comment" => $comment,
                         "image_url" => $image_url,
                         "address" => $address,
+                        "ear_shape" => $ear_shape,
                         "flg" => 4,
                     ])
                     ->execute();
             }
-            $this->redirect('/');
+            
+            return $this->redirect('/');
         }
 
     }

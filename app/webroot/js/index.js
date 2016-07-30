@@ -42,8 +42,12 @@ function attachMessage(marker, post_time, flg, comment, rousui_image_url, rousui
 
         var resolve_str = "";
         // 猫の画像があるなら表示
-        if(flg == "cat_track" && rousui_status != 1){
-            resolve_str = "<br>" + "<a href='' onclick='document.resolve.submit();return false;'>解決済みにする</a>" + "<form name='resolve' method='POST' action='resolve.php'>" + "<input type=hidden name='post_time' value='" + post_time +"'> ";
+        if(false && flg == "cat_track" && rousui_status != 1){
+            resolve_str = "<br>" + 
+            "<a href='' onclick='document.resolve.submit();return false;'>解決済みにする</a>" 
+            + "<form name='resolve' method='POST' action='resolve.php'>" 
+            + "<input type=hidden name='post_time' value='" + post_time 
+            +"'> ";
         }
 
         var rousui_img = "";

@@ -9,6 +9,7 @@
     <meta http-equiv="content-style-type" content="text/css">
     <meta http-equiv="content-script-type" content="text/javascript">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <?= $this->Html->css("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css") ?>
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/owl.carousel.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/jquery.onoff.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/base.css">

@@ -159,3 +159,9 @@ body {
 #notdrink_chk .onoffswitch-inner:after {
     content: "飲めない";
 }
+
+
+.inline_checkboxes .radio{
+    display: inline;
+    margin-right: 10px;
+}
