@@ -23,7 +23,7 @@ use BootstrapUI\View\UIView;
  *
  * @link http://book.cakephp.org/3.0/en/views.html#the-app-view
  */
-class AppView extends View
+class AppView extends UIView
 {
 
     /**
