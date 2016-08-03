@@ -54,3 +54,18 @@
     height: 25px;
     background-color:#ddd;
 }
+
+.radio input[type="radio"]{
+    float:none;
+    margin-left:0;
+}
+
+.button-file {
+    text-shadow:none;
+    
+}
+
+.container{
+    padding-left:0;
+    padding-right:0;
+}
