@@ -11,10 +11,17 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "friendsofcake/crud": "^4.3",
-        "friendsofcake/crud-view": "^0.3.1",
+        "friendsofcake/crud-view": "^0.3.2",
         "friendsofcake/search": "^1.2",
         "aws/aws-sdk-php": "^3.17",
-        "vlucas/phpdotenv": "^2.2"
+        "vlucas/phpdotenv": "^2.2",
+        "cakedc/users": "^3.2",
+        "league/oauth2-facebook": "@stable",
+        "league/oauth2-instagram": "@stable",
+        "league/oauth2-google": "@stable",
+        "league/oauth2-linkedin": "@stable",
+        "league/oauth1-client": "@stable",
+        "friendsofcake/bootstrap-ui": "^0.5.0"
     },
     "require-dev": {
         "psy/psysh": "@stable",

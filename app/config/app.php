@@ -178,13 +178,14 @@ return [
      */
     'EmailTransport' => [
         'default' => [
-            'className' => 'Mail',
-            // The following keys are used in SMTP transports
-            'host' => 'localhost',
-            'port' => 25,
+            'className' => 'Smtp',
+            // The ®following keys are used in SMTP transports
+            'host' => 'ssl://smtp.gmail.com',
+            'port' => 465,
             'timeout' => 30,
-            'username' => 'user',
-            'password' => 'secret',
+            'username' => 'stagesp1@gmail.com', //env('GMAIL_USER'),
+            'password' => 'supermansh1va', //env('GMAIL_PASSWORD'),
+            'transport' => 'Smtp',
             'client' => null,
             'tls' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),

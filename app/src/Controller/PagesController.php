@@ -19,6 +19,9 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Aws\S3\S3Client;
 use Cake\ORM\TableRegistry;
+use Cake\Controller\Controller;
+use Cake\Event\Event;
+
 
 /**
  * Static content controller
@@ -30,6 +33,11 @@ use Cake\ORM\TableRegistry;
 class PagesController extends AppController
 {
 
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['index', 'addNeko', 'display']);
+    }
+    
     /**
      * Displays a view
      *

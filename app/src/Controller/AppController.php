@@ -43,6 +43,7 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('CakeDC/Users.UsersAuth');
 
         $this->loadComponent('Crud.Crud', [
             'actions' => [
@@ -70,16 +71,16 @@ class AppController extends Controller
      * @param \Cake\Event\Event $event The beforeRender event.
      * @return void
      */
-    public function beforeRender(Event $event)
-    {
-        if (!array_key_exists('_serialize', $this->viewVars) &&
-            in_array($this->response->type(), ['application/json', 'application/xml'])
-        ) {
-            $this->set('_serialize', true);
-        }
+    // public function beforeRender(Event $event)
+    // {
+    //     if (!array_key_exists('_serialize', $this->viewVars) &&
+    //         in_array($this->response->type(), ['application/json', 'application/xml'])
+    //     ) {
+    //         $this->set('_serialize', true);
+    //     }
 
-        if ($this->viewBuilder()->className() === null) {
-            $this->viewBuilder()->className('CrudView\View\CrudView');
-        }
-    }
+    //     if ($this->viewBuilder()->className() === null) {
+    //         $this->viewBuilder()->className('CrudView\View\CrudView');
+    //     }
+    // }
 }

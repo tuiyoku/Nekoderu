@@ -13,7 +13,8 @@
  */
 namespace App\View;
 
-use Cake\View\View;
+// use Cake\View\View;
+use BootstrapUI\View\UIView;
 
 /**
  * Application View
