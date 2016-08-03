@@ -11,10 +11,7 @@ function setModal(id, btn){
     var modal = $("#"+id);
    
     $(window).click(function(e) {
-        //FIXME:なんかうまく動いてない modalとe.targetが一致しない
-        // console.log(modal);
-        // console.log(e.target);
-        if (e.target == modal) {
+        if (e.target.id === modal.attr('id')) {
             modal.css('display', 'none');
         }
     });
