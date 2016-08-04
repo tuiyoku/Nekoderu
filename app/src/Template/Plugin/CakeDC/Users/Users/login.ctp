@@ -13,39 +13,8 @@ use Cake\Core\Configure;
 
 ?>
 
-<div class="users form">
-    <?= $this->Flash->render('auth') ?>
-    <?= $this->Form->create() ?>
-    <fieldset>
-        <legend><?= __d('CakeDC/Users', 'Please enter your email and password') ?></legend>
-        <?= $this->Form->input('email', ['required' => true]) ?>
-        <?= $this->Form->input('password', ['required' => true]) ?>
-        <?php
-        if (Configure::read('Users.reCaptcha.login')) {
-            echo $this->User->addReCaptcha();
-        }
-        if (Configure::check('Users.RememberMe.active')) {
-            echo $this->Form->input(Configure::read('Users.Key.Data.rememberMe'), [
-                'type' => 'checkbox',
-                'label' => __d('CakeDC/Users', 'Remember me'),
-                'checked' => 'checked'
-            ]);
-        }
-        ?>
-            <?php
-            $registrationActive = Configure::read('Users.Registration.active');
-            if ($registrationActive) {
-                echo $this->Html->link(__d('CakeDC/Users', 'Register'), ['action' => 'register']);
-            }
-            if (Configure::read('Users.Email.required')) {
-                if ($registrationActive) {
-                    echo ' | ';
-                }
-                echo $this->Html->link(__d('CakeDC/Users', 'Reset Password'), ['action' => 'requestResetPassword']);
-            }
-            ?>
-    </fieldset>
-    <?= implode(' ', $this->User->socialLoginList()); ?>
-    <?= $this->Form->button(__d('CakeDC/Users', 'Login')); ?>
-    <?= $this->Form->end() ?>
-</div>
+<?php
+$this->extend('/Layout/TwitterBootstrap/signin');
+?>
+
+
