@@ -33,6 +33,16 @@ $ chmod 755 composer.phar
 $ cd app && ../composer.phar install
 ```
 
+## フロントエンド
+```
+$ npm install -g webpack
+$ npm install
+$ npm run develop # once build
+$ npm run production # once build
+
+$ npm run watch # watch building for develop
+```
+
 ## データベース
 ```
 $mysql -u root -p
