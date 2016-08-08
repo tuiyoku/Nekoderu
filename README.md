@@ -30,7 +30,7 @@ app/config/app.phpの下記の部分を設定（ホスト名・ユーザー名�
 ## ライブラリ
 ```
 $ chmod 755 composer.phar
-$ cd app && ../composer.phar update
+$ cd app && ../composer.phar install
 ```
 
 ## データベース
