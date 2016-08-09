@@ -8,7 +8,7 @@
     <meta name="keywords" content="nekoderu,ねこでる,猫,ネコ">
     <meta http-equiv="content-style-type" content="text/css">
     <meta http-equiv="content-script-type" content="text/javascript">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <?= $this->Html->css("//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-glyphicons.css") ?>
     <?= $this->Html->css("//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css") ?>
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/owl.carousel.css">

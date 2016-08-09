@@ -22,18 +22,18 @@ $this->start('tb_body_start');
                 <ul class="nav navbar-nav navbar-right visible-xs">
                     <?= $this->fetch('tb_actions') ?>
                 </ul>
-                <!--
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-divider"></li>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Help</a></li>
-                </ul>
-                <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="Search...">
-                </form>
-                -->
+                
+                <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--    <li class="nav-divider"></li>-->
+                <!--    <li><a href="#">Dashboard</a></li>-->
+                <!--    <li><a href="#">Settings</a></li>-->
+                <!--    <li><a href="#">Profile</a></li>-->
+                <!--    <li><a href="#">Help</a></li>-->
+                <!--</ul>-->
+                <!--<form class="navbar-form navbar-right">-->
+                <!--    <input type="text" class="form-control" placeholder="Search...">-->
+                <!--</form>-->
+                
             </div>
         </div>
     </div>
