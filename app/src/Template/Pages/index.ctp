@@ -10,23 +10,6 @@
             <div class="memo">
                 <img src="<?php echo$this->Url->build('/img', false); ?>/cat_track.png"> のら猫がいる<span id="js-cat-count"></span>&nbsp;
             </div>
-            <div id="filter_options" class="memo" style="display: none;">
-                <div id="water_filter">
-                    <div id="rousui_chk"><input name="water_flg" type="checkbox" value="4" checked></div>
-                    <div id="no_chk"><input name="water_flg" type="checkbox" value="0" checked></div>
-                    <div id="ok_chk"><input name="water_flg" type="checkbox" value="1" checked></div>
-                    <div id="go_chk"><input name="water_flg" type="checkbox" value="2" checked></div>
-                    <div id="notdrink_chk"><input name="water_flg" type="checkbox" value="3" checked></div>
-                </div>
-                <!--<div id="time-range">-->
-                <!--    <p>-->
-                <!--        <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" size="100"/>-->
-                <!--    </p>-->
-                <!--    <input type="hidden" id="start" value="<?php echo $from_time; ?>" >-->
-                <!--    <input type="hidden" id="end" value="<?php echo $now + 1800; ?>" >-->
-                <!--    <div id="slider-range"></div>-->
-                <!--</div>-->
-            </div>
         </div>
         <div class="map-rapper">
             <div id="map" class="map"></div>
@@ -43,7 +26,8 @@
     {{address}}<br>
     {{#url}}
     <a href="{{url}}" target="_blank"><img src="{{url}}" width="200" alt=""></a>
-    {{/url}}
+    {{/
+    url}}
     </div>
 </script>
 
@@ -51,7 +35,6 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="<?php echo$this->Url->build('/', false); ?>js/jquery.ui.touch-punch.min.js"></script>
-<script src="<?php echo$this->Url->build('/', false); ?>js/jquery.onoff.min.js"></script>
 <script type="text/javascript" src="<?php echo$this->Url->build('/', false); ?>js/index.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb1SFRkz9TtARWL_sPqw6D3oHCgbpLLcw&callback=initMap"></script>
 
