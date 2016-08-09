@@ -9,15 +9,18 @@
     <meta http-equiv="content-style-type" content="text/css">
     <meta http-equiv="content-script-type" content="text/javascript">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <?= $this->Html->css("//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-glyphicons.css") ?>
-    <?= $this->Html->css("//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css") ?>
-    <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/owl.carousel.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/jquery.onoff.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/base.css">
+    <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/app.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/index.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/post.css">
     
-    <?= $this->Html->script('//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') ?>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- OGP -->
     <meta property="og:type" content="website">
     <meta property="og:description" content="ネコ出るです。">
@@ -27,8 +30,11 @@
     <!-- OGP -->
 </head>
 <body>
+    
+    <?= $this->element('partial/header'); ?>
+    
     <?= $this->Flash->render() ?>
-    <div class="container clearfix">
+    <div class="container navbar-static-top">
         <?= $this->fetch('content') ?>
     </div>
     <footer>

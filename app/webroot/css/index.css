@@ -10,37 +10,6 @@ body {
     margin-bottom: 0.5em;
 }
 
-.post-button {
-    width: 100%;
-    padding: 10px 0;
-    background: rgba(240, 240, 240, 1);
-    text-align: center;
-    line-height: 1.5em;
-    color: #000;
-    box-shadow: 0 3px 1px gray;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-}
-
-.post-button:hover {
-    background-color: lightgray;
-    box-shadow: 0 3px 0 gray;
-}
-
-.post-button:active {
-    top: 3px;
-    box-shadow: none;
-}
-
-/*.btn {*/
-/*    width: 50%;*/
-/*    height: 40px;*/
-/*    font-size: 20px;*/
-/*    font-weight: bold;*/
-/*    background: rgba(240, 240, 240, 1);*/
-/*    line-height: 28pt;*/
-/*    text-align: center;*/
-/*}*/
-
 .memo {
     font-size: 10px;
     text-align: center;

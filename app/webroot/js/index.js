@@ -88,24 +88,6 @@ function closeAllInfoWindows() {
     }
 }
 
-function plotNews(t_news) {
-    for (var i = 0; i < t_news.length; i++) {
-        $("#breaking_news").prepend('<div class="item"><a href="' + t_news[i]['url'] + '" target="_blank">' + t_news[i]['title'] + '</a></div>');
-    }
-
-    if(1 < t_news.length){
-        $(".owl-carousel").owlCarousel({
-            items:1,
-            loop:true,
-            margin:0,
-            autoplay:true,
-            autoplayTimeout:3000,
-            autoplayHoverPause:true
-        });
-    }else{
-        $(".owl-carousel").show();
-    }
-}
 function plotData(t_position) {
     // index 3 (marker 3) not exist
     var markers = ['no', 'ok', 'go', 'notdrink', 'cat_track'];

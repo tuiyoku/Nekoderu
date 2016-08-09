@@ -1,4 +1,3 @@
-
 <div style="margin:15px 0;text-align:center">
     のら猫、地域猫について教えて下さい
 </div>
