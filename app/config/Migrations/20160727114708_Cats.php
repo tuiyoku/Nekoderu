@@ -17,6 +17,6 @@ class Cats extends AbstractMigration
             'default' => 0,
             'limit' => 1,
             'null' => true,
-        ]);
+        ])->update();
     }
 }
