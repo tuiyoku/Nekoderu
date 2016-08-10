@@ -37,10 +37,3 @@
 <script src="<?php echo$this->Url->build('/', false); ?>js/jquery.ui.touch-punch.min.js"></script>
 <script type="text/javascript" src="<?php echo$this->Url->build('/', false); ?>js/index.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb1SFRkz9TtARWL_sPqw6D3oHCgbpLLcw&callback=initMap"></script>
-
-<script>
-    $( "#range-toggle" ).click(function() {
-        $( "#filter_options" ).toggle( "fold", 1000 );
-    });
-    $('input[type="checkbox"]').onoff();
-</script>
