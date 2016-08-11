@@ -103,7 +103,7 @@ class GoogleApiComponent extends Component {
     }
     
     function detectObjects($image_path){
-        $api_key = "AIzaSyBoBnKV2kj2wPfsDuBnBtjj1RGT9po11ng" ;
+        $api_key = env("GOOGLE_API_KEY") ;
         
     	// リクエスト用のJSONを作成
     	$json = json_encode( array(
