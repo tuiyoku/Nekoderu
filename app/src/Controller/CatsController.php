@@ -8,6 +8,8 @@ use Cake\Event\Event;
 
 class CatsController extends AppController
 {
+    public $components = array('NekoUtil');
+    
     public function index()
     {
         $this->Crud->on('beforePaginate', function($e) {
@@ -19,26 +21,9 @@ class CatsController extends AppController
         return $this->Crud->execute();
     }
     
-    // public function mail(){
-    //     $email = new Email();
-    //     $res = $email->template('default')
-    //         ->emailFormat('html')
-    //         ->to('stagesp1@gmail.com')
-    //         ->from('izumi@cis.sojo-u.ac.jp')
-    //         ->subject('Title')
-    //         ->send('This is a test mail');
-        
-    //     print_r($res);
-            
-            
-    //     exit;
-            
-    //     return null;
-    // }
-    
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index']);
+        $this->Auth->allow(['index', 'uploadImage']);
     }
     
     /**
