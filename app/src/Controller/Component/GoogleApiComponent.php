@@ -8,6 +8,10 @@ use Aws\S3\S3Client;
 define('APPLICATION_NAME', 'Drive API PHP Quickstart');
 define('CREDENTIALS_PATH', '~/.credentials/auth_token.json');
 define('REFRESH_TOKEN_PATH', '~/.credentials/refresh_token.json');
+
+/**
+ * You need to get a credeintial file from Google Dev Console
+ */
 define('CLIENT_SECRET_PATH', '~/.credentials/client_secret.json');
 
 class GoogleApiComponent extends Component {
