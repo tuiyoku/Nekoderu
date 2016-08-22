@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use Cake\ORM\TableRegistry;
 use App\Controller\AppController;
 use Cake\Event\Event;
 
@@ -48,6 +49,7 @@ class CatsController extends AppController
                     $file = $data["image"];
 
                     $savePath = $this->NekoUtil->safeImage($file["tmp_name"], TMP);
+
                     if ($savePath === "") {
                         die("不正な画像がuploadされました");
                     }

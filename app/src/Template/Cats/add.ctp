@@ -27,7 +27,7 @@
         
 <?php
     echo $this->Form->create(null, [
-        'url' => 'add_neko',
+        'url' => 'cats/add',
         'id' => 'post',
         'onsubmit' => 'return confirm("送信してもいいですか？");'
     ]);
