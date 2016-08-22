@@ -43,6 +43,7 @@ use Cake\Routing\Router;
 Router::defaultRouteClass('DashedRoute');
 Router::extensions(['json', 'xml']);
 
+
 Router::scope('/', function (RouteBuilder $routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
@@ -51,6 +52,10 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'index', '_ssl' =>true]);
     $routes->connect('/add_neko', ['controller' => 'Pages', 'action' => 'addNeko', '_ssl' =>true]);
+
+    Router::prefix('admin', function ($routes) {
+            $routes->fallbacks();
+    });
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.

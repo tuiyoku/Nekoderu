@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use Cake\Controller\Controller;
 use Cake\Mailer\Email;
 use Cake\Event\Event;
 
-class CatsController extends AppController
+class CatsController extends \App\Controller\AppController
 {
     public $components = array('NekoUtil');
     
