@@ -2,7 +2,7 @@
     <div class="col-lg-12 text-center">
         <div id="tools">
             <div class="select-button-box">
-                <a href="<?php echo$this->Url->build('/', false); ?>add_neko" id="js-neko-post" class="btn btn-default btn-lg">
+                <a href="<?php echo$this->Url->build('/', false); ?>cats/add" id="js-neko-post" class="btn btn-default btn-lg">
                     報告する
                 </a>
             </div>

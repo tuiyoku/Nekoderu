@@ -10,7 +10,8 @@
     // });
 
     document.getElementById("image").addEventListener("change", function(e){
-        e.target.nextSibling.nodeValue = e.target.files.length ? e.target.files[0].name : "写真を選ぶ";
+        var el = document.getElementById('js-picture-label');
+        el.innerText = e.target.files.length ? e.target.files[0].name : "写真を選ぶ";
     });
     
 // 前画面で保存したデータを削除
@@ -38,14 +39,6 @@
         zoom: currentMap.zoom || 9,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    mapDom.style.width = (window.innerWidth) + 'px';
-    var h = (window.innerHeight - (document.getElementById('post').clientHeight));
-    h = (window.innerWidth-80);
-    console.log("height:"+h);
-    console.log(window.innerHeight);
-    console.log(document.getElementById('post').clientHeight);
-    mapDom.style.height = h+"px";//window.innerHeight - (document.getElementById('post').clientHeight) - 200 + 'px';
-    console.log(document.getElementById('post').clientHeight);
 
     function setStorage(){
         var currentCenter = map.getCenter();
@@ -120,7 +113,7 @@
         return new google.maps.Marker({
             position : latlng,
             map      : map,
-            icon     : 'img/' + icon + '.png'
+            icon     : '../img/' + icon + '.png'
         });
     }
 

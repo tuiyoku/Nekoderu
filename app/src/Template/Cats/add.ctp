@@ -77,7 +77,7 @@
             <?php
                 echo $this->Form->input('image', ['type' => 'file', 'id' => 'image', 'class' => 'hide', 'label' => false]);
             ?>
-            写真があれば選択する
+            <span id="js-picture-label">写真があれば選択する</span>
             </label>
         </div>
     </div>
@@ -88,7 +88,9 @@
     ?>
     </div>
 <?php echo $this->Form->end(); ?>
-        <div id="map"></div>
+<div class="map-rapper">
+    <div id="map" class="map"></div>
+</div>
     <!--<div id="customZoomBtn">-->
     <!--    <div id="small" class="float_l btn">ズームアウト</div>-->
     <!--    <div id="big" class="float_l btn">ズームイン</div>-->
