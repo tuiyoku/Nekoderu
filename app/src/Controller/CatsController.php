@@ -44,7 +44,7 @@ class CatsController extends AppController
             if ($err === "") {
                 $image_url = "";
                 
-                if (isset($data["image"]) && $data["image"].length > 0 && is_uploaded_file($data["image"]["tmp_name"])) {
+                if (isset($data["image"]) && is_uploaded_file($data["image"]["tmp_name"])) {
                     // アップロード処理
                     $file = $data["image"];
 
@@ -55,6 +55,8 @@ class CatsController extends AppController
                     }
                  
                     $result = $this->NekoUtil->s3Upload($savePath, '');
+                    
+                    debug($result);
 
                     // 書きだした画像を削除
                     @unlink($savePath);

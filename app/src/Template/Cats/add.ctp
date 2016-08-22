@@ -29,7 +29,8 @@
     echo $this->Form->create(null, [
         'url' => 'cats/add',
         'id' => 'post',
-        'onsubmit' => 'return confirm("送信してもいいですか？");'
+        'onsubmit' => 'return confirm("送信してもいいですか？");',
+        'enctype' => 'multipart/form-data'
     ]);
     echo $this->Form->input('time', ['type' => 'hidden', 'id' => 'time']);
     echo $this->Form->input('locate', ['type' => 'hidden', 'id' => 'locate']);
