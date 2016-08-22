@@ -33,7 +33,7 @@ use Cake\Event\Event;
 class PagesController extends AppController
 {
     
-    public $components = array('NekoUtil');
+    public $components = ['NekoUtil'];
 
     public function beforeFilter(Event $event)
     {

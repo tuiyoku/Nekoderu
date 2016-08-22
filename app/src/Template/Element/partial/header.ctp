@@ -24,7 +24,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">ログイン</a></li>
+                <li><a href="/login">ログイン</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
