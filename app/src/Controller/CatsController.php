@@ -16,7 +16,21 @@ class CatsController extends AppController
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['add']);
+        $this->Auth->allow(['index', 'add']);
+    }
+    
+    /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function index()
+    {
+        $this->viewBuilder()->layout('nekoderu');
+        $cats = $this->paginate($this->Cats);
+
+        $this->set(compact('cats'));
+        $this->set('_serialize', ['cats']);
     }
 
 
@@ -41,10 +55,16 @@ class CatsController extends AppController
             $comment = (string)$data['comment'];
             $ear_shape = $data['ear_shape'];
             
+            // ユーザーIDを付与
+            $uid = 0;
+            if(!is_null($this->Auth->user('id'))){
+                $uid = $this->Auth->user('id');
+            }
+            
             if ($err === "") {
                 $image_url = "";
                 
-                if (isset($data["image"]) && $data["image"].length > 0 && is_uploaded_file($data["image"]["tmp_name"])) {
+                if (isset($data["image"]) && is_uploaded_file($data["image"]["tmp_name"])) {
                     // アップロード処理
                     $file = $data["image"];
 
@@ -55,6 +75,8 @@ class CatsController extends AppController
                     }
                  
                     $result = $this->NekoUtil->s3Upload($savePath, '');
+                    
+                    debug($result);
 
                     // 書きだした画像を削除
                     @unlink($savePath);
@@ -74,7 +96,7 @@ class CatsController extends AppController
                 $address = $res["results"][0]["formatted_address"];
 
                 $query = TableRegistry::get('Cats')->query();
-                $query->insert(['time', 'locate', 'comment', 'ear_shape', 'image_url', 'address', 'flg'])
+                $query->insert(['time', 'locate', 'comment', 'ear_shape', 'image_url', 'address', 'flg', 'user_id'])
                     ->values([
                         "time" => $time,
                         "locate" => $locate,
@@ -83,6 +105,7 @@ class CatsController extends AppController
                         "address" => $address,
                         "ear_shape" => $ear_shape,
                         "flg" => 4,
+                        "user_id" => $uid,
                     ])
                     ->execute();
             }
