@@ -73,7 +73,7 @@ class TestsController extends AppController
     
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'visionTest', 'oauth2callback', 'googleConnect']);
+        $this->Auth->allow(['index', 'visionTest', 'oauth2callback', 'googleConnect', 'mail']);
     }
     
    
