@@ -73,14 +73,17 @@
     </div>
     
     <div class="box">
-        <div class="memo-title">４．
-            <label class="button-file">
-            <?php
-                echo $this->Form->input('image', ['type' => 'file', 'id' => 'image', 'class' => 'hide', 'label' => false]);
-            ?>
-            <span id="js-picture-label">写真があれば選択する</span>
-            </label>
+        <div class="memo-title">４．写真を選ぶ
+            <div id="photos" class="clearfix">
+                <label class="button-file">
+                <?php
+                    echo $this->Form->input('image[]', ['type' => 'file', 'id' => 'image_0', 'class' => 'hide', 'label' => false]);
+                ?>
+                <span>追加する</span>
+                </label>
+            </div>
         </div>
+        
     </div>
     <div class="box-mini">
         <?php

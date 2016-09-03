@@ -111,10 +111,11 @@ app.infoWindows = [];
             var locates = item.locate.split(/,/);
             var time    = item.time;
             var comment = item.comment;
-            var image   = item.image_url;
+            var images   = item.image_url.substring(0, item.image_url.length-1).split(",");
             var status  = item.status;
             var flag    = item.flg;
             var icon    = '';
+            
             
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locates[0], locates[1]),
@@ -136,7 +137,7 @@ app.infoWindows = [];
                             datetime: formatDate(new Date(time * 1000)),
                             comment: comment || '',
                             address: result[0].formatted_address,
-                            url: image
+                            urls: images
                         });
                     var gmiw = new google.maps.InfoWindow({
                         content: rendered

@@ -9,10 +9,6 @@
     //     map.setZoom(++map.zoom)
     // });
 
-    document.getElementById("image").addEventListener("change", function(e){
-        var el = document.getElementById('js-picture-label');
-        el.innerText = e.target.files.length ? e.target.files[0].name : "写真を選ぶ";
-    });
     
 // 前画面で保存したデータを削除
     $('#js-submit-button').click(function (e) {

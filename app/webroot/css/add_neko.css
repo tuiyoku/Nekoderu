@@ -1,27 +1,42 @@
 /* The Modal (background) */
+
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
+
 
 /* Modal Content/Box */
+
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
+    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
+    /* Could be more or less, depending on screen size */
 }
 
+
 /* The Close Button */
+
 .close {
     color: #aaa;
     float: right;
@@ -36,15 +51,14 @@
     cursor: pointer;
 }
 
-
-.inline_checkboxes .radio{
+.inline_checkboxes .radio {
     display: inline;
     margin-right: 10px;
 }
 
-.inline_checkboxes .radio label{
+.inline_checkboxes .radio label {
     font-size: 9px;
-    margin-left:3px;
+    margin-left: 3px;
 }
 
 #footer {
@@ -52,18 +66,18 @@
     bottom: 0;
     width: 100%;
     height: 25px;
-    background-color:#ddd;
+    background-color: #ddd;
 }
 
-.radio input[type="radio"]{
-    float:none;
+.radio input[type="radio"] {
+    float: none;
 }
 
-.radio label{
+.radio label {
     padding-left: 15px;
 }
 
-.form-control{
+.form-control {
     margin-left: 5%;
     width: 90%;
 }
@@ -74,15 +88,42 @@
 }
 
 .button-file {
-    text-shadow:none;
-    
+    text-shadow: none;
 }
 
-.container{
-    padding-left:0;
-    padding-right:0;
+.container {
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.form-group{
-    margin-bottom: 0px; 
+.form-group {
+    margin-bottom: 0px;
+}
+
+/*
+写真の複数選択関係
+*/
+#photos {
+    margin-top: 5px;
+}
+
+.button-file {
+    border-width: 1px;
+    border-color: black;
+    border-style: dashed;
+    height: 90px;
+    width: 90px;
+    float: left;
+    padding: 0px;
+    margin-left: 3px;
+}
+
+.button-file span {
+    line-height: 90px;
+    vertical-align: middle;
+}
+
+.button-file img {
+    height: 90px;
+    width: 90px;
 }

@@ -47,6 +47,7 @@ class CatsController extends AppController
 
             $data = $this->request->data;
             
+            // debug($this->request->data);
 
             $err = "";
 
@@ -64,27 +65,32 @@ class CatsController extends AppController
             if ($err === "") {
                 $image_url = "";
                 
-                if (isset($data["image"]) && is_uploaded_file($data["image"]["tmp_name"])) {
-                    // アップロード処理
-                    $file = $data["image"];
-
-                    $savePath = $this->NekoUtil->safeImage($file["tmp_name"], TMP);
-
-                    if ($savePath === "") {
-                        die("不正な画像がuploadされました");
-                    }
-                 
-                    $result = $this->NekoUtil->s3Upload($savePath, '');
-                    
-                    debug($result);
-
-                    // 書きだした画像を削除
-                    @unlink($savePath);
-
-                    if ($result) {
-                        $image_url = $result['ObjectURL'];
+                if (isset($data["image"])) {
+                    for($i=0; $i<count($data["image"]); $i++){
+                        if(is_uploaded_file($data["image"][$i]["tmp_name"])){
+                        
+                            // アップロード処理
+                            $file = $data["image"][$i];
+        
+                            $savePath = $this->NekoUtil->safeImage($file["tmp_name"], TMP);
+        
+                            if ($savePath === "") {
+                                die("不正な画像がuploadされました");
+                            }
+                         
+                            $result = $this->NekoUtil->s3Upload($savePath, '');
+                            // debug($result);
+        
+                            // 書きだした画像を削除
+                            @unlink($savePath);
+        
+                            if ($result) {
+                                $image_url .= $result['ObjectURL'].",";
+                            }
+                        }
                     }
                 }
+                // debug($image_url);
                 
                 $query = array(
                     "latlng" => h($locate),
