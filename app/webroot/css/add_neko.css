@@ -52,8 +52,9 @@
 }
 
 .inline_checkboxes .radio {
-    display: inline;
-    margin-right: 10px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .inline_checkboxes .radio label {
@@ -71,6 +72,9 @@
 
 .radio input[type="radio"] {
     float: none;
+    margin-top: 5px;
+    margin-left: -16px;
+    vertical-align: middle;
 }
 
 .radio label {

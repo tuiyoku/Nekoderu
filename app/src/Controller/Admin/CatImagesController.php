@@ -2,6 +2,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * CatImages Controller
@@ -11,6 +12,11 @@ use App\Controller\AppController;
 class CatImagesController extends AppController
 {
 
+    // public function beforeFilter(Event $event)
+    // {
+    //     $this->Auth->allow(['index', 'add']);
+    // }
+    
     /**
      * Index method
      *

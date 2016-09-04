@@ -15,6 +15,8 @@
                 <th><?= $this->Paginator->sort('flg') ?></th>
                 <th><?= $this->Paginator->sort('status') ?></th>
                 <th><?= $this->Paginator->sort('ear_shape') ?></th>
+                <th><?= $this->Paginator->sort('created') ?></th>
+                <th><?= $this->Paginator->sort('modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -27,6 +29,8 @@
                 <td><?= $this->Number->format($cat->flg) ?></td>
                 <td><?= $this->Number->format($cat->status) ?></td>
                 <td><?= $this->Number->format($cat->ear_shape) ?></td>
+                <td><?= h($cat->created) ?></td>
+                <td><?= h($cat->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $cat->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $cat->id]) ?>
