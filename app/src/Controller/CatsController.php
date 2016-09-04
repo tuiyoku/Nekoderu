@@ -128,7 +128,7 @@ class CatsController extends AppController
                             $catImage->users_id = $uid;
                             $catImage->cats_id = $cat->id;
                             if ($this->CatImages->save($catImage)) {
-                                $this->Flash->success('画像を保存しました。');
+                                // $this->Flash->success('画像を保存しました。');
                             }
                         }
                     }
