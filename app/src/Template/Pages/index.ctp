@@ -20,7 +20,7 @@
 
 <!-- maps window template -->
 <script type="x-tmpl-mustache" id="template-info-window">
-    <div class="infowin">{{datetime}}<br>
+    <div class="infowin">{{modified}}<br>
     <img src="img/cat_track.png"> 猫がいる
     {{comment}}<br>
     {{address}}<br>

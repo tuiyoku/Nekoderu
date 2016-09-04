@@ -69,8 +69,7 @@ class CatsController extends AppController
 
             $data = $this->request->data;
             
-            // debug($this->request->data);
-
+            $this->log($this->request->data);
 
             $time = time();
             $locate = (string)$data['locate'];
@@ -82,9 +81,6 @@ class CatsController extends AppController
             if(!is_null($this->Auth->user('id'))){
                 $uid = $this->Auth->user('id');
             }
-            
-        
-            // debug($image_url);
             
             $query = array(
                 "latlng" => h($locate),
@@ -99,7 +95,6 @@ class CatsController extends AppController
                 $address = "";
 
             $cat = $this->Cats->newEntity();
-            $cat->time = $time;
             $cat->locate = $locate;
             $cat->comment = $comment;
             $cat->address = $address;

@@ -111,7 +111,7 @@ app.infoWindows = [];
         Object.keys(data).forEach(function (key) {
             var item    = data[key];
             var locates = item.locate.split(/,/);
-            var time    = item.time;
+            var modified    = item.modified;
             var comment = item.comment;
             var cat_images  = item.cat_images;
             var status  = item.status;
@@ -133,10 +133,12 @@ app.infoWindows = [];
                 }, function (result, status) {
                     if (status !== google.maps.GeocoderStatus.OK) return;
                     
+                    console.log(result);
+                    
                     hideInfoWindows();
                     var rendered = Mustache.render(template,
                         {
-                            datetime: formatDate(new Date(time * 1000)),
+                            modified: modified,
                             comment: comment || '',
                             address: result[0].formatted_address,
                             cat_images: cat_images

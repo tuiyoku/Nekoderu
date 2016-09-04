@@ -77,7 +77,7 @@
             <div id="photos" class="clearfix">
                 <label class="button-file">
                 <?php
-                    echo $this->Form->input('image[]', ['type' => 'file', 'id' => 'image_0', 'class' => 'hide', 'label' => false]);
+                    echo $this->Form->input('', ['type' => 'file', 'id' => 'image_0', 'class' => 'hide', 'label' => false]);
                 ?>
                 <span>追加する</span>
                 </label>
