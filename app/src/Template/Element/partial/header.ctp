@@ -23,9 +23,23 @@
                     <a href="#">お問い合わせ</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login">ログイン</a></li>
-            </ul>
+            <?php
+            if (!$auth):
+            ?>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login">ログイン</a></li>
+                </ul>
+            <?php
+            else:
+            ?>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/profile">ユーザ情報</a></li>
+                    <li><a href="/logout">ログアウト</a></li>
+                </ul>
+            <?php
+            endif;
+            ?>
+            
         </div>
         <!-- /.navbar-collapse -->
     </div>

@@ -11,7 +11,10 @@
 ?>
 
 <?php
-$this->extend('/Layout/TwitterBootstrap/signin');
+//デフォルトのレイアウトを外す
+$this->layout= '';
+//ネコデルのレイアウトを適用
+$this->extend('/Layout/nekoderu');
 ?>
 
 <div class="actions columns large-2 medium-3">
