@@ -45,8 +45,8 @@ app.infoWindows = [];
         promiseCatList()
             .done(function (response) {
                 console.log(response);
-                $("#js-cat-count").text("(" + response.data.length + ")");
-                renderNekoderu(response.data);
+                $("#js-cat-count").text("(" + response.cats.length + ")");
+                renderNekoderu(response.cats);
             })
             .fail(function (error) {
                 console.error(error);
@@ -106,12 +106,14 @@ app.infoWindows = [];
     function renderNekoderu (data) {
         removeMarkers();
         
+        console.log(data);
+        
         Object.keys(data).forEach(function (key) {
             var item    = data[key];
             var locates = item.locate.split(/,/);
             var time    = item.time;
             var comment = item.comment;
-            var images   = item.image_url.substring(0, item.image_url.length-1).split(",");
+            var cat_images  = item.cat_images;
             var status  = item.status;
             var flag    = item.flg;
             var icon    = '';
@@ -137,7 +139,7 @@ app.infoWindows = [];
                             datetime: formatDate(new Date(time * 1000)),
                             comment: comment || '',
                             address: result[0].formatted_address,
-                            urls: images
+                            cat_images: cat_images
                         });
                     var gmiw = new google.maps.InfoWindow({
                         content: rendered
@@ -183,7 +185,7 @@ app.infoWindows = [];
      */
     function requestCatList (start, end, flag) {
       return $.ajax({
-            url: 'admin/cats.json',
+            url: 'cats.json',
             type: 'get',
             data: {
                 map_start: start,

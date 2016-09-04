@@ -12,7 +12,6 @@
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('time') ?></th>
                 <th><?= $this->Paginator->sort('locate') ?></th>
-                <th><?= $this->Paginator->sort('image_url') ?></th>
                 <th><?= $this->Paginator->sort('flg') ?></th>
                 <th><?= $this->Paginator->sort('status') ?></th>
                 <th><?= $this->Paginator->sort('ear_shape') ?></th>
@@ -25,7 +24,6 @@
                 <td><?= $this->Number->format($cat->id) ?></td>
                 <td><?= $this->Number->format($cat->time) ?></td>
                 <td><?= h($cat->locate) ?></td>
-                <td><?= h($cat->image_url) ?></td>
                 <td><?= $this->Number->format($cat->flg) ?></td>
                 <td><?= $this->Number->format($cat->status) ?></td>
                 <td><?= $this->Number->format($cat->ear_shape) ?></td>

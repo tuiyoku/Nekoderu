@@ -28,6 +28,10 @@ class CatsTable extends Table
         $this->table('cats');
         $this->displayField('id');
         $this->primaryKey('id');
+        
+        $this->hasMany('CatImages', [
+            'foreignKey' => 'cats_id'
+        ]);
 
 
         // Add the behaviour to your table

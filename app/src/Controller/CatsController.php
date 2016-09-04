@@ -12,7 +12,8 @@ use Cake\Event\Event;
  */
 class CatsController extends AppController
 {
-    public $components = ['NekoUtil'];
+    
+    public $components = ['NekoUtil', 'RequestHandler'];
 
     public function beforeFilter(Event $event)
     {
@@ -26,12 +27,33 @@ class CatsController extends AppController
      */
     public function index()
     {
-        $this->viewBuilder()->layout('nekoderu');
-        $cats = $this->paginate($this->Cats);
+        $q = $this->request->query;
+        
+        // $this->viewBuilder()->layout('nekoderu');
+        
+        $data = $this->Cats->find('all')
+            ->contain('CatImages');
+        if($q != null){
+            $data = $data
+                ->where(['created >' => new \DateTime($q['map_start'])])
+                ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
+        }
+        $cats = $this->paginate($data);
 
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
     }
+    
+    public function view($id = null)
+    {
+        $user = $this->Cats->get($id, [
+            'contain' => []
+        ]);
+
+        $this->set('cat', $cat);
+        $this->set('_serialize', ['cat']);
+    }
+
 
 
     /**
@@ -41,6 +63,8 @@ class CatsController extends AppController
      */
     public function add()
     {
+        $this->CatImages = TableRegistry::get('CatImages');
+        
         $this->viewBuilder()->layout('nekoderu');
 
         if ($this->request->is('post')) {
@@ -49,7 +73,6 @@ class CatsController extends AppController
             
             // debug($this->request->data);
 
-            $err = "";
 
             $time = time();
             $locate = (string)$data['locate'];
@@ -62,58 +85,61 @@ class CatsController extends AppController
                 $uid = $this->Auth->user('id');
             }
             
-            if ($err === "") {
-                $image_url = "";
-                
-                if (isset($data["image"])) {
-                    for($i=0; $i<count($data["image"]); $i++){
-                        if(is_uploaded_file($data["image"][$i]["tmp_name"])){
-                        
-                            // アップロード処理
-                            $file = $data["image"][$i];
         
-                            $savePath = $this->NekoUtil->safeImage($file["tmp_name"], TMP);
-        
-                            if ($savePath === "") {
-                                die("不正な画像がuploadされました");
-                            }
-                         
-                            $result = $this->NekoUtil->s3Upload($savePath, '');
-                            // debug($result);
-        
-                            // 書きだした画像を削除
-                            @unlink($savePath);
-        
-                            if ($result) {
-                                $image_url .= $result['ObjectURL'].",";
+            // debug($image_url);
+            
+            $query = array(
+                "latlng" => h($locate),
+                "language" => "ja",
+                "sensor" => false
+            );
+            
+            $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
+            if(count($res["results"])>0)
+                $address = $res["results"][0]["formatted_address"];
+            else
+                $address = "";
+
+            $cat = $this->Cats->newEntity();
+            $cat->time = $time;
+            $cat->locate = $locate;
+            $cat->comment = $comment;
+            $cat->address = $address;
+            $cat->ear_shape = $ear_shape;
+            $cat->flg = 4;
+            $cat->user_id = $uid;
+            if ($this->Cats->save($cat)) {
+                $this->Flash->success('猫を保存しました。');
+            }
+           
+            if (isset($data["image"])) {
+                for($i=0; $i<count($data["image"]); $i++){
+                    if(is_uploaded_file($data["image"][$i]["tmp_name"])){
+                    
+                        // アップロード処理
+                        $file = $data["image"][$i];
+    
+                        $savePath = $this->NekoUtil->safeImage($file["tmp_name"], TMP);
+                        if ($savePath === "") {
+                            die("不正な画像がuploadされました");
+                        }
+                     
+                        $result = $this->NekoUtil->s3Upload($savePath, '');
+                        // 書きだした画像を削除
+                        @unlink($savePath);
+    
+                        if ($result) {
+                            
+                            $catImage = $this->CatImages->newEntity();
+                            $catImage->url = $result['ObjectURL'];
+                            $catImage->users_id = $uid;
+                            $catImage->cats_id = $cat->id;
+                            if ($this->CatImages->save($catImage)) {
+                                $this->Flash->success('画像を保存しました。');
                             }
                         }
                     }
                 }
-                // debug($image_url);
-                
-                $query = array(
-                    "latlng" => h($locate),
-                    "language" => "ja",
-                    "sensor" => false
-                );
-                $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
-
-                $address = $res["results"][0]["formatted_address"];
-
-                $query = TableRegistry::get('Cats')->query();
-                $query->insert(['time', 'locate', 'comment', 'ear_shape', 'image_url', 'address', 'flg', 'user_id'])
-                    ->values([
-                        "time" => $time,
-                        "locate" => $locate,
-                        "comment" => $comment,
-                        "image_url" => $image_url,
-                        "address" => $address,
-                        "ear_shape" => $ear_shape,
-                        "flg" => 4,
-                        "user_id" => $uid,
-                    ])
-                    ->execute();
             }
             
             return $this->redirect('/');

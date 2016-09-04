@@ -86,70 +86,70 @@ class PagesController extends AppController
         $this->set(compact('now', 'from_time'));
     }
 
-    public function addNeko()
-    {
-        $this->viewBuilder()->layout('nekoderu');
+    // public function addNeko()
+    // {
+    //     $this->viewBuilder()->layout('nekoderu');
 
-        if ($this->request->is('post')) {
+    //     if ($this->request->is('post')) {
 
-            $data = $this->request->data;
+    //         $data = $this->request->data;
             
 
-            $err = "";
+    //         $err = "";
 
-            $time = time();
-            $locate = (string)$data['locate'];
-            $comment = (string)$data['comment'];
-            $ear_shape = $data['ear_shape'];
+    //         $time = time();
+    //         $locate = (string)$data['locate'];
+    //         $comment = (string)$data['comment'];
+    //         $ear_shape = $data['ear_shape'];
             
-            if ($err === "") {
-                $image_url = "";
+    //         if ($err === "") {
+    //             $image_url = "";
                 
-                if (isset($data["image"]) && $data["image"].length > 0 && is_uploaded_file($data["image"]["tmp_name"])) {
-                    // アップロード処理
-                    $file = $data["image"];
+    //             if (isset($data["image"]) && $data["image"].length > 0 && is_uploaded_file($data["image"]["tmp_name"])) {
+    //                 // アップロード処理
+    //                 $file = $data["image"];
 
-                    $savePath = $this->NekoUtil->safeImage($file["tmp_name"], TMP);
-                    if ($savePath === "") {
-                        die("不正な画像がuploadされました");
-                    }
+    //                 $savePath = $this->NekoUtil->safeImage($file["tmp_name"], TMP);
+    //                 if ($savePath === "") {
+    //                     die("不正な画像がuploadされました");
+    //                 }
                  
-                    $result = $this->NekoUtil->s3Upload($savePath, '');
+    //                 $result = $this->NekoUtil->s3Upload($savePath, '');
 
-                    // 書きだした画像を削除
-                    @unlink($savePath);
+    //                 // 書きだした画像を削除
+    //                 @unlink($savePath);
 
-                    if ($result) {
-                        $image_url = $result['ObjectURL'];
-                    }
-                }
+    //                 if ($result) {
+    //                     $image_url = $result['ObjectURL'];
+    //                 }
+    //             }
                 
-                $query = array(
-                    "latlng" => h($locate),
-                    "language" => "ja",
-                    "sensor" => false
-                );
-                $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
+    //             $query = array(
+    //                 "latlng" => h($locate),
+    //                 "language" => "ja",
+    //                 "sensor" => false
+    //             );
+    //             $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
 
-                $address = $res["results"][0]["formatted_address"];
+    //             $address = $res["results"][0]["formatted_address"];
 
-                $query = TableRegistry::get('Cats')->query();
-                $query->insert(['time', 'locate', 'comment', 'ear_shape', 'image_url', 'address', 'flg'])
-                    ->values([
-                        "time" => $time,
-                        "locate" => $locate,
-                        "comment" => $comment,
-                        "image_url" => $image_url,
-                        "address" => $address,
-                        "ear_shape" => $ear_shape,
-                        "flg" => 4,
-                    ])
-                    ->execute();
-            }
+    //             $query = TableRegistry::get('Cats')->query();
+    //             $query->insert(['time', 'locate', 'comment', 'ear_shape', 'image_url', 'address', 'flg'])
+    //                 ->values([
+    //                     "time" => $time,
+    //                     "locate" => $locate,
+    //                     "comment" => $comment,
+    //                     "image_url" => $image_url,
+    //                     "address" => $address,
+    //                     "ear_shape" => $ear_shape,
+    //                     "flg" => 4,
+    //                 ])
+    //                 ->execute();
+    //         }
             
-            return $this->redirect('/');
-        }
-
-    }
+    //         return $this->redirect('/');
+    //     }
+    //
+    // }
 
 }

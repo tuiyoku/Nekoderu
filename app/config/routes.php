@@ -47,20 +47,20 @@ Router::extensions(['json', 'xml']);
 Router::scope('/', function (RouteBuilder $routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
-     * its action called 'display', and we pass a param to select the view file
+     * its action called 'index', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'index', '_ssl' =>true]);
-    $routes->connect('/add_neko', ['controller' => 'Pages', 'action' => 'addNeko', '_ssl' =>true]);
 
     Router::prefix('admin', function ($routes) {
-            $routes->fallbacks();
+        $routes->fallbacks();
     });
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    
     
     /**
      * Connect catchall routes for all controllers.

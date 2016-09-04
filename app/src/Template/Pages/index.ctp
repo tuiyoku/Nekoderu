@@ -24,9 +24,9 @@
     <img src="img/cat_track.png"> 猫がいる
     {{comment}}<br>
     {{address}}<br>
-    {{#urls}}
-    <a href="{{.}}" target="_blank"><img src="{{.}}" width="200" alt=""></a>
-    {{/urls}}
+    {{#cat_images}}
+    <a href="{{url}}" target="_blank"><img src="{{url}}" width="30%" alt=""></a>
+    {{/cat_images}}
     </div>
 </script>
 
