@@ -10,13 +10,16 @@
  */
 
 use Cake\Core\Configure;
+?>
 
+<?php
+//デフォルトのレイアウトを外す
+$this->layout= '';
+//ネコデルのレイアウトを適用
+$this->extend('/Layout/nekoderu');
 ?>
 
 <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/login.css">
-<?php
-$this->extend('/Layout/nekoderu');
-?>
 
 <div class="users form">
     <?= $this->Flash->render('auth') ?>

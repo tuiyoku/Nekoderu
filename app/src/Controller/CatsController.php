@@ -29,8 +29,6 @@ class CatsController extends AppController
     {
         $q = $this->request->query;
         
-        // $this->viewBuilder()->layout('nekoderu');
-        
         $data = $this->Cats->find('all')
             ->contain('CatImages');
         if($q != null){

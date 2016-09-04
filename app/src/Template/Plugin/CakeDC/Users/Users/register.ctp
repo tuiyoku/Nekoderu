@@ -12,7 +12,10 @@ use Cake\Core\Configure;
 ?>
 
 <?php
-$this->extend('/Layout/TwitterBootstrap/signin');
+//デフォルトのレイアウトを外す
+$this->layout= '';
+//ネコデルのレイアウトを適用
+$this->extend('/Layout/nekoderu');
 ?>
 
 <div class="users form large-10 medium-9 columns">
