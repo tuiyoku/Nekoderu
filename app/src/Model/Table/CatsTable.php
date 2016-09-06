@@ -32,7 +32,9 @@ class CatsTable extends Table
         $this->hasMany('CatImages', [
             'foreignKey' => 'cats_id'
         ]);
-
+        $this->hasMany('Comments', [
+            'foreignKey' => 'cats_id'
+        ]);
 
         // Add the behaviour to your table
         $this->addBehavior('Search.Search');
@@ -64,9 +66,6 @@ class CatsTable extends Table
         $validator
             ->integer('flg')
             ->allowEmpty('flg');
-
-        $validator
-            ->allowEmpty('comment');
 
         $validator
             ->allowEmpty('address');

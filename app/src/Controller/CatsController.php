@@ -30,7 +30,7 @@ class CatsController extends AppController
         $q = $this->request->query;
         
         $data = $this->Cats->find('all')
-            ->contain('CatImages');
+            ->contain(['CatImages', 'Comments']);
         if($q != null){
             $data = $data
                 ->where(['created >' => new \DateTime($q['map_start'])])
@@ -96,13 +96,20 @@ class CatsController extends AppController
 
             $cat = $this->Cats->newEntity();
             $cat->locate = $locate;
-            $cat->comment = $comment;
             $cat->address = $address;
             $cat->ear_shape = $ear_shape;
             $cat->flg = 4;
             $cat->user_id = $uid;
             if ($this->Cats->save($cat)) {
                 $this->Flash->success('猫を保存しました。');
+            }
+            
+            $commentDO = $this->Comments->newEntity();
+            $commentDO->comment = $comment;
+            $commentDO->user_id = $uid;
+            $commentDO->cat_id = $cat->id;
+            if ($this->Comments->save($commentDO)) {
+                // $this->Flash->success('コメントを保存しました。');
             }
            
             if (isset($data["image"])) {

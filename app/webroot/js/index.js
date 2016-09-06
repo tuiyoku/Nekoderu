@@ -112,7 +112,7 @@ app.infoWindows = [];
             var item    = data[key];
             var locates = item.locate.split(/,/);
             var modified    = item.modified;
-            var comment = item.comment;
+            var comments = item.comments;
             var cat_images  = item.cat_images;
             var status  = item.status;
             var flag    = item.flg;
@@ -139,7 +139,7 @@ app.infoWindows = [];
                     var rendered = Mustache.render(template,
                         {
                             modified: modified,
-                            comment: comment || '',
+                            comments: comments,
                             address: result[0].formatted_address,
                             cat_images: cat_images
                         });

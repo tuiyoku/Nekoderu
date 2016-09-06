@@ -22,8 +22,12 @@
 <script type="x-tmpl-mustache" id="template-info-window">
     <div class="infowin">{{modified}}<br>
     <img src="img/cat_track.png"> 猫がいる
-    {{comment}}<br>
-    {{address}}<br>
+    <ul>
+    {{#comments}}
+        <li>{{comment}}</li>
+    {{/comments}}
+    </ul>
+    <div>{{address}}</div>
     {{#cat_images}}
     <a href="{{url}}" target="_blank"><img src="{{url}}" width="30%" alt=""></a>
     {{/cat_images}}
