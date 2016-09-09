@@ -104,11 +104,11 @@ class CatsController extends AppController
                 $this->Flash->success('猫を保存しました。');
             }
             
-            $commentDO = $this->Comments->newEntity();
+            $commentDO = $this->Cats->Comments->newEntity();
             $commentDO->comment = $comment;
             $commentDO->user_id = $uid;
             $commentDO->cat_id = $cat->id;
-            if ($this->Comments->save($commentDO)) {
+            if ($this->Cats->Comments->save($commentDO)) {
                 // $this->Flash->success('コメントを保存しました。');
             }
            
@@ -130,11 +130,11 @@ class CatsController extends AppController
     
                         if ($result) {
                             
-                            $catImage = $this->CatImages->newEntity();
+                            $catImage = $this->Cats->CatImages->newEntity();
                             $catImage->url = $result['ObjectURL'];
                             $catImage->users_id = $uid;
                             $catImage->cats_id = $cat->id;
-                            if ($this->CatImages->save($catImage)) {
+                            if ($this->Cats->CatImages->save($catImage)) {
                                 // $this->Flash->success('画像を保存しました。');
                             }
                         }
