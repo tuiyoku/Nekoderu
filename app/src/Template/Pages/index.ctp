@@ -21,7 +21,7 @@
 <!-- maps window template -->
 <script type="x-tmpl-mustache" id="template-info-window">
     <div class="infowin">{{modified}}<br>
-    <img src="img/cat_track.png"> 猫がいる
+    <img width='24px' style='vertical-align: text-bottom;' src='img/cat_ears/{{ear_image}}'> 耳の状態：{{ear_status}} 
     <ul>
     {{#comments}}
         <li>{{comment}}</li>

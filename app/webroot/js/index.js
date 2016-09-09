@@ -114,9 +114,14 @@ app.infoWindows = [];
             var modified    = item.modified;
             var comments = item.comments;
             var cat_images  = item.cat_images;
+            var ear_shape  = item.ear_shape;
             var status  = item.status;
             var flag    = item.flg;
             var icon    = '';
+            
+            
+            var ear_images = ['normal', 'donno', 'trimmed_right', 'trimmed_left'];
+            var ear_statuses = ['処置なし', '不明', '右耳に印', '左耳に印'];
             
             
             var marker = new google.maps.Marker({
@@ -141,6 +146,9 @@ app.infoWindows = [];
                             modified: modified,
                             comments: comments,
                             address: result[0].formatted_address,
+                            ear_shape: ear_shape,
+                            ear_image: "cat_"+ear_images[ear_shape]+".png",
+                            ear_status: ear_statuses[ear_shape],
                             cat_images: cat_images
                         });
                     var gmiw = new google.maps.InfoWindow({
