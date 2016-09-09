@@ -106,8 +106,8 @@ class CatsController extends AppController
             
             $commentDO = $this->Cats->Comments->newEntity();
             $commentDO->comment = $comment;
-            $commentDO->user_id = $uid;
-            $commentDO->cat_id = $cat->id;
+            $commentDO->users_id = $uid;
+            $commentDO->cats_id = $cat->id;
             if ($this->Cats->Comments->save($commentDO)) {
                 // $this->Flash->success('コメントを保存しました。');
             }
