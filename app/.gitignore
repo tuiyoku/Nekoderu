@@ -1,6 +1,7 @@
 /vendor/*
 /tmp/*
 /logs/*
+!logs/empty
 
 .env
 /bower_components

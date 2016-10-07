@@ -14,11 +14,13 @@ class AdminAppController extends AppController
     
     public function beforeFilter(Event $event)
     {
+        parent::beforeFilter($event);
         
         $user = $this->Auth->user();
         if($user && $user['role'] === 'user'){
             return true;
         }
         return false;
+        
     }
 }
