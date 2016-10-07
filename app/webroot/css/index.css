@@ -31,6 +31,10 @@ body {
     line-height: 18px;
 }
 
+.infowin ul{
+    margin: 0 auto; 
+}
+
 #water_filter{
     /*float: left;*/
     /*width: 30%;*/

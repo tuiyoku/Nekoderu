@@ -180,10 +180,10 @@ app.infoWindows = [];
     
     function promiseCatList (start, end, flag) {
         var now = new Date();
-        var sixDay = 60 * 60 * 24 * 6 * 1000; // milliseconds
-        var start = new Date(now.getTime() - sixDay);
+        var duration = 60 * 60 * 24 * 365 * 1000; // milliseconds
+        var start = new Date(now.getTime() - duration);
         var noranekoFlag = 4; // other 0,1,2,3
-        return requestCatList(start, now, noranekoFlag);
+        return requestCatList(formatDate(start), formatDate(now), noranekoFlag);
     }
     
     /**
