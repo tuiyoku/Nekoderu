@@ -5,7 +5,7 @@ namespace App\Controller\Admin;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 
-class CatsController extends \App\Controller\AppController
+class CatsController extends AdminAppController
 {
     public $components = array('NekoUtil');
     
@@ -18,11 +18,6 @@ class CatsController extends \App\Controller\AppController
         
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
-    }
-    
-    public function beforeFilter(Event $event)
-    {
-        $this->Auth->allow(['index']);
     }
 
 }

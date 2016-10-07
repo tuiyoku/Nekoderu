@@ -28,8 +28,6 @@ class CatsController extends AppController
     public function index()
     {
         
-        $this->viewBuilder()->layout('default');
-        
         $q = $this->request->query;
         
         $data = $this->Cats->find('all')

@@ -1,14 +1,13 @@
 <?php
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
 
 /**
  * Comments Controller
  *
  * @property \App\Model\Table\CommentsTable $Comments
  */
-class CommentsController extends AppController
+class CommentsController extends AdminAppController
 {
 
     /**

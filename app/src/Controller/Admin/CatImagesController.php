@@ -9,13 +9,9 @@ use Cake\Event\Event;
  *
  * @property \App\Model\Table\CatImagesTable $CatImages
  */
-class CatImagesController extends AppController
+class CatImagesController extends AdminAppController
 {
 
-    // public function beforeFilter(Event $event)
-    // {
-    //     $this->Auth->allow(['index', 'add']);
-    // }
     
     /**
      * Index method
