@@ -17,9 +17,7 @@
         <?php
             echo $this->Form->input('time');
             echo $this->Form->input('locate');
-            echo $this->Form->input('image_url');
             echo $this->Form->input('flg');
-            echo $this->Form->input('comment');
             echo $this->Form->input('address');
             echo $this->Form->input('status');
             echo $this->Form->input('ear_shape');
