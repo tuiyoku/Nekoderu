@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use Cake\Controller\Controller;
+use App\Controller\AppController;
 use Cake\Event\Event;
 
 class CatsController extends AdminAppController
@@ -11,6 +12,7 @@ class CatsController extends AdminAppController
     
     public function index()
     {
+        
         $data = $this->Cats->find('all')
             ->contain(['CatImages', 'Comments']);
             
@@ -105,6 +107,8 @@ class CatsController extends AdminAppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+
 
 
 }

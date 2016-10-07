@@ -63,9 +63,10 @@ class AppController extends Controller
                 'Crud.RelatedModels',
             ]
         ]);
+      
     }
 
-       /**
+    /**
      * Before render callback.
      *
      * @param \Cake\Event\Event $event The beforeRender event.
@@ -84,4 +85,15 @@ class AppController extends Controller
         $this->log($this->Auth->user());
         $this->set('auth', $this->Auth->user());
     }
+    
+    // public function isAuthorized($user)
+    // {
+    //     // Admin can access every action
+    //     if (isset($user['role']) && $user['role'] === 'admin') {
+    //         return true;
+    //     }
+    
+    //     // Default deny
+    //     return false;
+    // }
 }

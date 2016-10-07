@@ -12,15 +12,27 @@ use Cake\Event\Event;
 class AdminAppController extends AppController
 {
     
-    public function beforeFilter(Event $event)
+    // public function beforeFilter(Event $event)
+    // {
+    //     parent::beforeFilter($event);
+        
+    //     $user = $this->Auth->user();
+    //     if($user && $user['role'] === 'user'){
+    //         return true;
+    //     }
+    //     return false;
+        
+    // }
+    
+           /**
+     * Before render callback.
+     *
+     * @param \Cake\Event\Event $event The beforeRender event.
+     * @return void
+     */
+    public function beforeRender(Event $event)
     {
-        parent::beforeFilter($event);
-        
-        $user = $this->Auth->user();
-        if($user && $user['role'] === 'user'){
-            return true;
-        }
-        return false;
-        
+        parent::beforeRender($event);
+        $this->viewBuilder()->layout('nekoderu');
     }
 }

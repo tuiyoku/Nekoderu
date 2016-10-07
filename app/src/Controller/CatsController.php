@@ -65,8 +65,6 @@ class CatsController extends AppController
     {
         $this->CatImages = TableRegistry::get('CatImages');
         
-        $this->viewBuilder()->layout('nekoderu');
-
         if ($this->request->is('post')) {
 
             $data = $this->request->data;
@@ -146,6 +144,18 @@ class CatsController extends AppController
             
             return $this->redirect('/');
         }
+    }
+    
+    /**
+     * Before render callback.
+     *
+     * @param \Cake\Event\Event $event The beforeRender event.
+     * @return void
+     */
+    public function beforeRender(Event $event)
+    {
+        parent::beforeRender($event);
+        $this->viewBuilder()->layout('nekoderu');
     }
 
 }

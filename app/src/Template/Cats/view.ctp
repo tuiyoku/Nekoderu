@@ -1,46 +1,54 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $cat->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $cat->id], ['confirm' => __('Are you sure you want to delete # {0}?', $cat->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Cats'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Cat'), ['action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="users view large-9 medium-8 columns content">
+<div class="cats view large-9 medium-8 columns content">
     <h3><?= h($cat->id) ?></h3>
+    
+    
     <table class="vertical-table">
         <tr>
+            <th><?= __('Locate') ?></th>
+            <td><?= h($cat->locate) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
-            <td><?= h($cat->id) ?></td>
+            <td><?= $this->Number->format($cat->id) ?></td>
         </tr>
         <tr>
-            <th><?= __('Username') ?></th>
-            <td><?= h($cat->username) ?></td>
+            <th><?= __('Time') ?></th>
+            <td><?= $this->Number->format($cat->time) ?></td>
         </tr>
         <tr>
-            <th><?= __('Email') ?></th>
-            <td><?= h($cat->email) ?></td>
+            <th><?= __('Flg') ?></th>
+            <td><?= $this->Number->format($cat->flg) ?></td>
         </tr>
         <tr>
-            <th><?= __('Password') ?></th>
-            <td><?= h($cat->password) ?></td>
+            <th><?= __('Status') ?></th>
+            <td><?= $this->Number->format($cat->status) ?></td>
         </tr>
         <tr>
-            <th><?= __('Created') ?></th>
-            <td><?= h($cat->created) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Modified') ?></th>
-            <td><?= h($cat->modified) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Active') ?></th>
-            <td><?= $cat->active ? __('Yes') : __('No'); ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Is Superuser') ?></th>
-            <td><?= $cat->is_superuser ? __('Yes') : __('No'); ?></td>
+            <th><?= __('Ear Shape') ?></th>
+            <td><?= $this->Number->format($cat->ear_shape) ?></td>
         </tr>
     </table>
+    <div class="row">
+    <h4><?= __('Images') ?></h4>
+    <?php foreach ($cat->cat_images as $image): ?>
+        <img src="<?= $image->url ?>" width="200px"></img>
+    <?php endforeach; ?>
+    </div>
+    <div class="row">
+        <h4><?= __('Comments') ?></h4>
+        <?php foreach ($cat->comments as $comment): ?>
+            <?= $this->Text->autoParagraph(h($comment->comment)); ?>
+        <?php endforeach; ?>
+    </div>
+    <div class="row">
+        <h4><?= __('Address') ?></h4>
+        <?= $this->Text->autoParagraph(h($cat->address)); ?>
+    </div>
 </div>

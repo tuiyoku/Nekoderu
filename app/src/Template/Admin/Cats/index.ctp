@@ -39,7 +39,7 @@
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $cat->id], ['confirm' => __('Are you sure you want to delete # {0}?', $cat->id)]) ?>
                 </td>
             </tr>
-            <tr><td colspan=9>
+            <tr><td colspan=10>
             <?php foreach ($cat->cat_images as $image): ?>
                 <img src="<?= $image->url ?>" width="64px"></img>
             <?php endforeach; ?>
