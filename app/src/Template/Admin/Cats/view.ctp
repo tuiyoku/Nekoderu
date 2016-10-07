@@ -9,14 +9,12 @@
 </nav>
 <div class="cats view large-9 medium-8 columns content">
     <h3><?= h($cat->id) ?></h3>
+    
+    
     <table class="vertical-table">
         <tr>
             <th><?= __('Locate') ?></th>
             <td><?= h($cat->locate) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Image Url') ?></th>
-            <td><?= h($cat->image_url) ?></td>
         </tr>
         <tr>
             <th><?= __('Id') ?></th>
@@ -40,8 +38,16 @@
         </tr>
     </table>
     <div class="row">
-        <h4><?= __('Comment') ?></h4>
-        <?= $this->Text->autoParagraph(h($cat->comment)); ?>
+    <h4><?= __('Images') ?></h4>
+    <?php foreach ($cat->cat_images as $image): ?>
+        <img src="<?= $image->url ?>" width="200px"></img>
+    <?php endforeach; ?>
+    </div>
+    <div class="row">
+        <h4><?= __('Comments') ?></h4>
+        <?php foreach ($cat->comments as $comment): ?>
+            <?= $this->Text->autoParagraph(h($comment->comment)); ?>
+        <?php endforeach; ?>
     </div>
     <div class="row">
         <h4><?= __('Address') ?></h4>

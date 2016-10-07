@@ -15,6 +15,7 @@
                 <th><?= $this->Paginator->sort('flg') ?></th>
                 <th><?= $this->Paginator->sort('status') ?></th>
                 <th><?= $this->Paginator->sort('ear_shape') ?></th>
+                <th><?= $this->Paginator->sort('comments') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
                 <th><?= $this->Paginator->sort('modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -29,6 +30,7 @@
                 <td><?= $this->Number->format($cat->flg) ?></td>
                 <td><?= $this->Number->format($cat->status) ?></td>
                 <td><?= $this->Number->format($cat->ear_shape) ?></td>
+                <td><?= $this->Number->format(count($cat->comments)) ?></td>
                 <td><?= h($cat->created) ?></td>
                 <td><?= h($cat->modified) ?></td>
                 <td class="actions">
@@ -37,6 +39,11 @@
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $cat->id], ['confirm' => __('Are you sure you want to delete # {0}?', $cat->id)]) ?>
                 </td>
             </tr>
+            <tr><td colspan=9>
+            <?php foreach ($cat->cat_images as $image): ?>
+                <img src="<?= $image->url ?>" width="64px"></img>
+            <?php endforeach; ?>
+            </td></tr>
             <?php endforeach; ?>
         </tbody>
     </table>

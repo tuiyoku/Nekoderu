@@ -27,6 +27,9 @@ class CatsController extends AppController
      */
     public function index()
     {
+        
+        $this->viewBuilder()->layout('default');
+        
         $q = $this->request->query;
         
         $data = $this->Cats->find('all')
@@ -44,8 +47,9 @@ class CatsController extends AppController
     
     public function view($id = null)
     {
-        $user = $this->Cats->get($id, [
-            'contain' => []
+        
+        $cat = $this->Cats->get($id, [
+            'contain' => ['CatImages', 'Comments']
         ]);
 
         $this->set('cat', $cat);

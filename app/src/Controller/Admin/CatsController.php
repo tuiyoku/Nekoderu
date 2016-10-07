@@ -11,7 +11,10 @@ class CatsController extends \App\Controller\AppController
     
     public function index()
     {
-        $cats = $this->paginate($this->Cats);
+        $data = $this->Cats->find('all')
+            ->contain(['CatImages', 'Comments']);
+            
+        $cats = $this->paginate($data);
         
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
