@@ -17,14 +17,15 @@ class AdminAppController extends AppController
         parent::beforeFilter($event);
         
         $user = $this->Auth->user();
+        
         if($user && $user['role'] === 'admin'){
-            return true;
+            return false;
         }
-        return false;
+        return true;
         
     }
     
-           /**
+    /**
      * Before render callback.
      *
      * @param \Cake\Event\Event $event The beforeRender event.
