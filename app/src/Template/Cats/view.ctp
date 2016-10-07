@@ -8,7 +8,6 @@
 <div class="cats view large-9 medium-8 columns content">
     <h3><?= h($cat->id) ?></h3>
     
-    
     <table class="vertical-table">
         <tr>
             <th><?= __('Locate') ?></th>
@@ -34,6 +33,12 @@
             <th><?= __('Ear Shape') ?></th>
             <td><?= $this->Number->format($cat->ear_shape) ?></td>
         </tr>
+        <?php if(isset($cat->user)): ?>
+        <tr>
+            <th><?= __('User') ?></th>
+            <td><?= h($cat->user->username) ?></td>
+        </tr>
+        <?php endif; ?>
     </table>
     <div class="row">
     <h4><?= __('Images') ?></h4>

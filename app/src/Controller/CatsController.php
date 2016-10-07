@@ -17,7 +17,7 @@ class CatsController extends AppController
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'add']);
+        $this->Auth->allow(['index', 'add', 'data']);
     }
     
     /**
@@ -26,6 +26,29 @@ class CatsController extends AppController
      * @return \Cake\Network\Response|null
      */
     public function index()
+    {
+        
+        $q = $this->request->query;
+        
+        $data = $this->Cats->find('all')
+            ->contain(['CatImages', 'Comments', 'Users']);
+        if($q != null){
+            $data = $data
+                ->where(['created >' => new \DateTime($q['map_start'])])
+                ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
+        }
+        $cats = $this->paginate($data);
+
+        $this->set(compact('cats'));
+        $this->set('_serialize', ['cats']);
+    }
+    
+    /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function data()
     {
         
         $q = $this->request->query;
@@ -47,7 +70,7 @@ class CatsController extends AppController
     {
         
         $cat = $this->Cats->get($id, [
-            'contain' => ['CatImages', 'Comments']
+            'contain' => ['CatImages', 'Comments', 'Users']
         ]);
 
         $this->set('cat', $cat);

@@ -14,7 +14,7 @@ class CatsController extends AdminAppController
     {
         
         $data = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments']);
+            ->contain(['CatImages', 'Comments', 'Users']);
             
         $cats = $this->paginate($data);
         
@@ -33,7 +33,7 @@ class CatsController extends AdminAppController
     public function view($id = null)
     {
         $cat = $this->Cats->get($id, [
-            'contain' => ['CatImages', 'Comments']
+            'contain' => ['CatImages', 'Comments', 'Users']
         ]);
 
         $this->set('cat', $cat);

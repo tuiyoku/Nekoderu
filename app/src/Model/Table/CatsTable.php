@@ -35,6 +35,9 @@ class CatsTable extends Table
         $this->hasMany('Comments', [
             'foreignKey' => 'cats_id'
         ]);
+        $this->belongsTo('Users', [
+            'foreignKey' => 'users_id',
+        ]);
 
         // Add the behaviour to your table
         $this->addBehavior('Search.Search');

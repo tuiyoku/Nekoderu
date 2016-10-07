@@ -36,6 +36,12 @@
             <th><?= __('Ear Shape') ?></th>
             <td><?= $this->Number->format($cat->ear_shape) ?></td>
         </tr>
+        <?php if(isset($cat->user)): ?>
+        <tr>
+            <th><?= __('User') ?></th>
+            <td><?= h($cat->user->username) ?></td>
+        </tr>
+        <?php endif; ?>
     </table>
     <div class="row">
     <h4><?= __('Images') ?></h4>

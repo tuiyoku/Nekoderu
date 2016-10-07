@@ -12,17 +12,17 @@ use Cake\Event\Event;
 class AdminAppController extends AppController
 {
     
-    // public function beforeFilter(Event $event)
-    // {
-    //     parent::beforeFilter($event);
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
         
-    //     $user = $this->Auth->user();
-    //     if($user && $user['role'] === 'user'){
-    //         return true;
-    //     }
-    //     return false;
+        $user = $this->Auth->user();
+        if($user && $user['role'] === 'admin'){
+            return true;
+        }
+        return false;
         
-    // }
+    }
     
            /**
      * Before render callback.
