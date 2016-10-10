@@ -133,3 +133,18 @@ body {
     content: "飲めない";
 }
 
+.infowin_content{
+    width: 300px;
+    margin: auto;
+    text-align: left;
+}
+
+.infowin_content a img{
+    vertical-align: text-bottom; 
+    margin-top: 10px; 
+    margin-bottom:10px;
+}
+.infowin_content h6{
+    margin-bottom:2pxpx;
+}
+

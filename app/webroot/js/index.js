@@ -117,6 +117,7 @@ app.infoWindows = [];
             var ear_shape  = item.ear_shape;
             var status  = item.status;
             var flag    = item.flg;
+            var id      = item.id;
             var icon    = '';
             
             
@@ -143,13 +144,14 @@ app.infoWindows = [];
                     hideInfoWindows();
                     var rendered = Mustache.render(template,
                         {
-                            modified: modified,
-                            comments: comments,
-                            address: result[0].formatted_address,
-                            ear_shape: ear_shape,
-                            ear_image: "cat_"+ear_images[ear_shape]+".png",
+                            modified:   modified,
+                            comments:   comments,
+                            address:    result[0].formatted_address,
+                            ear_shape:  ear_shape,
+                            ear_image:  "cat_"+ear_images[ear_shape]+".png",
                             ear_status: ear_statuses[ear_shape],
-                            cat_images: cat_images
+                            cat_images: cat_images,
+                            id:         id
                         });
                     var gmiw = new google.maps.InfoWindow({
                         content: rendered

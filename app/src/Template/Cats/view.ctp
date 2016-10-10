@@ -6,8 +6,6 @@
     </ul>
 </nav>
 <div class="cats view large-9 medium-8 columns content">
-    <h3><?= h($cat->id) ?></h3>
-    
     <table class="vertical-table">
         <tr>
             <th><?= __('Locate') ?></th>
@@ -40,6 +38,12 @@
         </tr>
         <?php endif; ?>
     </table>
+    <?php if(isset($cat->address)): ?>
+     <div class="row">
+        <h4><?= __('Address') ?></h4>
+        <?= $this->Text->autoParagraph(h($cat->address)); ?>
+    </div>
+    <?php endif; ?>
     <div class="row">
     <h4><?= __('Images') ?></h4>
     <?php foreach ($cat->cat_images as $image): ?>
@@ -48,12 +52,77 @@
     </div>
     <div class="row">
         <h4><?= __('Comments') ?></h4>
-        <?php foreach ($cat->comments as $comment): ?>
-            <?= $this->Text->autoParagraph(h($comment->comment)); ?>
-        <?php endforeach; ?>
+        <?php
+            echo $this->Form->create(null, [
+                'url' => 'cats/addComment',
+                'id' => 'addComment'
+            ]);
+        ?>
+        <div class="row">
+            <?= $this->Form->input('cat_id', ['type' => 'hidden', 'id' => 'cat_id', 'value' => $cat->id]); ?>
+            <div class="cats view large-9 medium-8 columns content">
+                <?= $this->Form->input('comment', ['id' => 'comment', 'label' => false]); ?>
+            </div>
+            <div class="cats view large-3 medium-4 columns content">
+                <?=$this->Form->submit('投稿', ['id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]); ?>
+            </div>
+        </div>
+        <div id="comments">
+            <div class="comment">
+                <div class="chat-face">
+    			    <img src="" alt="" width="30" height="30">
+    		    </div>
+    		    <div class="chat-area">
+        			<div class="chat-fukidashi">
+        			  ふきだしなのですーふきだしですーふきだー
+        			</div>
+			    </div>
+	  	    </div>
+	  	</div>
+        
+        <script>
+        
+            var updateComments = function(data){
+                $("#comment").val('');
+                $("#comments").empty();
+                $.each(data.comments, function() {
+                    var cln = template.comment.clone();
+                    cln.find('.chat-fukidashi').text(this.comment);
+                    cln.find('.chat-face img').attr(
+                        'src', 
+                        "//pbs.twimg.com/profile_images/3743464897/25f216ba2e62d6fe043013b58b6dad3a_400x400.jpeg");
+                   $("#comments").append(cln);
+                });
+                $(".comment:first").hide();
+                $(".comment:first").slideDown(500);
+                $("html,body").animate({scrollTop:$('.comment:first').offset().top});
+            };
+            
+            $(function(){
+                // commentTemplate = $("#comments .comment:first").first();
+                createTemplate("#comments .comment:first", "comment");
+                
+                $.post({                                                                            
+                    url: '/cats/comments/<?= $cat->id ?>.json',                   
+                }).done(function(data) {
+                    updateComments(data);
+                });         
+            });
+        
+            $('#addComment').on('submit', function() {                                                               
+                event.preventDefault();                                                                       
+                event.stopPropagation();                                                                      
+            
+                $.post({                                                                            
+                    url: '/cats/addComment.json',                   
+                    data: { data: $(this).serialize() },                                                      
+                }).done(function(data) {
+                    updateComments(data);
+                });                                                                                           
+             }); 
+        </script>
+        
     </div>
-    <div class="row">
-        <h4><?= __('Address') ?></h4>
-        <?= $this->Text->autoParagraph(h($cat->address)); ?>
-    </div>
+   
+
 </div>

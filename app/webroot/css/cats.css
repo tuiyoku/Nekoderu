@@ -1,0 +1,35 @@
+/* チャットレイアウト */
+.comment {
+    width: 100%;
+    height: 40px;
+    padding-top: 5px;
+    
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-top: 2px;
+}
+.chat-box {
+    width: 100%;
+    height: auto;
+    overflow: hidden; /*floatの解除*/
+    margin-bottom: 20px;
+}
+.chat-face {
+    float: left;
+    margin-right: -120px;
+}
+.chat-face img{
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 4px #ddd;
+}
+.chat-area {
+    width: 100%;
+    float: right;
+}
+.chat-fukidashi {
+    display: inline-block; /*コメントの文字数に合わせて可変*/
+    padding: 2px;
+    margin-left: 50px;
+    margin-top: 0px;
+}

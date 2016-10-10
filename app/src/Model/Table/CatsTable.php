@@ -33,7 +33,7 @@ class CatsTable extends Table
             'foreignKey' => 'cats_id'
         ]);
         $this->hasMany('Comments', [
-            'foreignKey' => 'cats_id'
+            'foreignKey' => 'cats_id',
         ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'users_id',

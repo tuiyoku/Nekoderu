@@ -17,7 +17,7 @@ class CatsController extends AppController
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'add', 'data']);
+        $this->Auth->allow(['index', 'add', 'view', 'data', 'addComment', 'comments']);
     }
     
     /**
@@ -53,8 +53,14 @@ class CatsController extends AppController
         
         $q = $this->request->query;
         
-        $data = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments']);
+        $data = $this->Cats->find('all')->contain([
+                'CatImages', 
+                'Comments' => function($q) {
+                    return $q
+                        ->order('created DESC')
+                        ->limit(5);
+                }
+        ]);
         if($q != null){
             $data = $data
                 ->where(['created >' => new \DateTime($q['map_start'])])
@@ -167,6 +173,69 @@ class CatsController extends AppController
             
             return $this->redirect('/');
         }
+    }
+    
+    public function comments($cats_id){
+        
+        if ($this->request->is('ajax')) {
+            if(isset($this->request->data['limit'])){
+                $limit = $this->request->data['limit'];
+            }else{
+                $limit = 20;
+            }
+            
+            $comments = $this->Cats->Comments
+                ->find('all', ['order' => ['Comments.created' => 'DESC']])
+                ->where(['Comments.cats_id =' => $cats_id])
+                ->contain(['Users'])
+                ->limit(20)
+                ->all();
+        
+            $this->set(compact('comments'));
+            $this->set('_serialize', ['comments']);
+            
+        }
+        
+    }
+    
+    public function addComment(){
+            
+        if ($this->request->is('ajax')) {
+            
+            $param = $this->request->data['data'];
+            parse_str($param, $data);
+            
+            $comment = $data['comment'];
+            $cat_id = $data['cat_id'];
+            
+            // ユーザーIDを付与
+            $uid = 0;
+            if(!is_null($this->Auth->user('id'))){
+                $uid = $this->Auth->user('id');
+            }
+            
+            $commentDO = $this->Cats->Comments->newEntity();
+            $commentDO->comment = $comment;
+            $commentDO->cats_id = $cat_id;
+            $commentDO->users_id = $uid;
+            if ($this->Cats->Comments->save($commentDO)) {
+                // $this->Flash->success('コメントを保存しました。');
+            }
+            
+            $comments = $this->Cats->Comments
+                ->find('all', ['order' => ['Comments.created' => 'DESC']])
+                ->where(['Comments.cats_id =' => $cat_id])
+                ->contain(['Users'])
+                ->limit(20)
+                ->all();
+                
+            $this->log($comments);
+        
+            $this->set(compact('comments'));
+            $this->set('_serialize', ['comments']);
+        }
+        
+       
     }
     
     /**

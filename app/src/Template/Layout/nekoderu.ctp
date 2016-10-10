@@ -16,12 +16,15 @@
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/jquery.onoff.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/base.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/app.css">
+    <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/cats.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/index.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/post.css">
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="/honoka/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+    
+    <script src="/js/cats.js"></script>
     <!-- OGP -->
     <meta property="og:type" content="website">
     <meta property="og:description" content="ネコ出るです。">
