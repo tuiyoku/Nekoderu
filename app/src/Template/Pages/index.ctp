@@ -28,11 +28,16 @@
             {{#cat_images}}
             <a href="{{url}}" target="_blank"><img src="{{url}}" width="30%" alt=""></a>
             {{/cat_images}}
-            <h6>コメント</h6>
-            {{#comments}}
-                <div>{{comment}}</div>
-            {{/comments}}
-            <a href="/cats/view/{{id}}">コメントをもっと見る</a>
+            {{#has_comment}}
+                <h6>コメント</h6>
+                {{#comments}}
+                    <div>{{comment}}</div>
+                {{/comments}}
+                <div><a href="/cats/view/{{id}}">コメントをもっと見る</a></div>
+            {{/has_comment}}
+            {{^has_comment}}
+                <div><a href="/cats/view/{{id}}">コメントする</a></div>
+            {{/has_comment}}
         </div>
     </div>
 </script>

@@ -32,6 +32,13 @@
     <meta property="og:site_name" content="Nekoderu">
     <meta property="og:locale" content="ja_JP" />
     <!-- OGP -->
+    <script>
+    <?php if ($auth): ?>
+        var isAuthorized = true;
+    <?php else: ?>
+        var isAuthorized = false;
+    <?php endif; ?>
+    </script>
 </head>
 <body>
     

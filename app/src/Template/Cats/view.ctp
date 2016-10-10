@@ -58,23 +58,42 @@
                 'id' => 'addComment'
             ]);
         ?>
+        <?php if ($auth): ?>
         <div class="row">
             <?= $this->Form->input('cat_id', ['type' => 'hidden', 'id' => 'cat_id', 'value' => $cat->id]); ?>
-            <div class="cats view large-9 medium-8 columns content">
+            <div class="view large-11 medium-10 columns content">
                 <?= $this->Form->input('comment', ['id' => 'comment', 'label' => false]); ?>
             </div>
-            <div class="cats view large-3 medium-4 columns content">
+            <div class="view large-1 medium-2 columns content">
                 <?=$this->Form->submit('投稿', ['id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]); ?>
             </div>
+            <?php echo $this->Form->end(); ?>
         </div>
-        <div id="comments">
-            <div class="comment">
+        <?php else: ?>
+        <div class="row">
+            <div class="view large-12 medium-12 columns content">
+                <?= $this->Form->input('comment', [
+                    'id' => 'comment', 
+                    'label' => false,
+                    'disabled' => true,
+                    'placeholder' => 'ログインするとコメントを投稿できます'
+                    
+                ]); ?>
+            </div>
+            <div class="view large-12 medium-12 columns content">
+                <a href="/login">ログインする</a>
+            </div>
+        </div>
+        <?php endif; ?>
+        
+        <div class="row" id="comments">
+            <div class="comment" hidden>
                 <div class="chat-face">
-    			    <img src="" alt="" width="30" height="30">
+    			    <img src="" width="30" height="30">
     		    </div>
     		    <div class="chat-area">
         			<div class="chat-fukidashi">
-        			  ふきだしなのですーふきだしですーふきだー
+        			  コメントテンプレート
         			</div>
 			    </div>
 	  	    </div>
@@ -92,10 +111,13 @@
                         'src', 
                         "//pbs.twimg.com/profile_images/3743464897/25f216ba2e62d6fe043013b58b6dad3a_400x400.jpeg");
                    $("#comments").append(cln);
+                   cln.show();
                 });
-                $(".comment:first").hide();
-                $(".comment:first").slideDown(500);
-                $("html,body").animate({scrollTop:$('.comment:first').offset().top});
+                if($(".comment:first").length > 0){
+                    $(".comment:first").hide();
+                    $(".comment:first").slideDown(500);
+                    $("html,body").animate({scrollTop:$('.comment:first').offset().top});
+                }
             };
             
             $(function(){

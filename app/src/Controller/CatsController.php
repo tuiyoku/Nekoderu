@@ -212,6 +212,8 @@ class CatsController extends AppController
             $uid = 0;
             if(!is_null($this->Auth->user('id'))){
                 $uid = $this->Auth->user('id');
+            }else{
+                return;
             }
             
             $commentDO = $this->Cats->Comments->newEntity();

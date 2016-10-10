@@ -146,6 +146,7 @@ app.infoWindows = [];
                         {
                             modified:   modified,
                             comments:   comments,
+                            has_comment: comments.length > 0,
                             address:    result[0].formatted_address,
                             ear_shape:  ear_shape,
                             ear_image:  "cat_"+ear_images[ear_shape]+".png",
