@@ -1,26 +1,34 @@
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <script src="//unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
 <style>
-    .grid-item { 
-        width: 200px; 
+    .grid-sizer, .grid-item { 
+        width: 48%; 
         padding: 5px;
         box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
         margin-bottom: 8px;
         border-radius: 5px;
-        
     }
+    
     .grid-item--width2 { 
-        width: 400px; 
-        
+        width: 80%; 
+    }
+    
+     .grid-sizer {
+        visibility: hidden;
+    }
+    
+    .gutter-sizer { 
+        width: 2%; 
     }
 </style>
 
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Cats'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Cat'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>
+<!--<nav class="large-3 medium-4 columns" id="actions-sidebar">-->
+<!--    <ul class="side-nav">-->
+<!--        <li class="heading"><?= __('Actions') ?></li>-->
+<!--        <li><?= $this->Html->link(__('List Cats'), ['action' => 'index']) ?> </li>-->
+<!--        <li><?= $this->Html->link(__('New Cat'), ['action' => 'add']) ?> </li>-->
+<!--    </ul>-->
+<!--</nav>-->
 <div class="cats view large-9 medium-8 columns content">
     <!--<table class="vertical-table">-->
     <!--    <tr>-->
@@ -60,11 +68,13 @@
     <!--    <?= $this->Text->autoParagraph(h($cat->address)); ?>-->
     <!--</div>-->
     <!--<?php endif; ?>-->
-    <div class="row">
-        <h4><?= __('Images') ?></h4>
-    </div>
+    <!--<div class="row">-->
+    <!--    <h4><?= __('Images') ?></h4>-->
+    <!--</div>-->
 	<div class="row">
-	    <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200px }'>
+	    <div class="grid">
+    	    <div class="grid-sizer"></div>
+            <div class="gutter-sizer"></div>
             <?php foreach ($cat->cat_images as $image): ?>
                 <div class="grid-item">
                     <img src="<?= $image->url ?>"></img>
@@ -169,13 +179,15 @@
              }); 
         </script>
         <script type="text/javascript">
-            $(function(){
-                $('.grid').masonry({
-                  // options...
-                  itemSelector: '.grid-item',
-                  columnWidth: 200,
-                  gutter: 8
+            var container = document.querySelector('.grid');
+            imagesLoaded(container, function () {
+                var $grid = $('.grid').masonry({
+                    columnWidth: '.grid-sizer',
+                    gutter: '.gutter-sizer',
+                    itemSelector: '.grid-item',
+                    percentPosition: true
                 });
+                $grid.masonry();
             });
         </script>
     </div>

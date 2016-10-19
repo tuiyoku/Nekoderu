@@ -1,8 +1,6 @@
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <script src="//unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
 <style>
-    html,body{
-         height: 100%;
-    }
     .grid-sizer, .grid-item { 
         width: 48%;
         padding: 5px;
@@ -12,7 +10,6 @@
     }
     .grid-sizer {
         visibility: hidden;
-        
     }
     .grid-item--width2 { 
         width: 80%; 
@@ -23,7 +20,7 @@
     }
     
     .grid-buttons{
-        margin-top: 2px;
+        margin-top: 3px;
     }
     
     .grid-comment{
@@ -101,19 +98,14 @@
 </div>
 
 <script type="text/javascript">
-    $(function(){
+    var container = document.querySelector('.grid');
+    imagesLoaded(container, function () {
         var $grid = $('.grid').masonry({
             columnWidth: '.grid-sizer',
             gutter: '.gutter-sizer',
             itemSelector: '.grid-item',
-            percentPosition: true,
-            initLayout: true
+            percentPosition: true
         });
-        // bind event
-        // $grid.masonry( 'on', 'layoutComplete', function() {
-        //   console.log('layout is complete');
-        // });
-        // trigger initial layout
         $grid.masonry();
     });
 </script>
