@@ -51,7 +51,7 @@
       position: absolute;
       top: 50%;
       left: 40%;
-      transform: translateY(-50%);
+      transform: translate(-20%, -50%);
     }
 
 </style>
@@ -92,7 +92,7 @@
 <div id="add-neko">
     <a href="<?=$this->Url->build('/', false); ?>cats/add">
         <button type="button" class="btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 報告する
+          <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 投稿する
         </button>
     </a>
 </div>
@@ -104,12 +104,12 @@
             gutter: '.gutter-sizer',
             itemSelector: '.grid-item',
             percentPosition: true,
-            initLayout: false
+            initLayout: true
         });
         // bind event
-        $grid.masonry( 'on', 'layoutComplete', function() {
-          console.log('layout is complete');
-        });
+        // $grid.masonry( 'on', 'layoutComplete', function() {
+        //   console.log('layout is complete');
+        // });
         // trigger initial layout
         $grid.masonry();
     });
