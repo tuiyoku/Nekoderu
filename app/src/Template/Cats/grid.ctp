@@ -3,13 +3,16 @@
     html,body{
          height: 100%;
     }
-    
     .grid-sizer, .grid-item { 
         width: 48%;
         padding: 5px;
         box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
         margin-bottom: 8px;
         border-radius: 5px;
+    }
+    .grid-sizer {
+        visibility: hidden;
+        
     }
     .grid-item--width2 { 
         width: 80%; 
@@ -103,7 +106,7 @@
             columnWidth: '.grid-sizer',
             gutter: '.gutter-sizer',
             itemSelector: '.grid-item',
-           tagesp percentPosition: true,
+            percentPosition: true,
             initLayout: true
         });
         // bind event
