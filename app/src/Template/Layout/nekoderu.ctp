@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     
     <link rel="stylesheet" href="/honoka/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/jquery.onoff.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/base.css">
@@ -19,11 +19,16 @@
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/cats.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/index.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/post.css">
+    <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/lightbox.css">
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="/honoka/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
     
+    <script src="/js/core.js"></script>
+    <script src="/js/touch.js"></script>
+    <script src="/js/transition.js"></script>
+    <script src="/js/lightbox.js"></script>
     <script src="/js/cats.js"></script>
     <!-- OGP -->
     <meta property="og:type" content="website">

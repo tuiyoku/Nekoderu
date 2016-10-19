@@ -16,6 +16,7 @@
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('users_id') ?></th>
                 <th><?= $this->Paginator->sort('cats_id') ?></th>
+                <th><?= $this->Paginator->sort('comments') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
                 <th><?= $this->Paginator->sort('modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -27,6 +28,7 @@
                 <td><?= $this->Number->format($comment->id) ?></td>
                 <td><?= $comment->has('user') ? $this->Html->link($comment->user->id, ['controller' => 'Users', 'action' => 'view', $comment->user->id]) : '' ?></td>
                 <td><?= $comment->has('cat') ? $this->Html->link($comment->cat->id, ['controller' => 'Cats', 'action' => 'view', $comment->cat->id]) : '' ?></td>
+                <td><?= h($comment->comment) ?></td>
                 <td><?= h($comment->created) ?></td>
                 <td><?= h($comment->modified) ?></td>
                 <td class="actions">

@@ -50,7 +50,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'index', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'index', '_ssl' =>true]);
+    $routes->connect('/', ['controller' => 'Cats', 'action' => 'grid', '_ssl' =>true]);
 
     Router::prefix('admin', function ($routes) {
         $routes->fallbacks();

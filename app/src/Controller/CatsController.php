@@ -43,6 +43,29 @@ class CatsController extends AppController
         $this->set('_serialize', ['cats']);
     }
     
+        /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function grid()
+    {
+        
+        $q = $this->request->query;
+        
+        $query = $this->Cats->find('all')
+            ->contain(['CatImages', 'Comments', 'Users']);
+        if($q != null){
+            $query = $query
+                ->where(['created >' => new \DateTime($q['map_start'])])
+                ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
+        }
+        $cats = $query; //$this->paginate($data);
+
+        $this->set(compact('cats'));
+        $this->set('_serialize', ['cats']);
+    }
+    
     /**
      * Index method
      *

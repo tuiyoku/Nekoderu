@@ -52,7 +52,7 @@ app.infoWindows = [];
                 console.error(error);
                 alert(JSON.stringify(error));
             });
-    }
+    };
     
     /**
      * Event: DOMContentLoaded
@@ -158,9 +158,12 @@ app.infoWindows = [];
                         content: rendered
                     });
                     
-                    gmiw.open(marker.getMap(), marker)
+                    gmiw.open(marker.getMap(), marker);
                     app.infoWindows.push(gmiw);
-                })
+                    
+                    console.log($(".lightbox"));
+                    $(".lightbox").lightbox();
+                });
             
                 
             });

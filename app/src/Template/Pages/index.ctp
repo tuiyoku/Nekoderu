@@ -26,7 +26,7 @@
             <img width='24px' src='img/cat_ears/{{ear_image}}'> 耳の状態：{{ear_status}} 
             <div>{{address}}</div>
             {{#cat_images}}
-            <a href="{{url}}" target="_blank"><img src="{{url}}" width="30%" alt=""></a>
+                <a href="{{url}}" class="lightbox"><img class="lightbox" src="{{url}}" width="30%" alt=""></a>
             {{/cat_images}}
             {{#has_comment}}
                 <h6>コメント</h6>
