@@ -103,7 +103,7 @@
             columnWidth: '.grid-sizer',
             gutter: '.gutter-sizer',
             itemSelector: '.grid-item',
-            percentPosition: true,
+           tagesp percentPosition: true,
             initLayout: true
         });
         // bind event

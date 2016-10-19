@@ -17,7 +17,7 @@ class CatsController extends AppController
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'add', 'view', 'data', 'addComment', 'comments']);
+        $this->Auth->allow(['index', 'add', 'view', 'data', 'grid', 'addComment', 'comments']);
     }
     
     /**
