@@ -4,17 +4,19 @@
          height: 100%;
     }
     
-    .grid-item { 
-        width: 200px; 
+    .grid-sizer, .grid-item { 
+        width: 48%;
         padding: 5px;
         box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
         margin-bottom: 8px;
         border-radius: 5px;
-        
     }
     .grid-item--width2 { 
-        width: 400px; 
-        
+        width: 80%; 
+    }
+    
+    .gutter-sizer { 
+        width: 2%; 
     }
     
     .grid-buttons{
@@ -58,8 +60,9 @@
 ?>
 <div class="cats index large-12 medium-8 columns content">
 
-    <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200px }'>
-        
+    <div class="grid">
+        <div class="grid-sizer"></div>
+        <div class="gutter-sizer"></div>
         <?php foreach ($cats as $cat): ?>
             <?php foreach ($cat->cat_images as $image): ?>
                 <div class="grid-item">
@@ -73,11 +76,11 @@
                     <div class="grid-buttons">
                         <img width='20px' src='/img/cat_ears/<?="cat_".$ear_images[$cat->ear_shape].".png" ?>'>
                         <button type="button" class="btn btn-default btn-sm">
-                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 1
                         </button>
                         <a href="/cats/view/<?=$cat->id ?>">
                         <button type="button" class="btn btn-default btn-sm">
-                          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Comment
+                          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <?=count($cat->comments) ?>
                         </button>
                         </a>
                     </div>
@@ -96,11 +99,18 @@
 
 <script type="text/javascript">
     $(function(){
-        $('.grid').masonry({
-          // options...
-          itemSelector: '.grid-item',
-          columnWidth: 200,
-          gutter: 8
+        var $grid = $('.grid').masonry({
+            columnWidth: '.grid-sizer',
+            gutter: '.gutter-sizer',
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            initLayout: false
         });
+        // bind event
+        $grid.masonry( 'on', 'layoutComplete', function() {
+          console.log('layout is complete');
+        });
+        // trigger initial layout
+        $grid.masonry();
     });
 </script>
