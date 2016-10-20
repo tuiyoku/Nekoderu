@@ -13,6 +13,11 @@ use Cake\Event\Event;
 class CatsController extends AppController
 {
     
+    public $paginate = [
+        // その他のキーはこちら
+        'maxLimit' => 8
+    ];
+    
     public $components = ['NekoUtil', 'RequestHandler'];
 
     public function beforeFilter(Event $event)
@@ -34,7 +39,7 @@ class CatsController extends AppController
             ->contain(['CatImages', 'Comments', 'Users']);
         if($q != null){
             $data = $data
-                ->where(['created >' => new \DateTime($q['map_start'])])
+                ->where(['Cats.created >' => new \DateTime($q['map_start'])])
                 ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
         }
         $cats = $this->paginate($data);
@@ -55,12 +60,12 @@ class CatsController extends AppController
         
         $query = $this->Cats->find('all')
             ->contain(['CatImages', 'Comments', 'Users']);
-        if($q != null){
-            $query = $query
-                ->where(['created >' => new \DateTime($q['map_start'])])
-                ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
-        }
-        $cats = $query; //$this->paginate($data);
+        // if($q != null){
+        //     $query = $query
+        //         ->where(['Cats.created >' => new \DateTime($q['map_start'])])
+        //         ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
+        // }
+        $cats = $this->paginate($query);
 
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);

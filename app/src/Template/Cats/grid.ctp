@@ -1,5 +1,6 @@
 <script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <script src="//unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
+<script src="/js/jquery.infinitescroll.js"></script>
 <style>
     .grid-sizer, .grid-item { 
         width: 48%;
@@ -61,10 +62,12 @@
 <div class="cats index large-12 medium-8 columns content">
 
     <div class="grid">
+       
         <div class="grid-sizer"></div>
         <div class="gutter-sizer"></div>
         <?php foreach ($cats as $cat): ?>
-            <?php foreach ($cat->cat_images as $image): ?>
+            <?php foreach ($cat->cat_images as $imgIdx => $image): ?>
+                <?php if($imgIdx >= 1) break; ?>
                 <div class="grid-item">
                     <div><img src="<?= $image->url ?>"></img></div>
                     <div>
@@ -84,11 +87,14 @@
                         </button>
                         </a>
                     </div>
-                    </div>
+                </div>
             <?php endforeach; ?>
         <?php endforeach; ?>
     </div>
 </div>
+    <div id="page-nav">
+        <?php echo $this->Paginator->next('もっと見る', ['class'=>'next']); ?>
+    </div>
 <div id="add-neko">
     <a href="<?=$this->Url->build('/', false); ?>cats/add">
         <button type="button" class="btn btn-default btn-sm">
@@ -98,14 +104,35 @@
 </div>
 
 <script type="text/javascript">
-    var container = document.querySelector('.grid');
-    imagesLoaded(container, function () {
-        var $grid = $('.grid').masonry({
-            columnWidth: '.grid-sizer',
+$(function(){
+    var $container = $('.grid');
+	$container.imagesLoaded(function(){
+		$container.masonry({
+		  //  isFitWidth: true,
+			isAnimated: true,
+// 			isResizable: true,
+			columnWidth: '.grid-sizer',
             gutter: '.gutter-sizer',
             itemSelector: '.grid-item',
             percentPosition: true
-        });
-        $grid.masonry();
-    });
+		});
+	});
+	
+    $container.infinitescroll({
+        navSelector : '.next', // ナビゲーション
+        nextSelector : '.next a', // 次ページへのリンク
+        itemSelector : '.grid-item', // 次ページ内で探す要素
+        debug         : true,
+        dataType      : 'html',
+        loading: {
+          finishedMsg: 'No more posts to load.',
+          img: '<?=$this->Url->build('/', false); ?>img/ajax-loader.gif'
+        }
+    }, function( newElements ) {
+		var $newElems = $( newElements );
+		$newElems.imagesLoaded(function(){
+		    $container.masonry( 'appended', $newElems, true ); 
+		});
+	});
+});
 </script>
