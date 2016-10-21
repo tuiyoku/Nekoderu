@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">Nekoderuとは？</a>
+                    <a href="/pages/top">これは何のサイト？</a>
                 </li>
                 <li>
                     <a href="#">利用規約</a>
