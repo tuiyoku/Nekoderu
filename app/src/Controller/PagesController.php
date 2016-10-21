@@ -85,5 +85,21 @@ class PagesController extends AppController
 
         $this->set(compact('now', 'from_time'));
     }
+    
+    public function top(){
+        
+    }
+    
+       /**
+     * Before render callback.
+     *
+     * @param \Cake\Event\Event $event The beforeRender event.
+     * @return void
+     */
+    public function beforeRender(Event $event)
+    {
+        parent::beforeRender($event);
+        $this->viewBuilder()->layout('nekoderu');
+    }
 
 }

@@ -69,7 +69,7 @@
             <?php foreach ($cat->cat_images as $imgIdx => $image): ?>
                 <?php if($imgIdx >= 1) break; ?>
                 <div class="grid-item">
-                    <div><img src="<?= $image->url ?>"></img></div>
+                    <div><img src="<?= $image->url ?>" width="100%"></img></div>
                     <div>
                         <?php foreach ($cat->comments as $idx => $comment): ?>
                             <?php if($idx >= 3) break; ?>

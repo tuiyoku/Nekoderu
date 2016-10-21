@@ -151,6 +151,42 @@ class NekoUtilComponent extends Component {
 
         return $outputFilePath;
     }
+    
+    /**
+     * 画像を別の形式に変換し、jpg形式のサムネイルに変換する
+     * TODO: @utsumi-k PHP Parserを使うかは場合は別途用意する
+     * @param $orgFilePath
+     * @param $exportFilePath
+     *
+     * @return string
+     */
+    function createThumbnail($orgFilePath, $exportFilePath) {
+        // 書き出しファイル名を生成
+        $outputFilePath = $exportFilePath . "/" . $this->generateUniqueFileName();
+
+        // 元画像情報を取得
+        $size = getimagesize($orgFilePath);
+        if ($size === false) {
+            // 画像として認識できなかった
+            return "";
+        }
+        list($w, $h, $type) = $size;
+        list($width, $height) = $this->getSaveFileSize($w, $h);
+
+        // 1回最初にリサイズする
+        $res = new \Imagick($orgFilePath);
+        if (!$res->thumbnailImage(200, 150, true, true)) {
+            // リサイズ失敗
+            return "";
+        }
+
+        if (!$res->writeImage($outputFilePath)) {
+            // 書き込み失敗
+            return "";
+        }
+
+        return $outputFilePath;
+    }
 
     /**
      * Uniqueなファイル名を生成する

@@ -15,7 +15,7 @@ class CatsController extends AppController
     
     public $paginate = [
         // その他のキーはこちら
-        'maxLimit' => 8
+        'maxLimit' => 5
     ];
     
     public $components = ['NekoUtil', 'RequestHandler'];
@@ -180,8 +180,15 @@ class CatsController extends AppController
                         if ($savePath === "") {
                             die("不正な画像がuploadされました");
                         }
-                     
                         $result = $this->NekoUtil->s3Upload($savePath, '');
+                        // 書きだした画像を削除
+                        @unlink($savePath);
+                        
+                        $savePath = $this->NekoUtil->createThumbnail($file["tmp_name"], TMP);
+                        if ($savePath === "") {
+                            die("不正な画像がuploadされました");
+                        }
+                        $thumbnail = $this->NekoUtil->s3Upload($savePath, '');
                         // 書きだした画像を削除
                         @unlink($savePath);
     
@@ -189,6 +196,7 @@ class CatsController extends AppController
                             
                             $catImage = $this->Cats->CatImages->newEntity();
                             $catImage->url = $result['ObjectURL'];
+                            $catImage->thumbnail = $thumbnail['ObjectURL'];
                             $catImage->users_id = $uid;
                             $catImage->cats_id = $cat->id;
                             if ($this->Cats->CatImages->save($catImage)) {
