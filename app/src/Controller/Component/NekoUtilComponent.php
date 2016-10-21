@@ -172,10 +172,13 @@ class NekoUtilComponent extends Component {
         }
         list($w, $h, $type) = $size;
         list($width, $height) = $this->getSaveFileSize($w, $h);
+        
+        $ww = 200;
+        $height = $height/$width * $ww;
 
         // 1回最初にリサイズする
         $res = new \Imagick($orgFilePath);
-        if (!$res->thumbnailImage(200, 150, true, true)) {
+        if (!$res->thumbnailImage($ww, $height, true, true)) {
             // リサイズ失敗
             return "";
         }

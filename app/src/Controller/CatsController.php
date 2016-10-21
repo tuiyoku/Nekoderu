@@ -184,6 +184,7 @@ class CatsController extends AppController
                         // 書きだした画像を削除
                         @unlink($savePath);
                         
+                        //サムネイルを作成
                         $savePath = $this->NekoUtil->createThumbnail($file["tmp_name"], TMP);
                         if ($savePath === "") {
                             die("不正な画像がuploadされました");

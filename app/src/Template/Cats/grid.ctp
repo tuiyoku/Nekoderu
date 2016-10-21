@@ -35,7 +35,7 @@
     }
     
     .grid {
-        padding-bottom: 50px;
+        padding-bottom: 150px;
     }
     
     #add-neko{
@@ -59,17 +59,19 @@
 <?php 
     $ear_images = ['normal', 'donno', 'trimmed_right', 'trimmed_left'];
 ?>
-<div class="cats index large-12 medium-8 columns content">
-
+<div class="row">
     <div class="grid">
-       
         <div class="grid-sizer"></div>
         <div class="gutter-sizer"></div>
         <?php foreach ($cats as $cat): ?>
             <?php foreach ($cat->cat_images as $imgIdx => $image): ?>
                 <?php if($imgIdx >= 1) break; ?>
                 <div class="grid-item">
-                    <div><img src="<?= $image->url ?>" width="100%"></img></div>
+                    <?php if($image->thumbnail):?>
+                        <div><img src="<?= $image->thumbnail ?>" width="100%"></img></div>
+                    <?php else: ?>
+                        <div><img src="<?= $image->url ?>" width="100%"></img></div>
+                    <?php endif; ?>
                     <div>
                         <?php foreach ($cat->comments as $idx => $comment): ?>
                             <?php if($idx >= 3) break; ?>
@@ -92,9 +94,11 @@
         <?php endforeach; ?>
     </div>
 </div>
-    <div id="page-nav">
-        <?php echo $this->Paginator->next('もっと見る', ['class'=>'next']); ?>
-    </div>
+<div class='loading-selector' style='margin-top: -150px;'>
+</div>
+<div class='row' id="page-nav">
+    <?php echo $this->Paginator->next('もっと見る', ['class'=>'next']); ?>
+</div>
 <div id="add-neko">
     <a href="<?=$this->Url->build('/', false); ?>cats/add">
         <button type="button" class="btn btn-default btn-sm">
@@ -108,7 +112,7 @@ $(function(){
     var $container = $('.grid');
 	$container.imagesLoaded(function(){
 		$container.masonry({
-		  //  isFitWidth: true,
+		    isFitWidth: true,
 			isAnimated: true,
 // 			isResizable: true,
 			columnWidth: '.grid-sizer',
@@ -125,8 +129,9 @@ $(function(){
         debug         : true,
         dataType      : 'html',
         loading: {
-          finishedMsg: 'No more posts to load.',
-          img: '<?=$this->Url->build('/', false); ?>img/ajax-loader.gif'
+            selector: '.loading-selector',
+            finishedMsg: 'No more posts to load.',
+            img: '<?=$this->Url->build('/', false); ?>img/ajax-loader.gif'
         }
     }, function( newElements ) {
 		var $newElems = $( newElements );
