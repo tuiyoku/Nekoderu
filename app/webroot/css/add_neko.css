@@ -109,6 +109,8 @@
 */
 #photos {
     margin-top: 5px;
+    margin-left: 5%;
+    width: 90%;
 }
 
 .button-file {
@@ -141,4 +143,8 @@
 
 .infowin li{
     margin-bottom: 4px;
+}
+
+.btn-default {
+    background-image: none;
 }

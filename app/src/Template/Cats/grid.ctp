@@ -68,9 +68,9 @@
                 <?php if($imgIdx >= 1) break; ?>
                 <div class="grid-item">
                     <?php if($image->thumbnail):?>
-                        <div><img src="<?= $image->thumbnail ?>" width="100%"></img></div>
+                        <div><a href="<?= $image->url ?>" data-lightbox-gallery="photo_gallery"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
                     <?php else: ?>
-                        <div><img src="<?= $image->url ?>" width="100%"></img></div>
+                        <div><a href="<?= $image->url ?>" data-lightbox-gallery="photo_gallery"><img src="<?= $image->url ?>" width="100%"></img></a></div>
                     <?php endif; ?>
                     <div>
                         <?php foreach ($cat->comments as $idx => $comment): ?>
@@ -109,10 +109,15 @@
 
 <script type="text/javascript">
 $(function(){
+    
+    function lightboxing(){
+        $("a").lightbox();
+    }
+    
     var $container = $('.grid');
 	$container.imagesLoaded(function(){
 		$container.masonry({
-		    isFitWidth: true,
+		  //  isFitWidth: true,
 			isAnimated: true,
 // 			isResizable: true,
 			columnWidth: '.grid-sizer',
@@ -120,6 +125,7 @@ $(function(){
             itemSelector: '.grid-item',
             percentPosition: true
 		});
+		lightboxing();
 	});
 	
     $container.infinitescroll({
@@ -137,7 +143,15 @@ $(function(){
 		var $newElems = $( newElements );
 		$newElems.imagesLoaded(function(){
 		    $container.masonry( 'appended', $newElems, true ); 
+		    lightboxing();
 		});
 	});
 });
 </script>
+
+<link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/formstone/lightbox.css"> 
+<script src="<?php echo$this->Url->build('/', false); ?>js/formstone/core.js"></script>
+<script src="<?php echo$this->Url->build('/', false); ?>js/formstone/touch.js"></script>
+<script src="<?php echo$this->Url->build('/', false); ?>js/formstone/transition.js"></script>
+<script src="<?php echo$this->Url->build('/', false); ?>js/formstone/lightbox.js"></script>
+
