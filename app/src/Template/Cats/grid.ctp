@@ -68,9 +68,9 @@
                 <?php if($imgIdx >= 1) break; ?>
                 <div class="grid-item">
                     <?php if($image->thumbnail):?>
-                        <div><a href="<?= $image->url ?>" data-lightbox-gallery="photo_gallery"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
+                        <div><a title="<a href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
                     <?php else: ?>
-                        <div><a href="<?= $image->url ?>" data-lightbox-gallery="photo_gallery"><img src="<?= $image->url ?>" width="100%"></img></a></div>
+                        <div><a title="<a href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
                     <?php endif; ?>
                     <div>
                         <?php foreach ($cat->comments as $idx => $comment): ?>
@@ -111,7 +111,17 @@
 $(function(){
     
     function lightboxing(){
-        $("a").lightbox();
+      
+        $('a.gallery').magnificPopup({
+            type:'image',
+            gallery:{
+                enabled:true
+                
+            },
+            titleSrc: 'title'
+            
+        });
+ 
     }
     
     var $container = $('.grid');
@@ -149,9 +159,6 @@ $(function(){
 });
 </script>
 
-<link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/formstone/lightbox.css"> 
-<script src="<?php echo$this->Url->build('/', false); ?>js/formstone/core.js"></script>
-<script src="<?php echo$this->Url->build('/', false); ?>js/formstone/touch.js"></script>
-<script src="<?php echo$this->Url->build('/', false); ?>js/formstone/transition.js"></script>
-<script src="<?php echo$this->Url->build('/', false); ?>js/formstone/lightbox.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/lightbox/magnific-popup.css"> 
+<script src="<?php echo$this->Url->build('/', false); ?>js/lightbox/jquery.magnific-popup.js"></script>
 
