@@ -17,9 +17,9 @@ $activationUrl = [
     isset($token) ? $token : ''
 ];
 ?>
-<?= __d('CakeDC/Users', "Hi {0}", isset($first_name)? $first_name : '') ?>,
+<?= __d('CakeDC/Users', "ようこそ {0} さん", isset($first_name)? $first_name : '') ?>,
 
-<?= __d('CakeDC/Users', "Please copy the following address in your web browser {0}", $this->Url->build($activationUrl)) ?>
+<?= __d('CakeDC/Users', "次のリンクを開いて登録を完了してください。 {0}", $this->Url->build($activationUrl)) ?>
 
-<?= __d('CakeDC/Users', 'Thank you') ?>,
+<?= __d('CakeDC/Users', '興味をお持ちいただきましてありがとうございます。') ?>,
 

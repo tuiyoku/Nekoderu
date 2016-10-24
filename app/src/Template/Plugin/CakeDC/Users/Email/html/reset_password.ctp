@@ -18,14 +18,14 @@ $activationUrl = [
 ];
 ?>
 <p>
-<?= __d('CakeDC/Users', "Hi {0}", isset($first_name)? $first_name : '') ?>,
+<?= __d('CakeDC/Users', "こんにちわ {0} さん", isset($first_name)? $first_name : '') ?>,
 </p>
 <p>
-    <strong><?= $this->Html->link(__d('CakeDC/Users', 'Reset your password here'), $activationUrl) ?></strong>
+    <strong><?= $this->Html->link(__d('CakeDC/Users', 'ここを開いてパスワードのリセットを行ってください'), $activationUrl) ?></strong>
 </p>
 <p>
-    <?= __d('CakeDC/Users', "If the link is not correcly displayed, please copy the following address in your web browser {0}", $this->Url->build($activationUrl)) ?>
+    <?= __d('CakeDC/Users', "リンクが正しく表示されない場合は次のアドレスをブラウザに貼り付けてください。 {0}", $this->Url->build($activationUrl)) ?>
 </p>
 <p>
-    <?= __d('CakeDC/Users', 'Thank you') ?>,
+    <?= __d('CakeDC/Users', 'いつもご利用ありがとうございます。') ?>,
 </p>

@@ -19,9 +19,9 @@
         $socialAccount['token'],
     ];
 ?>
-<?= __d('CakeDC/Users', "Hi {0}", $user['first_name']) ?>,
+<?= __d('CakeDC/Users', "こんにちわ {0} さん", $user['first_name']) ?>,
 
-<?= __d('CakeDC/Users', "Please copy the following address in your web browser to activate your social login {0}", $this->Url->build($activationUrl)) ?>
+<?= __d('CakeDC/Users', "次のリンクを開いてソーシャルログインの登録を完了してください {0}", $this->Url->build($activationUrl)) ?>
 
-<?= __d('CakeDC/Users', 'Thank you') ?>,
+<?= __d('CakeDC/Users', 'ご利用ありがとうございます。') ?>,
 
