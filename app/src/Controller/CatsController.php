@@ -48,7 +48,7 @@ class CatsController extends AppController
         $this->set('_serialize', ['cats']);
     }
     
-        /**
+    /**
      * Index method
      *
      * @return \Cake\Network\Response|null

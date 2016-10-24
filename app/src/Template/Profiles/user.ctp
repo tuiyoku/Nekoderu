@@ -1,0 +1,93 @@
+<?php
+/**
+ * Copyright 2010 - 2015, Cake Development Corporation (http://cakedc.com)
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright Copyright 2010 - 2015, Cake Development Corporation (http://cakedc.com)
+ * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
+ */
+?>
+
+<?php
+//デフォルトのレイアウトを外す
+$this->layout= '';
+//ネコデルのレイアウトを適用
+$this->extend('/Layout/nekoderu');
+?>
+
+<div class="users row">
+    <div class="large-6 small-6 columns">
+        
+        <?php //if (!empty($user->avatar)): ?>
+            <h3><?= $this->Html->image(empty($user->avatar) ? $avatarPlaceholder : $user->avatar, ['width' => '180', 'height' => '180']); ?></h3>
+        <?php //endif; ?>
+       
+    <?php //@todo add to config ?>
+    </div>
+
+    <div class="large-6 small-6 columns">
+         <h3>
+            <?=
+            $this->Html->tag(
+                'span',
+                __d('CakeDC/Users', '{0} {1}', $user->first_name, $user->last_name),
+                ['class' => 'full_name']
+            )
+            ?>
+        </h3>
+        <p><a href="/profiles/user/<?= h($user->username) ?>" >@<?= h($user->username) ?></a></p>
+        
+        <!--<h6 class="subheader"><?= __d('CakeDC/Users', 'Username') ?></h6>-->
+        <!--<p><?= h($user->username) ?></p>-->
+        <!--<h6 class="subheader"><?= __d('CakeDC/Users', 'Email') ?></h6>-->
+        <!--<p><?= h($user->email) ?></p>-->
+        <?php if (!empty($user->social_accounts)): ?>
+            <h6 class="subheader"><?= __d('CakeDC/Users', 'Social Accounts') ?></h6>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th><?= __d('CakeDC/Users', 'Avatar'); ?></th>
+                        <th><?= __d('CakeDC/Users', 'Provider'); ?></th>
+                        <th><?= __d('CakeDC/Users', 'Link'); ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach ($user->social_accounts as $socialAccount):
+                    $escapedUsername = h($socialAccount->username);
+                    $linkText = empty($escapedUsername) ? __d('CakeDC/Users', 'Link to {0}', h($socialAccount->provider)) : h($socialAccount->username)
+                    ?>
+                    <tr>
+                        <td><?=
+                            $this->Html->image(
+                                $socialAccount->avatar,
+                                ['width' => '90', 'height' => '90']
+                            ) ?>
+                        </td>
+                        <td><?= h($socialAccount->provider) ?></td>
+                        <td><?=
+                            $this->Html->link(
+                                $linkText,
+                                $socialAccount->link,
+                                ['target' => '_blank']
+                            ) ?></td>
+                    </tr>
+                <?php
+                endforeach;
+                ?>
+                </tbody>
+            </table>
+        <?php
+        endif;
+        ?>
+        <?php if (!empty($auth) && $auth['id'] === $user['id']): ?>
+        <p>
+            <?= $this->Html->link(__d('CakeDC/Users', 'Change Password'), ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'changePassword']); ?>
+        </p>
+        <?php endif; ?>
+    </div>
+</div>
+<h3 class="subheader"><?= __('Your cats') ?></h3>
+<?= $this->element('partial/cats_grid'); ?>

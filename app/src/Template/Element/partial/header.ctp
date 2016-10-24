@@ -41,7 +41,7 @@
             ?>
             
         </div>
-        <!-- /.navbar-collapse -->
+        <!-- /.navbaｃr-collapse -->
     </div>
     <!-- /.container -->
 </nav>

@@ -93,7 +93,7 @@ msgstr ""
 #: Controller/Traits/LoginTrait.php:100
 #: Template/Users/social_email.ctp:16
 msgid "Please enter your email"
-msgstr ""
+msgstr "メールアドレスを入力してください"
 
 #: Controller/Traits/LoginTrait.php:106
 msgid "ユーザ登録が完了していませんユーザ登録が完了していません。メールを確認してください。"
@@ -110,19 +110,19 @@ msgstr ""
 
 #: Controller/Traits/LoginTrait.php:165
 msgid "You are already logged in"
-msgstr ""
+msgstr "すでにログインしています"
 
 #: Controller/Traits/LoginTrait.php:209
 msgid "Username or password is incorrect"
-msgstr ""
+msgstr "ユーザ名かパスワードが間違っています"
 
 #: Controller/Traits/LoginTrait.php:230
 msgid "You've successfully logged out"
-msgstr ""
+msgstr "ログアウトしました"
 
 #: Controller/Traits/PasswordManagementTrait.php:53;60;68
 msgid "Password could not be changed"
-msgstr ""
+msgstr "パスワードが変更できませんでした"
 
 #: Controller/Traits/PasswordManagementTrait.php:57
 msgid "Password has been changed successfully"
@@ -131,11 +131,11 @@ msgstr ""
 #: Controller/Traits/PasswordManagementTrait.php:64
 #: Controller/Traits/ProfileTrait.php:49
 msgid "User was not found"
-msgstr ""
+msgstr "ユーザが見つかりません"
 
 #: Controller/Traits/PasswordManagementTrait.php:66
 msgid "The current password does not match"
-msgstr ""
+msgstr "新しいパスワードが一致しません"
 
 #: Controller/Traits/PasswordManagementTrait.php:108
 msgid "Please check your email to continue with password reset process"
@@ -149,11 +149,11 @@ msgstr ""
 #: Controller/Traits/PasswordManagementTrait.php:116
 #: Controller/Traits/UserValidationTrait.php:98
 msgid "User {0} was not found"
-msgstr ""
+msgstr "登録ユーザ {0} が見つかりませんでした"
 
 #: Controller/Traits/PasswordManagementTrait.php:118
 msgid "The user is not active"
-msgstr ""
+msgstr "ユーザ登録が完了していません"
 
 #: Controller/Traits/PasswordManagementTrait.php:120
 #: Controller/Traits/UserValidationTrait.php:94;102
@@ -162,23 +162,23 @@ msgstr ""
 
 #: Controller/Traits/ProfileTrait.php:52
 msgid "Not authorized, please login first"
-msgstr ""
+msgstr "アクセスできません。ログインしてくださいログインしてください。"
 
 #: Controller/Traits/RegisterTrait.php:42
 msgid "You must log out to register a new user account"
-msgstr ""
+msgstr "新しいアカウントを登録する前にログアウトしてください"
 
 #: Controller/Traits/RegisterTrait.php:79
 msgid "The user could not be saved"
-msgstr ""
+msgstr "ユーザを保存できませんでした"
 
 #: Controller/Traits/RegisterTrait.php:111
 msgid "You have registered successfully, please log in"
-msgstr ""
+msgstr "ユーザー登録が完了しました。ログインしてご利用ください。"
 
 #: Controller/Traits/RegisterTrait.php:113
-msgid "確認メールを送信しまし。ログインする前にメールを確認して登録を完了してください。"
-msgstr ""
+msgid "Please validate your account before log in"
+msgstr "確認メールを送信しまし。ログインする前にメールを確認して登録を完了してください。"
 
 #: Controller/Traits/SimpleCrudTrait.php:76;105
 msgid "The {0} has been saved"
@@ -262,20 +262,20 @@ msgstr ""
 
 #: Model/Behavior/PasswordBehavior.php:67;115
 msgid "User not found"
-msgstr ""
+msgstr "ユーザが見つかりません"
 
 #: Model/Behavior/PasswordBehavior.php:71
 #: Model/Behavior/RegisterBehavior.php:110
 msgid "User account already validated"
-msgstr ""
+msgstr "アカウントはすでに有効化されています"
 
 #: Model/Behavior/PasswordBehavior.php:78
 msgid "User not active"
-msgstr ""
+msgstr "ユーザが有効化されていません"
 
 #: Model/Behavior/PasswordBehavior.php:120
 msgid "The old password does not match"
-msgstr ""
+msgstr "変更前のパスワードが間違えています"
 
 #: Model/Behavior/RegisterBehavior.php:88
 msgid "User not found for the given token and email."
@@ -287,7 +287,7 @@ msgstr ""
 
 #: Model/Behavior/SocialAccountBehavior.php:101;128
 msgid "Account already validated"
-msgstr ""
+msgstr "アカウントの登録は完了済みです"
 
 #: Model/Behavior/SocialAccountBehavior.php:104;131
 msgid "Account not found for the given token and email."
@@ -307,15 +307,15 @@ msgstr ""
 
 #: Model/Table/UsersTable.php:159
 msgid "Username already exists"
-msgstr ""
+msgstr "そのユーザ名はすでに使用されています"
 
 #: Model/Table/UsersTable.php:165
 msgid "Email already exists"
-msgstr ""
+msgstr "登録済みのメールアドレスです"
 
 #: Model/Table/UsersTable.php:197
 msgid "Missing 'username' in options data"
-msgstr ""
+msgstr "ユーザ名が入力されていません"
 
 #: Shell/UsersShell.php:54
 msgid "Utilities for CakeDC Users Plugin"
@@ -606,16 +606,16 @@ msgstr "パスワードを変更する"
 #: Template/Users/profile.ctp:27
 #: Template/Users/view.ctp:28;68
 msgid "Username"
-msgstr ""
+msgstr "ユーザ名"
 
 #: Template/Users/profile.ctp:29
 #: Template/Users/view.ctp:30
 msgid "Email"
-msgstr ""
+msgstr "メールアドレス"
 
 #: Template/Users/profile.ctp:34
 msgid "Social Accounts"
-msgstr ""
+msgstr "ソーシャルアカウント"
 
 #: Template/Users/profile.ctp:38
 #: Template/Users/view.ctp:70
