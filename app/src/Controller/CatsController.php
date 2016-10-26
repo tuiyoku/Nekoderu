@@ -59,7 +59,8 @@ class CatsController extends AppController
         $q = $this->request->query;
         
         $query = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments', 'Users']);
+            ->contain(['CatImages', 'Comments', 'Users'])
+            ->order(['Cats.created' => 'DESC']);
         // if($q != null){
         //     $query = $query
         //         ->where(['Cats.created >' => new \DateTime($q['map_start'])])
@@ -139,7 +140,6 @@ class CatsController extends AppController
                 $uid = $this->Auth->user()['id'];
             }
             
-            
             $query = array(
                 "latlng" => h($locate),
                 "language" => "ja",
@@ -157,7 +157,7 @@ class CatsController extends AppController
             $cat->address = $address;
             $cat->ear_shape = $ear_shape;
             $cat->flg = 4;
-            $cat->user_id = $uid;
+            $cat->users_id = $uid;
             if ($this->Cats->save($cat)) {
                 $this->Flash->success('猫を保存しました。');
             }
