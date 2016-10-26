@@ -135,9 +135,10 @@ class CatsController extends AppController
             
             // ユーザーIDを付与
             $uid = 0;
-            if(!is_null($this->Auth->user('id'))){
-                $uid = $this->Auth->user('id');
+            if(!empty($this->Auth->user()['id'])){
+                $uid = $this->Auth->user()['id'];
             }
+            
             
             $query = array(
                 "latlng" => h($locate),

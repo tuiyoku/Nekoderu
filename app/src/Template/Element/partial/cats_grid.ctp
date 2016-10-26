@@ -54,6 +54,17 @@
       left: 40%;
       transform: translate(-20%, -50%);
     }
+    
+    .user {
+        width: 100%;
+        text-align: right;
+        font-size: 12px;
+    }
+    
+    .user a{
+        color: gray;
+    }
+    }
 
 </style>
 <?php 
@@ -73,7 +84,7 @@
                         <div><a title="<a href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
                     <?php endif; ?>
                     <?php if(!empty($cat->user->username)): ?>
-                        <div class="subheader"><a href="/profiles/user/<?= h($cat->user->username) ?>" >@<?= h($cat->user->username) ?></a></div>
+                        <div class="user"><a href="/profiles/user/<?= h($cat->user->username) ?>" >@<?= h($cat->user->username) ?></a></div>
                     <?php endif; ?>
                     <div>
                         <?php foreach ($cat->comments as $idx => $comment): ?>
