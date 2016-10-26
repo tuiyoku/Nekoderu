@@ -18,7 +18,7 @@ class CatsController extends AppController
         'maxLimit' => 5
     ];
     
-    public $components = ['NekoUtil', 'RequestHandler'];
+    public $components = ['RequestHandler', 'CatsCommon', 'NekoUtil'];
 
     public function beforeFilter(Event $event)
     {
@@ -58,15 +58,8 @@ class CatsController extends AppController
         
         $q = $this->request->query;
         
-        $query = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments', 'Users'])
-            ->order(['Cats.created' => 'DESC']);
-        // if($q != null){
-        //     $query = $query
-        //         ->where(['Cats.created >' => new \DateTime($q['map_start'])])
-        //         ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
-        // }
-        $cats = $this->paginate($query);
+        $data = $this->CatsCommon->listCats();
+        $cats = $this->paginate($data);
 
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
@@ -112,7 +105,39 @@ class CatsController extends AppController
         $this->set('_serialize', ['cat']);
     }
 
-
+    public function favorite($cats_id){
+        
+        if ($this->request->is('ajax')) {
+            
+            if(!empty($this->Auth->user()['id'])){
+                $users_id = $this->Auth->user()['id'];
+            } else {
+                $this->Flash->error('You must login to favorite a cat');
+                return;
+            }
+            
+            $fav = $this->Cats->Favorites
+                ->find('all')
+                ->where(['cats_id =' => $cats_id, 'users_id =' => $users_id])
+                ->first();
+            if(is_null($fav)){
+          
+                $fav = $this->Cats->Favorites->newEntity();
+                $fav->cats_id = $cats_id;
+                $fav->users_id = $users_id;
+                if ($this->Cats->Favorites->save($fav)) {
+                    // $this->Flash->success('お気に入りに登録しました');
+                }
+            
+            }
+            
+            $cat = $this->Cats->get($cats_id, [
+                'contain' => ['Favorites']
+            ]);
+            $this->set(compact('cat'));
+            $this->set('_serialize', ['cat']);
+        }
+    }
 
     /**
      * Add method

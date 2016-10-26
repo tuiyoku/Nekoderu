@@ -26,6 +26,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="/honoka/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+    <script src="/js/commons.js"></script>
     
     <!-- OGP -->
     <meta property="og:type" content="website">

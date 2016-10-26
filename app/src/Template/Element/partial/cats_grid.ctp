@@ -64,7 +64,11 @@
     .user a{
         color: gray;
     }
+    
+    .favorited {
+        color: #ffa500 !important;
     }
+}
 
 </style>
 <?php 
@@ -94,13 +98,24 @@
                     </div>
                     <div class="grid-buttons">
                         <img width='20px' src='/img/cat_ears/<?="cat_".$ear_images[$cat->ear_shape].".png" ?>'>
-                        <button type="button" class="btn btn-default btn-sm">
-                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 1
-                        </button>
+                        <?php if(!count(array_filter($cat->favorites, function($v){
+                            return $v["users_id"]===$this->viewVars['auth']["id"];
+                        }))>0): 
+                            ?>
+                            <a class="favorite btn btn-default btn-sm" href="/cats/favorite/<?=$cat->id ?>" role="button">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                <span class="count"><?=count($cat->favorites) ?></span>
+                            </a>
+                        <?php else: ?>
+                            <a class="favorite favorited btn btn-default btn-sm" href="/cats/favorite/<?=$cat->id ?>" role="button">
+                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                  <span class="count"> <?=count($cat->favorites) ?></span>
+                            </a>
+                        <?php endif; ?>
                         <a href="/cats/view/<?=$cat->id ?>">
-                        <button type="button" class="btn btn-default btn-sm">
-                          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <?=count($cat->comments) ?>
-                        </button>
+                            <button type="button" class="btn btn-default btn-sm">
+                              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <?=count($cat->comments) ?>
+                            </button>
                         </a>
                     </div>
                 </div>
@@ -114,15 +129,18 @@
     <?php echo $this->Paginator->next('もっと見る', ['class'=>'next']); ?>
 </div>
 <div id="add-neko">
-    <a href="<?=$this->Url->build('/', false); ?>cats/add">
-        <button type="button" class="btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 投稿する
-        </button>
+    <a class="btn btn-default btn-sm" href="<?=$this->Url->build('/', false); ?>cats/add" role="button">
+        <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 投稿する
     </a>
 </div>
 
 <script type="text/javascript">
 $(function(){
+    
+    function initialize(){
+        lightboxing();
+        favoriting();
+    }
     
     function lightboxing(){
       
@@ -135,7 +153,33 @@ $(function(){
             titleSrc: 'title'
             
         });
- 
+    }
+    
+    function favoriting(){
+        //fav button
+    	$(".favorite").click(function(e){
+    	    console.log("fav");
+    	    event.preventDefault();
+            event.stopPropagation();
+            console.log(e.currentTarget.href);
+            
+            var t = $(this);
+            
+            $.ajax({
+                type: 'POST',
+                url: e.currentTarget.href+".json",
+                success: function(response){
+                    if(response.cat){
+                        console.log(response.cat.favorites.length);
+                        t.children('.count').text(response.cat.favorites.length);
+                        t.prependClass('favorited');
+                    }
+                },
+                error: function(response){
+                    console.log(response);
+                }
+            });
+    	}); 
     }
     
     var $container = $('.grid');
@@ -149,7 +193,7 @@ $(function(){
             itemSelector: '.grid-item',
             percentPosition: true
 		});
-		lightboxing();
+		initialize();
 	});
 	
     $container.infinitescroll({
@@ -167,9 +211,10 @@ $(function(){
 		var $newElems = $( newElements );
 		$newElems.imagesLoaded(function(){
 		    $container.masonry( 'appended', $newElems, true ); 
-		    lightboxing();
+		    initialize();
 		});
 	});
+
 });
 </script>
 

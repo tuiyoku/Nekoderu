@@ -32,6 +32,9 @@ class CatsTable extends Table
         $this->hasMany('CatImages', [
             'foreignKey' => 'cats_id'
         ]);
+        $this->hasMany('Favorites', [
+            'foreignKey' => 'cats_id'
+        ]);
         $this->hasMany('Comments', [
             'foreignKey' => 'cats_id',
         ]);

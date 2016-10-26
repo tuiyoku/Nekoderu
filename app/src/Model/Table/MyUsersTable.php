@@ -1,3 +1,4 @@
+<?php
 namespace App\Model\Table;
 
 use CakeDC\Users\Model\Table\UsersTable;
@@ -18,6 +19,12 @@ class MyUsersTable extends UsersTable
         parent::initialize($config);
         
         $this->hasMany('Cats', [
+            'foreignKey' => 'users_id'
+        ]);
+        $this->hasMany('Favorites', [
+            'foreignKey' => 'users_id'
+        ]);
+        $this->hasMany('Comments', [
             'foreignKey' => 'users_id'
         ]);
     }

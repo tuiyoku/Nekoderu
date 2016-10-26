@@ -9,3 +9,4 @@ var createTemplate = function(selector, name){
     }
     eval("template."+name+" =  $('"+selector+"').first();");
 }
+

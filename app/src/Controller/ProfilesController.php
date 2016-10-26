@@ -28,10 +28,12 @@ class ProfilesController extends AppController
     use SimpleCrudTrait;
     use SocialTrait;
     
-     public $paginate = [
+    public $paginate = [
         // その他のキーはこちら
         'maxLimit' => 5
     ];
+    
+    public $components = ['CatsCommon'];
     
     public function user($username = null){
         $this->Users = TableRegistry::get('Users');
@@ -42,14 +44,7 @@ class ProfilesController extends AppController
         ->first();
         
         $this->profile($user->id);
-         
-         
-        $this->Cats = TableRegistry::get('Cats');
-        $data = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments', 'Users'])
-            ->where([
-                'Users.id =' => $user->id
-                ]);
+        $data = $this->CatsCommon->listCats($user->id);
         $cats = $this->paginate($data);
 
         $this->set(compact('cats'));
