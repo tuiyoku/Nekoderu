@@ -29,6 +29,9 @@ $this->extend('/Layout/nekoderu');
         echo $this->Form->input('password_confirm', ['type' => 'password', 'label' => 'パスワード（確認）']);
         echo $this->Form->input('last_name', ['label' => '苗字']);
         echo $this->Form->input('first_name', ['label' => '名前']);
+        
+        
+        
         if (Configure::read('Users.Tos.required')) {
             echo $this->Form->input('tos', ['type' => 'checkbox', 'label' => __d('CakeDC/Users', '利用規約に同意しますか?'), 'required' => true]);
         }

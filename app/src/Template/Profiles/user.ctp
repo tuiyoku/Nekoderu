@@ -10,13 +10,6 @@
  */
 ?>
 
-<?php
-//デフォルトのレイアウトを外す
-$this->layout= '';
-//ネコデルのレイアウトを適用
-$this->extend('/Layout/nekoderu');
-?>
-
 <div class="users row">
     <div class="large-6 small-6 columns">
         

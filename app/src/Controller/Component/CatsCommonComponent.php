@@ -12,6 +12,7 @@ class CatsCommonComponent extends Component {
         $data = $this->Cats->find('all')
             ->contain(['CatImages', 'Comments', 'Users', 'Favorites'])
             ->order(['Cats.created' => 'DESC']);
+            
         if(!is_null($users_id)){ 
             $data = $data ->where([
                 'Users.id =' => $users_id

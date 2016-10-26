@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use CakeDC\Users\Controller\AppController;
+// use CakeDC\Users\Controller\AppController;
 use CakeDC\Users\Controller\Component\UsersAuthComponent;
 use CakeDC\Users\Controller\Traits\LoginTrait;
 use CakeDC\Users\Controller\Traits\ProfileTrait;
@@ -13,6 +13,9 @@ use CakeDC\Users\Model\Table\UsersTable;
 use Cake\Core\Configure;
 use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
+
+use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -35,6 +38,11 @@ class ProfilesController extends AppController
     
     public $components = ['CatsCommon'];
     
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['user']);
+    }
+    
     public function user($username = null){
         $this->Users = TableRegistry::get('Users');
         $user = $this->Users->find('all')
@@ -50,7 +58,19 @@ class ProfilesController extends AppController
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
         
-        
     }
+    
+    /**
+     * Before render callback.
+     *
+     * @param \Cake\Event\Event $event The beforeRender event.
+     * @return void
+     */
+    public function beforeRender(Event $event)
+    {
+        parent::beforeRender($event);
+        $this->viewBuilder()->layout('nekoderu');
+    }
+
     
 }

@@ -196,6 +196,10 @@ $(function(){
 		initialize();
 	});
 	
+// 	if($('.next.disabled') !== null){
+// 	    return;
+// 	}
+	
     $container.infinitescroll({
         navSelector : '.next', // ナビゲーション
         nextSelector : '.next a', // 次ページへのリンク
