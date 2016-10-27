@@ -155,18 +155,19 @@ $(function(){
     
     
     function encourage_popup(e){
-        
-        e.stopPropagation();
-        e.preventDefault();
-        $.magnificPopup.open({
-            items: {
-                src: '/policy/encourage'
-            },
-            type: 'iframe',
-    		alignTop: true,
-    		fixedContentPos: true,
-    		overflowY: 'scroll',
-        }, 0);
+        <?php if (!$auth):?>
+            e.stopPropagation();
+            e.preventDefault();
+            $.magnificPopup.open({
+                items: {
+                    src: '/policy/encourage'
+                },
+                type: 'iframe',
+        		alignTop: true,
+        		fixedContentPos: true,
+        		overflowY: 'scroll',
+            }, 0);
+        <?php endif; ?>
     }
     
     function initialize(){
