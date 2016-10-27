@@ -37,7 +37,7 @@ class PagesController extends AppController
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'addNeko', 'display', 'login']);
+        $this->Auth->allow(['index', 'addNeko', 'display', 'login', 'encourage']);
     }
     
     /**
@@ -89,6 +89,8 @@ class PagesController extends AppController
     public function top(){
         
     }
+    
+   
     
 
        /**

@@ -14,7 +14,7 @@ class PolicyController extends AppController
     
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'policy']);
+        $this->Auth->allow(['index', 'policy', 'encourage']);
     }
     
     public function index(){
@@ -22,7 +22,11 @@ class PolicyController extends AppController
     }
     
     public function policy(){
-        $this->viewBuilder()->autoLayout = false;
-        $this->viewBuilder()->layout(null);
+        $this->viewBuilder()->layout("plain");
+    }
+    
+     public function encourage(){
+        
+        $this->viewBuilder()->layout("plain");
     }
 }

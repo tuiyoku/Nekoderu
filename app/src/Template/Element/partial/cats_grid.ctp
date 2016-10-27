@@ -69,12 +69,21 @@
     .favorited {
         color: #ffa500 !important;
     }
+    
+    .mfp-iframe-holder .mfp-content{
+        height: 100%;
+    }
+
 }
 
 </style>
 <?php 
     $ear_images = ['normal', 'donno', 'trimmed_right', 'trimmed_left'];
 ?>
+<!--<br>-->
+<!--<a class="encourage-popup" href="/policy/encourage">Load another content via ajax</a>-->
+
+
 <div class="row">
     <div class="grid">
         <div class="grid-sizer"></div>
@@ -84,9 +93,9 @@
                 <?php if($imgIdx >= 1) break; ?>
                 <div class="grid-item">
                     <?php if($image->thumbnail):?>
-                        <div><a title="<a href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
+                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
                     <?php else: ?>
-                        <div><a title="<a href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
+                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
                     <?php endif; ?>
                     <?php if(!empty($cat->user->username)): ?>
                         <div class="user"><a href="/profiles/user/<?= h($cat->user->username) ?>" >@<?= h($cat->user->username) ?></a></div>
@@ -99,24 +108,28 @@
                     </div>
                     <div class="grid-buttons">
                         <img width='20px' src='/img/cat_ears/<?="cat_".$ear_images[$cat->ear_shape].".png" ?>'>
-                        <?php if(!count(array_filter($cat->favorites, function($v){
+                        <?php if(count(array_filter($cat->favorites, function($v){
                             return $v["users_id"]===$this->viewVars['auth']["id"];
                         }))>0): 
                             ?>
+                            <a class="favorite favorited btn btn-default btn-sm" href="/cats/favorite/<?=$cat->id ?>" role="button">
+                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                  <span class="count"> <?=count($cat->favorites) ?></span>
+                            </a>
+                        <?php elseif(!is_null($auth)): ?>
                             <a class="favorite btn btn-default btn-sm" href="/cats/favorite/<?=$cat->id ?>" role="button">
                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                 <span class="count"><?=count($cat->favorites) ?></span>
                             </a>
                         <?php else: ?>
-                            <a class="favorite favorited btn btn-default btn-sm" href="/cats/favorite/<?=$cat->id ?>" role="button">
-                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                  <span class="count"> <?=count($cat->favorites) ?></span>
+                            <a class="encourage-popup btn btn-default btn-sm" href="#" role="button">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                <span class="count"> <?=count($cat->favorites) ?></span>
                             </a>
                         <?php endif; ?>
-                        <a href="/cats/view/<?=$cat->id ?>">
-                            <button type="button" class="btn btn-default btn-sm">
-                              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <?=count($cat->comments) ?>
-                            </button>
+                        <a href="/cats/view/<?=$cat->id ?>" role="button" class=" encourage-popup btn btn-default btn-sm">
+                              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                              <span class="count"><?=count($cat->comments) ?></span>
                         </a>
                     </div>
                 </div>
@@ -135,12 +148,34 @@
     </a>
 </div>
 
+
+
 <script type="text/javascript">
 $(function(){
+    
+    
+    function encourage_popup(e){
+        
+        e.stopPropagation();
+        e.preventDefault();
+        $.magnificPopup.open({
+            items: {
+                src: '/policy/encourage'
+            },
+            type: 'iframe',
+    		alignTop: true,
+    		fixedContentPos: true,
+    		overflowY: 'scroll',
+        }, 0);
+    }
     
     function initialize(){
         lightboxing();
         favoriting();
+        
+        $('.encourage-popup').click(function(e) {
+           encourage_popup(e);
+        });
     }
     
     function lightboxing(){
@@ -149,9 +184,21 @@ $(function(){
             type:'image',
             gallery:{
                 enabled:true
-                
             },
-            titleSrc: 'title'
+            titleSrc: 'title',
+            // preloader: true,
+
+            callbacks: {
+                open: function() {
+                    $('a.more').click(function(e){
+                        $.magnificPopup.close();
+                        encourage_popup(e);
+                    });
+                },
+                close: function() {
+                  // Will fire when popup is closed
+                }
+            }
             
         });
     }
@@ -214,11 +261,21 @@ $(function(){
         }
     }, function( newElements ) {
 		var $newElems = $( newElements );
+		console.log($newElems);
 		$newElems.imagesLoaded(function(){
 		    $container.masonry( 'appended', $newElems, true ); 
 		    initialize();
 		});
 	});
+	
+	        
+    $('.popup').magnificPopup({
+		type: 'ajax',
+		fixedContentPos: true,
+		overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
+    });
+	
+
 
 });
 </script>
