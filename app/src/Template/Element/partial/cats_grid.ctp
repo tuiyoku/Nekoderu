@@ -73,16 +73,12 @@
     .mfp-iframe-holder .mfp-content{
         height: 100%;
     }
-
 }
 
 </style>
 <?php 
     $ear_images = ['normal', 'donno', 'trimmed_right', 'trimmed_left'];
 ?>
-<!--<br>-->
-<!--<a class="encourage-popup" href="/policy/encourage">Load another content via ajax</a>-->
-
 
 <div class="row">
     <div class="grid">
@@ -148,12 +144,8 @@
     </a>
 </div>
 
-
-
 <script type="text/javascript">
 $(function(){
-    
-    
     function encourage_popup(e){
         <?php if (!$auth):?>
             e.stopPropagation();
@@ -187,8 +179,6 @@ $(function(){
                 enabled:true
             },
             titleSrc: 'title',
-            // preloader: true,
-
             callbacks: {
                 open: function() {
                     $('a.more').click(function(e){
@@ -234,9 +224,7 @@ $(function(){
     var $container = $('.grid');
 	$container.imagesLoaded(function(){
 		$container.masonry({
-		  //  isFitWidth: true,
 			isAnimated: true,
-// 			isResizable: true,
 			columnWidth: '.grid-sizer',
             gutter: '.gutter-sizer',
             itemSelector: '.grid-item',
@@ -244,10 +232,6 @@ $(function(){
 		});
 		initialize();
 	});
-	
-// 	if($('.next.disabled') !== null){
-// 	    return;
-// 	}
 	
     $container.infinitescroll({
         navSelector : '.next', // ナビゲーション
@@ -269,15 +253,11 @@ $(function(){
 		});
 	});
 	
-	        
     $('.popup').magnificPopup({
 		type: 'ajax',
 		fixedContentPos: true,
 		overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
     });
-	
-
-
 });
 </script>
 

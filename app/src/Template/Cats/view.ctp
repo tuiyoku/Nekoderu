@@ -22,55 +22,7 @@
     }
 </style>
 
-<!--<nav class="large-3 medium-4 columns" id="actions-sidebar">-->
-<!--    <ul class="side-nav">-->
-<!--        <li class="heading"><?= __('Actions') ?></li>-->
-<!--        <li><?= $this->Html->link(__('List Cats'), ['action' => 'index']) ?> </li>-->
-<!--        <li><?= $this->Html->link(__('New Cat'), ['action' => 'add']) ?> </li>-->
-<!--    </ul>-->
-<!--</nav>-->
 <div class="cats view large-9 medium-8 columns content">
-    <!--<table class="vertical-table">-->
-    <!--    <tr>-->
-    <!--        <th><?= __('Locate') ?></th>-->
-    <!--        <td><?= h($cat->locate) ?></td>-->
-    <!--    </tr>-->
-    <!--    <tr>-->
-    <!--        <th><?= __('Id') ?></th>-->
-    <!--        <td><?= $this->Number->format($cat->id) ?></td>-->
-    <!--    </tr>-->
-    <!--    <tr>-->
-    <!--        <th><?= __('Time') ?></th>-->
-    <!--        <td><?= $this->Number->format($cat->time) ?></td>-->
-    <!--    </tr>-->
-    <!--    <tr>-->
-    <!--        <th><?= __('Flg') ?></th>-->
-    <!--        <td><?= $this->Number->format($cat->flg) ?></td>-->
-    <!--    </tr>-->
-    <!--    <tr>-->
-    <!--        <th><?= __('Status') ?></th>-->
-    <!--        <td><?= $this->Number->format($cat->status) ?></td>-->
-    <!--    </tr>-->
-    <!--    <tr>-->
-    <!--        <th><?= __('Ear Shape') ?></th>-->
-    <!--        <td><?= $this->Number->format($cat->ear_shape) ?></td>-->
-    <!--    </tr>-->
-    <!--    <?php if(isset($cat->user)): ?>-->
-    <!--    <tr>-->
-    <!--        <th><?= __('User') ?></th>-->
-    <!--        <td><?= h($cat->user->username) ?></td>-->
-    <!--    </tr>-->
-    <!--    <?php endif; ?>-->
-    <!--</table>-->
-    <!--<?php if(isset($cat->address)): ?>-->
-    <!-- <div class="row">-->
-    <!--    <h4><?= __('Address') ?></h4>-->
-    <!--    <?= $this->Text->autoParagraph(h($cat->address)); ?>-->
-    <!--</div>-->
-    <!--<?php endif; ?>-->
-    <!--<div class="row">-->
-    <!--    <h4><?= __('Images') ?></h4>-->
-    <!--</div>-->
 	<div class="row">
 	    <div class="grid">
     	    <div class="grid-sizer"></div>
@@ -152,7 +104,6 @@
             };
             
             $(function(){
-                // commentTemplate = $("#comments .comment:first").first();
                 createTemplate("#comments .comment:first", "comment");
                 
                 $.post({                                                                            

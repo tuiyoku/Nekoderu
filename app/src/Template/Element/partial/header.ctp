@@ -33,7 +33,7 @@
             else:
             ?>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/profile">ユーザ情報</a></li>
+                    <li><a href="/profiles/user/<?=$auth['username']?>">ユーザ情報</a></li>
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
             <?php
