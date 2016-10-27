@@ -90,10 +90,7 @@ class PagesController extends AppController
         
     }
     
-    public function policy(){
-        $this->viewBuilder()->layout(null);
-    }
-    
+
        /**
      * Before render callback.
      *

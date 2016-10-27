@@ -17,7 +17,7 @@
                     <a href="/pages/top">これはなに？</a>
                 </li>
                 <li>
-                    <a href="#">利用規約</a>
+                    <a href="/policy">利用規約</a>
                 </li>
                 <li>
                     <a href="#">お問い合わせ</a>
