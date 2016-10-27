@@ -46,12 +46,13 @@
         bottom: 0;
         width: 100%;
         height: 50px;
+        left: 0;
     }
     
-    #add-neko button {
+    #add-neko a {
       position: absolute;
       top: 50%;
-      left: 40%;
+      left: 42%;
       transform: translate(-20%, -50%);
     }
     
