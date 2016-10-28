@@ -92,13 +92,13 @@
                     cln.find('.chat-fukidashi').text(this.comment);
                     cln.find('.chat-face img').attr(
                         'src', 
-                        "//pbs.twimg.com/profile_images/3743464897/25f216ba2e62d6fe043013b58b6dad3a_400x400.jpeg");
+                        "/cake_d_c/users/img/avatar_placeholder.png");
                    $("#comments").append(cln);
                    cln.show();
                 });
                 if($(".comment:first").length > 0){
                     $(".comment:first").hide();
-                    $(".comment:first").slideDown(500);
+                    $(".comment:first").slideDown(100);
                     $("html,body").animate({scrollTop:$('.comment:first').offset().top});
                 }
             };
