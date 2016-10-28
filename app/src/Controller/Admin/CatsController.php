@@ -10,11 +10,27 @@ class CatsController extends AdminAppController
 {
     public $components = array('NekoUtil');
     
+    private function putOptions(){
+        $statuses = $this->Cats->ResponseStatuses->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'title'
+        ])->toArray();
+        $this->set(compact('statuses', 'statuses'));
+        $this->set('_serialize', ['statuses']);
+        
+        $users = $this->Cats->Users->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'username'
+        ])->toArray();
+        $this->set(compact('users', 'users'));
+        $this->set('_serialize', ['users']);
+    }
+    
     public function index()
     {
         
         $data = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments', 'Users']);
+            ->contain(['CatImages', 'Comments', 'Users', 'ResponseStatuses']);
             
         $cats = $this->paginate($data);
         
@@ -33,7 +49,7 @@ class CatsController extends AdminAppController
     public function view($id = null)
     {
         $cat = $this->Cats->get($id, [
-            'contain' => ['CatImages', 'Comments', 'Users']
+            'contain' => ['CatImages', 'Comments', 'Users', 'ResponseStatuses']
         ]);
 
         $this->set('cat', $cat);
@@ -60,6 +76,8 @@ class CatsController extends AdminAppController
         }
         $this->set(compact('cat', 'cat'));
         $this->set('_serialize', ['cat']);
+        
+        $this->putOptions();
     }
 
     /**
@@ -72,20 +90,22 @@ class CatsController extends AdminAppController
     public function edit($id = null)
     {
         $cat = $this->Cats->get($id, [
-            'contain' => ['CatImages', 'Comments']
+            'contain' => ['CatImages', 'Comments',  'Users', 'ResponseStatuses']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $catImage = $this->Cats->patchEntity($catImage, $this->request->data);
+            $cat = $this->Cats->patchEntity($cat, $this->request->data);
             if ($this->Cats->save($cat)) {
-                $this->Flash->success(__('The cat image has been saved.'));
+                $this->Flash->success(__('The cat has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The cat image could not be saved. Please, try again.'));
+                $this->Flash->error(__('The cat could not be saved. Please, try again.'));
             }
         }
         $this->set(compact('cat', 'cat'));
         $this->set('_serialize', ['cat']);
+        
+       $this->putOptions();
     }
 
     /**

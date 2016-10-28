@@ -17,6 +17,7 @@ class MyUsersTable extends UsersTable
     public function initialize(array $config)
     {
         parent::initialize($config);
+        $this->displayField('name');
         
         $this->hasMany('Cats', [
             'foreignKey' => 'users_id'

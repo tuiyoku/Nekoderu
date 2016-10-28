@@ -27,7 +27,7 @@ class AppView extends View
 {
     
     use UIViewTrait;
-
+    
     /**
      * Initialization hook method.
      *
@@ -40,5 +40,7 @@ class AppView extends View
     public function initialize()
     {
         $this->initializeUI();
+        
+        $this->loadHelper('Cats');
     }
 }

@@ -6,6 +6,7 @@ use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
 
 class CatsCommonComponent extends Component {
+    
    
     public function listCats($users_id = null){
         $this->Cats = TableRegistry::get('Cats');

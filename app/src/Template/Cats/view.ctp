@@ -48,9 +48,9 @@
             <div class="view large-10 medium-10 columns content">
                 <?= $this->Form->input('comment', ['id' => 'comment', 'label' => false]); ?>
             </div>
-            <div class="view large-2 medium-2 columns content">
+            
                 <?=$this->Form->submit('投稿', ['id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]); ?>
-            </div>
+            
             <?php echo $this->Form->end(); ?>
         </div>
         <?php else: ?>

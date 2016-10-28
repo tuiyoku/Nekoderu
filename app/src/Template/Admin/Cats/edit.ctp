@@ -17,10 +17,22 @@
         <?php
             echo $this->Form->input('time');
             echo $this->Form->input('locate');
-            echo $this->Form->input('flg');
+            // echo $this->Form->input('flg');
             echo $this->Form->input('address');
-            echo $this->Form->input('status');
-            echo $this->Form->input('ear_shape');
+            // echo $this->Form->input('status');
+            echo $this->Form->input(
+                'ear_shape',
+                array(
+                    'multiple' => 'checkbox',
+                    'type' => 'radio',
+                    'options' => $this->Cats->earOptions(),
+                    'escape' => false,
+                    'label' => false,
+                    'default' => '0'
+                )  
+            );
+            echo $this->Form->input('users_id', ['options'=>$users]);
+            echo $this->Form->input('response_statuses_id', ['options'=>$statuses]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
