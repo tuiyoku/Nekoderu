@@ -21,6 +21,10 @@ class PolicyController extends AppController
         $this->viewBuilder()->layout("nekoderu");
     }
     
+      public function contact(){
+        $this->viewBuilder()->layout("nekoderu");
+    }
+    
     public function policy(){
         $this->viewBuilder()->layout("plain");
     }

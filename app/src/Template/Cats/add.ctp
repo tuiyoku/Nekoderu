@@ -91,6 +91,12 @@
 <div class="map-rapper">
     <div id="map" class="map"></div>
 </div>
+<script>
+$(function(){
+    setModal("modal-ear", "ear-info");
+    setModal("modal-gps", "gps-info");
+});
+</script>
 
 <!--<div id="customZoomBtn">-->
 <!--    <div id="small" class="float_l btn">ズームアウト</div>-->
@@ -102,5 +108,6 @@
 <script type="text/javascript" src="<?php echo$this->Url->build('/', false); ?>js/rousui_post.js"></script>
 <script type="text/javascript" src="<?php echo$this->Url->build('/', false); ?>js/add_neko.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/add_neko.css"> 
+<link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/modal.css"> 
 
 

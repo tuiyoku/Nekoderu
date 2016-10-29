@@ -21,6 +21,17 @@
         width: 2%; 
     }
 </style>
+<!-- The Modal -->
+<div id="modal-status" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="container clearfix">
+            <span style="text-align:right" class="close">閉じる</span>
+        </div>
+        <h3 style="margin-top:10px;margin-bottom:20px;"><?= $cat->response_status->title ?></h3>
+        <div><?= $cat->response_status->description ?></div>
+    </div>
+</div>
 
 <div class="cats view large-9 medium-8 columns content">
 	<div class="row">
@@ -35,6 +46,9 @@
         </div>
     </div>
     <div class="row">
+        対応状況：<?= $cat->response_status->title ?> <i id='status-info' class="glyphicon glyphicon-question-sign"></i>
+    </div>
+    <div class="row">
         <h4><?= __('Comments') ?></h4>
         <?php
             echo $this->Form->create(null, [
@@ -43,45 +57,43 @@
             ]);
         ?>
         <?php if ($auth): ?>
-        <div class="row">
             <?= $this->Form->input('cat_id', ['type' => 'hidden', 'id' => 'cat_id', 'value' => $cat->id]); ?>
-            <div class="view large-10 medium-10 columns content">
+            <div>
                 <?= $this->Form->input('comment', ['id' => 'comment', 'label' => false]); ?>
-            </div>
-            
                 <?=$this->Form->submit('投稿', ['id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]); ?>
-            
-            <?php echo $this->Form->end(); ?>
-        </div>
+            </div>
         <?php else: ?>
-        <div class="row">
-            <div class="view large-12 medium-12 columns content">
+            <div>
                 <?= $this->Form->input('comment', [
                     'id' => 'comment', 
                     'label' => false,
                     'disabled' => true,
                     'placeholder' => 'ログインするとコメントを投稿できます'
-                    
                 ]); ?>
             </div>
             <div class="view large-12 medium-12 columns content">
                 <a href="/login">ログインする</a>
             </div>
-        </div>
         <?php endif; ?>
-        
-        <div class="row" id="comments">
-            <div class="comment" hidden>
-                <div class="chat-face">
-    			    <img src="" width="30" height="30">
-    		    </div>
-    		    <div class="chat-area">
-        			<div class="chat-fukidashi">
-        			  コメントテンプレート
-        			</div>
-			    </div>
-	  	    </div>
-	  	</div>
+        <?php echo $this->Form->end(); ?>
+    </div>
+    <div class="row" id="comments">
+        <div class="comment" hidden>
+            <div class="chat-face">
+			    <img src="" width="30" height="30">
+		    </div>
+		    <div class="chat-area">
+    			<div class="chat-fukidashi">
+    			  コメントテンプレート
+    			</div>
+		    </div>
+  	    </div>
+  	</div>
+	  	<script>
+        $(function(){
+            setModal("modal-status", "status-info");
+        });
+        </script>
         
         <script  type="text/javascript">
             var updateComments = function(data){
@@ -143,3 +155,5 @@
         </script>
     </div>
 </div>
+
+<link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/modal.css">

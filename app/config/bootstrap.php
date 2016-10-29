@@ -212,6 +212,12 @@ Plugin::load('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
 // Configure::write('Users.Social.login', false); //to enable social login
 Configure::write('Auth.authenticate.Form.fields.username', 'email');
 
+Configure::write('Users.roles', array(
+    'admin' => '管理者',
+    'manager' => 'マネージャー',
+    'registered' => '登録'
+));
+
 // Only try to load DebugKit in development mode
 // Debug Kit should not be installed on a production system
 if (Configure::read('debug')) {

@@ -36,7 +36,7 @@ class CatsController extends AppController
         $q = $this->request->query;
         
         $data = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments', 'Users']);
+            ->contain(['CatImages', 'Comments', 'Users', 'ResponseStatuses']);
         if($q != null){
             $data = $data
                 ->where(['Cats.created >' => new \DateTime($q['map_start'])])
@@ -98,7 +98,7 @@ class CatsController extends AppController
     {
         
         $cat = $this->Cats->get($id, [
-            'contain' => ['CatImages', 'Comments', 'Users']
+            'contain' => ['CatImages', 'Comments', 'Users', 'ResponseStatuses']
         ]);
 
         $this->set('cat', $cat);
