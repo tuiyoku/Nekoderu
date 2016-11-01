@@ -28,6 +28,9 @@ class MyUsersTable extends UsersTable
         $this->hasMany('Comments', [
             'foreignKey' => 'users_id'
         ]);
+        $this->hasOne('Avatars', [
+            'foreignKey' => 'users_id'
+        ]);
     }
 
 }

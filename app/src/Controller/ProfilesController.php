@@ -107,10 +107,33 @@ class ProfilesController extends AppController
             'users_id =' => $user->id
         ])
         ->first();
-        
 
         $this->set(compact('avatar'));
         $this->set('_serialize', ['avatar']);
+    }
+    
+    public function image($uid){ 
+        $this->Avatars = TableRegistry::get('Avatars');
+        $avatar = $this->Avatars->find('all')
+        ->where([
+            'users_id =' => $uid
+        ])
+        ->first();
+        
+        $this->autoRender = false;
+        print($avatar->url);
+    }
+    
+    public function thumbnail($uid){
+        $this->Avatars = TableRegistry::get('Avatars');
+        $avatar = $this->Avatars->find('all')
+        ->where([
+            'users_id =' => $uid
+        ])
+        ->first();
+        
+        $this->autoRender = false;
+        print($avatar->thumbnail);
     }
     
     public function user($username = null){

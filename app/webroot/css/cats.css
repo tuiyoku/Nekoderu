@@ -18,10 +18,14 @@
     float: left;
     margin-right: -120px;
 }
-.chat-face img{
+.chat-face div{
+    /*border-radius: 10px;*/
+    /*border: 1px solid #ccc;*/
+    /*box-shadow: 0 0 4px #ddd;*/
+    background-size: 30px;
+    width: 30px;
+    height: 30px;
     border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 4px #ddd;
 }
 .chat-area {
     width: 100%;

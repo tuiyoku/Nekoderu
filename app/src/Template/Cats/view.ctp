@@ -96,15 +96,27 @@
         </script>
         
         <script  type="text/javascript">
+            var imageURLCache = {};
+            
             var updateComments = function(data){
                 $("#comment").val('');
                 $("#comments").empty();
                 $.each(data.comments, function() {
+                    var url;
                     var cln = template.comment.clone();
                     cln.find('.chat-fukidashi').text(this.comment);
-                    cln.find('.chat-face img').attr(
-                        'src', 
-                        "/cake_d_c/users/img/avatar_placeholder.png");
+                    var key = this.users_id;
+                    if(key in imageURLCache){
+                        cln.find('.chat-face img').attr('style', 'background-image: url('+imageURLCache[key]+');');
+                    }else{
+                        $.get({                                                              
+                            url: '/profiles/thumbnail/' + key + '.json'
+                        }).done(function(data) {
+                            imageURLCache[key] = data;
+                            cln.find('.chat-face img').attr('style', 'background-image: url('+imageURLCache[key]+');');
+                        });  
+                    }
+                    
                    $("#comments").append(cln);
                    cln.show();
                 });

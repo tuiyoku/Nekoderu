@@ -117,7 +117,6 @@ $(window).on('load', function(){
     $.get({
         url: '/profiles/avatar/<?= h($user->username) ?>.json',
         success: function(response){
-            // console.log(response);
             $('.tptr-widget').css('background-image', 'url(' + response['avatar'].url + ')');
         },
         error: function(response){
