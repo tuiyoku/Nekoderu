@@ -101,6 +101,9 @@
             var updateComments = function(data){
                 $("#comment").val('');
                 $("#comments").empty();
+                $("#addComment .submit input").prop("disabled", false);
+                $("#addComment .submit input").attr('value', '投稿');
+                
                 $.each(data.comments, function() {
                     var url;
                     var cln = template.comment.clone();
@@ -139,8 +142,13 @@
         
             $('#addComment').on('submit', function() {                                                               
                 event.preventDefault();                                                                       
-                event.stopPropagation();                                                                      
-            
+                event.stopPropagation();
+                if($("#comment").val().length <= 0)
+                    return;
+                
+                $("#addComment .submit input").prop("disabled", true);
+                $("#addComment .submit input").attr('value', '投稿中');
+                
                 $.post({                                                                            
                     url: '/cats/addComment.json',                   
                     data: { data: $(this).serialize() },                                                      
