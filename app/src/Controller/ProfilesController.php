@@ -36,11 +36,81 @@ class ProfilesController extends AppController
         'maxLimit' => 5
     ];
     
-    public $components = ['CatsCommon'];
+    public $components = ['RequestHandler', 'CatsCommon', 'NekoUtil'];
     
     public function beforeFilter(Event $event)
     {
         $this->Auth->allow(['user']);
+    }
+    
+    public function uploadAvatar(){
+        
+        if ($this->request->is('ajax')) {
+            $img = $this->request->data['data'];
+            
+            $img = str_replace('data:image/jpeg;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $fileData = base64_decode($img);
+            //saving
+            $fileName = TMP."/". $this->NekoUtil->generateUniqueFileName();
+            file_put_contents($fileName, $fileData);
+            
+            $savePath = $this->NekoUtil->safeImage($fileName, TMP);
+            if ($savePath === "") {
+                die("不正な画像がuploadされました");
+            }
+            $url = $this->NekoUtil->s3Upload($savePath, '');
+            // 書きだした画像を削除
+            @unlink($savePath);
+            
+            //サムネイルを作成
+            $savePath = $this->NekoUtil->createThumbnail($fileName, TMP);
+            if ($savePath === "") {
+                die("不正な画像がuploadされました");
+            }
+            $thumbnail = $this->NekoUtil->s3Upload($savePath, '');
+            // 書きだした画像を削除
+            @unlink($savePath);
+            
+            $uid = $this->Auth->user('id');
+            
+            $this->Avatars = TableRegistry::get('Avatars');
+            $avatar = $this->Avatars->find('all')
+            ->where([
+                'users_id =' => $uid
+            ])
+            ->first();
+            
+            if($avatar === null){
+                $avatar  = $this->Avatars->newEntity();
+            }
+            $avatar->users_id = $uid;
+            $avatar->url = $url['ObjectURL'];
+            $avatar->thumbnail = $thumbnail['ObjectURL'];
+            if ($this->Avatars->save($avatar)) {
+                // $this->Flash->success('プロファイル画像を保存しました');
+            }
+        }
+    }
+    
+    public function avatar($username){
+        $this->Users = TableRegistry::get('Users');
+        $this->Avatars = TableRegistry::get('Avatars');
+        $user = $this->Users->find('all')
+        ->where([
+            'username =' => $username
+        ])
+        ->first();
+        
+        $avatar = $this->Avatars->find('all')
+        ->where([
+            'users_id =' => $user->id
+        ])
+        ->first();
+        
+
+        $this->set(compact('avatar'));
+        $this->set('_serialize', ['avatar']);
     }
     
     public function user($username = null){

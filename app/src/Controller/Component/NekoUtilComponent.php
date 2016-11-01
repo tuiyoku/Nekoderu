@@ -58,7 +58,7 @@ class NekoUtilComponent extends Component {
             return substr($str, 1);
         }
     }
-   
+    
     function s3Upload($file, $s3Dir) {
         $ext = $this->extension($file);
         $srcPath = $file;

@@ -14,7 +14,10 @@
     <div class="large-6 small-6 columns">
         
         <?php //if (!empty($user->avatar)): ?>
-            <h3><?= $this->Html->image(empty($user->avatar) ? $avatarPlaceholder : $user->avatar, ['width' => '180', 'height' => '180']); ?></h3>
+            <!--<h3><?= $this->Html->image(empty($user->avatar) ? $avatarPlaceholder : $user->avatar, ['width' => '180', 'height' => '180']); ?></h3>-->
+            <div class="ma spaced-big" style="width: 180px;">
+                <input type="hidden" class="tapatar">
+            </div>
         <?php //endif; ?>
        
     <?php //@todo add to config ?>
@@ -84,3 +87,54 @@
 </div>
 <h3 class="subheader"><?= __('Your cats') ?></h3>
 <?= $this->element('partial/cats_grid'); ?>
+
+<script async src="/tapatar/exif.js"></script>
+<script async src="/tapatar/megapix-image.js"></script>
+<script async src="/tapatar/tapatar.js"></script>
+<link rel="stylesheet" href="/tapatar/tapatar.css">
+<script>
+$(window).on('load', function(){
+    $('input.tapatar').tapatar({
+        image_url_prefix: '/tapatar/img/',
+        sources: {
+        }
+    });
+    // $('input.tapatar').on('tapatar.source.picked', function(e, s){
+    //     console.log(s);
+    // });
+    // $('input.tapatar').on('tapatar.source.image_data.set', function(e, s){
+    //     console.log("e2");
+    // });
+    $('input.tapatar').on('tapatar.source.image_data.save', function(e, s){
+        $.post({                                                              
+            url: '/profiles/uploadAvatar.json',                   
+            data: {data: s}
+        }).done(function(data) {
+            console.log(data);
+            console.log("avatar upload done");
+        });       
+    });
+    $.get({
+        url: '/profiles/avatar/<?= h($user->username) ?>.json',
+        success: function(response){
+            // console.log(response);
+            $('.tptr-widget').css('background-image', 'url(' + response['avatar'].url + ')');
+        },
+        error: function(response){
+        }
+    });
+});
+</script>
+<style type="text/css">
+    .tptr-save {
+        padding: 0;
+    }
+    .tptr-source-pick{
+        padding:0;
+        margin:0;
+    }
+    .tptr-picker{
+        margin-top:60px !important;
+    }
+    
+</style>
