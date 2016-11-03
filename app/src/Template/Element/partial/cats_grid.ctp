@@ -97,9 +97,9 @@
                 <?php if($imgIdx >= 1) break; ?>
                 <div class="grid-item">
                     <?php if($image->thumbnail):?>
-                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>全て取得しました。もっと投稿してみませんか？</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
+                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
                     <?php else: ?>
-                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>全て取得しました。もっと投稿してみませんか？</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
+                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
                     <?php endif; ?>
                     <?php if(!empty($cat->user->username)): ?>
                         <div class="user"><a href="/profiles/user/<?= h($cat->user->username) ?>" >@<?= h($cat->user->username) ?></a></div>
