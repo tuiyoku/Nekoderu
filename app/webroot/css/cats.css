@@ -37,3 +37,8 @@
     margin-left: 50px;
     margin-top: 0px;
 }
+
+.chat-menu{
+    position: absolute;
+    right: 10%;
+}

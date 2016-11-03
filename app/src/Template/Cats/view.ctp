@@ -87,6 +87,7 @@
     			  コメントテンプレート
     			</div>
 		    </div>
+		    <div class="chat-menu"><a href="#"><i class="glyphicon glyphicon-trash"></i></a></div>
   	    </div>
   	</div>
 	  	<script>
@@ -97,7 +98,7 @@
         
         <script  type="text/javascript">
             var imageURLCache = {};
-            
+    
             var updateComments = function(data){
                 $("#comment").val('');
                 $("#comments").empty();
@@ -108,6 +109,7 @@
                     var url;
                     var cln = template.comment.clone();
                     cln.find('.chat-fukidashi').text(this.comment);
+                    // cln.find('form').attr('action', '/cats/delete/'+this.id);
                     var key = this.users_id;
                     if(key in imageURLCache){
                         cln.find('.chat-face img').attr('style', 'background-image: url('+imageURLCache[key]+');');
@@ -118,6 +120,34 @@
                             imageURLCache[key] = data;
                             cln.find('.chat-face img').attr('style', 'background-image: url('+imageURLCache[key]+');');
                         });  
+                    }
+                    
+                    if(this.users_id !== "<?= $auth['id'] ?>"){
+                        cln.find('.chat-menu').remove();
+                    }else{
+                        var id = this.id;
+                        cln.find('a').click(function(e){
+                            e.stopPropagation();
+                            e.preventDefault();
+                            (function(cln) {
+                                if(confirm("Do you really want to delete?")){
+                                    $.get({
+                                        url: '/cats/deleteComment/'+id+'.json',
+                                        success: function(response){
+                                            (function(cln) {
+                                                console.log(response);
+                                                cln.fadeOut(200, function(){
+                                                    cln.remove();
+                                                });
+                                            })(cln);
+                                        },
+                                        error: function(response){
+                                            console.log(response);
+                                        }
+                                    });
+                                }
+                            })(cln);
+                        });
                     }
                     
                    $("#comments").append(cln);

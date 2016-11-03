@@ -106,6 +106,7 @@ class CommentsController extends AdminAppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $comment = $this->Comments->get($id);
+        
         if ($this->Comments->delete($comment)) {
             $this->Flash->success(__('The comment has been deleted.'));
         } else {

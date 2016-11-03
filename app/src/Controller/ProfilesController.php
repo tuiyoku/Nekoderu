@@ -40,7 +40,7 @@ class ProfilesController extends AppController
     
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['user']);
+        $this->Auth->allow(['user','thumbnail','image', 'uploadAvatar', 'avatar']);
     }
     
     public function uploadAvatar(){
@@ -121,7 +121,11 @@ class ProfilesController extends AppController
         ->first();
         
         $this->autoRender = false;
-        print($avatar->url);
+        if($avatar !== null){
+            print($avatar->url);
+        }else{
+            print("/tapatar/img/default.svg");
+        }
     }
     
     public function thumbnail($uid){
@@ -133,7 +137,12 @@ class ProfilesController extends AppController
         ->first();
         
         $this->autoRender = false;
-        print($avatar->thumbnail);
+        
+        if($avatar !== null){
+            print($avatar->thumbnail);
+        }else{
+            print("/tapatar/img/default.svg");
+        }
     }
     
     public function user($username = null){
@@ -143,6 +152,16 @@ class ProfilesController extends AppController
             'username =' => $username
         ])
         ->first();
+        
+        $this->Avatars = TableRegistry::get('Avatars');
+        $avatar = $this->Avatars->find('all')
+        ->where([
+            'users_id ='=> $user->id
+        ])
+        ->first();
+        
+        $this->set(compact('avatar'));
+        $this->set('_serialize', ['avatar']);
         
         $this->profile($user->id);
         $data = $this->CatsCommon->listCats($user->id);

@@ -294,13 +294,32 @@ class CatsController extends AppController
                 ->limit(20)
                 ->all();
                 
-            $this->log($comments);
-        
             $this->set(compact('comments'));
             $this->set('_serialize', ['comments']);
         }
         
        
+    }
+    
+    public function deleteComment($id = null)
+    {
+        $response = false;
+        if ($this->request->is('ajax')) {
+            
+            $uid = $this->Auth->user()['id'];
+            if(!empty($uid)){
+                 
+                $comment = $this->Cats->Comments->get($id);
+                if($comment->users_id === $uid){
+                    if ($this->Cats->Comments->delete($comment)) {
+                        $response = true;
+                    }
+                }
+            }
+        }
+        
+        $this->set(compact('response'));
+        $this->set('_serialize', ['response']);
     }
     
     /**

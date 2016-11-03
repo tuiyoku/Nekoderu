@@ -105,6 +105,11 @@ $(window).on('load', function(){
     // $('input.tapatar').on('tapatar.source.image_data.set', function(e, s){
     //     console.log("e2");
     // });
+    <?php if (!empty($auth) && $auth['id'] === $user['id']): ?>
+    <?php else: ?>
+        $('.tptr-widget-pick').remove();
+    <?php endif; ?>
+    
     $('input.tapatar').on('tapatar.source.image_data.save', function(e, s){
         $.post({                                                              
             url: '/profiles/uploadAvatar.json',                   
@@ -114,26 +119,21 @@ $(window).on('load', function(){
             console.log("avatar upload done");
         });       
     });
-    $.get({
-        url: '/profiles/avatar/<?= h($user->username) ?>.json',
-        success: function(response){
-            $('.tptr-widget').css('background-image', 'url(' + response['avatar'].url + ')');
-        },
-        error: function(response){
-        }
-    });
+    $('.tptr-widget').css('background-image', 'url(<?= $avatar['url'] ? $avatar['url']: "/tapatar/img/default.svg" ?>)');
 });
 </script>
 <style type="text/css">
     .tptr-save {
         padding: 0;
+        margin-bottom: 0;
     }
     .tptr-source-pick{
         padding:0;
         margin:0;
     }
     .tptr-picker{
-        margin-top:60px !important;
+        margin-top:30% !important;
     }
+    
     
 </style>
