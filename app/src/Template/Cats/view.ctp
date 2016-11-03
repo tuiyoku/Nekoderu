@@ -40,7 +40,11 @@
             <div class="gutter-sizer"></div>
             <?php foreach ($cat->cat_images as $image): ?>
                 <div class="grid-item">
-                    <img src="<?= $image->url ?>"></img>
+                    <?php if($image->thumbnail):?>
+                        <a class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>"></img></a>
+                    <?php else: ?>
+                        <a class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>"></img></a>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -93,6 +97,25 @@
         $(function(){
             setModal("modal-status", "status-info");
         });
+        </script>
+        
+        <script>
+            $(function(){
+                $('a.gallery').magnificPopup({
+                    type:'image',
+                    gallery:{
+                        enabled:true
+                    },
+                    callbacks: {
+                        open: function() {
+                        },
+                        close: function() {
+                          // Will fire when popup is closed
+                        }
+                    }
+                    
+                });
+            });
         </script>
         
         <script  type="text/javascript">
@@ -206,3 +229,5 @@
 </div>
 
 <link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/modal.css">
+<link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/lightbox/magnific-popup.css"> 
+<script src="<?php echo$this->Url->build('/', false); ?>js/lightbox/jquery.magnific-popup.js"></script>

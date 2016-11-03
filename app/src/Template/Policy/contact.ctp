@@ -8,10 +8,10 @@
                     <h2 class="brand-before">
                         <small>崇城大学 和泉研究室</small>
                     </h2>
-                    <h3 class="brand-name">NEKODERU開発チーム</h3>
+                    <h3 class="brand-name">ねこでる開発チーム</h3>
                     <div>
                         <small>
-                           sojo.izumi.lab+nekoderu@gmail.com
+                           <a href="mailto:sojo.izumi.lab+nekoderu@gmail.com">sojo.izumi.lab+nekoderu@gmail.com</a>
                         </small>
                     </div>
                 </div>
