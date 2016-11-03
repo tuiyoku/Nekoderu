@@ -48,6 +48,15 @@ class CatsController extends AppController
         $this->set('_serialize', ['cats']);
     }
     
+    public function map()
+    {
+
+        $now = time();
+        $from_time = 1460559600;
+
+        $this->set(compact('now', 'from_time'));
+    }
+    
     /**
      * Index method
      *

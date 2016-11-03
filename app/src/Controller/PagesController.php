@@ -76,15 +76,7 @@ class PagesController extends AppController
         }
     }
 
-    public function index()
-    {
-        $this->viewBuilder()->layout('nekoderu');
-
-        $now = time();
-        $from_time = 1460559600;
-
-        $this->set(compact('now', 'from_time'));
-    }
+   
     
     public function top(){
         

@@ -128,7 +128,7 @@ app.infoWindows = [];
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locates[0], locates[1]),
                 map: app.gMap,
-                icon: 'img/' + 'cat_track' + '.png'
+                icon: '/img/' + 'cat_track' + '.png'
             });
             var template = $('#template-info-window').html();
             Mustache.parse(template);
@@ -201,7 +201,7 @@ app.infoWindows = [];
      */
     function requestCatList (start, end, flag) {
       return $.ajax({
-            url: 'cats/data.json',
+            url: '/cats/data.json',
             type: 'get',
             data: {
                 map_start: start,
