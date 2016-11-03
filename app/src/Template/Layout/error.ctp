@@ -33,6 +33,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
+    <?php include_once("analyticstracking.php") ?>
     <div id="container">
         <div id="header">
             <h1><?= $this->Html->link($cakeDescription, 'http://cakephp.org') ?></h1>

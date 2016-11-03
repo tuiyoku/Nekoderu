@@ -49,7 +49,6 @@
         対応状況：<?= $cat->response_status->title ?> <i id='status-info' class="glyphicon glyphicon-question-sign"></i>
     </div>
     <div class="row">
-        <h4><?= __('Comments') ?></h4>
         <?php
             echo $this->Form->create(null, [
                 'url' => 'cats/addComment',
@@ -130,7 +129,7 @@
                             e.stopPropagation();
                             e.preventDefault();
                             (function(cln) {
-                                if(confirm("Do you really want to delete?")){
+                                if(confirm("本当に削除していいですか？")){
                                     $.get({
                                         url: '/cats/deleteComment/'+id+'.json',
                                         success: function(response){
