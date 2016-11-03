@@ -73,6 +73,14 @@
     .mfp-iframe-holder .mfp-content{
         height: 100%;
     }
+    
+    li.disabled{
+        list-style: none;
+    }
+    
+    .disabled a{
+        color:black;
+    }
 }
 
 </style>
@@ -89,9 +97,9 @@
                 <?php if($imgIdx >= 1) break; ?>
                 <div class="grid-item">
                     <?php if($image->thumbnail):?>
-                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
+                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>全て取得しました。もっと投稿してみませんか？</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
                     <?php else: ?>
-                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>もっと見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
+                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>全て取得しました。もっと投稿してみませんか？</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
                     <?php endif; ?>
                     <?php if(!empty($cat->user->username)): ?>
                         <div class="user"><a href="/profiles/user/<?= h($cat->user->username) ?>" >@<?= h($cat->user->username) ?></a></div>
@@ -136,10 +144,10 @@
 <div class='loading-selector' style='margin-top: -150px;'>
 </div>
 <div class='row' id="page-nav">
-    <?php echo $this->Paginator->next('もっと見る', ['class'=>'next']); ?>
+    <?php echo $this->Paginator->next('全て取得しました。もっと投稿してみませんか？', ['class'=>'next']); ?>
 </div>
 <div id="add-neko">
-    <a class="btn btn-default btn-sm" href="<?=$this->Url->build('/', false); ?>cats/add" role="button">
+    <a class="btn btn-default btn-bg" href="<?=$this->Url->build('/', false); ?>cats/add" role="button">
         <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 投稿する
     </a>
 </div>
@@ -241,8 +249,9 @@ $(function(){
         dataType      : 'html',
         loading: {
             selector: '.loading-selector',
-            finishedMsg: 'No more posts to load.',
-            img: '<?=$this->Url->build('/', false); ?>img/ajax-loader.gif'
+            finishedMsg: '全て取得しました。もっと投稿してみませんか？',
+            img: '<?=$this->Url->build('/', false); ?>img/ajax-loader.gif',
+            msgText: '<em>投稿を取得しています...</em>',
         }
     }, function( newElements ) {
 		var $newElems = $( newElements );
