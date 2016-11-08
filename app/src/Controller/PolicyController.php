@@ -14,7 +14,7 @@ class PolicyController extends AppController
     
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'policy', 'encourage']);
+        $this->Auth->allow(['index', 'policy', 'encourage', 'contact']);
     }
     
     public function index(){
