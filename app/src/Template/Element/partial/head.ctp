@@ -27,7 +27,7 @@
     
     <!-- OGP -->
     <meta property="og:type" content="website">
-    <meta property="og:description" content="のら猫猫を地域猫として見守り共存していくためのTNR活動を促進することを目的として、崇城大学和泉研究室と龍之介動物病院によって開発、運営されているウェブサービスです。地域で見かけた地域で見かけた猫の写真を投稿することでTNR活動をサポートできます。">
+    <meta property="og:description" content="のらねこを地域ねことして見守り共存していくためのTNR活動を促進することを目的として、崇城大学和泉研究室と龍之介動物病院によって開発、運営されているウェブサービスです。地域で見かけた地域で見かけた猫の写真を投稿することでTNR活動をサポートできます。">
     <meta property="og:title" content="ねこでる">
     <meta property="og:site_name" content="ねこでる">
     <meta property="og:locale" content="ja_JP" />

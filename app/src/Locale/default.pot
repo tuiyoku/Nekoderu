@@ -1,0 +1,718 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2016-11-08 05:48+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/Admin/AvatarsController.php:58;85
+msgid "The avatar has been saved."
+msgstr ""
+
+#: Controller/Admin/AvatarsController.php:62;89
+msgid "The avatar could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/AvatarsController.php:109
+msgid "The avatar has been deleted."
+msgstr ""
+
+#: Controller/Admin/AvatarsController.php:111
+msgid "The avatar could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/Admin/CatImagesController.php:60;87
+#: Controller/Admin/CatsController.php:70
+msgid "The cat image has been saved."
+msgstr ""
+
+#: Controller/Admin/CatImagesController.php:64;91
+#: Controller/Admin/CatsController.php:74
+msgid "The cat image could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/CatImagesController.php:111
+#: Controller/Admin/CatsController.php:123
+msgid "The cat image has been deleted."
+msgstr ""
+
+#: Controller/Admin/CatImagesController.php:113
+#: Controller/Admin/CatsController.php:125
+msgid "The cat image could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/Admin/CatsController.php:98
+msgid "The cat has been saved."
+msgstr ""
+
+#: Controller/Admin/CatsController.php:102
+msgid "The cat could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/CommentsController.php:57;85
+msgid "The comment has been saved."
+msgstr ""
+
+#: Controller/Admin/CommentsController.php:61;89
+msgid "The comment could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/CommentsController.php:111
+msgid "The comment has been deleted."
+msgstr ""
+
+#: Controller/Admin/CommentsController.php:113
+msgid "The comment could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/Admin/FavoritesController.php:58;86
+msgid "The favorite has been saved."
+msgstr ""
+
+#: Controller/Admin/FavoritesController.php:62;90
+msgid "The favorite could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/FavoritesController.php:111
+msgid "The favorite has been deleted."
+msgstr ""
+
+#: Controller/Admin/FavoritesController.php:113
+msgid "The favorite could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/Admin/ResponseStatusesController.php:55;81
+msgid "The response status has been saved."
+msgstr ""
+
+#: Controller/Admin/ResponseStatusesController.php:59;85
+msgid "The response status could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/ResponseStatusesController.php:104
+msgid "The response status has been deleted."
+msgstr ""
+
+#: Controller/Admin/ResponseStatusesController.php:106
+msgid "The response status could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/Admin/UsersController.php:55;81
+msgid "The user has been saved."
+msgstr ""
+
+#: Controller/Admin/UsersController.php:59;85
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/UsersController.php:104
+msgid "The user has been deleted."
+msgstr ""
+
+#: Controller/Admin/UsersController.php:106
+msgid "The user could not be deleted. Please, try again."
+msgstr ""
+
+#: Template/Admin/Avatars/add.ctp:3
+#: Template/Admin/Avatars/edit.ctp:3
+#: Template/Admin/Avatars/index.ctp:3;20
+#: Template/Admin/Avatars/view.ctp:3
+#: Template/Admin/CatImages/add.ctp:3
+#: Template/Admin/CatImages/edit.ctp:3
+#: Template/Admin/CatImages/index.ctp:3;19
+#: Template/Admin/CatImages/view.ctp:3
+#: Template/Admin/Cats/add.ctp:3
+#: Template/Admin/Cats/edit.ctp:3
+#: Template/Admin/Cats/index.ctp:3;23
+#: Template/Admin/Cats/view.ctp:3
+#: Template/Admin/Comments/add.ctp:3
+#: Template/Admin/Comments/edit.ctp:3
+#: Template/Admin/Comments/index.ctp:3;22
+#: Template/Admin/Comments/view.ctp:3
+#: Template/Admin/Favorites/add.ctp:3
+#: Template/Admin/Favorites/edit.ctp:3
+#: Template/Admin/Favorites/index.ctp:3;21
+#: Template/Admin/Favorites/view.ctp:3
+#: Template/Admin/ResponseStatuses/add.ctp:3
+#: Template/Admin/ResponseStatuses/edit.ctp:3
+#: Template/Admin/ResponseStatuses/index.ctp:3;15
+#: Template/Admin/ResponseStatuses/view.ctp:3
+#: Template/Admin/Users/add.ctp:3
+#: Template/Admin/Users/edit.ctp:3
+#: Template/Admin/Users/index.ctp:3;30
+#: Template/Admin/Users/view.ctp:3;100
+#: Template/Cats/index.ctp:16
+msgid "Actions"
+msgstr ""
+
+#: Template/Admin/Avatars/add.ctp:4
+#: Template/Admin/Avatars/edit.ctp:10
+#: Template/Admin/Avatars/view.ctp:6
+msgid "List Avatars"
+msgstr ""
+
+#: Template/Admin/Avatars/add.ctp:5
+#: Template/Admin/Avatars/edit.ctp:11
+#: Template/Admin/Avatars/index.ctp:5
+#: Template/Admin/Avatars/view.ctp:8
+#: Template/Admin/Comments/add.ctp:5
+#: Template/Admin/Comments/edit.ctp:11
+#: Template/Admin/Comments/index.ctp:5
+#: Template/Admin/Comments/view.ctp:8
+#: Template/Admin/Favorites/add.ctp:5
+#: Template/Admin/Favorites/edit.ctp:11
+#: Template/Admin/Favorites/index.ctp:5
+#: Template/Admin/Favorites/view.ctp:8
+#: Template/Admin/Users/add.ctp:4
+#: Template/Admin/Users/edit.ctp:10
+#: Template/Admin/Users/view.ctp:6
+msgid "List Users"
+msgstr ""
+
+#: Template/Admin/Avatars/add.ctp:6
+#: Template/Admin/Avatars/edit.ctp:12
+#: Template/Admin/Avatars/index.ctp:6
+#: Template/Admin/Avatars/view.ctp:9
+#: Template/Admin/Comments/add.ctp:6
+#: Template/Admin/Comments/edit.ctp:12
+#: Template/Admin/Comments/index.ctp:6
+#: Template/Admin/Comments/view.ctp:9
+#: Template/Admin/Favorites/add.ctp:6
+#: Template/Admin/Favorites/edit.ctp:12
+#: Template/Admin/Favorites/index.ctp:6
+#: Template/Admin/Favorites/view.ctp:9
+#: Template/Admin/Users/index.ctp:4
+#: Template/Admin/Users/view.ctp:7
+msgid "New User"
+msgstr ""
+
+#: Template/Admin/Avatars/add.ctp:12
+msgid "Add Avatar"
+msgstr ""
+
+#: Template/Admin/Avatars/add.ctp:19
+#: Template/Admin/Avatars/edit.ctp:25
+#: Template/Admin/CatImages/add.ctp:19
+#: Template/Admin/CatImages/edit.ctp:25
+#: Template/Admin/Cats/add.ctp:32
+#: Template/Admin/Cats/edit.ctp:38
+#: Template/Admin/Comments/add.ctp:21
+#: Template/Admin/Comments/edit.ctp:27
+#: Template/Admin/Favorites/add.ctp:20
+#: Template/Admin/Favorites/edit.ctp:26
+#: Template/Admin/ResponseStatuses/add.ctp:16
+#: Template/Admin/ResponseStatuses/edit.ctp:22
+#: Template/Admin/Users/add.ctp:29
+#: Template/Admin/Users/edit.ctp:35
+msgid "Submit"
+msgstr ""
+
+#: Template/Admin/Avatars/edit.ctp:5
+#: Template/Admin/Avatars/index.ctp:35
+#: Template/Admin/CatImages/edit.ctp:5
+#: Template/Admin/CatImages/index.ctp:33
+#: Template/Admin/Cats/edit.ctp:5
+#: Template/Admin/Cats/index.ctp:47
+#: Template/Admin/Comments/edit.ctp:5
+#: Template/Admin/Comments/index.ctp:37
+#: Template/Admin/Favorites/edit.ctp:5
+#: Template/Admin/Favorites/index.ctp:35
+#: Template/Admin/ResponseStatuses/edit.ctp:5
+#: Template/Admin/ResponseStatuses/index.ctp:27
+#: Template/Admin/Users/edit.ctp:5
+#: Template/Admin/Users/index.ctp:55
+#: Template/Admin/Users/view.ctp:122
+#: Template/Cats/index.ctp:39
+msgid "Delete"
+msgstr ""
+
+#: Template/Admin/Avatars/edit.ctp:7
+#: Template/Admin/Avatars/index.ctp:35
+#: Template/Admin/Avatars/view.ctp:5
+#: Template/Admin/CatImages/edit.ctp:7
+#: Template/Admin/CatImages/index.ctp:33
+#: Template/Admin/CatImages/view.ctp:5
+#: Template/Admin/Cats/edit.ctp:7
+#: Template/Admin/Cats/index.ctp:47
+#: Template/Admin/Cats/view.ctp:5
+#: Template/Admin/Comments/edit.ctp:7
+#: Template/Admin/Comments/index.ctp:37
+#: Template/Admin/Comments/view.ctp:5
+#: Template/Admin/Favorites/edit.ctp:7
+#: Template/Admin/Favorites/index.ctp:35
+#: Template/Admin/Favorites/view.ctp:5
+#: Template/Admin/ResponseStatuses/edit.ctp:7
+#: Template/Admin/ResponseStatuses/index.ctp:27
+#: Template/Admin/ResponseStatuses/view.ctp:5
+#: Template/Admin/Users/edit.ctp:7
+#: Template/Admin/Users/index.ctp:55
+#: Template/Admin/Users/view.ctp:5;122
+#: Template/Cats/index.ctp:39
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: Template/Admin/Avatars/edit.ctp:18
+#: Template/Admin/Avatars/view.ctp:4
+msgid "Edit Avatar"
+msgstr ""
+
+#: Template/Admin/Avatars/index.ctp:4
+#: Template/Admin/Avatars/view.ctp:7
+msgid "New Avatar"
+msgstr ""
+
+#: Template/Admin/Avatars/index.ctp:10
+msgid "Avatars"
+msgstr ""
+
+#: Template/Admin/Avatars/index.ctp:33
+#: Template/Admin/CatImages/index.ctp:31
+#: Template/Admin/Cats/index.ctp:45
+#: Template/Admin/Comments/index.ctp:35
+#: Template/Admin/Favorites/index.ctp:33
+#: Template/Admin/ResponseStatuses/index.ctp:25
+#: Template/Admin/Users/index.ctp:53
+#: Template/Admin/Users/view.ctp:120
+#: Template/Cats/index.ctp:37
+msgid "View"
+msgstr ""
+
+#: Template/Admin/Avatars/index.ctp:34
+#: Template/Admin/CatImages/index.ctp:32
+#: Template/Admin/Cats/index.ctp:46
+#: Template/Admin/Comments/index.ctp:36
+#: Template/Admin/Favorites/index.ctp:34
+#: Template/Admin/ResponseStatuses/index.ctp:26
+#: Template/Admin/Users/index.ctp:54
+#: Template/Admin/Users/view.ctp:121
+#: Template/Cats/index.ctp:38
+msgid "Edit"
+msgstr ""
+
+#: Template/Admin/Avatars/index.ctp:43
+#: Template/Admin/CatImages/index.ctp:41
+#: Template/Admin/Cats/index.ctp:60
+#: Template/Admin/Comments/index.ctp:45
+#: Template/Admin/Favorites/index.ctp:43
+#: Template/Admin/ResponseStatuses/index.ctp:35
+#: Template/Admin/Users/index.ctp:63
+#: Template/Cats/index.ctp:52
+msgid "previous"
+msgstr ""
+
+#: Template/Admin/Avatars/index.ctp:45
+#: Template/Admin/CatImages/index.ctp:43
+#: Template/Admin/Cats/index.ctp:62
+#: Template/Admin/Comments/index.ctp:47
+#: Template/Admin/Favorites/index.ctp:45
+#: Template/Admin/ResponseStatuses/index.ctp:37
+#: Template/Admin/Users/index.ctp:65
+#: Template/Cats/index.ctp:54
+msgid "next"
+msgstr ""
+
+#: Template/Admin/Avatars/view.ctp:5
+msgid "Delete Avatar"
+msgstr ""
+
+#: Template/Admin/Avatars/view.ctp:16
+#: Template/Admin/Cats/view.ctp:41
+#: Template/Admin/Comments/view.ctp:18
+#: Template/Admin/Favorites/view.ctp:18
+msgid "User"
+msgstr ""
+
+#: Template/Admin/Avatars/view.ctp:20
+#: Template/Admin/CatImages/view.ctp:37
+msgid "Url"
+msgstr ""
+
+#: Template/Admin/Avatars/view.ctp:24
+msgid "Thumbnail"
+msgstr ""
+
+#: Template/Admin/Avatars/view.ctp:28
+#: Template/Admin/CatImages/view.ctp:20
+#: Template/Admin/Cats/view.ctp:20
+#: Template/Admin/Comments/view.ctp:26
+#: Template/Admin/Favorites/view.ctp:26
+#: Template/Admin/ResponseStatuses/view.ctp:14
+#: Template/Admin/Users/view.ctp:16;85
+msgid "Id"
+msgstr ""
+
+#: Template/Admin/Avatars/view.ctp:32
+#: Template/Admin/CatImages/view.ctp:28
+#: Template/Admin/Comments/view.ctp:30
+#: Template/Admin/Favorites/view.ctp:30
+#: Template/Admin/ResponseStatuses/view.ctp:18
+#: Template/Admin/Users/view.ctp:64;98
+msgid "Created"
+msgstr ""
+
+#: Template/Admin/Avatars/view.ctp:36
+#: Template/Admin/CatImages/view.ctp:32
+#: Template/Admin/Comments/view.ctp:34
+#: Template/Admin/Favorites/view.ctp:34
+#: Template/Admin/ResponseStatuses/view.ctp:22
+#: Template/Admin/Users/view.ctp:68;99
+msgid "Modified"
+msgstr ""
+
+#: Template/Admin/CatImages/add.ctp:4
+#: Template/Admin/CatImages/edit.ctp:10
+#: Template/Admin/CatImages/view.ctp:6
+msgid "List Cat Images"
+msgstr ""
+
+#: Template/Admin/CatImages/add.ctp:5
+#: Template/Admin/CatImages/edit.ctp:11
+#: Template/Admin/CatImages/index.ctp:5
+#: Template/Admin/CatImages/view.ctp:8
+#: Template/Admin/Cats/add.ctp:4
+#: Template/Admin/Cats/edit.ctp:10
+#: Template/Admin/Cats/view.ctp:6
+#: Template/Admin/Comments/add.ctp:7
+#: Template/Admin/Comments/edit.ctp:13
+#: Template/Admin/Comments/index.ctp:7
+#: Template/Admin/Comments/view.ctp:10
+#: Template/Admin/Favorites/add.ctp:7
+#: Template/Admin/Favorites/edit.ctp:13
+#: Template/Admin/Favorites/index.ctp:7
+#: Template/Admin/Favorites/view.ctp:10
+msgid "List Cats"
+msgstr ""
+
+#: Template/Admin/CatImages/add.ctp:6
+#: Template/Admin/CatImages/edit.ctp:12
+#: Template/Admin/CatImages/index.ctp:6
+#: Template/Admin/CatImages/view.ctp:9
+#: Template/Admin/Cats/index.ctp:4
+#: Template/Admin/Cats/view.ctp:7
+#: Template/Admin/Comments/add.ctp:8
+#: Template/Admin/Comments/edit.ctp:14
+#: Template/Admin/Comments/index.ctp:8
+#: Template/Admin/Comments/view.ctp:11
+#: Template/Admin/Favorites/add.ctp:8
+#: Template/Admin/Favorites/edit.ctp:14
+#: Template/Admin/Favorites/index.ctp:8
+#: Template/Admin/Favorites/view.ctp:11
+msgid "New Cat"
+msgstr ""
+
+#: Template/Admin/CatImages/add.ctp:12
+msgid "Add Cat Image"
+msgstr ""
+
+#: Template/Admin/CatImages/edit.ctp:18
+#: Template/Admin/CatImages/view.ctp:4
+msgid "Edit Cat Image"
+msgstr ""
+
+#: Template/Admin/CatImages/index.ctp:4
+#: Template/Admin/CatImages/view.ctp:7
+msgid "New Cat Image"
+msgstr ""
+
+#: Template/Admin/CatImages/index.ctp:10
+msgid "Cat Images"
+msgstr ""
+
+#: Template/Admin/CatImages/view.ctp:5
+msgid "Delete Cat Image"
+msgstr ""
+
+#: Template/Admin/CatImages/view.ctp:16
+#: Template/Admin/Comments/view.ctp:22
+#: Template/Admin/Favorites/view.ctp:22
+msgid "Cat"
+msgstr ""
+
+#: Template/Admin/CatImages/view.ctp:24
+msgid "Users Id"
+msgstr ""
+
+#: Template/Admin/Cats/add.ctp:10
+msgid "Add Cat"
+msgstr ""
+
+#: Template/Admin/Cats/edit.ctp:16
+#: Template/Admin/Cats/view.ctp:4
+msgid "Edit Cat"
+msgstr ""
+
+#: Template/Admin/Cats/index.ctp:8
+#: Template/Cats/index.ctp:2
+msgid "Cats"
+msgstr ""
+
+#: Template/Admin/Cats/view.ctp:5
+msgid "Delete Cat"
+msgstr ""
+
+#: Template/Admin/Cats/view.ctp:16
+msgid "Locate"
+msgstr ""
+
+#: Template/Admin/Cats/view.ctp:24
+msgid "Time"
+msgstr ""
+
+#: Template/Admin/Cats/view.ctp:28
+msgid "Flg"
+msgstr ""
+
+#: Template/Admin/Cats/view.ctp:32
+msgid "Status"
+msgstr ""
+
+#: Template/Admin/Cats/view.ctp:36
+msgid "Ear Shape"
+msgstr ""
+
+#: Template/Admin/Cats/view.ctp:47
+msgid "Images"
+msgstr ""
+
+#: Template/Admin/Cats/view.ctp:53
+#: Template/Admin/Comments/index.ctp:12
+msgid "Comments"
+msgstr ""
+
+#: Template/Admin/Cats/view.ctp:59
+msgid "Address"
+msgstr ""
+
+#: Template/Admin/Comments/add.ctp:4
+#: Template/Admin/Comments/edit.ctp:10
+#: Template/Admin/Comments/view.ctp:6
+msgid "List Comments"
+msgstr ""
+
+#: Template/Admin/Comments/add.ctp:14
+msgid "Add Comment"
+msgstr ""
+
+#: Template/Admin/Comments/edit.ctp:20
+#: Template/Admin/Comments/view.ctp:4
+msgid "Edit Comment"
+msgstr ""
+
+#: Template/Admin/Comments/index.ctp:4
+#: Template/Admin/Comments/view.ctp:7
+msgid "New Comment"
+msgstr ""
+
+#: Template/Admin/Comments/view.ctp:5
+msgid "Delete Comment"
+msgstr ""
+
+#: Template/Admin/Comments/view.ctp:39
+msgid "Comment"
+msgstr ""
+
+#: Template/Admin/Favorites/add.ctp:4
+#: Template/Admin/Favorites/edit.ctp:10
+#: Template/Admin/Favorites/view.ctp:6
+msgid "List Favorites"
+msgstr ""
+
+#: Template/Admin/Favorites/add.ctp:14
+msgid "Add Favorite"
+msgstr ""
+
+#: Template/Admin/Favorites/edit.ctp:20
+#: Template/Admin/Favorites/view.ctp:4
+msgid "Edit Favorite"
+msgstr ""
+
+#: Template/Admin/Favorites/index.ctp:4
+#: Template/Admin/Favorites/view.ctp:7
+msgid "New Favorite"
+msgstr ""
+
+#: Template/Admin/Favorites/index.ctp:12
+msgid "Favorites"
+msgstr ""
+
+#: Template/Admin/Favorites/view.ctp:5
+msgid "Delete Favorite"
+msgstr ""
+
+#: Template/Admin/ResponseStatuses/add.ctp:4
+#: Template/Admin/ResponseStatuses/edit.ctp:10
+#: Template/Admin/ResponseStatuses/view.ctp:6
+msgid "List Response Statuses"
+msgstr ""
+
+#: Template/Admin/ResponseStatuses/add.ctp:10
+msgid "Add Response Status"
+msgstr ""
+
+#: Template/Admin/ResponseStatuses/edit.ctp:16
+#: Template/Admin/ResponseStatuses/view.ctp:4
+msgid "Edit Response Status"
+msgstr ""
+
+#: Template/Admin/ResponseStatuses/index.ctp:4
+#: Template/Admin/ResponseStatuses/view.ctp:7
+msgid "New Response Status"
+msgstr ""
+
+#: Template/Admin/ResponseStatuses/index.ctp:8
+msgid "Response Statuses"
+msgstr ""
+
+#: Template/Admin/ResponseStatuses/view.ctp:5
+msgid "Delete Response Status"
+msgstr ""
+
+#: Template/Admin/ResponseStatuses/view.ctp:27
+msgid "Title"
+msgstr ""
+
+#: Template/Admin/ResponseStatuses/view.ctp:31
+#: Template/Admin/Users/view.ctp:91
+msgid "Description"
+msgstr ""
+
+#: Template/Admin/Users/add.ctp:5
+#: Template/Admin/Users/edit.ctp:11
+#: Template/Admin/Users/index.ctp:5
+#: Template/Admin/Users/view.ctp:8
+msgid "List Social Accounts"
+msgstr ""
+
+#: Template/Admin/Users/add.ctp:6
+#: Template/Admin/Users/edit.ctp:12
+#: Template/Admin/Users/index.ctp:6
+#: Template/Admin/Users/view.ctp:9
+msgid "New Social Account"
+msgstr ""
+
+#: Template/Admin/Users/add.ctp:12
+msgid "Add User"
+msgstr ""
+
+#: Template/Admin/Users/edit.ctp:18
+#: Template/Admin/Users/view.ctp:4
+msgid "Edit User"
+msgstr ""
+
+#: Template/Admin/Users/index.ctp:10
+msgid "Users"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:5
+msgid "Delete User"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:20;88
+msgid "Username"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:24
+msgid "Email"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:28
+msgid "Password"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:32
+msgid "First Name"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:36
+msgid "Last Name"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:40;93
+msgid "Token"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:44
+msgid "Api Token"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:48
+msgid "Role"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:52;95
+msgid "Token Expires"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:56
+msgid "Activation Date"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:60
+msgid "Tos Date"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:72;96
+msgid "Active"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:73;77
+msgid "Yes"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:73;77
+msgid "No"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:76
+msgid "Is Superuser"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:81
+msgid "Related Social Accounts"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:86
+msgid "User Id"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:87
+msgid "Provider"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:89
+msgid "Reference"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:90
+msgid "Avatar"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:92
+msgid "Link"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:94
+msgid "Token Secret"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:97
+msgid "Data"
+msgstr ""
+
+#: Template/Profiles/user.ctp:88
+msgid "Your cats"
+msgstr ""
+
+#: Template/Tests/vision_test.ctp:11
+msgid "投稿する"
+msgstr ""
+

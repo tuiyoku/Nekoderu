@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">のら猫がいますか？</a>
+            <a class="navbar-brand" href="/">ねこがいますか？</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="main-navbar">
@@ -33,7 +33,7 @@
             else:
             ?>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/profiles/user/<?=$auth['username']?>">ユーザ情報</a></li>
+                    <li><a href="/profiles/user/<?=$auth['username']?>">マイページ</a></li>
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
             <?php

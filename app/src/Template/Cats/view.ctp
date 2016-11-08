@@ -50,9 +50,6 @@
         </div>
     </div>
     <div class="row">
-        対応状況：<?= $cat->response_status->title ?> <i id='status-info' class="glyphicon glyphicon-question-sign"></i>
-    </div>
-    <div class="row">
         <?php
             echo $this->Form->create(null, [
                 'url' => 'cats/addComment',

@@ -1,0 +1,318 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2016-11-08 05:48+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Template/Plugin/CakeDC/Users/Email/html/reset_password.ctp:21
+#: Template/Plugin/CakeDC/Users/Email/text/reset_password.ctp:20
+#: Template/Plugin/CakeDC/Users/Email/text/social_account_validation.ctp:22
+msgid "こんにちわ {0} さん"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/html/reset_password.ctp:24
+msgid "ここを開いてパスワードのリセットを行ってください"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/html/reset_password.ctp:27
+#: Template/Plugin/CakeDC/Users/Email/html/social_account_validation.ctp:32
+#: Template/Plugin/CakeDC/Users/Email/html/validation.ctp:27
+msgid "リンクが正しく表示されない場合は次のアドレスをブラウザに貼り付けてください。 {0}"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/html/reset_password.ctp:30
+#: Template/Plugin/CakeDC/Users/Email/text/reset_password.ctp:24
+msgid "いつもご利用ありがとうございます。"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/html/social_account_validation.ctp:14
+msgid "こんにちわ {0}"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/html/social_account_validation.ctp:18
+#: Template/Plugin/CakeDC/Users/Email/html/validation.ctp:24
+msgid "ここを開いて登録を完了してください"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/html/social_account_validation.ctp:35
+#: Template/Plugin/CakeDC/Users/Email/text/social_account_validation.ctp:26
+msgid "ご利用ありがとうございます。"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/html/validation.ctp:21
+msgid "はじめまして {0} さん"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/html/validation.ctp:30
+#: Template/Plugin/CakeDC/Users/Email/text/validation.ctp:24
+msgid "興味をお持ちいただきましてありがとうございます。"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/text/reset_password.ctp:22
+msgid "次のリンクを開いてパスワードのリセットを行ってください。 {0}"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/text/social_account_validation.ctp:24
+msgid "次のリンクを開いてソーシャルログインの登録を完了してください {0}"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/text/validation.ctp:20
+msgid "ようこそ {0} さん"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Email/text/validation.ctp:22
+msgid "次のリンクを開いて登録を完了してください。 {0}"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/add.ctp:21
+#: Template/Plugin/CakeDC/Users/Users/edit.ctp:23
+#: Template/Plugin/CakeDC/Users/Users/index.ctp:21;34
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:23;87
+msgid "Actions"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/add.ctp:23
+#: Template/Plugin/CakeDC/Users/Users/edit.ctp:34
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:27
+msgid "List Users"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/add.ctp:24
+#: Template/Plugin/CakeDC/Users/Users/edit.ctp:35
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:29
+msgid "List Accounts"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/add.ctp:30
+msgid "Add User"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/add.ctp:40
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:24
+#: Template/Plugin/CakeDC/Users/Users/edit.ctp:55
+#: Template/Plugin/CakeDC/Users/Users/resend_token_validation.ctp:28
+#: Template/Plugin/CakeDC/Users/Users/social_email.ctp:27
+msgid "Submit"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:12
+msgid "Please enter the new password"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:17
+msgid "Current password"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/edit.ctp:28
+#: Template/Plugin/CakeDC/Users/Users/index.ctp:48
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:109
+msgid "Delete"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/edit.ctp:30
+#: Template/Plugin/CakeDC/Users/Users/index.ctp:48
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:26;109
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/edit.ctp:41
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:25
+msgid "Edit User"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/index.ctp:23
+msgid "New {0}"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/index.ctp:45
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:105
+msgid "View"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/index.ctp:46
+msgid "Change password"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/index.ctp:47
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:107
+msgid "Edit"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/index.ctp:57
+msgid "previous"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/index.ctp:59
+msgid "next"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:28
+msgid "登録したメールアドレスとパスワードでログインしてください"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:38
+msgid "ログイン状態を保持する"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:46
+msgid "ユーザ登録"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:52
+msgid "パスワードを忘れた場合"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:57
+msgid "ログイン"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:24
+msgid "新規登録"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:36
+msgid "利用規約に同意しますか?"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:43
+msgid "登録"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/request_reset_password.ctp:12
+msgid "登録しているメールアドレスを入力してください"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/request_reset_password.ctp:15
+msgid "送信"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/resend_token_validation.ctp:23
+msgid "Resend Validation email"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/resend_token_validation.ctp:25
+msgid "Email or username"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/social_email.ctp:24
+msgid "Please enter your email"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:26
+msgid "Delete User"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:28
+msgid "New User"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:36;75
+msgid "Id"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:38;78
+#: Template/Profiles/user.ctp:38
+msgid "Username"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:40
+#: Template/Profiles/user.ctp:40
+msgid "Email"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:42
+msgid "First Name"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:44
+msgid "Last Name"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:46;81
+msgid "Token"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:48
+msgid "Api Token"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:52;83
+msgid "Active"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:56;82
+msgid "Token Expires"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:58
+msgid "Activation Date"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:60
+msgid "Tos Date"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:62;85
+msgid "Created"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:64;86
+msgid "Modified"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:71
+msgid "Related Accounts"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:76
+msgid "User Id"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:77
+#: Template/Profiles/user.ctp:48
+msgid "Provider"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:79
+msgid "Reference"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:80
+#: Template/Profiles/user.ctp:47
+msgid "Avatar"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/view.ctp:84
+msgid "Data"
+msgstr ""
+
+#: Template/Profiles/user.ctp:31
+msgid "{0} {1}"
+msgstr ""
+
+#: Template/Profiles/user.ctp:43
+msgid "Social Accounts"
+msgstr ""
+
+#: Template/Profiles/user.ctp:49
+msgid "Link"
+msgstr ""
+
+#: Template/Profiles/user.ctp:56
+msgid "Link to {0}"
+msgstr ""
+
+#: Template/Profiles/user.ctp:83
+msgid "Change Password"
+msgstr ""
+

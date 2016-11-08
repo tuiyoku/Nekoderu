@@ -38,6 +38,9 @@ class CatsTable extends Table
         $this->hasMany('Comments', [
             'foreignKey' => 'cats_id',
         ]);
+        $this->hasMany('Answers', [
+            'foreignKey' => 'cats_id',
+        ]);
         $this->belongsTo('ResponseStatuses', [
             'foreignKey' => 'response_statuses_id',
         ]);

@@ -48,14 +48,14 @@ class CatsController extends AppController
         $this->set('_serialize', ['cats']);
     }
     
-    public function map()
-    {
+    // public function map()
+    // {
 
-        $now = time();
-        $from_time = 1460559600;
+    //     $now = time();
+    //     $from_time = 1460559600;
 
-        $this->set(compact('now', 'from_time'));
-    }
+    //     $this->set(compact('now', 'from_time'));
+    // }
     
     /**
      * Index method
@@ -157,6 +157,11 @@ class CatsController extends AppController
     {
         $this->CatImages = TableRegistry::get('CatImages');
         
+        $this->Questions = TableRegistry::get('Questions');
+        $questions = $this->Questions->find('all');
+        $this->set(compact('questions'));
+        $this->set('_serialize', ['questions']);
+        
         if ($this->request->is('post')) {
 
             $data = $this->request->data;
@@ -194,6 +199,17 @@ class CatsController extends AppController
             $cat->users_id = $uid;
             if ($this->Cats->save($cat)) {
                 $this->Flash->success('猫を保存しました。');
+            }
+            
+            $this->Questions = TableRegistry::get('Questions');
+            $questions = $this->Questions->find('all');
+            foreach($questions as $question){
+                $answer = $this->Cats->Answers->newEntity();
+                $answer->cats_id = $cat->id;
+                $answer->questions_id = $question->id;
+                $answer->value = $data[$question->name];
+                if ($this->Cats->Answers->save($answer)) {
+                }
             }
             
             $commentDO = $this->Cats->Comments->newEntity();

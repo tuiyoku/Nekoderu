@@ -19,19 +19,23 @@
 
 .radio input[type="radio"] {
     float: none;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
     margin-left: -16px;
     vertical-align: middle;
+}
+
+.ears .radio input[type="radio"] {
+    margin-top: 5px;
 }
 
 .radio label {
     padding-left: 15px;
 }
 
-.form-control {
-    margin-left: 5%;
-    width: 90%;
-}
+/*.form-control {*/
+/*    margin-left: 5%;*/
+/*    width: 90%;*/
+/*}*/
 
 .box-mini {
     margin-left: 5%;
@@ -94,4 +98,29 @@
 
 .btn-default {
     background-image: none;
+}
+
+.details {
+    width: 100%;
+    border: none;
+}
+
+.details tr {
+    background-color: white !important;
+}
+.details td {
+    padding: 0;
+    white-space: nowrap;
+}
+
+.details input {
+    margin: 0px;
+}
+
+.details .radio {
+    margin: 2px;
+}
+
+.details .radio label{
+        padding: 10px;
 }
