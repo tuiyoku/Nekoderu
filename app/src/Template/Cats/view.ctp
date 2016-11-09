@@ -60,7 +60,7 @@
             <?= $this->Form->input('cat_id', ['type' => 'hidden', 'id' => 'cat_id', 'value' => $cat->id]); ?>
             <div>
                 <?= $this->Form->input('comment', ['id' => 'comment', 'label' => false]); ?>
-                <?=$this->Form->submit('投稿', ['id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]); ?>
+                <?=$this->Form->submit('コメント投稿', ['id' => 'js-submit-button', 'value'=>'コメント投稿', 'label' => false]); ?>
             </div>
         <?php else: ?>
             <div>
