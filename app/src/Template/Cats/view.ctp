@@ -223,3 +223,5 @@
 <link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/modal.css">
 <link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/lightbox/magnific-popup.css"> 
 <script src="<?php echo$this->Url->build('/', false); ?>js/lightbox/jquery.magnific-popup.js"></script>
+<script async src="/tapatar/exif.js"></script>
+<script async src="/tapatar/megapix-image.js"></script>

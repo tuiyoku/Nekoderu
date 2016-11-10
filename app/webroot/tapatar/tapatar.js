@@ -205,7 +205,6 @@ Tptr.sources.local = new Tptr.TapatarSource({
     this.fileInput = $('<input type="file" style="display:none;" accept=".png,.jpeg,.jpg,.gif">');
     function handleFileSelect(evt) {
       var files = evt.target.files;
-      
 
       for (var i = 0, f; f = files[i]; i++) {
 

@@ -12,6 +12,7 @@ function addListener(imageElem){
         var imgElem;
         
         if(imageElem.parentElement.firstChild.nodeName != "IMG"){
+            
             imgElem = document.createElement("img");
             // imgElem.setAttribute("id", "preview");
             imgElem.setAttribute("class", "preview");
@@ -33,13 +34,33 @@ function addListener(imageElem){
             imgElem = imageElem.parentElement.firstChild;
         }
         
+        var f = this.files[0];
+        
         var reader = new FileReader();
-        reader.onload = function (e) {
-            imgElem.src = e.target.result;
-        };
-    
+        reader.onload = (function(theFile) {
+          return function(e) {
+            //if EXIF and MegaPixImage exists modify orientation based on EXIF information
+            if(typeof EXIF !== 'undefined' && typeof MegaPixImage !== 'undefined'){
+                EXIF.getData(theFile, function(){
+                    var orientation = theFile.exifdata.Orientation;
+                    var img = new Image();
+                    new MegaPixImage(theFile).render(img, { orientation: orientation });
+                    
+                    (function(){
+                        if ( img.src ){
+                            imgElem.setAttribute("src", img.src);
+                        }else{
+                            setTimeout(arguments.callee, 100);
+                        }
+                    })();
+                });
+            }else{
+                imgElem.setAttribute("src", e.target.result);
+            }
+          };
+        })(f);
         // read the image file as a data URL.
-        reader.readAsDataURL(this.files[0]);
+        reader.readAsDataURL(f);
     };
 }
 $(function(){
