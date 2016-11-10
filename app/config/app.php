@@ -191,6 +191,15 @@ return [
             'tls' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
+        'AWS_SES' => [
+            'className' => 'Smtp',
+            'host' => env('AWS_SES_HOST'),
+            'port' => 587, // this is very important to be 587!!
+            'timeout' => 30,
+            'username' => env('AWS_SES_USER'),
+            'password' => env('AWS_SES_PASSWORD'),
+            'tls' => true, // this is also very important!!
+        ]
     ],
 
     /**
@@ -209,6 +218,12 @@ return [
             //'charset' => 'utf-8',
             //'headerCharset' => 'utf-8',
         ],
+        'production' => [
+            'transport' => 'AWS_SES',
+            'from' => 'noreply@neko.today',
+            //'log' => true,
+        ]
+
     ],
 
     /**

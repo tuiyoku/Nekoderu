@@ -128,16 +128,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.19.13",
+            "version": "3.19.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "57b0efed8fcf5d8c854bc1c26cf4a685af9108d9"
+                "reference": "fbfb87734e5d298b40354ac7fb3f95d0f72ad16e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/57b0efed8fcf5d8c854bc1c26cf4a685af9108d9",
-                "reference": "57b0efed8fcf5d8c854bc1c26cf4a685af9108d9",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fbfb87734e5d298b40354ac7fb3f95d0f72ad16e",
+                "reference": "fbfb87734e5d298b40354ac7fb3f95d0f72ad16e",
                 "shasum": ""
             },
             "require": {
@@ -204,20 +204,20 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2016-10-06 21:17:44"
+            "time": "2016-11-03 20:28:28"
         },
         {
             "name": "cakedc/users",
-            "version": "3.2.4",
+            "version": "3.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CakeDC/users.git",
-                "reference": "2a337cbf80ad22eb447462d7446e4ab933ccf61d"
+                "reference": "038607e37bb74dd8dfba38efb09d453367873674"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CakeDC/users/zipball/2a337cbf80ad22eb447462d7446e4ab933ccf61d",
-                "reference": "2a337cbf80ad22eb447462d7446e4ab933ccf61d",
+                "url": "https://api.github.com/repos/CakeDC/users/zipball/038607e37bb74dd8dfba38efb09d453367873674",
+                "reference": "038607e37bb74dd8dfba38efb09d453367873674",
                 "shasum": ""
             },
             "require": {
@@ -261,7 +261,7 @@
                     "homepage": "https://github.com/CakeDC/users/graphs/contributors"
                 }
             ],
-            "description": "Users Plugin for CakePHP 3",
+            "description": "Users Plugin for CakePHP",
             "homepage": "https://github.com/CakeDC/users",
             "keywords": [
                 "Authentication",
@@ -270,20 +270,20 @@
                 "cakephp",
                 "oauth2"
             ],
-            "time": "2016-09-13 19:34:15"
+            "time": "2016-10-20 14:23:14"
         },
         {
             "name": "cakephp/cakephp",
-            "version": "3.3.5",
+            "version": "3.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "d1a1d304af8d04ef50add08d9610c224662b2295"
+                "reference": "6ab9f76c5cba2190a721ff3bf242e8dec78a5016"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/d1a1d304af8d04ef50add08d9610c224662b2295",
-                "reference": "d1a1d304af8d04ef50add08d9610c224662b2295",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/6ab9f76c5cba2190a721ff3bf242e8dec78a5016",
+                "reference": "6ab9f76c5cba2190a721ff3bf242e8dec78a5016",
                 "shasum": ""
             },
             "require": {
@@ -343,7 +343,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-09-30 01:33:11"
+            "time": "2016-11-07 02:19:04"
         },
         {
             "name": "cakephp/chronos",
@@ -492,16 +492,16 @@
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v3.0.0",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1"
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1",
-                "reference": "fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
                 "shasum": ""
             },
             "require": {
@@ -531,7 +531,7 @@
             ],
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2015-07-22 18:31:08"
+            "time": "2016-07-18 04:51:16"
         },
         {
             "name": "friendsofcake/bootstrap-ui",
@@ -765,22 +765,22 @@
         },
         {
             "name": "google/apiclient",
-            "version": "v2.0.3",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client.git",
-                "reference": "37adb8a6f4d4b27b9900d62d67bf1d54995a755c"
+                "reference": "f4a8ef0642cdbea0a07f6966158337bab846d4de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/37adb8a6f4d4b27b9900d62d67bf1d54995a755c",
-                "reference": "37adb8a6f4d4b27b9900d62d67bf1d54995a755c",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/f4a8ef0642cdbea0a07f6966158337bab846d4de",
+                "reference": "f4a8ef0642cdbea0a07f6966158337bab846d4de",
                 "shasum": ""
             },
             "require": {
-                "firebase/php-jwt": "~2.0|~3.0",
-                "google/apiclient-services": "^0.7",
-                "google/auth": "0.10",
+                "firebase/php-jwt": "~2.0|~3.0|~4.0",
+                "google/apiclient-services": "^0.8",
+                "google/auth": "^0.11",
                 "guzzlehttp/guzzle": "~5.2|~6.0",
                 "guzzlehttp/psr7": "^1.2",
                 "monolog/monolog": "^1.17",
@@ -788,14 +788,14 @@
                 "phpseclib/phpseclib": "~2.0"
             },
             "require-dev": {
+                "cache/filesystem-adapter": "^0.3.2",
                 "phpunit/phpunit": "~4",
                 "squizlabs/php_codesniffer": "~2.3",
                 "symfony/css-selector": "~2.1",
-                "symfony/dom-crawler": "~2.1",
-                "tedivm/stash": "^0.14.1"
+                "symfony/dom-crawler": "~2.1"
             },
             "suggest": {
-                "tedivm/stash": "For caching certs and tokens (using Google_Client::setCache)"
+                "cache/filesystem-adapter": "For caching certs and tokens (using Google_Client::setCache)"
             },
             "type": "library",
             "extra": {
@@ -820,20 +820,20 @@
             "keywords": [
                 "google"
             ],
-            "time": "2016-09-14 19:33:35"
+            "time": "2016-11-02 14:28:02"
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.7",
+            "version": "v0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client-services.git",
-                "reference": "c07a8a9d424024f1a9fc5d62da8ed5467ed25909"
+                "reference": "26bcd71cb4fcf78020ec24052ddfb28550e01bc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/c07a8a9d424024f1a9fc5d62da8ed5467ed25909",
-                "reference": "c07a8a9d424024f1a9fc5d62da8ed5467ed25909",
+                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/26bcd71cb4fcf78020ec24052ddfb28550e01bc8",
+                "reference": "26bcd71cb4fcf78020ec24052ddfb28550e01bc8",
                 "shasum": ""
             },
             "require": {
@@ -854,24 +854,24 @@
             "keywords": [
                 "google"
             ],
-            "time": "2016-09-14 19:12:27"
+            "time": "2016-10-18 01:01:16"
         },
         {
             "name": "google/auth",
-            "version": "v0.10",
+            "version": "v0.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-auth-library-php.git",
-                "reference": "760e3fbe4064c0525c22e27e5374eada3c103da8"
+                "reference": "a240674b08a09949fd5597f7590b3ed83663a12d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-auth-library-php/zipball/760e3fbe4064c0525c22e27e5374eada3c103da8",
-                "reference": "760e3fbe4064c0525c22e27e5374eada3c103da8",
+                "url": "https://api.github.com/repos/google/google-auth-library-php/zipball/a240674b08a09949fd5597f7590b3ed83663a12d",
+                "reference": "a240674b08a09949fd5597f7590b3ed83663a12d",
                 "shasum": ""
             },
             "require": {
-                "firebase/php-jwt": "~2.0|~3.0",
+                "firebase/php-jwt": "~2.0|~3.0|~4.0",
                 "guzzlehttp/guzzle": "~5.3|~6.0",
                 "guzzlehttp/psr7": "~1.2",
                 "php": ">=5.4",
@@ -902,20 +902,20 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2016-08-02 22:00:48"
+            "time": "2016-11-02 14:59:14"
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.2.1",
+            "version": "6.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427"
+                "reference": "ebf29dee597f02f09f4d5bbecc68230ea9b08f60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3f808fba627f2c5b69e2501217bf31af349c1427",
-                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ebf29dee597f02f09f4d5bbecc68230ea9b08f60",
+                "reference": "ebf29dee597f02f09f4d5bbecc68230ea9b08f60",
                 "shasum": ""
             },
             "require": {
@@ -964,7 +964,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-07-15 17:22:37"
+            "time": "2016-10-08 15:01:37"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1340,16 +1340,16 @@
         },
         {
             "name": "league/oauth2-facebook",
-            "version": "1.4.2",
+            "version": "1.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-facebook.git",
-                "reference": "5995a4e53d49f0c0c2f859c823c467d252627157"
+                "reference": "c1af92b501649f99bd7670abd0c8153bed8d3d47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-facebook/zipball/5995a4e53d49f0c0c2f859c823c467d252627157",
-                "reference": "5995a4e53d49f0c0c2f859c823c467d252627157",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-facebook/zipball/c1af92b501649f99bd7670abd0c8153bed8d3d47",
+                "reference": "c1af92b501649f99bd7670abd0c8153bed8d3d47",
                 "shasum": ""
             },
             "require": {
@@ -1387,7 +1387,7 @@
                 "oauth",
                 "oauth2"
             ],
-            "time": "2016-08-02 16:34:29"
+            "time": "2016-10-21 00:54:37"
         },
         {
             "name": "league/oauth2-google",
@@ -1498,16 +1498,16 @@
         },
         {
             "name": "league/oauth2-linkedin",
-            "version": "0.4.1",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-linkedin.git",
-                "reference": "705fedb30765573970cac064eda501f1d7b55692"
+                "reference": "a55463659dd97a7051b10fd654f96dc3b66b1fb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-linkedin/zipball/705fedb30765573970cac064eda501f1d7b55692",
-                "reference": "705fedb30765573970cac064eda501f1d7b55692",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-linkedin/zipball/a55463659dd97a7051b10fd654f96dc3b66b1fb4",
+                "reference": "a55463659dd97a7051b10fd654f96dc3b66b1fb4",
                 "shasum": ""
             },
             "require": {
@@ -1550,7 +1550,7 @@
                 "oauth",
                 "oauth2"
             ],
-            "time": "2016-08-06 13:53:15"
+            "time": "2016-11-09 17:01:43"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -2028,7 +2028,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -2081,16 +2081,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "6cb0872fb57b38b3b09ff213c21ed693956b9eb0"
+                "reference": "c99da1119ae61e15de0e4829196b9fba6f73d065"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/6cb0872fb57b38b3b09ff213c21ed693956b9eb0",
-                "reference": "6cb0872fb57b38b3b09ff213c21ed693956b9eb0",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c99da1119ae61e15de0e4829196b9fba6f73d065",
+                "reference": "c99da1119ae61e15de0e4829196b9fba6f73d065",
                 "shasum": ""
             },
             "require": {
@@ -2138,11 +2138,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-28 00:11:12"
+            "time": "2016-10-06 01:44:51"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -2199,16 +2199,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "682fd8fdb3135fdf05fc496a01579ccf6c85c0e5"
+                "reference": "0565b61bf098cb4dc09f4f103f033138ae4f42c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/682fd8fdb3135fdf05fc496a01579ccf6c85c0e5",
-                "reference": "682fd8fdb3135fdf05fc496a01579ccf6c85c0e5",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/0565b61bf098cb4dc09f4f103f033138ae4f42c6",
+                "reference": "0565b61bf098cb4dc09f4f103f033138ae4f42c6",
                 "shasum": ""
             },
             "require": {
@@ -2244,7 +2244,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-14 00:18:46"
+            "time": "2016-10-18 04:30:12"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2307,16 +2307,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "368b9738d4033c8b93454cb0dbd45d305135a6d3"
+                "reference": "7ff51b06c6c3d5cc6686df69004a42c69df09e27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/368b9738d4033c8b93454cb0dbd45d305135a6d3",
-                "reference": "368b9738d4033c8b93454cb0dbd45d305135a6d3",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/7ff51b06c6c3d5cc6686df69004a42c69df09e27",
+                "reference": "7ff51b06c6c3d5cc6686df69004a42c69df09e27",
                 "shasum": ""
             },
             "require": {
@@ -2352,7 +2352,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-25 08:27:07"
+            "time": "2016-10-24 18:41:13"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -2406,16 +2406,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.3.6",
+            "version": "1.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "a60da179c37f2c4e44ef734d0b92824a58943f7f"
+                "reference": "969ff423d3f201da3ff718a5831bb999bb0669b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/a60da179c37f2c4e44ef734d0b92824a58943f7f",
-                "reference": "a60da179c37f2c4e44ef734d0b92824a58943f7f",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/969ff423d3f201da3ff718a5831bb999bb0669b0",
+                "reference": "969ff423d3f201da3ff718a5831bb999bb0669b0",
                 "shasum": ""
             },
             "require": {
@@ -2452,7 +2452,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2016-09-07 17:57:29"
+            "time": "2016-10-11 13:25:21"
         }
     ],
     "packages-dev": [
@@ -2505,16 +2505,16 @@
         },
         {
             "name": "cakephp/debug_kit",
-            "version": "3.3.4",
+            "version": "3.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "8b3fa35ef51b35611ae285d3d35a84b945dea245"
+                "reference": "0f893a06b1208d49d92c0537d43f5e512bfd3738"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/8b3fa35ef51b35611ae285d3d35a84b945dea245",
-                "reference": "8b3fa35ef51b35611ae285d3d35a84b945dea245",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/0f893a06b1208d49d92c0537d43f5e512bfd3738",
+                "reference": "0f893a06b1208d49d92c0537d43f5e512bfd3738",
                 "shasum": ""
             },
             "require": {
@@ -2558,7 +2558,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2016-09-29 01:25:58"
+            "time": "2016-10-24 02:10:49"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3860,16 +3860,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "70bfe927b86ba9999aeebd829715b0bb2cd39a10"
+                "reference": "4dc2f03b480c43f1665d3317d827a04ed6ffd11e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/70bfe927b86ba9999aeebd829715b0bb2cd39a10",
-                "reference": "70bfe927b86ba9999aeebd829715b0bb2cd39a10",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/4dc2f03b480c43f1665d3317d827a04ed6ffd11e",
+                "reference": "4dc2f03b480c43f1665d3317d827a04ed6ffd11e",
                 "shasum": ""
             },
             "require": {
@@ -3919,7 +3919,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2016-09-29 14:13:09"
+            "time": "2016-10-18 15:46:07"
         },
         {
             "name": "webmozart/assert",
