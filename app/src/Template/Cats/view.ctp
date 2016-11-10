@@ -146,7 +146,6 @@
                     }else{
                         var id = this.id;
                         cln.find('a').click(function(e){
-                            e.stopPropagation();
                             e.preventDefault();
                             (function(cln) {
                                 if(confirm("本当に削除していいですか？")){

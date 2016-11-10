@@ -22,7 +22,23 @@ class CatsController extends AppController
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'add', 'view', 'data', 'grid', 'addComment', 'comments']);
+        
+        //TODO: きっとやり方違う
+        if($this->Auth->user()){
+            $this->Auth->allow(['index', 'add', 'view', 'data', 'grid', 'comments', 'addComment', 'deleteComment', 'favorite']);
+        }else{
+            $this->Auth->allow(['index', 'add', 'view', 'data', 'grid', 'comments']);    
+        }
+    }
+    
+    public function isAuthorized($user)
+    {
+        // Check that the $user is equal to the current user.
+        $id = $this->request->params['pass'][0];
+        if ($id == $user['id']) {
+            return true;
+        }
+        return false;
     }
     
     /**
@@ -143,6 +159,7 @@ class CatsController extends AppController
             $cat = $this->Cats->get($cats_id, [
                 'contain' => ['Favorites']
             ]);
+            
             $this->set(compact('cat'));
             $this->set('_serialize', ['cat']);
         }
