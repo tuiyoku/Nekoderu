@@ -14,6 +14,7 @@
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('cats_id') ?></th>
                 <th><?= $this->Paginator->sort('users_id') ?></th>
+                <th><?= $this->Paginator->sort('image') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
                 <th><?= $this->Paginator->sort('modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -25,6 +26,7 @@
                 <td><?= $this->Number->format($catImage->id) ?></td>
                 <td><?= $catImage->has('cat') ? $this->Html->link($catImage->cat->id, ['controller' => 'Cats', 'action' => 'view', $catImage->cat->id]) : '' ?></td>
                 <td><?= $this->Number->format($catImage->users_id) ?></td>
+                <td><img src="<?= $catImage->url ?>" width="64px"></img></td>
                 <td><?= h($catImage->created) ?></td>
                 <td><?= h($catImage->modified) ?></td>
                 <td class="actions">

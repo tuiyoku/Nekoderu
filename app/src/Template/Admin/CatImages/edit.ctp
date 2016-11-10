@@ -13,6 +13,8 @@
     </ul>
 </nav>
 <div class="catImages form large-9 medium-8 columns content">
+    <div><img src="<?= $catImage->url ?>" width="200px"></img></div>
+    <div><?=$this->Form->postLink('Rotate 90 Right', ['action' => 'rotate', $catImage->id])?></div>
     <?= $this->Form->create($catImage) ?>
     <fieldset>
         <legend><?= __('Edit Cat Image') ?></legend>

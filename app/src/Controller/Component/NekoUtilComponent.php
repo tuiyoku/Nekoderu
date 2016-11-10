@@ -103,6 +103,38 @@ class NekoUtilComponent extends Component {
       }
       return str_replace('~', realpath($homeDirectory), $path);
     }
+    
+    /**
+     * 画像を回転する
+     * @param $orgFilePath
+     * @param $exportFilePath
+     * @param $ang
+     *
+     * @return string
+     */
+    function rotateImage($orgFilePath, $exportFilePath, $ang) {
+        // 書き出しファイル名を生成
+        $outputFilePath = $exportFilePath . "/" . $this->generateUniqueFileName();
+
+        // 元画像情報を取得
+        $size = getimagesize($orgFilePath);
+        if ($size === false) {
+            // 画像として認識できなかった
+            return "";
+        }
+        list($w, $h, $type) = $size;
+        list($width, $height) = $this->getSaveFileSize($w, $h);
+
+        // 1回最初にリサイズする
+        $res = new \Imagick($orgFilePath);
+        $res->rotateImage(new \ImagickPixel(), $ang); 
+        if (!$res->writeImage($outputFilePath)) {
+            // 書き込み失敗
+            return "";
+        }
+
+        return $outputFilePath;
+    }
    
     /**
      * 一度画像を別の形式に変換し、jpg形式に変換する

@@ -11,7 +11,8 @@ use Cake\Event\Event;
  */
 class CatImagesController extends AdminAppController
 {
-
+    
+    public $components = ['NekoUtil'];
     
     /**
      * Index method
@@ -114,5 +115,40 @@ class CatImagesController extends AdminAppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    
+    public function rotate($id = null)
+    {
+        $this->request->allowMethod(['post']);
+        
+        $catImage = $this->CatImages->get($id);
+        $path = $this->NekoUtil->rotateImage($catImage->url,TMP, 90);
+        
+        $savePath = $this->NekoUtil->safeImage($path, TMP);
+        
+        if ($savePath === "") {
+            die("不正な画像がuploadされました");
+        }
+        $result = $this->NekoUtil->s3Upload($savePath, '');
+        // 書きだした画像を削除
+        @unlink($savePath);
+        
+        //サムネイルを作成
+        $savePath = $this->NekoUtil->createThumbnail($path, TMP);
+        if ($savePath === "") {
+            die("不正な画像がuploadされました");
+        }
+        $thumbnail = $this->NekoUtil->s3Upload($savePath, '');
+        // 書きだした画像を削除
+        @unlink($savePath);
+        
+        $catImage->url = $result['ObjectURL'];
+        $catImage->thumbnail = $thumbnail['ObjectURL'];
+        if ($this->CatImages->save($catImage)) {
+            // $this->Flash->success('画像を保存しました。');
+        }
+        
+        return $this->redirect(['action' => 'edit', $id]);
+        
     }
 }
