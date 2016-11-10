@@ -30,21 +30,21 @@ class PolicyController extends AppController
 
             $validator = new Validator();
             $validator
-                ->validatePresence('email')
+                ->requirePresence('email')
                 ->notEmpty('name', 'メールアドレスは必須です。')
                 ->add('email', 'validFormat', [
                     'rule' => 'email',
                     'message' => '正しいメールアドレスを入力してください。'
                 ])
-                ->validatePresence('name')
+                ->requirePresence('name')
                 ->notEmpty('name', 'お名前は必須です。')
-                ->validatePresence('subject')
+                ->requirePresence('subject')
                 ->notEmpty('subject', 'ご用件は必須です。')
-                ->validatePresence('body')
+                ->requirePresence('body')
                 ->notEmpty('body', 'お問い合わせ内容は必須です。');
 
             $errors = $validator->errors($this->request->data);
-            if (!empty($errors)) {
+            if (empty($errors)) {
                 $this->sendContact($this->request->data);
                 $this->Flash->success('お問い合わせを受け付けました。');
             } else {
@@ -66,7 +66,7 @@ class PolicyController extends AppController
         $email->viewVars($content);
         $email->template("contact", "contact");
         $email->subject("Nekoderuにお問合せがありました");
-        $email->to(env('CONTACT_TO'));
+        $email->to([env('CONTACT_TO')]);
         $email->send();
     }
 
