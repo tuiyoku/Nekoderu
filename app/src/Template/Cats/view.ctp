@@ -58,10 +58,8 @@
         ?>
         <?php if ($auth): ?>
             <?= $this->Form->input('cat_id', ['type' => 'hidden', 'id' => 'cat_id', 'value' => $cat->id]); ?>
-            <div>
                 <?= $this->Form->input('comment', ['id' => 'comment', 'label' => false]); ?>
-                <?=$this->Form->submit('コメント投稿', ['id' => 'js-submit-button', 'value'=>'コメント投稿', 'label' => false]); ?>
-            </div>
+                <?=$this->Form->submit('投稿', ['id' => 'js-submit-button', 'value'=>'投稿', 'label' => false]); ?>
         <?php else: ?>
             <div>
                 <?= $this->Form->input('comment', [
@@ -82,11 +80,9 @@
             <div class="chat-face">
 			    <img src="" width="30" height="30">
 		    </div>
-		    <div class="chat-area">
-    			<div class="chat-fukidashi">
-    			  コメントテンプレート
-    			</div>
-		    </div>
+			<div class="chat-fukidashi">
+			  コメントテンプレート
+			</div>
 		    <div class="chat-menu"><a href="#"><i class="glyphicon glyphicon-trash"></i></a></div>
   	    </div>
   	</div>

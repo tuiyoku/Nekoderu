@@ -1,5 +1,5 @@
 <div style="margin:15px 0;text-align:center">
-    あなたが見かけた「ねこ」について教えて下さい
+    あなたが見かけた「ねこ」を教えて下さい
 </div>
 <!-- The Modal -->
 <div id="modal-ear" class="modal">
@@ -79,45 +79,40 @@
         
         <table class="details">
         <?php foreach ($questions as $question): ?>
-            <?php if ($question['type'] == 'radio'): ?>
             <tr>
-                <td><label><?= $question['displayName'] ?></label></td>
+                <th><?= $question['displayName'] ?></th>
             <td>
-                <div class="inline_checkboxes">
-                    <?php 
-                        $options = explode(',', $question['options']);
-                        $ar = [];
-                        foreach($options as $option){
-                            $ar[] = ['value' => $option, 'text' => $option];
-                        }
-                        echo $this->Form->input(
-                            $question['name'],
-                            array(
-                                'multiple' => 'checkbox',
-                                'type' => 'radio',
-                                'options' => $options,
-                                'escape' => false,
-                                'label' => false,
-                                'default' => '0'
-                            )  
-                        );
-                    ?>
-                </div>
-            </td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($question['type'] == 'text'): ?>
-            <tr>
-                <td><label><?= $question['displayName'] ?></label></td>
-                <td>
-                    <div>
-                        <?php
-                            echo $this->Form->text($question['name'], ['placeholder' => $question['description'] ]);
+                <?php if ($question['type'] == 'radio'): ?>
+                    <div class="inline_checkboxes">
+                        <?php 
+                            $options = explode(',', $question['options']);
+                            $ar = [];
+                            foreach($options as $option){
+                                $ar[] = ['value' => $option, 'text' => $option];
+                            }
+                            echo $this->Form->input(
+                                $question['name'],
+                                array(
+                                    'multiple' => 'checkbox',
+                                    'type' => 'radio',
+                                    'options' => $options,
+                                    'escape' => false,
+                                    'label' => false,
+                                    'default' => '0'
+                                )  
+                            );
                         ?>
                     </div>
+                <?php endif; ?>
+                <?php if ($question['type'] == 'text'): ?>
+                 <div>
+                    <?php
+                        echo $this->Form->text($question['name'], ['placeholder' => $question['description'] ]);
+                    ?>
+                </div>
                 </td>
-            </tr>
             <?php endif; ?>
+            </tr>
         <?php endforeach; ?>
         </table>
     </div>
