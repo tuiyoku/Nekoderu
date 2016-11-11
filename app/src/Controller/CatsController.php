@@ -88,9 +88,16 @@ class CatsController extends AppController
         
         $session = $this->request->session();
         if($session->read('Last.Submit.Cat') != null){
-            $suggestRegistration = true;
-            $this->set(compact('suggestRegistration'));
-            $this->set('_serialize', ['suggestRegistration']);
+            $shown = $session->read('Last.Submit.Cat.Shown');
+            if(!empty($shown) && $shown){
+                $session->delete('Last.Submit.Cat.Shown');
+                $session->delete('Last.Submit.Cat');
+            }else{
+                $session->write('Last.Submit.Cat.Shown', false);
+                $suggestRegistration = true;
+                $this->set(compact('suggestRegistration'));
+                $this->set('_serialize', ['suggestRegistration']);
+            }
         }
 
         $this->set(compact('cats'));

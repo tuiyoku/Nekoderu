@@ -181,6 +181,7 @@ $(function(){
         
         <?php if(!empty($suggestRegistration) && $suggestRegistration): ?>
             $('.encourage-popup').trigger('click');
+            <?php $this->request->session()->write('Last.Submit.Cat.Shown', true); ?>
         <?php endif; ?>
     }
     
