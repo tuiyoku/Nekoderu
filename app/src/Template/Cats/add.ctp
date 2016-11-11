@@ -57,7 +57,7 @@
             ２．場所を設定する <a id='get_gps' href="#">クリックしてGPSから取得</a> <i id='gps-info' class="glyphicon glyphicon-question-sign"></i>
         </div>
         <?php echo $this->Form->input('', 
-        ['type' => 'text', 'id' => 'address', 'placeholder' => '住所や場所のわかる内容を記入してください', 'required' => 'required']); ?>
+        ['type' => 'text', 'id' => 'address', 'name' => 'address', 'placeholder' => '住所や場所のわかる内容を記入してください', 'required' => 'required']); ?>
     </div>
     <div class="box">
         <div class="memo-title">３．ねこの耳の情報を入力する <i id='ear-info' class="glyphicon glyphicon-question-sign"></i></div>
@@ -143,6 +143,24 @@ $(function(){
     setModal("modal-ear", "ear-info");
     setModal("modal-gps", "gps-info");
 });
+
+$("form").submit(function(e) {
+
+    var ref = $(this).find("[required]");
+
+    $(ref).each(function(){
+        if ( $(this).val() == '' )
+        {
+            // alert("Required field should not be blank.");
+            alert("場所の情報を入力してください");
+
+            $(this).focus();
+            e.preventDefault();
+            return false;
+        }
+    });  return true;
+});
+
 </script>
 
 <style>
