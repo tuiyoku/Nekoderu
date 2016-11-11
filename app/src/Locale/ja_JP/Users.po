@@ -178,7 +178,7 @@ msgstr "ユーザー登録が完了しました。ログインしてご利用く
 
 #: Controller/Traits/RegisterTrait.php:113
 msgid "Please validate your account before log in"
-msgstr "確認メールを送信しまし。ログインする前にメールを確認して登録を完了してください。"
+msgstr "確認メールを送信しました。ログインする前にメールを確認して登録を完了してください。"
 
 #: Controller/Traits/SimpleCrudTrait.php:76;105
 msgid "The {0} has been saved"

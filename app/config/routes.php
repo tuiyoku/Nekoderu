@@ -61,6 +61,11 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
     
+    /**
+     * CakeDC拡張の対応
+     */
+    $routes->redirect('/profiles/login', '/login');
+    
     
     /**
      * Connect catchall routes for all controllers.

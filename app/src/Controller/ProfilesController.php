@@ -16,6 +16,8 @@ use Cake\ORM\TableRegistry;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Log\Log;
+
 
 /**
  * Users Controller
@@ -40,7 +42,7 @@ class ProfilesController extends AppController
     
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['user','thumbnail','image', 'uploadAvatar', 'avatar']);
+        $this->Auth->allow(['user','thumbnail','image', 'uploadAvatar', 'avatar', 'registration']);
     }
     
     public function uploadAvatar(){
@@ -170,6 +172,30 @@ class ProfilesController extends AppController
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
         
+    }
+    
+     /**
+     * Register a new user
+     *
+     * @throws NotFoundException
+     * @return type
+     */
+    public function registration()
+    {
+        $this->eventManager()->on(UsersAuthComponent::EVENT_AFTER_REGISTER, function ($e) {
+            $session = $this->request->session();
+            $cat = $session->read('Last.Submit.Cat');
+            if($cat != null){
+                $this->Cats = TableRegistry::get('Cats');
+                $cat->users_id = $e->data['user']->id;
+                if ( $this->Cats->save($cat)) {
+                    $this->Flash->success('登録前に投稿した猫を保存しました');
+                }
+                $session->delete('Last.Submit.Cat');
+            }
+        });
+       return $this->register();
+       
     }
     
     /**

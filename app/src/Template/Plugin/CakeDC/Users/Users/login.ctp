@@ -43,7 +43,7 @@ $this->extend('/Layout/nekoderu');
             <?php
             $registrationActive = Configure::read('Users.Registration.active');
             if ($registrationActive) {
-                echo $this->Html->link(__d('CakeDC/Users', 'ユーザ登録'), ['action' => 'register']);
+                echo $this->Html->link(__d('CakeDC/Users', 'ユーザ登録'), '/profiles/registration');
             }
             if (Configure::read('Users.Email.required')) {
                 if ($registrationActive) {

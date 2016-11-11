@@ -25,9 +25,9 @@ class CatsController extends AppController
         
         //TODO: きっとやり方違う
         if($this->Auth->user()){
-            $this->Auth->allow(['index', 'add', 'view', 'data', 'grid', 'comments', 'addComment', 'deleteComment', 'favorite']);
+            $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments', 'addComment', 'deleteComment', 'favorite']);
         }else{
-            $this->Auth->allow(['index', 'add', 'view', 'data', 'grid', 'comments']);    
+            $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments']);    
         }
     }
     
@@ -85,6 +85,13 @@ class CatsController extends AppController
         
         $data = $this->CatsCommon->listCats();
         $cats = $this->paginate($data);
+        
+        $session = $this->request->session();
+        if($session->read('Last.Submit.Cat') != null){
+            $suggestRegistration = true;
+            $this->set(compact('suggestRegistration'));
+            $this->set('_serialize', ['suggestRegistration']);
+        }
 
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
@@ -216,6 +223,12 @@ class CatsController extends AppController
             $cat->users_id = $uid;
             if ($this->Cats->save($cat)) {
                 $this->Flash->success('猫を保存しました。');
+                
+                $session = $this->request->session();
+                $session->delete('Last.Submit.Cat');
+                if($uid == 0){
+                    $session->write('Last.Submit.Cat', $cat);
+                }
             }
             
             $this->Questions = TableRegistry::get('Questions');

@@ -35,7 +35,7 @@
                     </h2>
                     <h3 class="brand-name">ユーザー登録するといろいろな機能がお楽しみいただけます</h3>
                     <div>
-                        <a href="/users/users/register" target="_top">
+                        <a href="/profiles/registration" target="_top">
                             <button　class="btn btn-default btn-sm">登録する</button>
                         </a>
                         <small>

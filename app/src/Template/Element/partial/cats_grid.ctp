@@ -154,6 +154,7 @@
 
 <script type="text/javascript">
 $(function(){
+    
     function encourage_popup(e){
         <?php if (!$auth):?>
             e.stopPropagation();
@@ -177,6 +178,10 @@ $(function(){
         $('.encourage-popup').click(function(e) {
            encourage_popup(e);
         });
+        
+        <?php if(!empty($suggestRegistration) && $suggestRegistration): ?>
+            $('.encourage-popup').trigger('click');
+        <?php endif; ?>
     }
     
     function lightboxing(){
