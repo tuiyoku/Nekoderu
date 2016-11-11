@@ -63,6 +63,8 @@ class AppController extends Controller
                 'Crud.RelatedModels',
             ]
         ]);
+        
+        // $this->loadComponent('Security', ['blackHoleCallback' => 'forceSSL']);
       
     }
 
@@ -86,14 +88,14 @@ class AppController extends Controller
         $this->set('auth', $this->Auth->user());
     }
     
-    // public function isAuthorized($user)
+    // public function beforeFilter(Event $event) 
     // {
-    //     // Admin can access every action
-    //     if (isset($user['role']) && $user['role'] === 'admin') {
-    //         return true;
-    //     }
+    //     parent::beforeFilter($event); 
+    //     $this->Security->requireSecure();
+    // }
     
-    //     // Default deny
-    //     return false;
+    // public function forceSSL()
+    // {
+    //     return $this->redirect('https://' . env('SERVER_NAME') . $this->request->here);
     // }
 }
