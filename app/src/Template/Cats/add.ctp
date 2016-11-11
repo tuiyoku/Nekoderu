@@ -145,13 +145,17 @@ $(function(){
 });
 
 $("form").submit(function(e) {
+    
+    if($('.button-file').length < 2){
+        alert("写真を選んでください");
+
+        e.preventDefault();
+        return false;
+    }
 
     var ref = $(this).find("[required]");
-
     $(ref).each(function(){
-        if ( $(this).val() == '' )
-        {
-            // alert("Required field should not be blank.");
+        if ( $(this).val() == '' ) {
             alert("場所の情報を入力してください");
 
             $(this).focus();
