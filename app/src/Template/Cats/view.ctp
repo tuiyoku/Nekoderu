@@ -179,8 +179,6 @@ var updateComments = function(data){
             part +='<div>'+data.comment+'</div>';
             cln.find('.chat-fukidashi').html(part);
             
-            // cln.find('.chat-fukidashi').text(this.comment.comment);
-            
         }else{
             cln.find('.chat-fukidashi').text(this.comment);
         }
@@ -188,14 +186,27 @@ var updateComments = function(data){
         cln.find('.chat-time').text(new Date(this.created).toTwitterRelativeTime('ja') );
         
         var key = this.users_id;
+        console.log(imageURLCache);
         if(key in imageURLCache){
             cln.find('.chat-face img').attr('style', 'background-image: url('+imageURLCache[key]+');');
+            
+            if("/tapatar/img/default.svg" === imageURLCache[key]){
+                cln.find('.chat-face img').remove();
+                $('.chat-info, .chat-fukidashi').css('margin-left', '0');
+            }
+                    
         }else{
             $.get({                                                              
                 url: '/profiles/thumbnail/' + key + '.json'
             }).done(function(data) {
                 imageURLCache[key] = data;
                 cln.find('.chat-face img').attr('style', 'background-image: url('+imageURLCache[key]+');');
+                
+                if("/tapatar/img/default.svg" === imageURLCache[key]){
+                    cln.find('.chat-face img').remove();
+                    $('.chat-info, .chat-fukidashi').css('margin-left', '0');
+                }
+                    
             });  
         }
         
