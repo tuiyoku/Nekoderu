@@ -1,18 +1,3 @@
-#addComment {
-    margin-top: 10px;
-}
-
-#addComment  .form-group{
-    display: inline-block;
-    margin-bottom: 0px;
-    width : calc(100% - 90px);
-}
-#addComment  .submit{
-    display: inline-block;
-    float:right;
-    width : 80px;
-}
-
 /* チャットレイアウト */
 .comment {
     width: 100%;
@@ -57,4 +42,10 @@
     position: absolute;
     right: 0px;
     top:10px;
+}
+
+.chat-time {
+    text-align: right;
+    font-style: italic;
+    color: gray;
 }

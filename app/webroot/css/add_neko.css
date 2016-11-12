@@ -55,46 +55,6 @@
     margin-bottom: 0px;
 }
 
-/*
-写真の複数選択関係
-*/
-#photos {
-    margin-top: 5px;
-    margin-left: 5%;
-    width: 90%;
-}
-
-.button-file {
-    border-width: 1px;
-    border-color: black;
-    border-style: dashed;
-    height: 90px;
-    width: 90px;
-    float: left;
-    padding: 0px;
-    margin-left: 3px;
-}
-
-.button-file span {
-    line-height: 90px;
-    vertical-align: middle;
-}
-
-.button-file img {
-    height: 90px;
-    width: 90px;
-}
-
-/*.infowin ul {*/
-/*    font-size: 14px;*/
-/*    line-height: 1;*/
-/*    margin-top: 10px;*/
-/*    margin-bottom: 10px;*/
-/*}*/
-
-/*.infowin li{*/
-/*    margin-bottom: 4px;*/
-/*}*/
 
 .btn-default {
     background-image: none;

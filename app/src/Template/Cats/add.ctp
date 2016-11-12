@@ -42,14 +42,7 @@
 ?>
     <div class="box">
         <div class="memo-title">１．写真を選ぶ
-            <div id="photos" class="clearfix">
-                <label class="button-file">
-                <?php
-                    echo $this->Form->input('', ['type' => 'file', 'id' => 'image_0', 'class' => 'hide', 'label' => false]);
-                ?>
-                <span>追加する</span>
-                </label>
-            </div>
+            <?= $this->element('partial/multi_image_selector'); ?>
         </div>
     </div>
     <div id='now' class="box">

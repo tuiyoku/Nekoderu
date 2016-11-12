@@ -107,7 +107,11 @@
                     <div>
                         <?php foreach ($cat->comments as $idx => $comment): ?>
                             <?php if($idx >= 3) break; ?>
-                            <div class="grid-comment"><?= $comment->comment ?></div>
+                            <?php if(!is_null(json_decode($comment->comment))): ?>
+                                <div class="grid-comment"><?= json_decode($comment->comment, true)['comment'] ?></div>
+                            <?php else: ?>
+                                <div class="grid-comment"><?= $comment->comment ?></div>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                     <div class="grid-buttons">

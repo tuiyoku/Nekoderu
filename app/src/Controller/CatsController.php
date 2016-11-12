@@ -25,7 +25,7 @@ class CatsController extends AppController
         
         //TODO: きっとやり方違う
         if($this->Auth->user()){
-            $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments', 'addComment', 'deleteComment', 'favorite']);
+            $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments', 'addComment', 'deleteComment', 'addPhoto', 'favorite']);
         }else{
             $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments']);    
         }
@@ -39,6 +39,41 @@ class CatsController extends AppController
             return true;
         }
         return false;
+    }
+    
+    private function saveCatImage($file, $cat_id, $uid){
+        
+        $savePath = $this->NekoUtil->safeImage($file["tmp_name"], TMP);
+        if ($savePath === "") {
+            die("不正な画像がuploadされました");
+        }
+        $result = $this->NekoUtil->s3Upload($savePath, '');
+        // 書きだした画像を削除
+        @unlink($savePath);
+        
+        //サムネイルを作成
+        $savePath = $this->NekoUtil->createThumbnail($file["tmp_name"], TMP);
+        if ($savePath === "") {
+            die("不正な画像がuploadされました");
+        }
+        $thumbnail = $this->NekoUtil->s3Upload($savePath, '');
+        // 書きだした画像を削除
+        @unlink($savePath);
+
+        if ($result) {
+            
+            $catImage = $this->Cats->CatImages->newEntity();
+            $catImage->url = $result['ObjectURL'];
+            $catImage->thumbnail = $thumbnail['ObjectURL'];
+            $catImage->users_id = $uid;
+            $catImage->cats_id = $cat_id;
+            if ($this->Cats->CatImages->save($catImage)) {
+                // $this->Flash->success('画像を保存しました。');
+                return $catImage;
+            }
+        }
+        return null;
+        
     }
     
     /**
@@ -263,35 +298,7 @@ class CatsController extends AppController
                     
                         // アップロード処理
                         $file = $data["image"][$i];
-    
-                        $savePath = $this->NekoUtil->safeImage($file["tmp_name"], TMP);
-                        if ($savePath === "") {
-                            die("不正な画像がuploadされました");
-                        }
-                        $result = $this->NekoUtil->s3Upload($savePath, '');
-                        // 書きだした画像を削除
-                        @unlink($savePath);
-                        
-                        //サムネイルを作成
-                        $savePath = $this->NekoUtil->createThumbnail($file["tmp_name"], TMP);
-                        if ($savePath === "") {
-                            die("不正な画像がuploadされました");
-                        }
-                        $thumbnail = $this->NekoUtil->s3Upload($savePath, '');
-                        // 書きだした画像を削除
-                        @unlink($savePath);
-    
-                        if ($result) {
-                            
-                            $catImage = $this->Cats->CatImages->newEntity();
-                            $catImage->url = $result['ObjectURL'];
-                            $catImage->thumbnail = $thumbnail['ObjectURL'];
-                            $catImage->users_id = $uid;
-                            $catImage->cats_id = $cat->id;
-                            if ($this->Cats->CatImages->save($catImage)) {
-                                // $this->Flash->success('画像を保存しました。');
-                            }
-                        }
+                        $this->saveCatImage($file, $cat->id, $uid);
                     }
                 }
             }
@@ -323,12 +330,40 @@ class CatsController extends AppController
         
     }
     
+    public function addPhoto(){
+        
+        $response = 'url';
+        
+        if ($this->request->is('ajax')) {
+            
+            $data = $this->request->data;
+            
+            $cat_id = $data['cat_id'];
+            
+            // ユーザーIDを付与
+            $uid = 0;
+            if(!is_null($this->Auth->user('id'))){
+                $uid = $this->Auth->user('id');
+                
+                $data = $this->request->data;
+                if(is_uploaded_file($data["image"]["tmp_name"])){
+                    $file = $data["image"];
+                    $catImage = $this->saveCatImage($file, $cat_id, $uid);
+                    
+                    $response = $catImage;
+                }
+            }
+        }
+        
+        $this->set(compact('response'));
+        $this->set('_serialize', ['response']);
+    }
+    
     public function addComment(){
             
         if ($this->request->is('ajax')) {
             
-            $param = $this->request->data['data'];
-            parse_str($param, $data);
+            $data = $this->request->data;
             
             $comment = $data['comment'];
             $cat_id = $data['cat_id'];
@@ -341,6 +376,21 @@ class CatsController extends AppController
                 return;
             }
             
+            $commentAdd = [];
+            if (isset($data["image"])) {
+                for($i=0; $i<count($data["image"]); $i++){
+                    if(is_uploaded_file($data["image"][$i]["tmp_name"])){
+                        // アップロード処理
+                        $file = $data["image"][$i];
+                        $catImage = $this->saveCatImage($file, $cat_id, $uid);
+                        $commentAdd[] = $catImage->thumbnail;
+                    }
+                }
+            }
+            if(count($commentAdd) > 0){
+                $comment = json_encode(array('comment' => $comment,'media' => $commentAdd));
+            }
+            
             $commentDO = $this->Cats->Comments->newEntity();
             $commentDO->comment = $comment;
             $commentDO->cats_id = $cat_id;
@@ -348,6 +398,9 @@ class CatsController extends AppController
             if ($this->Cats->Comments->save($commentDO)) {
                 // $this->Flash->success('コメントを保存しました。');
             }
+            
+                
+           
             
             $comments = $this->Cats->Comments
                 ->find('all', ['order' => ['Comments.created' => 'DESC']])
