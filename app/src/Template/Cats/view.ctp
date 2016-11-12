@@ -63,11 +63,11 @@
                 <div class="chat-face">
     			    <img src="" width="30" height="30">
     		    </div>
+    		    <div class="chat-info"><span class="chat-id">id here</span> - <span class="chat-time">time here</span></div>
     			<div class="chat-fukidashi">
     			  コメントテンプレート
     			</div>
-    		    <div class="chat-menu"><a href="#"><i class="glyphicon glyphicon-trash"></i></a></div>
-    		    <div class="chat-time"><small>time here</small></div>
+    		    <div class="chat-menu"><a href="#" class="chat-trash"><i class="glyphicon glyphicon-trash"></i></a></div>
       	    </div>
         </div>
     </div>
@@ -184,9 +184,9 @@ var updateComments = function(data){
         }else{
             cln.find('.chat-fukidashi').text(this.comment);
         }
-        // cln.find('form').attr('action', '/cats/delete/'+this.id);
-        console.log(this.created);
-        cln.find('.chat-time small').text(new Date(this.created).toTwitterRelativeTime('ja') );
+        cln.find('.chat-id').html('<a href="/profiles/user/'+this.user.username+'">@'+this.user.username+'</a>');
+        cln.find('.chat-time').text(new Date(this.created).toTwitterRelativeTime('ja') );
+        
         var key = this.users_id;
         if(key in imageURLCache){
             cln.find('.chat-face img').attr('style', 'background-image: url('+imageURLCache[key]+');');
@@ -203,7 +203,7 @@ var updateComments = function(data){
             cln.find('.chat-menu').remove();
         }else{
             var id = this.id;
-            cln.find('a').click(function(e){
+            cln.find('a.chat-trash').click(function(e){
                 e.preventDefault();
                 (function(cln) {
                     if(confirm("本当に削除していいですか？")){

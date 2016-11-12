@@ -24,6 +24,7 @@
     width: 30px;
     height: 30px;
     border-radius: 10px;
+    margin-top: 5px;
     
 }
 .chat-area {
@@ -44,8 +45,11 @@
     top:10px;
 }
 
-.chat-time {
-    text-align: right;
-    font-style: italic;
+.chat-info{
+    margin-left: 40px;
+    font-size: 12px;
     color: gray;
+}
+.chat-time, .chat-id {
+    
 }
