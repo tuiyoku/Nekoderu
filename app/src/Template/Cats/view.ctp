@@ -204,7 +204,7 @@ var updateComments = function(data){
                 
                 if("/tapatar/img/default.svg" === imageURLCache[key]){
                     cln.find('.chat-face img').remove();
-                    $('.chat-info, .chat-fukidashi').css('margin-left', '0');
+                    cln.find('.chat-info, .chat-fukidashi').css('margin-left', '0');
                 }
                     
             });  
