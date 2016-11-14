@@ -13,8 +13,16 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'お探しのページが見つかりません';
 ?>
+
+<?php
+//デフォルトのレイアウトを外す
+$this->layout= '';
+//ネコデルのレイアウトを適用
+$this->extend('/Layout/nekoderu');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,31 +41,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-7119528-12', 'auto');
-      ga('send', 'pageview');
-    </script>
-    <div id="container">
-        <div id="header">
-            <h1><?= $this->Html->link($cakeDescription, 'http://cakephp.org') ?></h1>
-        </div>
-        <div id="content">
-            <?= $this->Flash->render() ?>
-
-            <?= $this->fetch('content') ?>
-        </div>
-        <div id="footer">
-            <?= $this->Html->link(
-                    $this->Html->image('cake.power.gif', ['alt' => $cakeDescription, 'border' => '0']),
-                    'http://www.cakephp.org/',
-                    ['target' => '_blank', 'escape' => false]
-                )
-            ?>
+    <div class="container" style="background-color: white;">
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    
+                    <img class="img-responsive img-border img-left" src="/img/banner.png" alt="">
+                    <h2 class="brand-before">
+                        <small>404</small>
+                    </h2>
+                    <h3 class="brand-name">お探しのページが見つかりませんでした</h3>
+                    <div>
+                        <a href="/">
+                            トップに戻る
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
