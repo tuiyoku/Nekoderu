@@ -161,7 +161,6 @@ $(function(){
     
     function encourage_popup(e){
         <?php if (!$auth):?>
-            e.stopPropagation();
             e.preventDefault();
             $.magnificPopup.open({
                 items: {

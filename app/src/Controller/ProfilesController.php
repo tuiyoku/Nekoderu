@@ -194,7 +194,8 @@ class ProfilesController extends AppController
                 $session->delete('Last.Submit.Cat');
             }
         });
-       return $this->register();
+        
+        return $this->register();
        
     }
     

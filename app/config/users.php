@@ -26,7 +26,7 @@ $config = [
             //determines if the user should include email
             'required' => true,
             //determines if registration workflow includes email validation
-            'validate' => true,
+            'validate' => false,
         ],
         'Registration' => [
             //determines if the register is enabled
