@@ -184,14 +184,14 @@ class ProfilesController extends AppController
     {
         $this->eventManager()->on(UsersAuthComponent::EVENT_AFTER_REGISTER, function ($e) {
             $session = $this->request->session();
-            $cat = $session->read('Last.Submit.Cat');
-            if($cat != null){
+            $cat = $session->read('Last.Submit.Cat.Data');
+            if(!is_null($cat)){
                 $this->Cats = TableRegistry::get('Cats');
                 $cat->users_id = $e->data['user']->id;
                 if ( $this->Cats->save($cat)) {
                     $this->Flash->success('登録前に投稿した猫を保存しました');
                 }
-                $session->delete('Last.Submit.Cat');
+                $session->delete('Last.Submit.Cat.Data');
             }
         });
         

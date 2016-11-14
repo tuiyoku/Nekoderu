@@ -122,11 +122,11 @@ class CatsController extends AppController
         $cats = $this->paginate($data);
         
         $session = $this->request->session();
-        if($session->read('Last.Submit.Cat') != null){
+        if($session->read('Last.Submit.Cat.Data') != null){
             $shown = $session->read('Last.Submit.Cat.Shown');
             if(!empty($shown) && $shown){
                 $session->delete('Last.Submit.Cat.Shown');
-                $session->delete('Last.Submit.Cat');
+                $session->delete('Last.Submit.Cat.Data');
             }else{
                 $session->write('Last.Submit.Cat.Shown', false);
                 $suggestRegistration = true;
@@ -267,9 +267,9 @@ class CatsController extends AppController
                 $this->Flash->success('猫を保存しました。');
                 
                 $session = $this->request->session();
-                $session->delete('Last.Submit.Cat');
+                $session->delete('Last.Submit.Cat.Data');
                 if($uid == 0){
-                    $session->write('Last.Submit.Cat', $cat);
+                    $session->write('Last.Submit.Cat.Data', $cat);
                 }
             }
             
