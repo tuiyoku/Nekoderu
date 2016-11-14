@@ -66,6 +66,11 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->redirect('/profiles/login', '/login');
     
+    /**
+     * FIXME: httpsに飛ばしたときにworkspaceに飛ばされることに対する一次対応
+     */
+    $routes->redirect('/workspace', '/');
+    
     
     /**
      * Connect catchall routes for all controllers.
