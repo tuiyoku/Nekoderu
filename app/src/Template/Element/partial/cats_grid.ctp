@@ -215,8 +215,7 @@ $(function(){
         //fav button
     	$(".favorite").click(function(e){
     	    console.log("fav");
-    	    event.preventDefault();
-            event.stopPropagation();
+    	    e.preventDefault();
             console.log(e.currentTarget.href);
             
             var t = $(this);

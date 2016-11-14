@@ -9,18 +9,18 @@ $this->extend('/Layout/nekoderu');
     <?= $this->Flash->render('auth') ?>
     <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __d('CakeDC/Users', 'Please enter the new password') ?></legend>
+        <legend><?= __d('CakeDC/Users', '新しいパスワードを入力してください') ?></legend>
         <?php if ($validatePassword) : ?>
             <?= $this->Form->input('current_password', [
                     'type' => 'password',
                     'required' => true,
-                    'label' => __d('CakeDC/Users', 'Current password')]);
+                    'label' => __d('CakeDC/Users', '変更前（現在）のパスワード')]);
             ?>
         <?php endif; ?>
-        <?= $this->Form->input('password'); ?>
-        <?= $this->Form->input('password_confirm', ['type' => 'password', 'required' => true]); ?>
+        <?= $this->Form->input(__d('CakeDC/Users', '新しいパスワード')); ?>
+        <?= $this->Form->input(__d('CakeDC/Users', '新しいパスワード（確認）'), ['type' => 'password', 'required' => true]); ?>
 
     </fieldset>
-    <?= $this->Form->button(__d('CakeDC/Users', 'Submit')); ?>
+    <?= $this->Form->button(__d('CakeDC/Users', '実行')); ?>
     <?= $this->Form->end() ?>
 </div>

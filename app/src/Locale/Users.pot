@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-11-08 05:48+0000\n"
+"POT-Creation-Date: 2016-11-14 06:19+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -98,7 +98,6 @@ msgid "Add User"
 msgstr ""
 
 #: Template/Plugin/CakeDC/Users/Users/add.ctp:40
-#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:24
 #: Template/Plugin/CakeDC/Users/Users/edit.ctp:55
 #: Template/Plugin/CakeDC/Users/Users/resend_token_validation.ctp:28
 #: Template/Plugin/CakeDC/Users/Users/social_email.ctp:27
@@ -106,11 +105,23 @@ msgid "Submit"
 msgstr ""
 
 #: Template/Plugin/CakeDC/Users/Users/change_password.ctp:12
-msgid "Please enter the new password"
+msgid "新しいパスワードを入力してください"
 msgstr ""
 
 #: Template/Plugin/CakeDC/Users/Users/change_password.ctp:17
-msgid "Current password"
+msgid "変更前（現在）のパスワード"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:20
+msgid "新しいパスワード"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:21
+msgid "新しいパスワード（確認）"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:24
+msgid "実行"
 msgstr ""
 
 #: Template/Plugin/CakeDC/Users/Users/edit.ctp:28
@@ -177,14 +188,17 @@ msgid "ログイン"
 msgstr ""
 
 #: Template/Plugin/CakeDC/Users/Users/register.ctp:24
+#: Template/Profiles/registration.ctp:24
 msgid "新規登録"
 msgstr ""
 
 #: Template/Plugin/CakeDC/Users/Users/register.ctp:36
+#: Template/Profiles/registration.ctp:36
 msgid "利用規約に同意しますか?"
 msgstr ""
 
 #: Template/Plugin/CakeDC/Users/Users/register.ctp:43
+#: Template/Profiles/registration.ctp:43
 msgid "登録"
 msgstr ""
 
