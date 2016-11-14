@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    # RewriteCond %{HTTP:X-Forwarded-Proto} !https
-    # RewriteRule !/status https://%{SERVER_NAME}/$1 [L,R=301]
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^(.*)$ https://%{SERVER_NAME}/$1 [L,R=301]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
