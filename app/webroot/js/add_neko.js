@@ -1,6 +1,6 @@
 $(function(){
     
-    $(".details").hide();
+    $(".details").show();
     $("#input-details").click(function(e){
        e.preventDefault();
        $(".details").slideToggle('fast');

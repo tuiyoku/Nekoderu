@@ -69,7 +69,7 @@
                 );
              ?>
         </div>
-        <div class="memo-title"><a href='#' id='input-details'>クリックしてねこの詳しい情報を入力する？</a></div>
+        <div class="memo-title"><a href='#' id='input-details'>ねこの詳しい情報を入力する？</a></div>
         
         <table class="details">
         <?php foreach ($questions as $question): ?>
