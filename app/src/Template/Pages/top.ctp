@@ -19,7 +19,7 @@
                     </h4>
                     <div>
                         <a href="/cats/add">
-                            <button　class="btn btn-default btn-sm">報告する</button>
+                            <button class="btn btn-default">報告する</button>
                         </a>
                     </div>
                 </div>
@@ -106,6 +106,12 @@
                 </div>
             </div>
         </div>
+        
+        <div class="text-center">
+            <a href="/cats/add">
+                <button class="btn btn-default">報告する</button>
+            </a>
+        </div>
     </div>
     <!-- /.container -->
 
@@ -121,9 +127,10 @@
     
 <style>
 .movie-wrap {
+    margin-top:10px;
     position: relative;
     padding-bottom: 46%;
-    padding-top: 30px;
+    /*padding-top: 30px;*/
     height: 0;
     overflow: hidden;
 }
