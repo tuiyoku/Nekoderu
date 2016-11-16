@@ -10,7 +10,7 @@
                     <h2 class="brand-before">
                         <small>殺処分ゼロをめざして</small>
                     </h2>
-                    <h3 class="brand-name">地域で見つけた猫を報告してTNR活動にご参加ください</h3>
+                    <h3 class="brand-name">地域で見た猫を報告してTNR活動にご参加ください</h3>
                     <!--<hr class="tagline-divider">-->
                     <h4>
                         <small>With
