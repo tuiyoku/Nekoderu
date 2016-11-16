@@ -23,10 +23,25 @@
         <div class="container clearfix">
             <span style="text-align:right" class="close">閉じる</span>
         </div>
+        <h3 style="margin-top:10px;margin-bottom:20px;">位置情報について？</h3>
+        <p>のらねこのTNRを行うには位置情報が大切です。位置情報一般には公開しません。</p>
+        <p>撮影場所がわからない、位置を特定したくない場合は「熊本」など大きな範囲で記入してください。また「崇城大学」など位置が特定できる場所を記入していただくことも可能です。</p>
         <h3 style="margin-top:10px;margin-bottom:20px;">位置情報が取れませんか？</h3>
         <p>本体の設定から位置情報の利用を許可してください。</p>
-        <p>位置が取得できない場合は、住所や場所のわかる内容をご記入ください。</p>
-        <p>入力された住所、位置情報は一般には公開されません。</p>
+    </div>
+</div>
+
+<div id="modal-detail" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="container clearfix">
+            <span style="text-align:right" class="close">閉じる</span>
+        </div>
+        <h3 style="margin-top:10px;margin-bottom:20px;">詳細情報について？</h3>
+        <p>ねこの詳しい情報を猫の詳しい情報がわかると、TNR時の個体確認に役立ちます。
+        また、迷子ねこを探すのにも役立ちます。
+        </p>
+        <p>分かる範囲でご回答ください。</p>
     </div>
 </div>
         
@@ -41,14 +56,17 @@
     echo $this->Form->input('locate', ['type' => 'hidden', 'id' => 'locate']);
 ?>
     <div class="box">
-        <div class="memo-title">１．写真を選ぶ
+        <div class="memo-title">
+            １．写真を選ぶ <sup class="required">※必須</sup>
             <?= $this->element('partial/multi_image_selector'); ?>
         </div>
     </div>
     <div id='now' class="box">
         <div class="memo-title">
-            ２．場所を設定する <a id='get_gps' href="#">クリックしてGPSから取得</a> <i id='gps-info' class="glyphicon glyphicon-question-sign"></i>
+            ２．場所を設定する <sup class="required">※必須</sup> <i id='gps-info' class="glyphicon glyphicon-question-sign"></i>
+            <br><a id='get_gps' href="#">クリックしてGPSから取得</a> 
         </div>
+        
         <?php echo $this->Form->input('', 
         ['type' => 'text', 'id' => 'address', 'name' => 'address', 'placeholder' => '住所や場所のわかる内容を記入してください', 'required' => 'required']); ?>
     </div>
@@ -69,7 +87,7 @@
                 );
              ?>
         </div>
-        <div class="memo-title"><a href='#' id='input-details'>ねこの詳しい情報を入力する？</a></div>
+        <div class="memo-title"><a href='#' id='input-details'>ねこの詳しい情報を入力する？</a> <i id='detail-info' class="glyphicon glyphicon-question-sign"></i></div>
         
         <table class="details">
         <?php foreach ($questions as $question): ?>
@@ -135,6 +153,7 @@
 $(function(){
     setModal("modal-ear", "ear-info");
     setModal("modal-gps", "gps-info");
+    setModal("modal-detail", "detail-info");
 });
 
 $("form").submit(function(e) {
@@ -171,6 +190,10 @@ input[type=radio] {
 form#changeRegionStdForm input[type=radio].locRad {
     margin:3px 0px 0px 3px; 
     float:none;
+}
+
+.required{
+    color:red;
 }
 </style>
 
