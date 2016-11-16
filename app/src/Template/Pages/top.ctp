@@ -122,7 +122,7 @@
 <style>
 .movie-wrap {
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 46%;
     padding-top: 30px;
     height: 0;
     overflow: hidden;
