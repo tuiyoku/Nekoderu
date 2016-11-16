@@ -22,7 +22,8 @@
         "league/oauth2-linkedin": "@stable",
         "league/oauth1-client": "@stable",
         "friendsofcake/bootstrap-ui": "^0.5.0",
-        "google/apiclient": "^2.0"
+        "google/apiclient": "^2.0",
+        "cakephp/localized": "^3.0"
     },
     "require-dev": {
         "psy/psysh": "@stable",

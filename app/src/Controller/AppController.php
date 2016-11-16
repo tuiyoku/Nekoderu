@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Routing\Router;
 
 /**
  * Application Controller
@@ -77,7 +78,10 @@ class AppController extends Controller
     public function beforeRender(Event $event)
     {
         parent::beforeRender($event);
-        
+       
+        //TODO:フレンドリーログインの実装 
+        // $this->storeRedirectPath();
+       
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
@@ -86,6 +90,19 @@ class AppController extends Controller
         
         $this->log($this->Auth->user());
         $this->set('auth', $this->Auth->user());
+        
+       
+    }
+    
+    private function storeRedirectPath() {
+        $current_path = Router::url();
+        if ( !in_array($current_path, [
+                '/login',     // ログインページ
+                '/profiles/registration'   // ユーザー登録ページ  
+            ])
+        ) {
+            $this->request->session()->write('Auth.redirect', $current_path);
+        }
     }
     
     // public function beforeFilter(Event $event) 

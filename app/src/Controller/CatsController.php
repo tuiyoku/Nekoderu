@@ -81,23 +81,23 @@ class CatsController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
-    {
+    // public function index()
+    // {
         
-        $q = $this->request->query;
+    //     $q = $this->request->query;
         
-        $data = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments', 'Users', 'ResponseStatuses']);
-        if($q != null){
-            $data = $data
-                ->where(['Cats.created >' => new \DateTime($q['map_start'])])
-                ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
-        }
-        $cats = $this->paginate($data);
+    //     $data = $this->Cats->find('all')
+    //         ->contain(['CatImages', 'Comments', 'Users', 'ResponseStatuses']);
+    //     if($q != null){
+    //         $data = $data
+    //             ->where(['Cats.created >' => new \DateTime($q['map_start'])])
+    //             ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
+    //     }
+    //     $cats = $this->paginate($data);
 
-        $this->set(compact('cats'));
-        $this->set('_serialize', ['cats']);
-    }
+    //     $this->set(compact('cats'));
+    //     $this->set('_serialize', ['cats']);
+    // }
     
     // public function map()
     // {
@@ -412,9 +412,31 @@ class CatsController extends AppController
             $this->set(compact('comments'));
             $this->set('_serialize', ['comments']);
         }
-        
-       
     }
+    
+    /**
+     * Delete method
+     *
+     * @param string|null $id Cat Image id.
+     * @return \Cake\Network\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function delete($id = null)
+    {
+        $uid = $this->Auth->user()['id'];
+        if(!empty($uid)){
+            $this->request->allowMethod(['post', 'delete']);
+            $cat = $this->Cats->get($id);
+            if ($this->Cats->delete($cat)) {
+                $this->Flash->success(__('The cat has been deleted.'));
+            } else {
+                $this->Flash->error(__('The cat could not be deleted. Please, try again.'));
+            }
+        }
+
+        return $this->redirect(['action' => 'grid', 'controller' => 'Cats']);
+    }
+    
     
     public function deleteComment($id = null)
     {

@@ -14,6 +14,13 @@
 </div>
 
 <div class="cats view large-9 medium-8 columns content">
+    
+    <?php if($auth['id'] == $cat->user->id): ?>
+        <div class="row user_menu">
+            <?= $this->Form->postLink(__('削除'), ['action' => 'delete', $cat->id, ],
+                ['confirm' => __('本当に削除してもいいですか？', $cat->id), 'class' => 'btn btn-danger btn-sm']) ?>
+        </div>
+    <?php endif; ?>
 	<div class="row">
 	    <div class="grid">
     	    <div class="grid-sizer"></div>
@@ -128,6 +135,13 @@
 #photos .button-file img {
     height: 60px;
     width: 60px;
+}
+
+.user_menu {
+    margin-bottom: 10px;
+}
+.user_menu .btn {
+    float: right;
 }
 </style>
 
