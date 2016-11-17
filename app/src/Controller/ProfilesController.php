@@ -51,6 +51,10 @@ class ProfilesController extends AppController
         }else{
             $this->Auth->allow(['user','thumbnail','image', 'uploadAvatar', 'avatar', 'registration']);
         }
+        
+        // $this->eventManager()->on(UsersAuthComponent::EVENT_AFTER_LOGOUT, function ($e) {
+            
+        // }
     }
     
     public function edit(){
@@ -205,12 +209,6 @@ class ProfilesController extends AppController
         
     }
     
-    public function modify()
-    {
-        $uid = $this->Auth->user()['id'];
-        return $this->edit($uid);
-    }
-    
      /**
      * Register a new user
      *
@@ -229,6 +227,7 @@ class ProfilesController extends AppController
                     $this->Flash->success('登録前に投稿した猫を保存しました');
                 }
                 $session->delete('Last.Submit.Cat.Data');
+                $session->delete('Last.Submit.Cat.Shown');
             }
         });
         

@@ -268,6 +268,7 @@ class CatsController extends AppController
                 
                 $session = $this->request->session();
                 $session->delete('Last.Submit.Cat.Data');
+                $session->delete('Last.Submit.Cat.Shown');
                 if($uid == 0){
                     $session->write('Last.Submit.Cat.Data', $cat);
                 }
@@ -284,12 +285,14 @@ class CatsController extends AppController
                 }
             }
             
-            $commentDO = $this->Cats->Comments->newEntity();
-            $commentDO->comment = $comment;
-            $commentDO->users_id = $uid;
-            $commentDO->cats_id = $cat->id;
-            if ($this->Cats->Comments->save($commentDO)) {
-                // $this->Flash->success('コメントを保存しました。');
+            if(mb_strlen($comment) > 0){
+                $commentDO = $this->Cats->Comments->newEntity();
+                $commentDO->comment = $comment;
+                $commentDO->users_id = $uid;
+                $commentDO->cats_id = $cat->id;
+                if ($this->Cats->Comments->save($commentDO)) {
+                    // $this->Flash->success('コメントを保存しました。');
+                }
             }
            
             if (isset($data["image"])) {

@@ -96,6 +96,9 @@
             <?php foreach ($cat->cat_images as $imgIdx => $image): ?>
                 <?php if($imgIdx >= 1) break; ?>
                 <div class="grid-item">
+                    <?php if(count($cat->cat_images) > 1): ?>
+                        <div class="more-images">+<?= (count($cat->cat_images)-1) ?></div>
+                    <?php endif; ?>
                     <?php if($image->thumbnail):?>
                         <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>詳しく見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
                     <?php else: ?>
@@ -276,6 +279,15 @@ $(function(){
     });
 });
 </script>
+<style>
+    .more-images{
+        float: right;
+        position: absolute;
+        right: 10px;
+        font-size: 2rem;
+        color: rgba(255,255,255,0.8);
+    }
+</style>
 
 <link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/lightbox/magnific-popup.css"> 
 <script src="<?php echo$this->Url->build('/', false); ?>js/lightbox/jquery.magnific-popup.js"></script>
