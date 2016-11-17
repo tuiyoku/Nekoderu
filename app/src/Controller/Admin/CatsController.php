@@ -47,6 +47,34 @@ class CatsController extends AdminAppController
         $this->set(compact('now', 'from_time'));
     }
     
+     /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function data()
+    {
+        
+        $q = $this->request->query;
+        
+        $data = $this->Cats->find('all')->contain([
+                'CatImages', 
+                'Comments' => function($q) {
+                    return $q
+                        ->order('created DESC');
+                }
+        ]);
+        if($q != null){
+            $data = $data
+                ->where(['created >' => new \DateTime($q['map_start'])])
+                ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
+        }
+        $cats = $this->paginate($data);
+
+        $this->set(compact('cats'));
+        $this->set('_serialize', ['cats']);
+    }
+    
     
     /**
      * View method

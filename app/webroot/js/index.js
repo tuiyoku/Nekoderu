@@ -201,7 +201,7 @@ app.infoWindows = [];
      */
     function requestCatList (start, end, flag) {
       return $.ajax({
-            url: '/cats/data.json',
+            url: '/admin/cats/data.json',
             type: 'get',
             data: {
                 map_start: start,
