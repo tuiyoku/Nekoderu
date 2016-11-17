@@ -14,8 +14,7 @@
 </div>
 
 <div class="cats view large-9 medium-8 columns content">
-    
-    <?php if($auth['id'] == $cat->user->id): ?>
+    <?php if($auth && $cat->user && $auth['id'] == $cat->user->id): ?>
         <div class="row user_menu">
             <?= $this->Form->postLink(__('削除'), ['action' => 'delete', $cat->id, ],
                 ['confirm' => __('本当に削除してもいいですか？', $cat->id), 'class' => 'btn btn-danger btn-sm']) ?>
