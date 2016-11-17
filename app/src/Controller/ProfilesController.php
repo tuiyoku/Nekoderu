@@ -47,15 +47,33 @@ class ProfilesController extends AppController
         parent::beforeFilter($event);
          //TODO: きっとやり方違う
         if($this->Auth->user()){
-            $this->Auth->allow(['withdrawal', 'user','thumbnail','image', 'uploadAvatar', 'avatar', 'registration']);
+            $this->Auth->allow(['withdrawal', 'edit', 'user','thumbnail','image', 'uploadAvatar', 'avatar', 'registration']);
         }else{
             $this->Auth->allow(['user','thumbnail','image', 'uploadAvatar', 'avatar', 'registration']);
         }
     }
     
+    public function edit(){
+        $user = $this->currentUser();
+        
+        $this->Users = TableRegistry::get('Users');
+        
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            }
+        }
+        $this->set(compact('user', 'user'));
+        $this->set('_serialize', ['user']);
+        
+    }
+    
     public function withdrawal(){
-        $this->resign();
-        $this->logout();
+        return $this->resign();
     }
     
     public function uploadAvatar(){
@@ -185,6 +203,12 @@ class ProfilesController extends AppController
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
         
+    }
+    
+    public function modify()
+    {
+        $uid = $this->Auth->user()['id'];
+        return $this->edit($uid);
     }
     
      /**

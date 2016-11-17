@@ -25,7 +25,7 @@ class CatsController extends AppController
         
         //TODO: きっとやり方違う
         if($this->Auth->user()){
-            $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments', 'addComment', 'deleteComment', 'addPhoto', 'favorite']);
+            $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments', 'addComment', 'deleteComment', 'addPhoto', 'favorite', 'delete']);
         }else{
             $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments']);    
         }

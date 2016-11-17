@@ -28,6 +28,8 @@ trait ResignTrait
                 $this->Flash->error(__('退会に失敗しました。お手数ですがお問い合わせフォームよりご連絡ください。'));
             }
         }
-        return $this->redirect('/');
+        
+        $this->request->session()->destroy();
+        return $this->redirect($this->Auth->logout());
     }
 }

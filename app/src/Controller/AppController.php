@@ -17,6 +17,7 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Routing\Router;
+use Cake\ORM\TableRegistry;
 
 /**
  * Application Controller
@@ -92,6 +93,16 @@ class AppController extends Controller
         $this->set('auth', $this->Auth->user());
         
        
+    }
+    
+    public function currentUser(){
+        $uid = $this->Auth->user()['id'];
+        if(is_null($uid))
+            return null;
+            
+        $this->Users = TableRegistry::get('Users');
+        $user = $this->Users->get($uid);
+        return $user;
     }
     
     private function storeRedirectPath() {
