@@ -567,7 +567,7 @@ msgstr ""
 
 #: Template/Users/index.ctp:38
 msgid "Change password"
-msgstr "パスワードを変更する"
+msgstr "パスワード変更"
 
 #: Template/Users/index.ctp:39
 #: Template/Users/view.ctp:97
@@ -601,7 +601,7 @@ msgstr ""
 
 #: Template/Users/profile.ctp:24
 msgid "Change Password"
-msgstr "パスワードを変更する"
+msgstr "パスワード変更"
 
 #: Template/Users/profile.ctp:27
 #: Template/Users/view.ctp:28;68

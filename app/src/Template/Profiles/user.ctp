@@ -24,7 +24,7 @@
     </div>
 
     <div class="large-6 small-6 columns">
-         <h3>
+         <h3 class="user-name">
             <?=
             $this->Html->tag(
                 'span',
@@ -68,7 +68,8 @@
                                 $linkText,
                                 $socialAccount->link,
                                 ['target' => '_blank']
-                            ) ?></td>
+                            ) ?>
+                        </td>
                     </tr>
                 <?php
                 endforeach;
@@ -81,6 +82,8 @@
         <?php if (!empty($auth) && $auth['id'] === $user['id']): ?>
         <p>
             <?= $this->Html->link(__d('CakeDC/Users', 'Change Password'), ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'changePassword']); ?>
+            <?= $this->Form->postLink(__('退会する'), ['controller' => 'Profiles', 'action' => 'withdrawal'],
+                ['confirm' => __('本当に退会してもいいですか？ ※この処理は取り消せません'), 'class' => 'btn btn-danger btn-sm']) ?>
         </p>
         <?php endif; ?>
     </div>
@@ -133,6 +136,9 @@ $(window).on('load', function(){
     }
     .tptr-picker{
         margin-top:30% !important;
+    }
+    .user-name {
+        margin-bottom: 0;
     }
     
     

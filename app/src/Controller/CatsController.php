@@ -399,9 +399,6 @@ class CatsController extends AppController
                 // $this->Flash->success('コメントを保存しました。');
             }
             
-                
-           
-            
             $comments = $this->Cats->Comments
                 ->find('all', ['order' => ['Comments.created' => 'DESC']])
                 ->where(['Comments.cats_id =' => $cat_id])

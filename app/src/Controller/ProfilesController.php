@@ -9,6 +9,7 @@ use CakeDC\Users\Controller\Traits\ReCaptchaTrait;
 use CakeDC\Users\Controller\Traits\RegisterTrait;
 use CakeDC\Users\Controller\Traits\SimpleCrudTrait;
 use CakeDC\Users\Controller\Traits\SocialTrait;
+use App\Controller\Traits\ResignTrait;
 use CakeDC\Users\Model\Table\UsersTable;
 use Cake\Core\Configure;
 use Cake\ORM\Table;
@@ -32,6 +33,7 @@ class ProfilesController extends AppController
     use RegisterTrait;
     use SimpleCrudTrait;
     use SocialTrait;
+    use ResignTrait;
     
     public $paginate = [
         // その他のキーはこちら
@@ -42,7 +44,18 @@ class ProfilesController extends AppController
     
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['user','thumbnail','image', 'uploadAvatar', 'avatar', 'registration']);
+        parent::beforeFilter($event);
+         //TODO: きっとやり方違う
+        if($this->Auth->user()){
+            $this->Auth->allow(['withdrawal', 'user','thumbnail','image', 'uploadAvatar', 'avatar', 'registration']);
+        }else{
+            $this->Auth->allow(['user','thumbnail','image', 'uploadAvatar', 'avatar', 'registration']);
+        }
+    }
+    
+    public function withdrawal(){
+        $this->resign();
+        $this->logout();
     }
     
     public function uploadAvatar(){
