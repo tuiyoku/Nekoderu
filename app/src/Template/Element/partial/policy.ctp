@@ -1,7 +1,7 @@
 <article>
     <header>
         <h2>利用規約</h2>
-        <p>この利用規約（以下，「本規約」といいます。）は，崇城大学和泉研究室(<a href="(http://izumiken-web.elasticbeanstalk.com" title="和泉研究室">http://izumiken-web.elasticbeanstalk.com</a>))と竜之介動物病院(<a href="http://ryunosuke.co.jp" title="竜之介動物病院">http://ryunosuke.co.jp</a>)（以下，「サービス提供者」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。</p>
+        <p>この利用規約（以下，「本規約」といいます。）は，崇城大学和泉研究室(<a href="(http://izumiken-web.elasticbeanstalk.com" title="和泉研究室">http://izumiken-web.elasticbeanstalk.com</a>))とBOX竜之介(<a href="http://ryunosukeah.wixsite.com/boxryunosuke" title="BOX竜之介">http://ryunosukeah.wixsite.com/boxryunosuke</a>)（以下，「サービス提供者」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。</p>
     </header>
     <section>
         <dl>

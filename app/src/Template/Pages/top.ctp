@@ -14,7 +14,7 @@
                     <!--<hr class="tagline-divider">-->
                     <h4>
                         <small>With
-                            <strong>竜之介動物病院　崇城大学和泉研究室</strong>
+                            <strong>BOX竜之介　崇城大学和泉研究室</strong>
                         </small>
                     </h4>
                     <div>
@@ -40,7 +40,7 @@
                     <hr>
                     <p>
                         本サービス「ねこでる」はTNR活動の促進を目的として、
-                        <a href="(http://izumiken-web.elasticbeanstalk.com">崇城大学和泉研究室</a>と<a href="http://ryunosuke.co.jp">竜之介動物病院</a>が共同で開発、運営を行っているウェブサービスです。
+                        <a href="(http://izumiken-web.elasticbeanstalk.com">崇城大学和泉研究室</a>と<a href="https://www.youtube.com/watch?v=H6ZKASonxeM">BOX竜之介</a>が共同で開発、運営を行っているウェブサービスです。
                         お手持ちのスマートフォンで、地域で見かけた猫を撮影して地図から場所を選んで投稿することで、
                         のら猫のTNR活動に貢献できます。
                     </p>
@@ -119,7 +119,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p><small>Copyright &copy; 竜之介動物病院 崇城大学和泉研究室 2016</small></p>
+                    <p><small>Copyright &copy; BOX竜之介 崇城大学和泉研究室 2016</small></p>
                 </div>
             </div>
         </div>

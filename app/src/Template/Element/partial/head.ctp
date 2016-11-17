@@ -5,7 +5,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     
-    <meta name="keywords" content="nekoderu,ねこでる,猫,ネコ、TNR活動,さくらねこ,崇城大学,和泉研究室,竜之介動物病院">
+    <meta name="keywords" content="nekoderu,ねこでる,猫,ネコ、TNR活動,さくらねこ,崇城大学,和泉研究室,竜之介動物病院,BOX竜之介">
     <meta http-equiv="content-style-type" content="text/css">
     <meta http-equiv="content-script-type" content="text/javascript">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">

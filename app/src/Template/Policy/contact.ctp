@@ -60,7 +60,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <p>
-                    <small>Copyright &copy; 竜之介動物病院 崇城大学和泉研究室 2016</small>
+                    <small>Copyright &copy; BOX竜之介 崇城大学和泉研究室 2016</small>
                 </p>
             </div>
         </div>
