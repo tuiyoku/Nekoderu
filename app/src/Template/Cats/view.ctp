@@ -271,7 +271,7 @@ $(function(){
     });         
 });
 
-$('#addComment').submit(function() {                                                               
+$('#addComment').submit(function(event) {                                                               
     event.preventDefault();
     
     if($("#comment").val().length <= 0)
