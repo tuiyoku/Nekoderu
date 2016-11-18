@@ -104,6 +104,9 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
+msgid "Apply"
+msgstr ""
+
 #: Template/Plugin/CakeDC/Users/Users/change_password.ctp:12
 msgid "新しいパスワードを入力してください"
 msgstr ""

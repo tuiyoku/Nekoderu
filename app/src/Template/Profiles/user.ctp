@@ -81,9 +81,7 @@
         ?>
         <?php if (!empty($auth) && $auth['id'] === $user['id']): ?>
         <p>
-            <?= $this->Html->link(__d('CakeDC/Users', 'Change Password'), ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'changePassword']); ?>
-            <?= $this->Form->postLink(__('退会する'), ['controller' => 'Profiles', 'action' => 'withdrawal'],
-                ['confirm' => __('本当に退会してもいいですか？ ※この処理は取り消せません'), 'class' => 'btn btn-danger btn-sm']) ?>
+            <?= $this->Html->link(__('ユーザ情報変更'), ['controller' => 'Profiles', 'action' => 'edit'], ['class' => 'btn btn-default']); ?>
         </p>
         <?php endif; ?>
     </div>

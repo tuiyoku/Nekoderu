@@ -338,5 +338,3 @@ $('#addComment').submit(function(event) {
 <script async src="/tapatar/exif.js"></script>
 <script async src="/tapatar/megapix-image.js"></script>
 <script src="/js/twitter.relative.time.min.js"></script>
-
-
