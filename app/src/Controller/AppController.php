@@ -105,6 +105,14 @@ class AppController extends Controller
         return $user;
     }
     
+    public function isCurrentUser($users_id){
+        $uid = $this->Auth->user()['id'];
+        if(is_null($uid))
+            return false;
+        
+        return $uid == $users_id;
+    }
+    
     private function storeRedirectPath() {
         $current_path = Router::url();
         if ( !in_array($current_path, [

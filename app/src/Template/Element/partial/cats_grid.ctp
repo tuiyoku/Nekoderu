@@ -157,10 +157,41 @@
     <a class="btn btn-default btn-bg" href="<?=$this->Url->build('/', false); ?>cats/add" role="button">
         <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 投稿する
     </a>
+    <div class="notification-count">
+        <a class="btn btn-default btn-sm" href="/profiles/notifications ?>" role="button">
+              <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+              <span class="count"></span>
+        </a>
+    </div>
 </div>
 
 <script type="text/javascript">
 $(function(){
+    
+    $.get({
+        url:"/profiles/countUnread.json"
+    }).done(function (data){
+        console.log(data);
+        if(data.count > 0){
+            $(".notification-count a").show();
+            $(".notification-count .count").text(data.count);
+            $(".notification-count a").click(function(e) {
+                e.preventDefault();
+                $.magnificPopup.open({
+                    items: {
+                        src: '/profiles/notifications'
+                    },
+                    type: 'iframe',
+            		alignTop: true,
+            		fixedContentPos: true,
+            		overflowY: 'scroll',
+                }, 0);
+            })
+        }
+        else
+            $(".notification-count a").hide();
+    });
+    
     
     function encourage_popup(e){
         <?php if (!$auth):?>
@@ -216,9 +247,9 @@ $(function(){
     function favoriting(){
         //fav button
     	$(".favorite").click(function(e){
-    	    console.log("fav");
+    	   // console.log("fav");
     	    e.preventDefault();
-            console.log(e.currentTarget.href);
+            // console.log(e.currentTarget.href);
             
             var t = $(this);
             
@@ -227,7 +258,6 @@ $(function(){
                 url: e.currentTarget.href+".json",
                 success: function(response){
                     if(response.cat){
-                        console.log(response.cat.favorites.length);
                         t.children('.count').text(response.cat.favorites.length);
                         t.prependClass('favorited');
                     }
@@ -286,6 +316,15 @@ $(function(){
         right: 10px;
         font-size: 2rem;
         color: rgba(255,255,255,0.8);
+    }
+    .notification-count{
+        top: 50%;
+        right: 50px;
+        transform: translate(0, -50%);
+        position: absolute;
+    }
+    .notification-count span {
+        color : red;
     }
 </style>
 

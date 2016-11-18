@@ -40,14 +40,14 @@ class ProfilesController extends AppController
         'maxLimit' => 5
     ];
     
-    public $components = ['RequestHandler', 'CatsCommon', 'NekoUtil'];
+    public $components = ['RequestHandler', 'CatsCommon', 'NekoUtil', 'NotificationManager'];
     
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
          //TODO: きっとやり方違う
         if($this->Auth->user()){
-            $this->Auth->allow(['withdrawal', 'edit', 'user','thumbnail','image', 'uploadAvatar', 'avatar', 'registration']);
+            $this->Auth->allow();
         }else{
             $this->Auth->allow(['user','thumbnail','image', 'uploadAvatar', 'avatar', 'registration']);
         }
@@ -233,6 +233,24 @@ class ProfilesController extends AppController
         
         return $this->register();
        
+    }
+    
+    public function notifications(){
+        $notifications = $this->NotificationManager->notifications($this->currentUser()->id);  
+        
+        $this->set(compact('notifications'));
+        $this->set('_serialize', ['notifications']);
+    }
+    
+    public function markRead($id){
+        $this->NotificationManager->markRead($id);  
+    }
+    
+    public function countUnread(){
+         $count = $this->NotificationManager->countUnread($this->currentUser()->id);  
+        
+        $this->set(compact('count'));
+        $this->set('_serialize', ['count']);
     }
     
     /**

@@ -4,6 +4,7 @@ namespace App\Controller;
 use Cake\ORM\TableRegistry;
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Routing\Router;
 
 /**
  * Cats Controller
@@ -18,14 +19,14 @@ class CatsController extends AppController
         'maxLimit' => 5
     ];
     
-    public $components = ['RequestHandler', 'CatsCommon', 'NekoUtil'];
+    public $components = ['RequestHandler', 'CatsCommon', 'NekoUtil', 'NotificationManager'];
 
     public function beforeFilter(Event $event)
     {
         
         //TODO: きっとやり方違う
         if($this->Auth->user()){
-            $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments', 'addComment', 'deleteComment', 'addPhoto', 'favorite', 'delete']);
+            $this->Auth->allow();
         }else{
             $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments']);    
         }
@@ -400,6 +401,15 @@ class CatsController extends AppController
             $commentDO->users_id = $uid;
             if ($this->Cats->Comments->save($commentDO)) {
                 // $this->Flash->success('コメントを保存しました。');
+                
+                $cat = $this->Cats->get($cat_id);
+                if(!$this->isCurrentUser($cat->users_id)){
+                    $this->NotificationManager->notify($cat->users_id, 
+                        '新しいコメントがありました！', 
+                        $comment, 
+                        Router::url(["controller" => "Cats","action" => "view", $cat_id])
+                    );
+                }
             }
             
             $comments = $this->Cats->Comments
