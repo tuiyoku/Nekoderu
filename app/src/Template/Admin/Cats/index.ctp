@@ -11,8 +11,8 @@
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <!--<th><?= $this->Paginator->sort('time') ?></th>-->
-                <th><?= $this->Paginator->sort('locate') ?></th>
-                <!--<th><?= $this->Paginator->sort('flg') ?></th>-->
+                <!--<th><?= $this->Paginator->sort('locate') ?></th>-->
+                <th><?= $this->Paginator->sort('address') ?></th>
                 <th><?= $this->Paginator->sort('response_status') ?></th>
                 <!--<th><?= $this->Paginator->sort('status') ?></th>-->
                 <th><?= $this->Paginator->sort('ear_shape') ?></th>
@@ -28,8 +28,8 @@
             <tr>
                 <td><?= $this->Number->format($cat->id) ?></td>
                 <!--<td><?= $this->Number->format($cat->time) ?></td>-->
-                <td><?= h($cat->locate) ?></td>
-                <!--<td><?= $this->Number->format($cat->flg) ?></td>-->
+                <!--<td><?= h($cat->locate) ?></td>-->
+                <td><?= h($cat->address) ?></td>
                 <td><?= h($cat->response_status['title']) ?></td>
                 <!--<td><?= $this->Number->format($cat->status) ?></td>-->
                 <td><?= $this->Cats->earOptions()[$cat->ear_shape] ?></td>
