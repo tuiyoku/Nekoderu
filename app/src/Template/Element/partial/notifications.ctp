@@ -1,6 +1,6 @@
 <div id="notifications">
     <div class="notification">
-        <a href="#" >
+        <a href="#" target="_top" >
             <div class="time"><small>時間</small></div>
             <div class="title">
                 たいとる
@@ -61,7 +61,7 @@ function updateNotifications(data){
     data.notifications.forEach(function(notification){
         var cln = template.notification.clone();
         cln.find(".title").text(notification.title);
-        cln.find(".content").text(notification.description);
+        cln.find(".content").html(notification.description);
         cln.find(".time small").text(new Date(notification.created).toTwitterRelativeTime('ja'));
         cln.find("a").attr("href", notification.url);
         cln.find("a").click(function(e){
