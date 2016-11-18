@@ -178,6 +178,21 @@ class CatsController extends AppController
 
         $this->set('cat', $cat);
         $this->set('_serialize', ['cat']);
+        
+        $answer = $this->Cats->Answers->find('all')
+            ->contain(['Questions'])
+            ->where([
+                'Questions.name = ' => 'name',
+                'Answers.cats_id = ' => $id
+            ])
+            ->first();
+        if(!is_null($answer)){
+            $name = $answer->value;
+            
+            $this->set('name', $name);
+            $this->set('_serialize', ['name']);
+        }
+            
     }
 
     public function favorite($cats_id){

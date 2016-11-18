@@ -21,6 +21,9 @@
         </div>
     <?php endif; ?>
 	<div class="row">
+	    <?php if(!empty($name)): ?>
+	    <h3><?= $name ?></h3>
+	    <?php endif; ?>
 	    <div class="grid">
     	    <div class="grid-sizer"></div>
             <div class="gutter-sizer"></div>
