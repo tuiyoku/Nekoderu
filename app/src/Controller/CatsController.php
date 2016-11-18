@@ -415,7 +415,7 @@ class CatsController extends AppController
                     $u = $this->currentUser();
                     
                     $this->NotificationManager->notify($cat->users_id, 
-                        '新しいコメントがありました！', 
+                        '投稿に新しいコメントがありました！', 
                         "@".$u->username."さんがコメントしてくれました！", 
                         Router::url(["controller" => "Cats","action" => "view", $cat_id])
                     );

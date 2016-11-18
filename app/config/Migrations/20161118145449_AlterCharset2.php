@@ -5,8 +5,8 @@ class AlterCharset2 extends AbstractMigration
 {
     function tables(){
         return [
-            'answers', 'avatars','cake_d_c_users_phinxlog','cats','cat_images','comments','favorites','notifications',
-            'phinxlog','questions','response_statuses',/*'social_accounts','users'*/
+            'answers', 'avatars'/*,'cake_d_c_users_phinxlog'*/,'cats','cat_images','comments','favorites','notifications',
+            /*'phinxlog'*/,'questions','response_statuses',/*'social_accounts','users'*/
         ];
     }
     
