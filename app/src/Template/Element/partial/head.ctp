@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    
+    <meta name="description" content="のらねこを地域ねことして見守り共存していくためのTNR活動を促進することを目的として、崇城大学和泉研究室と龍之介動物病院によって開発、運営されているウェブサービスです。地域で見かけた地域で見かけた猫の写真を投稿することでTNR活動をサポートできます。">
     <meta name="keywords" content="nekoderu,ねこでる,猫,ネコ、TNR活動,さくらねこ,崇城大学,和泉研究室,竜之介動物病院,BOX竜之介">
     <meta http-equiv="content-style-type" content="text/css">
     <meta http-equiv="content-script-type" content="text/javascript">
@@ -31,5 +31,7 @@
     <meta property="og:title" content="ねこでる">
     <meta property="og:site_name" content="ねこでる">
     <meta property="og:locale" content="ja_JP" />
+    <meta property="og:url" content="https://neko.today">
+    <meta property="og:image" content="/img/banner-ogp.png">
     <!-- OGP -->
 </head>
