@@ -203,11 +203,12 @@ class CatsController extends AppController
                 if ($this->Cats->Favorites->save($fav)) {
                     // $this->Flash->success('お気に入りに登録しました');
                     
-                      $u = $this->currentUser();
-                      $this->NotificationManager->notify($cat->users_id, 
+                    $cat = $this->Cats->get($cats_id);
+                    $u = $this->currentUser();
+                    $this->NotificationManager->notify($cat->users_id, 
                         '投稿にいいねがありました！', 
                         "@".$u->username."さんがいいねしてくれました！", 
-                        Router::url(["controller" => "Cats","action" => "view", $cat_id])
+                        Router::url(["controller" => "Cats","action" => "view", $cats_id])
                     );
                 }
             
