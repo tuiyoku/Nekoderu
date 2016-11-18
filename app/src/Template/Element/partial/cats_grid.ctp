@@ -81,7 +81,33 @@
     .disabled a{
         color:black;
     }
-}
+    
+     .more-images{
+        float: right;
+        position: absolute;
+        right: 10px;
+        font-size: 2rem;
+        color: rgba(255,255,255,0.8);
+    }
+    
+    .notification-count{
+        top: 50%;
+        right: 50px;
+        transform: translate(0, -50%);
+        position: absolute;
+    }
+    
+    .notification-count span {
+        color : red;
+    }
+    
+    .white-popup {
+        position: relative;
+        background: #FFF;
+        padding: 20px;
+        width: auto;
+        margin: 20px auto;
+    }
 
 </style>
 <?php 
@@ -165,13 +191,18 @@
     </div>
 </div>
 
+<div id="test-popup" class="white-popup mfp-hide">
+    <h3>お知らせ</h3>
+    <?= $this->element('partial/notifications'); ?>
+</div>
+
 <script type="text/javascript">
 $(function(){
     
     $.get({
         url:"/profiles/countUnread.json"
     }).done(function (data){
-        console.log(data);
+        // console.log(data);
         if(data.count > 0){
             $(".notification-count a").show();
             $(".notification-count .count").text(data.count);
@@ -179,12 +210,9 @@ $(function(){
                 e.preventDefault();
                 $.magnificPopup.open({
                     items: {
-                        src: '/profiles/notifications'
-                    },
-                    type: 'iframe',
-            		alignTop: true,
-            		fixedContentPos: true,
-            		overflowY: 'scroll',
+                      src: '#test-popup',
+                      type: 'inline'
+                  }
                 }, 0);
             })
         }
@@ -194,7 +222,7 @@ $(function(){
     
     
     function encourage_popup(e){
-        <?php if (!$auth):?>
+        <?php if (!$auth): ?>
             e.preventDefault();
             $.magnificPopup.open({
                 items: {
@@ -309,24 +337,6 @@ $(function(){
     });
 });
 </script>
-<style>
-    .more-images{
-        float: right;
-        position: absolute;
-        right: 10px;
-        font-size: 2rem;
-        color: rgba(255,255,255,0.8);
-    }
-    .notification-count{
-        top: 50%;
-        right: 50px;
-        transform: translate(0, -50%);
-        position: absolute;
-    }
-    .notification-count span {
-        color : red;
-    }
-</style>
 
 <link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/lightbox/magnific-popup.css"> 
 <script src="<?php echo$this->Url->build('/', false); ?>js/lightbox/jquery.magnific-popup.js"></script>

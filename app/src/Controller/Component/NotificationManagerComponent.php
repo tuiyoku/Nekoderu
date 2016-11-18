@@ -35,7 +35,7 @@ class NotificationManagerComponent extends Component {
         ->where([
             'users_id =' => $users_id
         ])
-        ->limit(50);
+        ->limit(10);
    }
    
    public function countUnread($users_id){
