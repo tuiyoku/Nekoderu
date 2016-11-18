@@ -57,6 +57,7 @@ $(function(){
 });
 
 function updateNotifications(data){
+    console.log(data);
     $("#notifications").empty();
     data.notifications.forEach(function(notification){
         var cln = template.notification.clone();
@@ -76,7 +77,7 @@ function updateNotifications(data){
         // if(!notification.unread){
         //     cln.css('background-color', '#cccccc');
         // }
-        $("#notifications").prepend(cln);
+        $("#notifications").append(cln);
         
     });
 }
