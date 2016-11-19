@@ -1,15 +1,16 @@
 <div id="notifications">
     <div class="notification">
-            <div class="time"><small>時間</small></div>
-            <a href="#" target="_top" >
-                
-                <div class="title">たいとる
+        <a href="#" target="_top" >
+            <div>
+                <div class="time"><small>時間</small></div>
+                    <div class="title">たいとる
                 </div>
-            </a>
-            <div class="content">
-                内容
+                <div class="content">
+                    内容
+                </div>
             </div>
-            <div class="btn btn-sm btn-default">既読にする</div>
+        </a>
+        <div class="btn btn-sm btn-default">既読にする</div>
     </div>
 </div>
 

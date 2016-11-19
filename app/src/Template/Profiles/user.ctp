@@ -28,7 +28,7 @@
             <?=
             $this->Html->tag(
                 'span',
-                __d('CakeDC/Users', '{0} {1}', $user->first_name, $user->last_name),
+                __d('CakeDC/Users', '{0} {1}', $user->last_name, $user->first_name),
                 ['class' => 'full_name']
             )
             ?>
