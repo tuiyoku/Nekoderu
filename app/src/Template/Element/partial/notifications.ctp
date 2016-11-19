@@ -29,6 +29,10 @@
   
     .notification .time {
         float: right;
+        padding-left: 10px;
+    }
+    .notification .time small {
+        vertical-align: top;
     }
     
     .notification .title {
@@ -64,6 +68,10 @@ function updateNotifications(data){
         var cln = template.notification.clone();
         cln.find(".title").text(notification.title);
         cln.find(".content").html(notification.description);
+        if(notification.unread == 1)
+            cln.find(".content").css('border-left-color', 'orange');
+        else
+            cln.find(".content").css('border-left-color', 'gray');
         cln.find(".time small").text(new Date(notification.created).toTwitterRelativeTime('ja'));
         cln.find("a").attr("href", notification.url);
         cln.find("a").click(function(e){

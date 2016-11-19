@@ -218,13 +218,42 @@ class CatsController extends AppController
                 if ($this->Cats->Favorites->save($fav)) {
                     // $this->Flash->success('お気に入りに登録しました');
                     
+                    //通知処理
                     $cat = $this->Cats->get($cats_id);
                     $u = $this->currentUser();
                     $this->NotificationManager->notify($cat->users_id, 
-                        '投稿にいいねがありました！', 
-                        "@".$u->username."さんがいいねしてくれました！", 
+                        'あなたの猫ちゃんに「いいね」がありました！', 
+                        "@".$u->username."さんが「いいね」してくれました！", 
                         Router::url(["controller" => "Cats","action" => "view", $cats_id])
                     );
+                    
+                    $users_ids = $this->Cats->Comments->find()
+                        ->select(['users_id'])
+                        ->where(['cats_id = ' => $cats_id])
+                        ->group('users_id')
+                        ->having(['users_id !=' => 0, 'users_id !=' => $u->id]);
+                        
+                    foreach($users_ids as $users_id){
+                        $this->NotificationManager->notify($users_id->users_id, 
+                            'あなたが「コメント」した猫ちゃんに「いいね」がありました！', 
+                            "@".$u->username."さんが「いいね」しました！", 
+                            Router::url(["controller" => "Cats","action" => "view", $cats_id])
+                        );
+                    }
+                    
+                    $users_ids = $this->Cats->Favorites->find()
+                        ->select(['users_id'])
+                        ->where(['cats_id = ' => $cats_id])
+                        ->group('users_id')
+                        ->having(['users_id !=' => 0, 'users_id !=' => $u->id]);
+                        
+                    foreach($users_ids as $users_id){
+                        $this->NotificationManager->notify($users_id->users_id, 
+                            'あなたが「いいね」した猫ちゃんに新しい「いいね」がありました！', 
+                            "@".$u->username."さんが「いいね」しました！", 
+                            Router::url(["controller" => "Cats","action" => "view", $cats_id])
+                        );
+                    }
                 }
             
             }
@@ -425,15 +454,45 @@ class CatsController extends AppController
             if ($this->Cats->Comments->save($commentDO)) {
                 // $this->Flash->success('コメントを保存しました。');
                 
+                //通知処理
                 $cat = $this->Cats->get($cat_id);
                 if(!$this->isCurrentUser($cat->users_id)){
                     $u = $this->currentUser();
                     
                     $this->NotificationManager->notify($cat->users_id, 
-                        '投稿に新しいコメントがありました！', 
-                        "@".$u->username."さんがコメントしてくれました！", 
+                        'あなたの猫ちゃんに新しい「コメント」がありました！', 
+                        "@".$u->username."さんが「コメント」してくれました！", 
                         Router::url(["controller" => "Cats","action" => "view", $cat_id])
                     );
+                    
+                    $users_ids = $this->Cats->Comments->find()
+                        ->select(['users_id'])
+                        ->where(['cats_id = ' => $cat_id])
+                        ->group('users_id')
+                        ->having(['users_id !=' => 0, 'users_id !=' => $u->id]);
+                        
+                    foreach($users_ids as $users_id){
+                        $this->NotificationManager->notify($users_id->users_id, 
+                            'あなたがコメントした猫ちゃんに新しい「コメント」がありました！', 
+                            "@".$u->username."さんが「コメント」しました！", 
+                            Router::url(["controller" => "Cats","action" => "view", $cat_id])
+                        );
+                    }
+                    
+                    $users_ids = $this->Cats->Favorites->find()
+                        ->select(['users_id'])
+                        ->where(['cats_id = ' => $cat_id])
+                        ->group('users_id')
+                        ->having(['users_id !=' => 0, 'users_id !=' => $u->id]);
+                        
+                    foreach($users_ids as $users_id){
+                        $this->NotificationManager->notify($users_id->users_id, 
+                            'あなたが「いいね」した猫ちゃんに新しい「コメント」がありました！', 
+                            "@".$u->username."さんが「コメント」しました！", 
+                            Router::url(["controller" => "Cats","action" => "view", $cat_id])
+                        );
+                    }
+                    
                 }
             }
             
