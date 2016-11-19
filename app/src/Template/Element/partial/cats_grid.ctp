@@ -191,14 +191,17 @@
     </div>
 </div>
 
-<div id="test-popup" class="white-popup mfp-hide">
+<div id="notification-popup" class="white-popup mfp-hide">
     <h3>お知らせ</h3>
     <?= $this->element('partial/notifications'); ?>
 </div>
 
 <script type="text/javascript">
-$(function(){
+
     
+$(function(){
+
+    $(".notification-count a").hide();
     $.get({
         url:"/profiles/countUnread.json"
     }).done(function (data){
@@ -210,14 +213,14 @@ $(function(){
                 e.preventDefault();
                 $.magnificPopup.open({
                     items: {
-                      src: '#test-popup',
+                      src: '#notification-popup',
                       type: 'inline'
                   }
                 }, 0);
             })
-        }
-        else
+        }else{
             $(".notification-count a").hide();
+        }
     });
     
     
