@@ -13,7 +13,7 @@
 </div>
 
 <style>
-    .notfication a:link, a:visited, a:hover, a:active {
+    .notfication a, a:link, a:visited, a:hover, a:active {
         color: black;
         text-decoration: none;
     }
@@ -53,8 +53,14 @@ $(function(){
     createTemplate("#notifications .notification:first", "notification");
     $("#notifications .notification:first").remove();
     
+    var limit = <?= $limit ?>;
+    if(limit > 0){
+        $url = "/profiles/notifications"+"/"+limit+".json"
+    }else{
+        $url = "/profiles/notifications.json"
+    }
     $.get({                                                                            
-        url: '/profiles/notifications.json',                   
+        url: $url,                   
     }).done(function(data) {
         updateNotifications(data);
     });         
@@ -75,15 +81,17 @@ function updateNotifications(data){
         cln.find(".time small").text(new Date(notification.created).toTwitterRelativeTime('ja'));
         cln.find("a").attr("href", notification.url);
         cln.find("a").click(function(e){
-            // e.preventDefault();
+            e.preventDefault();
+            var self = $(this);
             $.get({
                 url: "/profiles/markRead/"+notification.id+".json",
             }).done(function(data){
-                // console.log(data);
-                // updateNotifications(data);
+                self.unbind('click').click();
             });
         });
-        if(!notification.unread){
+        
+    var limit = <?= $limit ?>;
+        if(limit>0 && !notification.unread){
             // cln.css('background-color', '#cccccc');
         }else{
             $("#notifications").append(cln);

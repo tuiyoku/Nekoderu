@@ -82,7 +82,7 @@
         color:black;
     }
     
-     .more-images{
+    .more-images{
         float: right;
         position: absolute;
         right: 10px;
@@ -192,8 +192,8 @@
 </div>
 
 <div id="notification-popup" class="white-popup mfp-hide">
-    <h3>お知らせ</h3>
-    <?= $this->element('partial/notifications'); ?>
+    <h3>お知らせ <small><a href="/profiles/notifications">すべて見る</a></small></h3>
+    <?= $this->element('partial/notifications', ["limit" => 10]); ?>
 </div>
 
 <script type="text/javascript">

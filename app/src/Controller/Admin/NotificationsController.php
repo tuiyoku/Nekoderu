@@ -8,7 +8,7 @@ use App\Controller\AppController;
  *
  * @property \App\Model\Table\NotificationsTable $Notifications
  */
-class NotificationsController extends AdiminAppController
+class NotificationsController extends AdminAppController
 {
 
     /**

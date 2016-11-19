@@ -235,8 +235,13 @@ class ProfilesController extends AppController
        
     }
     
-    public function notifications(){
-        $notifications = $this->NotificationManager->notifications($this->currentUser()->id);  
+    public function notifications($limit=0){
+        // if($limit == 0)
+        //     $unreadOnly = false;
+        // else
+        //     $unreadOnly = true;
+            
+        $notifications = $this->NotificationManager->notifications($this->currentUser()->id, $limit, false);  
         
         $this->set(compact('notifications'));
         $this->set('_serialize', ['notifications']);

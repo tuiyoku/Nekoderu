@@ -11,4 +11,4 @@
 ?>
 
 <h3>お知らせ</h3>
-<?= $this->element('partial/notifications'); ?>
+<?= $this->element('partial/notifications', ["limit" => -1]); ?>

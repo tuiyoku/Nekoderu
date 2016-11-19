@@ -28,14 +28,19 @@ class NotificationManagerComponent extends Component {
        }
    }
    
-   public function notifications($users_id){
+   public function notifications($users_id, $limit=0, $unreadOnly=false){
        
-       return $this->Notifications
+       $query = $this->Notifications
         ->find('all', ['order' => ['Notifications.created' => 'DESC']])
         ->where([
             'users_id =' => $users_id
-        ])
-        ->limit(10);
+        ]);
+        if($unreadOnly)
+            $query = $query->where(['unread = ' => true]);
+        if($limit > 0)
+            $query = $query->limit($limit);
+        
+        return $query;
    }
    
    public function countUnread($users_id){
