@@ -1,14 +1,15 @@
 <div id="notifications">
     <div class="notification">
-        <a href="#" target="_top" >
             <div class="time"><small>時間</small></div>
-            <div class="title">
-                たいとる
-            </div>
+            <a href="#" target="_top" >
+                
+                <div class="title">たいとる
+                </div>
+            </a>
             <div class="content">
                 内容
             </div>
-        </a>
+            <div class="btn btn-sm btn-default">既読にする</div>
     </div>
 </div>
 
@@ -25,6 +26,7 @@
     .notification {
         padding: 10px;
         border-bottom: solid 1px #cccccc;
+        position: relative;
     }
   
     .notification .time {
@@ -44,6 +46,15 @@
         font-size: 12px;
         padding-left: 5px;
         border-left: solid 3px orange;
+    }
+    
+    .notification div.btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .btn-default {
+        background-image: none;
     }
     
 </style>
@@ -74,17 +85,32 @@ function updateNotifications(data){
         var cln = template.notification.clone();
         cln.find(".title").text(notification.title);
         cln.find(".content").html(notification.description);
-        if(notification.unread == 1)
+        if(notification.unread == 1){
             cln.find(".content").css('border-left-color', 'orange');
-        else
+            cln.find("div.btn").click(function(e){
+                e.preventDefault();
+                var not = notification;
+                var self = $(this);
+                var line = cln.find(".content");
+                $.get({
+                    url: "/profiles/markRead/"+not.id+".json",
+                }).done(function(data){
+                    self.slideUp(1000);
+                    line.css('border-left-color', 'gray');
+                });
+            });
+        }else{
             cln.find(".content").css('border-left-color', 'gray');
+            cln.find("div.btn").hide();
+        }
         cln.find(".time small").text(new Date(notification.created).toTwitterRelativeTime('ja'));
         cln.find("a").attr("href", notification.url);
         cln.find("a").click(function(e){
             e.preventDefault();
             var self = $(this);
+            var not = notification;
             $.get({
-                url: "/profiles/markRead/"+notification.id+".json",
+                url: "/profiles/markRead/"+not.id+".json",
             }).done(function(data){
                 self.unbind('click').click();
             });
