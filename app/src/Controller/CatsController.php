@@ -363,6 +363,78 @@ class CatsController extends AppController
         }
     }
     
+    /**
+     * Edit method
+     *
+     * @param string|null $id Cat Image id.
+     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function edit($id = null)
+    {
+        $cat = $this->Cats->get($id, [
+            'contain' => ['CatImages', 'Comments', 'Users', 'Answers']
+        ]);
+        
+        if(!$this->isCurrentUser($cat->users_id)){
+            return $this->redirect('/');
+        }
+        
+        $this->Questions = TableRegistry::get('Questions');
+        $questions = $this->Questions->find('all');
+        $this->set(compact('questions'));
+        $this->set('_serialize', ['questions']);
+        
+       if ($this->request->is('post')) {
+
+            $data = $this->request->data;
+            
+            $this->log($this->request->data);
+
+            $time = time();
+            $locate = (string)$data['locate'];
+            $address = (string)$data['address'];
+            $ear_shape = $data['ear_shape'];
+            
+            $query = [
+                "latlng" => h($locate),
+                "language" => "ja",
+                "sensor" => false
+            ];
+            
+            $cat = $this->Cats->get($id, [
+                'contain' => ['Answers']
+            ]);
+            $cat->locate = $locate;
+            $cat->address = $address;
+            $cat->ear_shape = $ear_shape;
+            $cat->flg = 4;
+            
+            if ($this->Cats->save($cat)) {
+                $this->Flash->success('猫を保存しました。');
+            }
+            
+            $this->Questions = TableRegistry::get('Questions');
+            $questions = $this->Questions->find('all');
+            foreach($questions as $question){
+                foreach($cat->answers as $answer){
+                    if($answer->questions_id == $question->id){
+                        $answer->value = (string)$data[$question->name];
+                        if ($this->Cats->Answers->save($answer)) {
+                        }
+                    }
+                }
+            }
+            
+            return $this->redirect([ 'controller' => 'Cats', 'action' => 'view', $cat->id]);
+        }
+        
+        $this->set(compact('cat', 'cat'));
+        $this->set('_serialize', ['cat']);
+        
+    //   $this->putOptions();
+    }
+    
     public function comments($cats_id){
         
         if ($this->request->is('ajax')) {

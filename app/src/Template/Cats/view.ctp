@@ -16,8 +16,9 @@
 <div class="cats view large-9 medium-8 columns content">
     <?php if($auth && $cat->user && $auth['id'] == $cat->user->id): ?>
         <div class="row user_menu">
+            <a class="btn btn-info btn-sm edit-cat" href="/cats/edit/<?=$cat->id ?>">編集</a>
             <?= $this->Form->postLink(__('削除'), ['action' => 'delete', $cat->id, ],
-                ['confirm' => __('本当に削除してもいいですか？', $cat->id), 'class' => 'btn btn-danger btn-sm']) ?>
+                ['confirm' => __('本当に削除してもいいですか？', $cat->id), 'class' => 'btn btn-danger btn-sm delete-cat']) ?>
         </div>
     <?php endif; ?>
 	<div class="row">
@@ -142,9 +143,17 @@
 .user_menu {
     margin-bottom: 10px;
 }
-.user_menu .btn {
-    float: right;
+
+.user_menu .edit-cat {
+   text-align: left;
+   float: left;
 }
+
+.user_menu .delete-cat {
+   text-align: right;
+   float: right;
+}
+
 </style>
 
 <script>
