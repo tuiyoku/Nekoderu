@@ -4,7 +4,7 @@ $(function(){
     $(".notification-count a").hide();
     
     var countUnread = function(){
-        console.log("checking");
+        // console.log("checking");
         $.get({
             url:"/profiles/countUnread.json"
         }).done(function (data){
