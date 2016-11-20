@@ -27,6 +27,11 @@ $this->extend('/Layout/nekoderu');
         echo $this->Form->input('email', ['label' => 'メールアドレス']);
         echo $this->Form->input('password', ['label' => 'パスワード']);
         echo $this->Form->input('password_confirm', ['type' => 'password', 'label' => 'パスワード（確認）']);
+        ?>
+        <p>
+        <small>※ 苗字と名前は本名ではなくても大丈夫です</small>
+        </p>
+        <?php
         echo $this->Form->input('last_name', ['label' => '苗字']);
         echo $this->Form->input('first_name', ['label' => '名前']);
         ?>

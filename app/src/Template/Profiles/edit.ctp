@@ -4,6 +4,11 @@
         <legend><?= __d('CakeDC/Users', 'Edit User') ?></legend>
         <?php
             echo $this->Form->input('username', ['label' => __d('CakeDC/Users', 'Username')]);
+        ?>
+        <p>
+            <small>※ 苗字と名前は本名ではなくても大丈夫です</small>
+        </p>
+        <?php
             echo $this->Form->input('last_name', ['label' => __d('CakeDC/Users', '名字')]);
             echo $this->Form->input('first_name', ['label' => __d('CakeDC/Users', '名前')]);
         ?>
