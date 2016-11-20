@@ -24,6 +24,15 @@
     </div>
 
     <div class="large-6 small-6 columns">
+         <h3 class="user-name">
+            <?=
+            $this->Html->tag(
+                'span',
+                __d('CakeDC/Users', '{0} {1}', $user->last_name, $user->first_name),
+                ['class' => 'full_name']
+            )
+            ?>
+        </h3>
         <p><a href="/profiles/user/<?= h($user->username) ?>" >@<?= h($user->username) ?></a></p>
         
         <!--<h6 class="subheader"><?= __d('CakeDC/Users', 'Username') ?></h6>-->
