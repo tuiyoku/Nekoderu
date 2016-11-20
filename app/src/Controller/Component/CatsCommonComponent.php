@@ -11,7 +11,14 @@ class CatsCommonComponent extends Component {
     public function listCats($users_id = null){
         $this->Cats = TableRegistry::get('Cats');
         $data = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments', 'Users', 'Favorites'])
+            ->contain(['CatImages', 'Comments', 'Users', 'Favorites', 
+            'Answers'=> function ($q) {
+               return $q
+                    ->where([
+                        'Questions.name =' => 'name'
+                    ])
+                    ->contain(['Questions']);
+            }])
             ->order(['Cats.created' => 'DESC']);
             
         if(!is_null($users_id)){ 

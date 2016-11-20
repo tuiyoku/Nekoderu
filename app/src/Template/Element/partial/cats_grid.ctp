@@ -83,10 +83,22 @@
     }
     
     .more-images{
-        float: right;
         position: absolute;
         right: 10px;
         font-size: 2rem;
+        color: rgba(255,255,255,0.8);
+    }
+    
+    .name{
+        position: absolute;
+        left: 10px;
+        bottom: 5px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width : 95%; /*fallback*/
+        width : calc(100% - 20px) ;
+        overflow: hidden;
+        font-size: 1rem;
         color: rgba(255,255,255,0.8);
     }
     
@@ -122,17 +134,19 @@
             <?php foreach ($cat->cat_images as $imgIdx => $image): ?>
                 <?php if($imgIdx >= 1) break; ?>
                 <div class="grid-item">
-                    <?php if(count($cat->cat_images) > 1): ?>
+                    <div style="position:relative;">
+                        <?php if(count($cat->cat_images) > 1): ?>
                         <div class="more-images">+<?= (count($cat->cat_images)-1) ?></div>
-                    <?php endif; ?>
-                    <?php 
-                        
-                    ?>
+                        <?php endif; ?>
+                        <?php if(count($cat->answers)>0): ?>
+                            <div class="name"><?= $cat->answers[0]->value ?></div>
+                        <?php endif; ?>
                     <?php if($image->thumbnail):?>
                         <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>詳しく見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
                     <?php else: ?>
                         <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>詳しく見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
                     <?php endif; ?>
+                    </div>
                     <?php if(!empty($cat->user->username)): ?>
                         <div class="user"><a href="/profiles/user/<?= h($cat->user->username) ?>" >@<?= h($cat->user->username) ?></a></div>
                     <?php endif; ?>
