@@ -14,6 +14,9 @@
         <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="nav navbar-nav">
                 <li>
+                    <a href="/cats/carousel">カルーセル <sup>New!</sup></a>
+                </li>
+                <li>
                     <a href="/pages/top">これはなに？</a>
                 </li>
                 <li>

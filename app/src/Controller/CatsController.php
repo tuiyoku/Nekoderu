@@ -16,7 +16,7 @@ class CatsController extends AppController
     
     public $paginate = [
         // その他のキーはこちら
-        'maxLimit' => 5
+        'maxLimit' => 20
     ];
     
     public $components = ['RequestHandler', 'CatsCommon', 'NekoUtil', 'NotificationManager'];
@@ -28,7 +28,7 @@ class CatsController extends AppController
         if($this->Auth->user()){
             $this->Auth->allow();
         }else{
-            $this->Auth->allow(['add', 'view', 'data', 'grid', 'comments']);    
+            $this->Auth->allow(['add', 'view', 'data', 'grid', 'carousel', 'comments']);    
         }
     }
     
@@ -138,6 +138,19 @@ class CatsController extends AppController
 
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
+    }
+    
+    public function carousel()
+    {
+        $this->CatImages = TableRegistry::get("CatImages");
+        $images = $this->CatImages->find('all')
+            ->contain(['Cats'])
+            ->order(['Cats.created' => 'DESC']);
+       
+        $images = $this->paginate($images);
+        
+        $this->set(compact('images'));
+        $this->set('_serialize', ['images']);
     }
     
     /**
