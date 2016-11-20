@@ -161,8 +161,8 @@ app.infoWindows = [];
                     gmiw.open(marker.getMap(), marker);
                     app.infoWindows.push(gmiw);
                     
-                    console.log($(".lightbox"));
-                    $(".lightbox").lightbox();
+                    // console.log($(".lightbox"));
+                    // $(".lightbox").lightbox();
                 });
             
                 

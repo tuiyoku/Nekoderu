@@ -57,19 +57,17 @@ class CatsController extends AdminAppController
         
         $q = $this->request->query;
         
-        $data = $this->Cats->find('all')->contain([
+        $data = $this->Cats->find('all')
+            ->contain([
                 'CatImages', 
                 'Comments' => function($q) {
                     return $q
                         ->order('created DESC');
                 }
-        ]);
-        if($q != null){
-            $data = $data
-                ->where(['created >' => new \DateTime($q['map_start'])])
-                ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
-        }
-        $cats = $this->paginate($data);
+            ])
+            ->limit(1000);
+        // $cats = $this->paginate($data);
+        $cats = $data;
 
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
