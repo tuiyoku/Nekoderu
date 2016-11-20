@@ -140,7 +140,7 @@ class CatsController extends AppController
         $this->set('_serialize', ['cats']);
     }
     
-    public function carousel()
+    public function photoGrid()
     {
         $this->CatImages = TableRegistry::get("CatImages");
         $images = $this->CatImages->find('all')

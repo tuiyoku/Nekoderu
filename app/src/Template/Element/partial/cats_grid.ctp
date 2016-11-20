@@ -125,6 +125,9 @@
                     <?php if(count($cat->cat_images) > 1): ?>
                         <div class="more-images">+<?= (count($cat->cat_images)-1) ?></div>
                     <?php endif; ?>
+                    <?php 
+                        
+                    ?>
                     <?php if($image->thumbnail):?>
                         <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>詳しく見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
                     <?php else: ?>
