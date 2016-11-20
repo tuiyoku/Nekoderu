@@ -183,24 +183,24 @@
     <a class="btn btn-default btn-bg" href="<?=$this->Url->build('/', false); ?>cats/add" role="button">
         <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 投稿する
     </a>
+    
+    <?php if($auth): ?>
     <div class="notification-count">
         <a class="btn btn-default btn-sm" href="/profiles/notifications ?>" role="button">
               <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
               <span class="count"></span>
         </a>
     </div>
+    <?php endif; ?>
 </div>
 
+<?php if($auth): ?>
 <div id="notification-popup" class="white-popup mfp-hide">
     <h3>お知らせ <small><a href="/profiles/notifications">すべて見る</a></small></h3>
     <?= $this->element('partial/notifications', ["limit" => 10]); ?>
 </div>
-
-<script type="text/javascript">
-
-    
+<script>
 $(function(){
-
     $(".notification-count a").hide();
     $.get({
         url:"/profiles/countUnread.json"
@@ -222,8 +222,15 @@ $(function(){
             $(".notification-count a").hide();
         }
     });
+});
+</script>
+<?php endif; ?>
+
+<script type="text/javascript">
+
     
-    
+$(function(){
+
     function encourage_popup(e){
         <?php if (!$auth): ?>
             e.preventDefault();
@@ -316,7 +323,7 @@ $(function(){
         navSelector : '.next', // ナビゲーション
         nextSelector : '.next a', // 次ページへのリンク
         itemSelector : '.grid-item', // 次ページ内で探す要素
-        debug         : true,
+        debug         : false,
         dataType      : 'html',
         loading: {
             selector: '.loading-selector',
