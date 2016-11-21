@@ -306,7 +306,11 @@ class CatsController extends AppController
     {
         
         $cat = $this->Cats->get($id, [
-            'contain' => ['CatImages', 'Comments', 'Users', 'ResponseStatuses', 'Tags']
+            'contain' => ['CatImages', 
+            'Comments'=> function ($q) {
+                return $q->order(['Comments.created' => 'DESC']);
+            },  
+            'Users', 'ResponseStatuses', 'Tags']
         ]);
 
         $this->set('cat', $cat);
