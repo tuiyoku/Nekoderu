@@ -55,7 +55,7 @@ var isJSON = function(arg) {
     }
 };
 
-var taggify = function(parent, selector){
+var taggify = function(selector){
 
     function _taggify(str){
         var hash = '#＃';
@@ -74,15 +74,15 @@ var taggify = function(parent, selector){
           ')' +
           '(?![' + hash + tag + digit + underscore + ']+)',
         'g');
-        return str.replace(pattern, "<a href='/cats/tag/$1'>#$1</a>");
+        return str.replace(pattern, " <a href='/cats/tag/$1'>#$1</a> ");
     
     }
     
-    parent.find(selector).each(function(){
+    $(selector).each(function(){
         var t = $(this);
         if(!t.hasClass('taggified')){
             t.addClass('taggified');
-            t.html(_taggify(t.html()));
+            t.html(_taggify(t.text()));
         }
     });
 
