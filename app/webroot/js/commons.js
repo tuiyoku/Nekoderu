@@ -79,7 +79,11 @@ var taggify = function(parent, selector){
     }
     
     parent.find(selector).each(function(){
-       $(this).html(_taggify($(this).text()));
+        var t = $(this);
+        if(!t.hasClass('taggified')){
+            t.addClass('taggified');
+            t.html(_taggify(t.html()));
+        }
     });
 
 }
