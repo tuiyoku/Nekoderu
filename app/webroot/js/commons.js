@@ -55,7 +55,7 @@ var isJSON = function(arg) {
     }
 };
 
-var taggify = function(selector){
+var taggify = function(parent, selector){
 
     function _taggify(str){
         var hash = '#＃';
@@ -78,7 +78,7 @@ var taggify = function(selector){
     
     }
     
-    $(selector).each(function(){
+    parent.find(selector).each(function(){
         var t = $(this);
         if(!t.hasClass('taggified')){
             t.addClass('taggified');
