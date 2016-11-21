@@ -40,7 +40,6 @@ function setModal(id, btn){
         var modal = $("#"+id);
         modal.css('display', 'block');
     });
-    
 }
 
 var isJSON = function(arg) {
@@ -55,3 +54,32 @@ var isJSON = function(arg) {
         return false;
     }
 };
+
+var taggify = function(parent, selector){
+
+    function _taggify(str){
+        var hash = '#＃';
+        var tag = 'A-Za-z〃々ぁ-ゖ゛-ゞァ-ヺーヽヾ一-龥Ａ-Ｚａ-ｚｦ-ﾟ';
+        // var tag = 'a-zÀ-ÖØ-öø-ÿĀ-ɏɓ-ɔɖ-ɗəɛɣɨɯɲʉʋʻ̀-ͯḀ-ỿЀ-ӿԀ-ԧⷠ-ⷿꙀ-֑ꚟ-ֿׁ-ׂׄ-ׇׅא-תװ-״﬒-ﬨשׁ-זּטּ-לּמּנּ-סּףּ-פּצּ-ﭏؐ-ؚؠ-ٟٮ-ۓە-ۜ۞-۪ۨ-ۯۺ-ۼۿݐ-ݿࢠࢢ-ࢬࣤ-ࣾﭐ-ﮱﯓ-ﴽﵐ-ﶏﶒ-ﷇﷰ-ﷻﹰ-ﹴﹶ-ﻼ‌ก-ฺเ-๎ᄀ-ᇿ㄰-ㆅꥠ-꥿가-힯ힰ-퟿ﾡ-ￜァ-ヺー-ヾｦ-ﾟｰＡ-Ｚａ-ｚぁ-ゖ゙-ゞ㐀-䶿一-鿿꜀-뜿띀-렟-﨟〃々〻'; // 全言語対応
+        var digit = '0-9０-９';
+        var underscore = '_';
+        
+        var pattern = new RegExp(
+          '(?:^|[^' + tag + digit + underscore + ']+)' +
+          '[' + hash + ']' +
+          '(' +
+          '[' + tag + digit + underscore + ']*' +
+          '[' + tag + ']+' +
+          '[' + tag + digit + underscore + ']*' +
+          ')' +
+          '(?![' + hash + tag + digit + underscore + ']+)',
+        'g');
+        return str.replace(pattern, "<a href='/cats/tag/$1'>#$1</a>");
+    
+    }
+    
+    parent.find(selector).each(function(){
+       $(this).html(_taggify($(this).text()));
+    });
+
+}

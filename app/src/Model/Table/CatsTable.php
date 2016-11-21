@@ -47,6 +47,7 @@ class CatsTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'users_id',
         ]);
+        
         $this->belongsToMany('Tags', [
             'joinTable' => 'CatsTags',
             'foreignKey'  => 'cats_id',

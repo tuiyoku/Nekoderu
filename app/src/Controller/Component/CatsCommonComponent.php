@@ -11,7 +11,11 @@ class CatsCommonComponent extends Component {
     public function listCats($users_id = null){
         $this->Cats = TableRegistry::get('Cats');
         $data = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments', 'Users', 'Favorites', 
+            ->contain(['CatImages', 
+            'Comments'=> function ($q) {
+                return $q->order(['Comments.created' => 'DESC']);
+            }, 
+            'Users', 'Favorites', 
             'Answers'=> function ($q) {
                return $q
                     ->where([
@@ -32,18 +36,22 @@ class CatsCommonComponent extends Component {
     
      public function listCatsByTag($tag){
         $this->Cats = TableRegistry::get('Cats');
+        
+        $this->Tags = TableRegistry::get('Tags');
+            
         $data = $this->Cats->find('all')
-            ->contain(['CatImages', 'Comments', 'Users', 'Favorites', 'Tags',
-            'Answers'=> function ($q) {
-               return $q
-                    ->where([
-                        'Questions.name =' => 'name'
-                    ])
-                    ->contain(['Questions']);
-            }])
-            ->where(['Tags.tag =' => $tag])
-            ->order(['Cats.created' => 'DESC']);
-
+        ->contain(['CatImages', 'Comments', 'Users', 'Favorites',
+        'Answers'=> function ($q) {
+          return $q
+                ->where([
+                    'Questions.name =' => 'name'
+                ])
+                ->contain(['Questions']);
+        }])
+        ->matching('Tags', function ($q) use ($tag) {
+            return $q->where(['Tags.tag =' => $tag]);
+        })
+        ->order(['Cats.created' => 'DESC']);
         
         return $data;
     }

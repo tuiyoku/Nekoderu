@@ -1,2 +1,2 @@
-<h3 class="subheader"><?= __('Your cats') ?></h3>
+<h3 class="subheader">#<?= $tag ?></h3>
 <?= $this->element('partial/cats_grid'); ?>

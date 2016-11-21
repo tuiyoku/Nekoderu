@@ -250,6 +250,8 @@ $(function(){
             $('.encourage-popup').trigger('click');
             <?php $this->request->session()->write('Last.Submit.Cat.Shown', true); ?>
         <?php endif; ?>
+        
+		taggify($('body'), '.grid-comment');
     }
     
     function lightboxing(){
@@ -337,6 +339,8 @@ $(function(){
 		fixedContentPos: true,
 		overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
     });
+    
+  
 });
 </script>
 

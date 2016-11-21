@@ -15,7 +15,7 @@
 </div>
 
 <style>
-    .notfication a, a:link, a:visited, a:hover, a:active {
+    .notfication a, .notfication a:link, .notfication a:visited, .notfication a:hover, .notfication a:active {
         color: black;
         text-decoration: none;
     }

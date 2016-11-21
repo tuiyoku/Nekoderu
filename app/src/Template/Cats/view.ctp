@@ -39,6 +39,13 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <div class="row">
+        <ul class="tags">
+            <?php foreach ($cat->tags as $tag): ?>
+            <li>#<?=$tag->tag ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
    
     <div class="row">
         <?php
@@ -154,6 +161,21 @@
    float: right;
 }
 
+ul.tags {
+    margin: 0;
+}
+
+ul.tags li{
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+input[type="text"] {
+    margin: 0;
+}
+
 </style>
 
 <script>
@@ -209,6 +231,8 @@ var updateComments = function(data){
         }
         cln.find('.chat-id').html('<a href="/profiles/user/'+this.user.username+'">@'+this.user.username+'</a>');
         cln.find('.chat-time').text(new Date(this.created).toTwitterRelativeTime('ja') );
+        
+		taggify(cln, '.chat-fukidashi');
         
         var key = this.users_id;
         console.log(imageURLCache);
@@ -342,6 +366,10 @@ $('#addComment').submit(function(event) {
         });
         $grid.masonry();
     });
+    
+$(function(){
+   taggify($('.tags'), 'li'); 
+});
 </script>
 
 <link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/modal.css">

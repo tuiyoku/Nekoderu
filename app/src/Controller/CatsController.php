@@ -48,7 +48,6 @@ class CatsController extends AppController
             $tag = $this->Cats->Tags->newEntity($tag);
             $tag->tag = $value;
             if($this->Cats->Tags->save($tag)){
-                return null;
             }
         }
         return $tag;
@@ -80,7 +79,7 @@ class CatsController extends AppController
                 $tags[] = $tag;
             }
         }
-         
+        
         $commentDO = $this->Cats->Comments->newEntity([
             'associated' => ['Tags']
         ]);
@@ -93,7 +92,9 @@ class CatsController extends AppController
         if ($this->Cats->Comments->save($commentDO)) {
             // $this->Flash->success('コメントを保存しました。');
             
-            $cat = $this->Cats->get($cat_id);
+            $cat = $this->Cats->get($cat_id,[
+                'contain' => ['Tags']
+            ]);
             
             //タグの追加
             $this->Cats->Tags->link($cat, $tags);
@@ -254,6 +255,9 @@ class CatsController extends AppController
        
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
+        
+        $this->set(compact('tag'));
+        $this->set('_serialize', ['tag']);
     }
     
     public function photoGrid()
@@ -302,7 +306,7 @@ class CatsController extends AppController
     {
         
         $cat = $this->Cats->get($id, [
-            'contain' => ['CatImages', 'Comments', 'Users', 'ResponseStatuses']
+            'contain' => ['CatImages', 'Comments', 'Users', 'ResponseStatuses', 'Tags']
         ]);
 
         $this->set('cat', $cat);

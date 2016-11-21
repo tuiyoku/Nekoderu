@@ -48,6 +48,7 @@ class CommentsTable extends Table
             'foreignKey' => 'cats_id',
             'joinType' => 'INNER'
         ]);
+        
         $this->belongsToMany('Tags', [
             'joinTable' => 'CommentsTags',
             'foreignKey'  => 'comments_id',
