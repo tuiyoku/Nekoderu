@@ -47,6 +47,11 @@ class CatsTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'users_id',
         ]);
+        $this->belongsToMany('Tags', [
+            'joinTable' => 'CatsTags',
+            'foreignKey'  => 'cats_id',
+            'targetForeignKey' => 'tags_id'
+        ]);
 
         // Add the behaviour to your table
         $this->addBehavior('Search.Search');

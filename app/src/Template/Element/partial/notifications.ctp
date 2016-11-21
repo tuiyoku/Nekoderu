@@ -96,7 +96,7 @@ function updateNotifications(data){
                 $.get({
                     url: "/profiles/markRead/"+not.id+".json",
                 }).done(function(data){
-                    self.slideUp(500, 'liniar');
+                    self.slideUp(500);
                     line.css('border-left-color', 'gray');
                 });
             });

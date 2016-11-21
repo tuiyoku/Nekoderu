@@ -28,7 +28,7 @@ class CatsController extends AppController
         if($this->Auth->user()){
             $this->Auth->allow();
         }else{
-            $this->Auth->allow(['add', 'view', 'data', 'grid', 'carousel', 'comments']);    
+            $this->Auth->allow(['add', 'view', 'data', 'grid', 'tag', 'photoGrid', 'comments']);    
         }
     }
     
@@ -40,6 +40,107 @@ class CatsController extends AppController
             return true;
         }
         return false;
+    }
+    
+    private function _addTag($value){
+        $tag = $this->Cats->Tags->find('all')->where(['tag =' => $value])->first();
+        if($tag == null){
+            $tag = $this->Cats->Tags->newEntity($tag);
+            $tag->tag = $value;
+            if($this->Cats->Tags->save($tag)){
+                return null;
+            }
+        }
+        return $tag;
+    }
+    
+     private function _addComment($comment, $cat_id, $uid){
+         
+        //ハッシュタグを処理
+        
+        $hash = '#＃';
+        $tag = 'A-Za-z〃々ぁ-ゖ゛-ゞァ-ヺーヽヾ一-龥Ａ-Ｚａ-ｚｦ-ﾟ';
+        // $tag = 'a-zÀ-ÖØ-öø-ÿĀ-ɏɓ-ɔɖ-ɗəɛɣɨɯɲʉʋʻ̀-ͯḀ-ỿЀ-ӿԀ-ԧⷠ-ⷿꙀ-֑ꚟ-ֿׁ-ׂׄ-ׇׅא-תװ-״﬒-ﬨשׁ-זּטּ-לּמּנּ-סּףּ-פּצּ-ﭏؐ-ؚؠ-ٟٮ-ۓە-ۜ۞-۪ۨ-ۯۺ-ۼۿݐ-ݿࢠࢢ-ࢬࣤ-ࣾﭐ-ﮱﯓ-ﴽﵐ-ﶏﶒ-ﷇﷰ-ﷻﹰ-ﹴﹶ-ﻼ‌ก-ฺเ-๎ᄀ-ᇿ㄰-ㆅꥠ-꥿가-힯ힰ-퟿ﾡ-ￜァ-ヺー-ヾｦ-ﾟｰＡ-Ｚａ-ｚぁ-ゖ゙-ゞ㐀-䶿一-鿿꜀-뜿띀-렟-﨟〃々〻'; // 全言語対応
+        $digit = '0-9０-９';
+        $underscore = '_';
+        
+        $pattern = "/(?:^|[^ｦ-ﾟー゛゜々ヾヽぁ-ヶ一-龠ａ-ｚＡ-Ｚ０-９a-zA-Z0-9&_\/]+)"
+        ."[#＃]("
+        ."[ｦ-ﾟー゛゜々ヾヽぁ-ヶ一-龠ａ-ｚＡ-Ｚ０-９a-zA-Z0-9_]*"
+        ."[ｦ-ﾟー゛゜々ヾヽぁ-ヶ一-龠ａ-ｚＡ-Ｚ０-９a-zA-Z]+"
+        ."[ｦ-ﾟー゛゜々ヾヽぁ-ヶ一-龠ａ-ｚＡ-Ｚ０-９a-zA-Z0-9_]*"
+        .")/u";
+        
+        preg_match_all($pattern, $comment, $matches, PREG_PATTERN_ORDER);
+        
+        $tags = [];
+        foreach($matches[1] as $value){
+            $tag = $this->_addTag($value);
+            if(!is_null($tag)){
+                $tags[] = $tag;
+            }
+        }
+         
+        $commentDO = $this->Cats->Comments->newEntity([
+            'associated' => ['Tags']
+        ]);
+        
+        $commentDO->comment = $comment;
+        $commentDO->cats_id = $cat_id;
+        $commentDO->users_id = $uid;
+        $commentDO->tags = $tags;
+        
+        if ($this->Cats->Comments->save($commentDO)) {
+            // $this->Flash->success('コメントを保存しました。');
+            
+            $cat = $this->Cats->get($cat_id);
+            
+            //タグの追加
+            $this->Cats->Tags->link($cat, $tags);
+            if($this->Cats->save($cat, ['associated' => ['Tags']])){
+                //
+            }
+            
+            //通知処理
+            if(!$this->isCurrentUser($cat->users_id)){
+                $u = $this->currentUser();
+                
+                $this->NotificationManager->notify($cat->users_id, 
+                    'あなたの猫ちゃんに新しい「コメント」がありました！', 
+                    "@".$u->username."さんが「コメント」してくれました！", 
+                    Router::url(["controller" => "Cats","action" => "view", $cat_id])
+                );
+                
+                $users_ids = $this->Cats->Comments->find()
+                    ->select(['users_id'])
+                    ->where(['cats_id = ' => $cat_id])
+                    ->group('users_id')
+                    ->having(['users_id !=' => 0, 'users_id !=' => $u->id]);
+                    
+                foreach($users_ids as $users_id){
+                    $this->NotificationManager->notify($users_id->users_id, 
+                        'あなたがコメントした猫ちゃんに新しい「コメント」がありました！', 
+                        "@".$u->username."さんが「コメント」しました！", 
+                        Router::url(["controller" => "Cats","action" => "view", $cat_id])
+                    );
+                }
+                
+                $users_ids = $this->Cats->Favorites->find()
+                    ->select(['users_id'])
+                    ->where(['cats_id = ' => $cat_id])
+                    ->group('users_id')
+                    ->having(['users_id !=' => 0, 'users_id !=' => $u->id]);
+                    
+                foreach($users_ids as $users_id){
+                    $this->NotificationManager->notify($users_id->users_id, 
+                        'あなたが「いいね」した猫ちゃんに新しい「コメント」がありました！', 
+                        "@".$u->username."さんが「コメント」しました！", 
+                        Router::url(["controller" => "Cats","action" => "view", $cat_id])
+                    );
+                }
+                
+            }
+        }
     }
     
     private function saveCatImage($file, $cat_id, $uid){
@@ -136,6 +237,21 @@ class CatsController extends AppController
             }
         }
 
+        $this->set(compact('cats'));
+        $this->set('_serialize', ['cats']);
+    }
+    
+     /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function tag($tag)
+    {
+        
+        $data = $this->CatsCommon->listCatsByTag($tag);
+        $cats = $this->paginate($data);
+       
         $this->set(compact('cats'));
         $this->set('_serialize', ['cats']);
     }
@@ -352,13 +468,7 @@ class CatsController extends AppController
             }
             
             if(mb_strlen($comment) > 0){
-                $commentDO = $this->Cats->Comments->newEntity();
-                $commentDO->comment = $comment;
-                $commentDO->users_id = $uid;
-                $commentDO->cats_id = $cat->id;
-                if ($this->Cats->Comments->save($commentDO)) {
-                    // $this->Flash->success('コメントを保存しました。');
-                }
+                $this->_addComment($comment, $cat->id, $uid);
             }
            
             if (isset($data["image"])) {
@@ -529,57 +639,10 @@ class CatsController extends AppController
                 }
             }
             if(count($commentAdd) > 0){
-                $comment = json_encode(array('comment' => $comment,'media' => $commentAdd));
+                $comment = json_encode(array('comment' => $comment, 'media' => $commentAdd));
             }
             
-            $commentDO = $this->Cats->Comments->newEntity();
-            $commentDO->comment = $comment;
-            $commentDO->cats_id = $cat_id;
-            $commentDO->users_id = $uid;
-            if ($this->Cats->Comments->save($commentDO)) {
-                // $this->Flash->success('コメントを保存しました。');
-                
-                //通知処理
-                $cat = $this->Cats->get($cat_id);
-                if(!$this->isCurrentUser($cat->users_id)){
-                    $u = $this->currentUser();
-                    
-                    $this->NotificationManager->notify($cat->users_id, 
-                        'あなたの猫ちゃんに新しい「コメント」がありました！', 
-                        "@".$u->username."さんが「コメント」してくれました！", 
-                        Router::url(["controller" => "Cats","action" => "view", $cat_id])
-                    );
-                    
-                    $users_ids = $this->Cats->Comments->find()
-                        ->select(['users_id'])
-                        ->where(['cats_id = ' => $cat_id])
-                        ->group('users_id')
-                        ->having(['users_id !=' => 0, 'users_id !=' => $u->id]);
-                        
-                    foreach($users_ids as $users_id){
-                        $this->NotificationManager->notify($users_id->users_id, 
-                            'あなたがコメントした猫ちゃんに新しい「コメント」がありました！', 
-                            "@".$u->username."さんが「コメント」しました！", 
-                            Router::url(["controller" => "Cats","action" => "view", $cat_id])
-                        );
-                    }
-                    
-                    $users_ids = $this->Cats->Favorites->find()
-                        ->select(['users_id'])
-                        ->where(['cats_id = ' => $cat_id])
-                        ->group('users_id')
-                        ->having(['users_id !=' => 0, 'users_id !=' => $u->id]);
-                        
-                    foreach($users_ids as $users_id){
-                        $this->NotificationManager->notify($users_id->users_id, 
-                            'あなたが「いいね」した猫ちゃんに新しい「コメント」がありました！', 
-                            "@".$u->username."さんが「コメント」しました！", 
-                            Router::url(["controller" => "Cats","action" => "view", $cat_id])
-                        );
-                    }
-                    
-                }
-            }
+            $this->_addComment($comment, $cat_id, $uid);
             
             $comments = $this->Cats->Comments
                 ->find('all', ['order' => ['Comments.created' => 'DESC']])

@@ -7,22 +7,22 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Comments Model
+ * CatsTags Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsTo $Cats
+ * @property \Cake\ORM\Association\BelongsTo $Tags
  *
- * @method \App\Model\Entity\Comment get($primaryKey, $options = [])
- * @method \App\Model\Entity\Comment newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Comment[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Comment|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Comment patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Comment[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Comment findOrCreate($search, callable $callback = null)
+ * @method \App\Model\Entity\CatsTag get($primaryKey, $options = [])
+ * @method \App\Model\Entity\CatsTag newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\CatsTag[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\CatsTag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\CatsTag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\CatsTag[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\CatsTag findOrCreate($search, callable $callback = null)
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class CommentsTable extends Table
+class CatsTagsTable extends Table
 {
 
     /**
@@ -35,23 +35,19 @@ class CommentsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('comments');
+        $this->table('cats_tags');
         $this->displayField('id');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'users_id'
-        ]);
         $this->belongsTo('Cats', [
             'foreignKey' => 'cats_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsToMany('Tags', [
-            'joinTable' => 'CommentsTags',
-            'foreignKey'  => 'comments_id',
-            'targetForeignKey' => 'tags_id'
+        $this->belongsTo('Tags', [
+            'foreignKey' => 'tags_id',
+            'joinType' => 'INNER'
         ]);
     }
 
@@ -67,10 +63,6 @@ class CommentsTable extends Table
             ->integer('id')
             ->allowEmpty('id', 'create');
 
-        $validator
-            ->requirePresence('comment', 'create')
-            ->notEmpty('comment');
-
         return $validator;
     }
 
@@ -83,8 +75,8 @@ class CommentsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['users_id'], 'Users'));
         $rules->add($rules->existsIn(['cats_id'], 'Cats'));
+        $rules->add($rules->existsIn(['tags_id'], 'Tags'));
 
         return $rules;
     }

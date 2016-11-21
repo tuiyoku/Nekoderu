@@ -29,4 +29,22 @@ class CatsCommonComponent extends Component {
         
         return $data;
     }
+    
+     public function listCatsByTag($tag){
+        $this->Cats = TableRegistry::get('Cats');
+        $data = $this->Cats->find('all')
+            ->contain(['CatImages', 'Comments', 'Users', 'Favorites', 'Tags',
+            'Answers'=> function ($q) {
+               return $q
+                    ->where([
+                        'Questions.name =' => 'name'
+                    ])
+                    ->contain(['Questions']);
+            }])
+            ->where(['Tags.tag =' => $tag])
+            ->order(['Cats.created' => 'DESC']);
+
+        
+        return $data;
+    }
 }
