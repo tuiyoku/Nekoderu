@@ -17,7 +17,7 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.users',
-        'app.social_accounts'
+        // 'app.social_accounts'
     ];
 
     /**

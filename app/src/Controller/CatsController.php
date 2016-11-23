@@ -28,7 +28,7 @@ class CatsController extends AppController
         if($this->Auth->user()){
             $this->Auth->allow();
         }else{
-            $this->Auth->allow(['add', 'view', 'data', 'grid', 'tag', 'photoGrid', 'comments']);    
+            $this->Auth->allow(['add', 'add2', 'view', 'data', 'grid', 'tag', 'photoGrid', 'comments']);    
         }
     }
     
@@ -418,8 +418,9 @@ class CatsController extends AppController
         $this->set(compact('questions'));
         $this->set('_serialize', ['questions']);
         
+        
         if ($this->request->is('post')) {
-
+            
             $data = $this->request->data;
             
             $this->log($this->request->data);
@@ -480,6 +481,7 @@ class CatsController extends AppController
             }
            
             if (isset($data["image"])) {
+                
                 for($i=0; $i<count($data["image"]); $i++){
                     if(is_uploaded_file($data["image"][$i]["tmp_name"])){
                     
@@ -492,6 +494,10 @@ class CatsController extends AppController
             
             return $this->redirect('/');
         }
+    }
+    
+    public function add2(){
+        return $this->add();
     }
     
     /**

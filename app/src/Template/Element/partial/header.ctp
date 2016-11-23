@@ -26,22 +26,16 @@
                     <a href="/policy/contact">お問い合わせ</a>
                 </li>
             </ul>
-            <?php
-            if (!$auth):
-            ?>
+            <?php if (!isset($auth)): ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/login">ログイン</a></li>
                 </ul>
-            <?php
-            else:
-            ?>
+            <?php else: ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/profiles/user/<?=$auth['username']?>">マイページ</a></li>
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
-            <?php
-            endif;
-            ?>
+            <?php endif; ?>
             
         </div>
         <!-- /.navbaｃr-collapse -->
