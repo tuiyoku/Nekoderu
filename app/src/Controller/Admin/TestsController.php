@@ -1,15 +1,20 @@
 <?php
+namespace App\Controller\Admin;
 
-namespace App\Controller;
+use App\Controller\AppController;
 
-use Cake\Controller\Controller;
-use Cake\Mailer\Email;
-use Cake\Event\Event;
-
-
-class TestsController extends AppController
+/**
+ * Tags Controller
+ *
+ * @property \App\Model\Table\TagsTable $Tags
+ */
+class TestsController extends AdminAppController
 {
     public $components = array('NekoUtil', 'GoogleApi');
+    
+    public function ocrTest(){
+        
+    }  
     
     /***
      * Vision APIで猫が写っているか確認するサンプル
@@ -71,10 +76,8 @@ class TestsController extends AppController
         return null;
     }
     
-    public function beforeFilter(Event $event)
-    {
-        $this->Auth->allow(['index', 'visionTest', 'oauth2callback', 'googleConnect', 'mail']);
-    }
-    
-   
+    // public function beforeFilter(Event $event)
+    // {
+    //     $this->Auth->allow();
+    // }
 }

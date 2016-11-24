@@ -41,7 +41,7 @@
                     <p>
                         本サービス「ねこでる」はTNR活動の促進を目的として、
                         <a href="(http://izumiken-web.elasticbeanstalk.com">崇城大学和泉研究室</a>と<a href="https://www.youtube.com/watch?v=H6ZKASonxeM">BOX竜之介</a>が共同で開発、運営を行っているウェブサービスです。
-                        お手持ちのスマートフォンで、地域で見かけた猫を撮影して地図から場所を選んで投稿することで、
+                        地域で見かけた猫をお手持ちのスマートフォンで撮影、場所を選んで投稿することで、
                         のら猫のTNR活動に貢献できます。
                     </p>
                     <h2 class="brand-before">
@@ -113,6 +113,8 @@
             </a>
         </div>
     </div>
+    
+    <?= $this->element('partial/media'); ?>
     <!-- /.container -->
 
     <footer>

@@ -13,6 +13,8 @@
 
 <pre>
 <?php
-    echo $json;
+    if(isset($json)){
+        echo $json;
+    }
 ?>
 </pre>
