@@ -1,6 +1,7 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
+use Cake\ORM\TableRegistry;
 use App\Controller\CatsController;
 use Cake\TestSuite\IntegrationTestCase;
 
@@ -26,7 +27,10 @@ class CatsControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+         $this->get('/cats');
+
+        $this->assertResponseOk();
+        // 他のアサート
     }
 
     /**
@@ -36,7 +40,9 @@ class CatsControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/cats/view/1');
+
+        $this->assertResponseOk();
     }
 
     /**
@@ -46,7 +52,20 @@ class CatsControllerTest extends IntegrationTestCase
      */
     public function testAdd()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $data = [
+            'user_id' => '',
+            'locate' => '32.79958,130.70033569999998',
+            'address' => '日本, 〒860-0805 熊本県熊本市中央区桜町２−３２',
+            'ear_shape' => 2,
+            'comment' => 'これはコメントです',
+            
+        ];
+        $this->post('/cats/add', $data);
+
+        $this->assertResponseSuccess();
+        $cats = TableRegistry::get('Cats');
+        $query = $cats->find('all');
+        $this->assertEquals(1, $query->count());
     }
 
     /**

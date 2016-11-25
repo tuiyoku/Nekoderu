@@ -3,7 +3,7 @@
     <fieldset>
         <legend><?= __d('CakeDC/Users', 'Edit User') ?></legend>
         <?php
-            echo $this->Form->input('username', ['label' => __d('CakeDC/Users', 'Username')]);
+            //echo $this->Form->input('username', ['label' => __d('CakeDC/Users', 'Username')]);
         ?>
         <p>
             <small>※ 苗字と名前は本名ではなくても大丈夫です</small>

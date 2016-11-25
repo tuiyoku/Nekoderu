@@ -148,7 +148,7 @@ msgstr ""
 
 #: Controller/Admin/UsersController.php:55;81
 msgid "The user has been saved."
-msgstr ""
+msgstr "ユーザ情報を保存しました"
 
 #: Controller/Admin/UsersController.php:59;85
 msgid "The user could not be saved. Please, try again."
