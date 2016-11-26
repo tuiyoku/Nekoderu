@@ -28,7 +28,7 @@ class CatsController extends AppController
         if($this->Auth->user()){
             $this->Auth->allow();
         }else{
-            $this->Auth->allow(['add', 'add2', 'view', 'data', 'grid', 'tag', 'photoGrid', 'comments']);    
+            $this->Auth->allow(['add', 'add2', 'view', 'data', 'grid', 'tag', 'photoGrid', 'comments', 'readNotification']);    
         }
     }
     
@@ -715,6 +715,11 @@ class CatsController extends AppController
         $this->set('_serialize', ['response']);
     }
     
+    
+    public function readNotification($sessionkey){
+        $this->request->session()->write($sessionkey, true);
+    }
+    
     /**
      * Before render callback.
      *
@@ -726,5 +731,6 @@ class CatsController extends AppController
         parent::beforeRender($event);
         $this->viewBuilder()->layout('nekoderu');
     }
+    
 
 }

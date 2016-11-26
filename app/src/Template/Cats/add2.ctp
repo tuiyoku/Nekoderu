@@ -44,7 +44,8 @@
         <p>わかる範囲でご回答ください。</p>
     </div>
 </div>
-        
+
+<?= $this->element('partial/for_saving_cats_privacy'); ?>  
 <?php
     echo $this->Form->create(null, [
         'url' => 'cats/add2',

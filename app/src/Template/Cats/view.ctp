@@ -48,6 +48,7 @@
     </div>
    
     <div class="row">
+        <?= $this->element('partial/for_saving_cats_privacy'); ?>
         <?php
             echo $this->Form->create(null, [
                 'url' => 'cats/addComment.json',
