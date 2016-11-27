@@ -23,20 +23,26 @@ var createTemplate = function(selector, name){
     eval("template."+name+" =  $('"+selector+"').first();");
 }
 
-function setModal(id, btn){
+function setModal(id, btn, callback){
     var modal = $("#"+id);
    
     $(window).click(function(e) {
+        // e.preventDefault();
         if (e.target.id === modal.attr('id')) {
             modal.css('display', 'none');
         }
     });
     
-    $("#"+id+" .modal-content .close").click(function(){
+    $("#"+id+" .modal-content .close").click(function(e){
+        // e.preventDefault();
         modal.css('display', 'none');
     });
     
-     $("#"+btn).click(function(e){
+     $(btn).click(function(e){
+        // e.preventDefault();
+        if(callback){
+            callback('showing', e);
+        }
         var modal = $("#"+id);
         modal.css('display', 'block');
     });

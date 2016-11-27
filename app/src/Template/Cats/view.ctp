@@ -181,7 +181,7 @@ input[type="text"] {
 
 <script>
 $(function(){
-    setModal("modal-status", "status-info");
+    setModal("modal-status", "#status-info", null);
 });
 </script>
 

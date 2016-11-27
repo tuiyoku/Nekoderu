@@ -265,6 +265,9 @@ class CatsController extends AppController
         $this->CatImages = TableRegistry::get("CatImages");
         $images = $this->CatImages->find('all')
             ->contain(['Cats'])
+            ->where([
+                'Cats.hidden =' => 0
+            ])
             ->order(['Cats.created' => 'DESC']);
        
         $images = $this->paginate($images);
@@ -312,6 +315,11 @@ class CatsController extends AppController
             },  
             'Users', 'ResponseStatuses', 'Tags']
         ]);
+        
+        
+        if($cat->hidden){
+            return $this->redirect('/');
+        }
 
         $this->set('cat', $cat);
         $this->set('_serialize', ['cat']);
@@ -512,6 +520,7 @@ class CatsController extends AppController
         $cat = $this->Cats->get($id, [
             'contain' => ['CatImages', 'Comments', 'Users', 'Answers']
         ]);
+        
         
         if(!$this->isCurrentUser($cat->users_id)){
             return $this->redirect('/');
@@ -718,6 +727,31 @@ class CatsController extends AppController
     
     public function readNotification($sessionkey){
         $this->request->session()->write($sessionkey, true);
+    }
+    
+    public function report() {
+        $this->Report = TableRegistry::get("Reports");
+        $report = $this->Report->newEntity();
+   
+        if ($this->request->is('post')) {
+            
+            $data = $this->request->data;
+            // debug($data);
+            // exit;
+            
+            $report->description = $data['description'];
+            $report->cat_id = $data['cat_id'];
+            $report->user_id = $this->Auth->user()['id'];
+
+            if($this->Report->save($report)) {
+                $cat = $this->Cats->get($report->cat_id);
+                
+                $cat->hidden = true;
+                if($this->Cats->save($cat)){
+                    
+                }
+            }
+        }
     }
     
     /**

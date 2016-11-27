@@ -152,9 +152,9 @@
 
 <script>
 $(function(){
-    setModal("modal-ear", "ear-info");
-    setModal("modal-gps", "gps-info");
-    setModal("modal-detail", "detail-info");
+    setModal("modal-ear", "#ear-info", null);
+    setModal("modal-gps", "#gps-info", null);
+    setModal("modal-detail", "#detail-info", null);
 });
 
 // $("form").submit(function(e) {

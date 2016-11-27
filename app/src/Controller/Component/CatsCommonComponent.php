@@ -23,6 +23,9 @@ class CatsCommonComponent extends Component {
                     ])
                     ->contain(['Questions']);
             }])
+            ->where([
+                'hidden =' => 0
+            ])
             ->order(['Cats.created' => 'DESC']);
             
         if(!is_null($users_id)){ 
@@ -52,6 +55,9 @@ class CatsCommonComponent extends Component {
                 ])
                 ->contain(['Questions']);
         }])
+        ->where([
+            'hidden =' => 0
+        ])
         ->matching('Tags', function ($q) use ($tag) {
             return $q->where(['Tags.tag =' => $tag]);
         })
