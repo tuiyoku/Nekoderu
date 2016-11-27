@@ -13,6 +13,42 @@
     </div>
 </div>
 
+<!-- The Modal -->
+<div id="modal-report" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="container clearfix">
+            <span style="text-align:right" class="close">閉じる</span>
+        </div>
+        <h4 style="margin-top:10px;margin-bottom:20px;">危険、不適切な情報の報告</h4>
+        
+        <?php
+            echo $this->Form->create(null, [
+                'url' => 'cats/report',
+                'id' => 'post',
+                'onsubmit' => 'return confirm("送信してもいいですか？");',
+                'enctype' => 'multipart/form-data'
+            ]);
+        ?>
+        <!--<h6 id='report-target'>レポート対象</h6>-->
+        <?php
+            echo $this->Form->input('cat_id', ['type' => 'hidden', 'id' => 'report-cat-id']);
+            echo $this->Form->textarea('description', [
+                'id' => 'report-description', 
+                'required' => true,
+                'label' => false, 
+                'placeholder' => 'ねこちゃんの位置が特定されてしまう写真やコメントが掲載されている、公序良俗に反する内容であるなどご報告ください。'
+            ]);
+        ?>
+        <?php
+            echo $this->Form->submit(
+                '報告する', ['id' => 'report-submit-button', 'value'=>'投稿', 'label' => false]);
+        ?>
+        <?php echo $this->Form->end(); ?>
+
+    </div>
+</div>
+
 <div class="cats view large-9 medium-8 columns content">
     <?php if($auth && $cat->user && $auth['id'] == $cat->user->id): ?>
         <div class="row user_menu">
@@ -21,6 +57,11 @@
                 ['confirm' => __('本当に削除してもいいですか？', $cat->id), 'class' => 'btn btn-danger btn-sm delete-cat']) ?>
         </div>
     <?php endif; ?>
+    <div style="position: fixed; z-index: 999; bottom: 20px; right: 20px;">
+        <a role="button" class=" encourage-popup btn btn-default btn-sm report-form" target=<?= $cat->id ?>>
+              <span class="glyphicon glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+        </a>
+    </div>
 	<div class="row">
 	    <?php if(!empty($name)): ?>
 	    <h3><?= $name ?></h3>
@@ -56,6 +97,7 @@
                 'enctype' => 'multipart/form-data'
             ]);
         ?>
+        
         <?php if ($auth): ?>
             <!--<?= $this->element('partial/multi_image_selector'); ?>-->
             <?= $this->Form->input('cat_id', ['type' => 'hidden', 'id' => 'cat_id', 'value' => $cat->id]); ?>
@@ -177,11 +219,23 @@ input[type="text"] {
     margin: 0;
 }
 
+.btn-default {
+    background-image: none;
+}
+
 </style>
 
 <script>
 $(function(){
     setModal("modal-status", "#status-info", null);
+    setModal("modal-report", ".report-form", function(name, e){
+        // console.log(e);
+        // debugger;
+        var cat_id = $(e.target).parent().attr('target')
+        $('#report-cat-id').attr('value', cat_id);
+        $('#report-description').attr('value', "");
+        // $('#report-target').html('対象：<a target="_blank" href="/cats/view/' + cat_id + '">#' + cat_id + '</a>');
+    });
 });
 </script>
 

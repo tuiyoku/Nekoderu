@@ -126,42 +126,6 @@
     $ear_images = ['normal', 'donno', 'trimmed_right', 'trimmed_left'];
 ?>
 
-<!-- The Modal -->
-<div id="modal-report" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="container clearfix">
-            <span style="text-align:right" class="close">閉じる</span>
-        </div>
-        <h4 style="margin-top:10px;margin-bottom:20px;">危険、不適切な情報の報告</h4>
-        
-        <?php
-            echo $this->Form->create(null, [
-                'url' => 'cats/report',
-                'id' => 'post',
-                'onsubmit' => 'return confirm("送信してもいいですか？");',
-                'enctype' => 'multipart/form-data'
-            ]);
-        ?>
-        <h6 id='report-target'>レポート対象</h6>
-        <?php
-            echo $this->Form->input('cat_id', ['type' => 'hidden', 'id' => 'report-cat-id']);
-            echo $this->Form->textarea('description', [
-                'id' => 'report-description', 
-                'required' => true,
-                'label' => false, 
-                'placeholder' => 'ねこちゃんの位置が特定されてしまう写真やコメントが掲載されている、公序良俗に反する内容であるなどご報告ください。'
-            ]);
-        ?>
-        <?php
-            echo $this->Form->submit(
-                '報告する', ['id' => 'report-submit-button', 'value'=>'投稿', 'label' => false]);
-        ?>
-        <?php echo $this->Form->end(); ?>
-
-    </div>
-</div>
-
 <div class="row">
     <div class="grid">
         <div class="grid-sizer"></div>
@@ -220,10 +184,6 @@
                               <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                               <span class="count"><?=count($cat->comments) ?></span>
                         </a>
-                        <!--<span style="padding-left:20px"></span>-->
-                        <a role="button" class=" encourage-popup btn btn-default btn-sm report-form" target=<?= $cat->id ?>>
-                              <span class="glyphicon glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                        </a>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -259,16 +219,7 @@
 <?php endif; ?>
 
 <script type="text/javascript">
-$(function(){
-    setModal("modal-report", ".report-form", function(name, e){
-        // console.log(e);
-        // debugger;
-        var cat_id = $(e.target).parent().attr('target')
-        $('#report-cat-id').attr('value', cat_id);
-        $('#report-description').attr('value', "");
-        $('#report-target').html('対象：<a target="_blank" href="/cats/view/' + cat_id + '">#' + cat_id + '</a>');
-    });
-});
+
 
 $(function(){
     function encourage_popup(e){
