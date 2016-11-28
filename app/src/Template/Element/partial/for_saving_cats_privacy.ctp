@@ -1,4 +1,4 @@
-<?php if(is_null($this->request->session()->read('Notify_CatsPrivacy'))): ?>
+<?php if(is_null($cookieHelper->read('Notify_CatsPrivacy'))): ?>
 <link rel="stylesheet" href="/css/w3.css">
 <style>
 .w3-note{background-color:#ffffcc;border-left:6px solid #ffeb3b}

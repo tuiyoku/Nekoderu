@@ -29,7 +29,11 @@ use Cake\ORM\TableRegistry;
  */
 class AppController extends Controller
 {
+    
     use \Crud\Controller\ControllerTrait;
+    
+    public $components = ["Cookie"];
+    
     /**
      * Initialization hook method.
      *
@@ -124,11 +128,13 @@ class AppController extends Controller
         }
     }
     
-    // public function beforeFilter(Event $event) 
-    // {
-    //     parent::beforeFilter($event); 
-    //     $this->Security->requireSecure();
-    // }
+    public function beforeFilter(Event $event) 
+    {
+        parent::beforeFilter($event); 
+        // $this->Security->requireSecure();
+        
+        $this->set('cookieHelper', $this->Cookie);
+    }
     
     // public function forceSSL()
     // {

@@ -23,6 +23,7 @@ class CatsController extends AppController
 
     public function beforeFilter(Event $event)
     {
+        parent::beforeFilter($event); 
         
         //TODO: きっとやり方違う
         if($this->Auth->user()){
@@ -726,7 +727,8 @@ class CatsController extends AppController
     
     
     public function readNotification($sessionkey){
-        $this->request->session()->write($sessionkey, true);
+        $this->Cookie->write($sessionkey, true);
+        // $this->request->session()->write($sessionkey, true);
     }
     
     public function report() {
