@@ -86,7 +86,8 @@
         <?php endif; ?>
     </div>
 </div>
-<h3 class="subheader"><?= __('Your cats') ?></h3>
+<!--<h3 class="subheader"><?= __('Your cats') ?></h3>-->
+<div style="height:2em;"></div>
 <?= $this->element('partial/cats_grid'); ?>
 
 <script async src="/tapatar/exif.js"></script>

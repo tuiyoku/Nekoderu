@@ -17,6 +17,7 @@ trait ResignTrait
      */
     public function resign()
     {
+        
         $uid = $this->Auth->user()['id'];
         if(!empty($uid)){
             $this->Users = TableRegistry::get('Users');

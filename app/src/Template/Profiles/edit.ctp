@@ -23,7 +23,7 @@
     <div class="panel-danger">
          <div class="panel-heading"><?= __("この下の操作は注意してください") ?></div>
          <div class="panel-body">
-            <?= $this->Form->postLink(__('退会する'), ['action' => 'delete', $user->id, ],
+            <?= $this->Form->postLink(__('退会する'), ['action' => 'resign', $user->id, ],
                 ['confirm' => __('本当に退会してもよろしいですか？アカウントは削除され復旧できません。', $user->id), 'class' => 'btn btn-danger btn-sm']) ?>
         </div>
     </div>

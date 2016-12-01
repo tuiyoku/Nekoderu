@@ -170,6 +170,12 @@ $(function(){
 .nav-tabs, .nav-pills {
     text-align:center;
 }
+
+.nav-tabs {
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
 </style>
 <?php $this->end(); ?>
 <?= $this->fetch('content-head') ?>
