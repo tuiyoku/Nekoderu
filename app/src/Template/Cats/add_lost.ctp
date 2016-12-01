@@ -71,7 +71,7 @@
         </div>
         
         <?php echo $this->Form->input('', 
-        ['type' => 'text', 'id' => 'address', 'name' => 'address', 'placeholder' => '住所や場所のわかる内容を記入してください', 'required' => 'required']); ?>
+        ['type' => 'text', 'id' => 'address', 'name' => 'address', 'placeholder' => '飼っていたときの場所や住所をご記入ください', 'required' => 'required']); ?>
     </div>
     <table class="details">
         <tr>
