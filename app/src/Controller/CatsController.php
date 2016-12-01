@@ -221,8 +221,14 @@ class CatsController extends AppController
     {
         
         $q = $this->request->query;
+        if(array_key_exists('order', $q)){
+            $order = $q['order'];
+        }else{
+            $order = null;
+        }
         
-        $data = $this->CatsCommon->listCats();
+        
+        $data = $this->CatsCommon->listCats(null, $order);
         $cats = $this->paginate($data);
         
         $session = $this->request->session();

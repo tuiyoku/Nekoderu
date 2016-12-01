@@ -49,6 +49,10 @@ class FavoritesTable extends Table
             'foreignKey' => 'cats_id',
             'joinType' => 'INNER'
         ]);
+        
+        // $this->addBehavior('CounterCache', [
+        //     'Cats' => ['favorite_count']
+        // ]);
     }
 
     /**

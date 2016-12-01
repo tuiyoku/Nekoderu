@@ -14,8 +14,8 @@
     <div class="container navbar-static-top">
         <?= $this->element('partial/header'); ?>
         <?= $this->Flash->render() ?>
-        <?= $this->fetch('content') ?>
     </div>
+    <?= $this->fetch('content') ?>
     <footer>
     </footer>
 </body>

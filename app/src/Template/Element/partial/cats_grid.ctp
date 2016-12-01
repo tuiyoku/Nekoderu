@@ -126,6 +126,54 @@
     $ear_images = ['normal', 'donno', 'trimmed_right', 'trimmed_left'];
 ?>
 
+<?php $this->start('content-head'); ?>
+<div id="#fixedBox">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="./?order=popular"><?= __("Popular") ?></a></li>
+      <li><a href="./?order=recent"><?= __("Recent") ?></a></li>
+      <li><a href="./?order=commented"><?= __("Commented") ?></a></li>
+    </ul>
+</div>
+<script>
+$(function(){
+  
+    // var nav  = $('#fixedBox');
+    // var offset = nav.offsetTop;
+    
+    //     console.log(offset);
+    //     console.log($(window).scrollTop()>offset);
+      
+    // $(window).scroll(function () {
+        
+        
+    //     if($(window).scrollTop() > offset.top) {
+    //         nav.addClass('fixed');
+    //     } else {
+    //         nav.removeClass('fixed');
+    //     }
+    // });
+});
+</script>
+<style>
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    zoom:1; /* hasLayout ie7 trigger */
+}
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+</style>
+<?php $this->end(); ?>
+<?= $this->fetch('content-head') ?>
+
 <div class="row">
     <div class="grid">
         <div class="grid-sizer"></div>
@@ -338,6 +386,18 @@ $(function(){
 		fixedContentPos: true,
 		overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
     });
+    
+    $('.nav-tabs a').each(function(){
+        if(location.search.length <= 0)
+            return;
+            
+        if($(this).attr('href').indexOf(location.search) >= 0 ){
+            $(this).parent().addClass('active');
+        }else{
+            $(this).parent().removeClass('active');
+        }
+    })
+    
     
   
 });

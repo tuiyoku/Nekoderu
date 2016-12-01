@@ -896,3 +896,7 @@ msgstr ""
 msgid "投稿する"
 msgstr ""
 
+#: Template/Element/partial/cats_grid.ctp:132
+msgid "Popular"
+msgstr ""
+

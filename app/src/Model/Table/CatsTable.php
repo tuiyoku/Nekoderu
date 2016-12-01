@@ -57,6 +57,7 @@ class CatsTable extends Table
         // Add the behaviour to your table
         $this->addBehavior('Search.Search');
         $this->addBehavior('Timestamp');
+   
     }
 
     /**

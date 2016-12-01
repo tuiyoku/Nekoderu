@@ -202,7 +202,7 @@ class ProfilesController extends AppController
         $this->set('_serialize', ['avatar']);
         
         $this->profile($user->id);
-        $data = $this->CatsCommon->listCats($user->id);
+        $data = $this->CatsCommon->listCats($user->id, null);
         $cats = $this->paginate($data);
 
         $this->set(compact('cats'));
