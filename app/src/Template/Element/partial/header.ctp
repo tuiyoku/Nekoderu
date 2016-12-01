@@ -17,10 +17,10 @@
                     <a href="/cats/photoGrid">フォト</a>
                 </li>
                 <li>
-                    <a href="/cats/addLost">迷子ねこ登録フォーム <sup>New!</sup></a>
+                    <a href="/cats/addLost">迷子登録 <sup>New!</sup></a>
                 </li>
                 <li>
-                    <a href="/cats/tag/迷子猫探してます">迷子ねこ登録一覧 <sup>New!</sup></a>
+                    <a href="/cats/tag/迷子猫探してます">迷子一覧 <sup>New!</sup></a>
                 </li>
                 <li>
                     <a href="/pages/top">これはなに？</a>
