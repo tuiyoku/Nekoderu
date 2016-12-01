@@ -129,9 +129,9 @@
 <?php $this->start('content-head'); ?>
 <div id="#fixedBox">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="./?order=recent"><?= __("Recent") ?></a></li>
-        <li><a href="./?order=popular"><?= __("Popular") ?></a></li>
-        <li><a href="./?order=commented"><?= __("Commented") ?></a></li>
+        <li class="active"><a href="<?=$this->Url->build(null, true) ?>/?order=recent"><?= __("Recent") ?></a></li>
+        <li><a href="<?=$this->Url->build(null, true) ?>/?order=popular"><?= __("Popular") ?></a></li>
+        <li><a href="<?=$this->Url->build(null, true) ?>/?order=commented"><?= __("Commented") ?></a></li>
     </ul>
 </div>
 <script>
