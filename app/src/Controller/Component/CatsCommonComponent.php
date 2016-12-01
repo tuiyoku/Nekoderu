@@ -14,7 +14,7 @@ class CatsCommonComponent extends Component {
         
         // $this->Cookie->write("Order.Preference", $order);
         if($order == null)
-            $order = "popular";
+            $order = "recent";
         
         if($order === "popular"){
             $query = $this->Cats->find('all');
