@@ -15,7 +15,9 @@
         <?= $this->element('partial/header'); ?>
         <?= $this->Flash->render() ?>
     </div>
-    <?= $this->fetch('content') ?>
+    <div class="container">
+        <?= $this->fetch('content') ?>
+    </div?
     <footer>
     </footer>
 </body>

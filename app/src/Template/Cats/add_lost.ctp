@@ -1,5 +1,9 @@
+<h3>迷い猫登録フォーム</h3>
+<div id="for-saving-cats-privacy-panel" class="w3-panel w3-info">
+ここで登録すると自動的にハッシュタグ<br>「#迷子猫探してます」がつけられます
+</div>
 <div style="margin:15px 0;text-align:center">
-    あなたが見かけた「ねこ」を教えて下さい
+    お探しの「ねこ」について教えてください
 </div>
 <!-- The Modal -->
 <div id="modal-ear" class="modal">
@@ -10,7 +14,7 @@
         </div>
         <h3 style="margin-top:10px;margin-bottom:20px;">ねこの耳の状態について</h3>
         <p>
-            避妊手術したのらねこには、何度もお腹を開けるような事態が起きないように、手術が終わった証にお耳の先をV字にカットしています。
+            避妊手術したねこには、何度もお腹を開けるような事態が起きないように、手術が終わった証にお耳の先をV字にカットしています。
         </p>
         <p>耳先のカットは、不妊手術の麻酔が効いている間に行うため、猫ちゃんに痛みはありません。</p>
     </div>
@@ -24,8 +28,7 @@
             <span style="text-align:right" class="close">閉じる</span>
         </div>
         <h3 style="margin-top:10px;margin-bottom:20px;">位置情報について？</h3>
-        <p>のらねこのTNRを行うには位置情報が大切です。位置情報は一般には公開しません。</p>
-        <p>撮影場所がわからない、位置を特定したくない場合は「熊本」など大きな範囲で記入してください。また「崇城大学」など位置が特定できる場所を記入していただくことも可能です。</p>
+        <p>ねこの行動範囲は限られています限られています。お探しのねこを飼っていた場所をご記入ください。位置情報は一般には公開しません。</p>
         <h3 style="margin-top:10px;margin-bottom:20px;">位置情報が取れませんか？</h3>
         <p>本体の設定から位置情報の利用を許可してください。</p>
     </div>
@@ -38,8 +41,7 @@
             <span style="text-align:right" class="close">閉じる</span>
         </div>
         <h3 style="margin-top:10px;margin-bottom:20px;">詳細情報について？</h3>
-        <p>ねこの詳しい情報を猫の詳しい情報がわかると、TNR時の個体確認に役立ちます。
-        また、迷子ねこを探すのにも役立ちます。
+        <p>ねこの詳しい情報を猫の詳しい情報がわかると、迷子ねこを探すのに役立ちます。
         </p>
         <p>わかる範囲でご回答ください。</p>
     </div>
@@ -48,7 +50,7 @@
 <?= $this->element('partial/for_saving_cats_privacy'); ?>
 <?php
     echo $this->Form->create(null, [
-        'url' => 'cats/add',
+        'url' => 'cats/addLost',
         'id' => 'post',
         'onsubmit' => 'return confirm("送信してもいいですか？");',
         'enctype' => 'multipart/form-data'
@@ -71,70 +73,19 @@
         <?php echo $this->Form->input('', 
         ['type' => 'text', 'id' => 'address', 'name' => 'address', 'placeholder' => '住所や場所のわかる内容を記入してください', 'required' => 'required']); ?>
     </div>
+    <table class="details">
+        <tr>
+            <th>名前</th>
+            <td>
+                <?php echo $this->Form->text('name', ['placeholder' => 'お探しのねこのお名前はなんですか？' ]); ?>
+            </td>
+    </table>
     <div class="box">
-        <div class="memo-title">３．ねこの耳の情報を入力する <i id='ear-info' class="glyphicon glyphicon-question-sign"></i></div>
-        <div class="ears inline_checkboxes">
-            <?php
-                echo $this->Form->input(
-                    'ear_shape',
-                    array(
-                        'multiple' => 'checkbox',
-                        'type' => 'radio',
-                        'options' => $this->Cats->earOptions(),
-                        'escape' => false,
-                        'label' => false,
-                        'default' => '0'
-                    )  
-                );
-             ?>
-        </div>
-        <div class="memo-title"><a href='#' id='input-details'>ねこの詳しい情報を入力する？</a> <i id='detail-info' class="glyphicon glyphicon-question-sign"></i></div>
-        
-        <table class="details">
-        <?php foreach ($questions as $question): ?>
-            <tr>
-                <th><?= $question['displayName'] ?></th>
-                <td>
-                <?php if ($question['type'] == 'radio'): ?>
-                    <div class="inline_checkboxes">
-                        <?php 
-                            $options = explode(',', $question['options']);
-                            $ar = [];
-                            foreach($options as $option){
-                                $ar[] = ['value' => $option, 'text' => $option];
-                            }
-                            echo $this->Form->input(
-                                $question['name'],
-                                array(
-                                    'multiple' => 'checkbox',
-                                    'type' => 'radio',
-                                    'options' => $options,
-                                    'escape' => false,
-                                    'label' => false,
-                                    'default' => '0'
-                                )  
-                            );
-                        ?>
-                    </div>
-                <?php endif; ?>
-                <?php if ($question['type'] == 'text'): ?>
-                 <div>
-                    <?php
-                        echo $this->Form->text($question['name'], ['placeholder' => $question['description'] ]);
-                    ?>
-                </div>
-                </td>
-            <?php endif; ?>
-            </tr>
-        <?php endforeach; ?>
-        </table>
-    </div>
-     <div class="box">
-        <div class="memo-title">４．コメントを書く</div>
+        <div class="memo-title">３．コメントを書く</div>
         <?php
         echo $this->Form->input('comment', 
-            ['type' => 'textarea', 'id' => 'comment', 'label' => false, 'rows' => 2,
-            'placeholder'=>'ねこについて教えて下さい。人懐っこい？怖がり？']);
+            ['type' => 'textarea', 'id' => 'comment', 'label' => false, 'rows' => 5,
+            'placeholder'=>'お探しのねこの特徴を教えて下さい']);
         ?>
     </div>
     
@@ -209,5 +160,11 @@ form#changeRegionStdForm input[type=radio].locRad {
 <script type="text/javascript" src="<?php echo$this->Url->build('/', false); ?>js/add_neko.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/add_neko.css"> 
 <link rel="stylesheet" type="text/css" href="<?php echo$this->Url->build('/', false); ?>css/modal.css"> 
+<link rel="stylesheet" href="/css/w3.css">
+<style>
+.w3-note{background-color:#ffffcc;border-left:6px solid #ffeb3b}
+.w3-warning{background-color:#ffdddd;border-left:6px solid #f44336}
+.w3-info{background-color:#ddffdd;border-left:6px solid #4CAF50}
+</style>
 
 

@@ -418,6 +418,102 @@ class CatsController extends AppController
             $this->set('_serialize', ['cat']);
         }
     }
+    
+    /**
+     * Add method
+     *
+     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
+     */
+    public function addLost()
+    {
+        $this->CatImages = TableRegistry::get('CatImages');
+        
+        $this->Questions = TableRegistry::get('Questions');
+        $questions = $this->Questions->find('all');
+        $this->set(compact('questions'));
+        $this->set('_serialize', ['questions']);
+        
+        
+        if ($this->request->is('post')) {
+            
+            $data = $this->request->data;
+            
+            $this->log($this->request->data);
+
+            $time = time();
+            $locate = (string)$data['locate'];
+            $comment = (string)$data['comment'];
+            $ear_shape = 0;
+            $name = (string)$data['name'];
+            
+            // ユーザーIDを付与
+            $uid = 0;
+            if(!empty($this->Auth->user()['id'])){
+                $uid = $this->Auth->user()['id'];
+            }
+            
+            $query = array(
+                "latlng" => h($locate),
+                "language" => "ja",
+                "sensor" => false
+            );
+            
+            $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
+            if(count($res["results"])>0)
+                $address = $res["results"][0]["formatted_address"];
+            else
+                $address = "";
+
+            $cat = $this->Cats->newEntity();
+            $cat->locate = $locate;
+            $cat->address = $address;
+            $cat->ear_shape = $ear_shape;
+            $cat->flg = 4;
+            $cat->users_id = $uid;
+            if ($this->Cats->save($cat)) {
+                $this->Flash->success('ねこを登録しました。');
+                
+                $session = $this->request->session();
+                $session->delete('Last.Submit.Cat.Data');
+                $session->delete('Last.Submit.Cat.Shown');
+                if($uid == 0){
+                    $session->write('Last.Submit.Cat.Data', $cat);
+                }
+            }
+            
+            $this->Questions = TableRegistry::get('Questions');
+            $questions = $this->Questions->find('all');
+            foreach($questions as $question){
+                if($question->name === 'name'){
+                    $answer = $this->Cats->Answers->newEntity();
+                    $answer->cats_id = $cat->id;
+                    $answer->questions_id = $question->id;
+                    $answer->value = $data[$question->name];
+                    if ($this->Cats->Answers->save($answer)) {
+                    }
+                }
+            }
+            
+            if(mb_strlen($comment) > 0){
+                $this->_addComment($comment, $cat->id, $uid);
+            }
+            $this->_addComment("#迷子猫探してます", $cat->id, $uid);
+           
+            if (isset($data["image"])) {
+                
+                for($i=0; $i<count($data["image"]); $i++){
+                    if(is_uploaded_file($data["image"][$i]["tmp_name"])){
+                    
+                        // アップロード処理
+                        $file = $data["image"][$i];
+                        $this->saveCatImage($file, $cat->id, $uid);
+                    }
+                }
+            }
+            
+            return $this->redirect('/');
+        }
+    }
 
     /**
      * Add method
