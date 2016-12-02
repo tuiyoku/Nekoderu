@@ -442,6 +442,7 @@ class CatsController extends AppController
 
             $time = time();
             $locate = (string)$data['locate'];
+            $address = (string)$data['address'];
             $comment = (string)$data['comment'];
             $ear_shape = 0;
             $name = (string)$data['name'];
@@ -452,17 +453,19 @@ class CatsController extends AppController
                 $uid = $this->Auth->user()['id'];
             }
             
-            $query = array(
-                "latlng" => h($locate),
-                "language" => "ja",
-                "sensor" => false
-            );
-            
-            $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
-            if(count($res["results"])>0)
-                $address = $res["results"][0]["formatted_address"];
-            else
-                $address = "";
+            // if(empty($address)){
+            //     $query = array(
+            //         "latlng" => h($locate),
+            //         "language" => "ja",
+            //         "sensor" => false
+            //     );
+                
+            //     $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
+            //     if(count($res["results"])>0)
+            //         $address = $res["results"][0]["formatted_address"];
+            //     else
+            //         $address = "";
+            // }
 
             $cat = $this->Cats->newEntity();
             $cat->locate = $locate;
@@ -539,6 +542,7 @@ class CatsController extends AppController
             $time = time();
             $locate = (string)$data['locate'];
             $comment = (string)$data['comment'];
+            $address = (string)$data['address'];
             $ear_shape = $data['ear_shape'];
             
             // ユーザーIDを付与
@@ -547,17 +551,17 @@ class CatsController extends AppController
                 $uid = $this->Auth->user()['id'];
             }
             
-            $query = array(
-                "latlng" => h($locate),
-                "language" => "ja",
-                "sensor" => false
-            );
+            // $query = array(
+            //     "latlng" => h($locate),
+            //     "language" => "ja",
+            //     "sensor" => false
+            // );
             
-            $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
-            if(count($res["results"])>0)
-                $address = $res["results"][0]["formatted_address"];
-            else
-                $address = "";
+            // $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
+            // if(count($res["results"])>0)
+            //     $address = $res["results"][0]["formatted_address"];
+            // else
+            //     $address = "";
 
             $cat = $this->Cats->newEntity();
             $cat->locate = $locate;
