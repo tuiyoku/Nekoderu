@@ -21,11 +21,15 @@ class CatsController extends AppController
     {
         debug("dummy");
         exit;
-        
     }
     
     public function addSheltered()
     {
         $this->CatsCommon->add(2, "#保護してます"); // 2 - 保護してます
+    }
+    
+    public function addSearching()
+    {
+        $this->CatsCommon->add(1, "#迷子猫探してます"); // 1 - 迷子猫探してます
     }
 }
