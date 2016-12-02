@@ -58,7 +58,7 @@ class ProfilesController extends AppController
     }
     
     public function edit(){
-        $user = $this->currentUser();
+        $user = $this->CatsCommon->currentUser();
         
         $this->Users = TableRegistry::get('Users');
         
@@ -242,7 +242,7 @@ class ProfilesController extends AppController
         else
             $unreadOnly = true;
             
-        $notifications = $this->NotificationManager->notifications($this->currentUser()->id, $limit, $unreadOnly);  
+        $notifications = $this->NotificationManager->notifications($this->CatsCommon->currentUser()->id, $limit, $unreadOnly);  
         
         $this->set(compact('notifications'));
         $this->set('_serialize', ['notifications']);
@@ -253,7 +253,7 @@ class ProfilesController extends AppController
     }
     
     public function countUnread(){
-         $count = $this->NotificationManager->countUnread($this->currentUser()->id);  
+         $count = $this->NotificationManager->countUnread($this->CatsCommon->currentUser()->id);  
         
         $this->set(compact('count'));
         $this->set('_serialize', ['count']);

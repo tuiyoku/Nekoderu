@@ -4,9 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dfc7357cd4f2f967fbde77b5a4f2947b",
-    "content-hash": "286853d3611497e12e4da27159ca6721",
+    "hash": "bcaaca68a0380cf8ea649e0bd43ea725",
+    "content-hash": "140768a51691b353f2fd07b0f6d85b79",
     "packages": [
+        {
+            "name": "admad/cakephp-jwt-auth",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ADmad/cakephp-jwt-auth.git",
+                "reference": "6e0235eae69612459759aa8362a1022e0fcbb9be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ADmad/cakephp-jwt-auth/zipball/6e0235eae69612459759aa8362a1022e0fcbb9be",
+                "reference": "6e0235eae69612459759aa8362a1022e0fcbb9be",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "~3.1",
+                "firebase/php-jwt": "~4.0"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "ADmad\\JwtAuth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ADmad",
+                    "homepage": "https://github.com/ADmad",
+                    "role": "Author"
+                }
+            ],
+            "description": "CakePHP plugin for authenticating using JSON Web Tokens",
+            "homepage": "http://github.com/ADmad/cakephp-jwt-auth",
+            "keywords": [
+                "Authentication",
+                "authenticate",
+                "cakephp",
+                "jwt"
+            ],
+            "time": "2016-11-17 07:07:11"
+        },
         {
             "name": "aura/installer-default",
             "version": "1.0.0",

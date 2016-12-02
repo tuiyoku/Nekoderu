@@ -43,177 +43,10 @@ class CatsController extends AppController
         return false;
     }
     
-    private function _addTag($value){
-        $tag = $this->Cats->Tags->find('all')->where(['tag =' => $value])->first();
-        if($tag == null){
-            $tag = $this->Cats->Tags->newEntity($tag);
-            $tag->tag = $value;
-            if($this->Cats->Tags->save($tag)){
-            }
-        }
-        return $tag;
-    }
     
-     private function _addComment($comment, $cat_id, $uid){
-         
-        //ハッシュタグを処理
-        
-        $hash = '#＃';
-        $tag = 'A-Za-z〃々ぁ-ゖ゛-ゞァ-ヺーヽヾ一-龥Ａ-Ｚａ-ｚｦ-ﾟ';
-        // $tag = 'a-zÀ-ÖØ-öø-ÿĀ-ɏɓ-ɔɖ-ɗəɛɣɨɯɲʉʋʻ̀-ͯḀ-ỿЀ-ӿԀ-ԧⷠ-ⷿꙀ-֑ꚟ-ֿׁ-ׂׄ-ׇׅא-תװ-״﬒-ﬨשׁ-זּטּ-לּמּנּ-סּףּ-פּצּ-ﭏؐ-ؚؠ-ٟٮ-ۓە-ۜ۞-۪ۨ-ۯۺ-ۼۿݐ-ݿࢠࢢ-ࢬࣤ-ࣾﭐ-ﮱﯓ-ﴽﵐ-ﶏﶒ-ﷇﷰ-ﷻﹰ-ﹴﹶ-ﻼ‌ก-ฺเ-๎ᄀ-ᇿ㄰-ㆅꥠ-꥿가-힯ힰ-퟿ﾡ-ￜァ-ヺー-ヾｦ-ﾟｰＡ-Ｚａ-ｚぁ-ゖ゙-ゞ㐀-䶿一-鿿꜀-뜿띀-렟-﨟〃々〻'; // 全言語対応
-        $digit = '0-9０-９';
-        $underscore = '_';
-        
-        $pattern = "/(?:^|[^ｦ-ﾟー゛゜々ヾヽぁ-ヶ一-龠ａ-ｚＡ-Ｚ０-９a-zA-Z0-9&_\/]+)"
-        ."[#＃]("
-        ."[ｦ-ﾟー゛゜々ヾヽぁ-ヶ一-龠ａ-ｚＡ-Ｚ０-９a-zA-Z0-9_]*"
-        ."[ｦ-ﾟー゛゜々ヾヽぁ-ヶ一-龠ａ-ｚＡ-Ｚ０-９a-zA-Z]+"
-        ."[ｦ-ﾟー゛゜々ヾヽぁ-ヶ一-龠ａ-ｚＡ-Ｚ０-９a-zA-Z0-9_]*"
-        .")/u";
-        
-        preg_match_all($pattern, $comment, $matches, PREG_PATTERN_ORDER);
-        
-        $tags = [];
-        foreach($matches[1] as $value){
-            $tag = $this->_addTag($value);
-            if(!is_null($tag)){
-                $tags[] = $tag;
-            }
-        }
-        
-        $commentDO = $this->Cats->Comments->newEntity([
-            'associated' => ['Tags']
-        ]);
-        
-        $commentDO->comment = $comment;
-        $commentDO->cats_id = $cat_id;
-        $commentDO->users_id = $uid;
-        $commentDO->tags = $tags;
-        
-        if ($this->Cats->Comments->save($commentDO)) {
-            // $this->Flash->success('コメントを保存しました。');
-            
-            $cat = $this->Cats->get($cat_id,[
-                'contain' => ['Tags']
-            ]);
-            
-            //タグの追加
-            $this->Cats->Tags->link($cat, $tags);
-            if($this->Cats->save($cat, ['associated' => ['Tags']])){
-                //
-            }
-            
-            //通知処理
-            if(!$this->isCurrentUser($cat->users_id)){
-                $u = $this->currentUser();
-                
-                $this->NotificationManager->notify($cat->users_id, 
-                    'あなたの猫ちゃんに新しい「コメント」がありました！', 
-                    "@".$u->username."さんが「コメント」してくれました！", 
-                    Router::url(["controller" => "Cats","action" => "view", $cat_id])
-                );
-                
-                $users_ids = $this->Cats->Comments->find()
-                    ->select(['users_id'])
-                    ->where(['cats_id = ' => $cat_id])
-                    ->group('users_id')
-                    ->having(['users_id !=' => 0, 'users_id !=' => $u->id]);
-                    
-                foreach($users_ids as $users_id){
-                    $this->NotificationManager->notify($users_id->users_id, 
-                        'あなたがコメントした猫ちゃんに新しい「コメント」がありました！', 
-                        "@".$u->username."さんが「コメント」しました！", 
-                        Router::url(["controller" => "Cats","action" => "view", $cat_id])
-                    );
-                }
-                
-                $users_ids = $this->Cats->Favorites->find()
-                    ->select(['users_id'])
-                    ->where(['cats_id = ' => $cat_id])
-                    ->group('users_id')
-                    ->having(['users_id !=' => 0, 'users_id !=' => $u->id]);
-                    
-                foreach($users_ids as $users_id){
-                    $this->NotificationManager->notify($users_id->users_id, 
-                        'あなたが「いいね」した猫ちゃんに新しい「コメント」がありました！', 
-                        "@".$u->username."さんが「コメント」しました！", 
-                        Router::url(["controller" => "Cats","action" => "view", $cat_id])
-                    );
-                }
-                
-            }
-        }
-    }
-    
-    private function saveCatImage($file, $cat_id, $uid){
-        
-        $savePath = $this->NekoUtil->safeImage($file["tmp_name"], TMP);
-        if ($savePath === "") {
-            die("不正な画像がuploadされました");
-        }
-        $result = $this->NekoUtil->s3Upload($savePath, '');
-        // 書きだした画像を削除
-        @unlink($savePath);
-        
-        //サムネイルを作成
-        $savePath = $this->NekoUtil->createThumbnail($file["tmp_name"], TMP);
-        if ($savePath === "") {
-            die("不正な画像がuploadされました");
-        }
-        $thumbnail = $this->NekoUtil->s3Upload($savePath, '');
-        // 書きだした画像を削除
-        @unlink($savePath);
-
-        if ($result) {
-            
-            $catImage = $this->Cats->CatImages->newEntity();
-            $catImage->url = $result['ObjectURL'];
-            $catImage->thumbnail = $thumbnail['ObjectURL'];
-            $catImage->users_id = $uid;
-            $catImage->cats_id = $cat_id;
-            if ($this->Cats->CatImages->save($catImage)) {
-                // $this->Flash->success('画像を保存しました。');
-                return $catImage;
-            }
-        }
-        return null;
-        
-    }
     
     /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
-    // public function index()
-    // {
-        
-    //     $q = $this->request->query;
-        
-    //     $data = $this->Cats->find('all')
-    //         ->contain(['CatImages', 'Comments', 'Users', 'ResponseStatuses']);
-    //     if($q != null){
-    //         $data = $data
-    //             ->where(['Cats.created >' => new \DateTime($q['map_start'])])
-    //             ->where(['Cats.created <' => new \DateTime($q['map_end'])]);
-    //     }
-    //     $cats = $this->paginate($data);
-
-    //     $this->set(compact('cats'));
-    //     $this->set('_serialize', ['cats']);
-    // }
-    
-    // public function map()
-    // {
-
-    //     $now = time();
-    //     $from_time = 1460559600;
-
-    //     $this->set(compact('now', 'from_time'));
-    // }
-    
-    /**
-     * Index method
+     * Grid method
      *
      * @return \Cake\Network\Response|null
      */
@@ -250,7 +83,7 @@ class CatsController extends AppController
     }
     
      /**
-     * Index method
+     * Tag method
      *
      * @return \Cake\Network\Response|null
      */
@@ -284,7 +117,7 @@ class CatsController extends AppController
     }
     
     /**
-     * Index method
+     * Data method
      *
      * @return \Cake\Network\Response|null
      */
@@ -372,7 +205,7 @@ class CatsController extends AppController
                     
                     //通知処理
                     $cat = $this->Cats->get($cats_id);
-                    $u = $this->currentUser();
+                    $u = $this->CatsCommon->currentUser();
                     $this->NotificationManager->notify($cat->users_id, 
                         'あなたの猫ちゃんに「いいね」がありました！', 
                         "@".$u->username."さんが「いいね」してくれました！", 
@@ -419,6 +252,16 @@ class CatsController extends AppController
         }
     }
     
+     /**
+     * Add method
+     *
+     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
+     */
+    public function addSheltered()
+    {
+        $this->CatsCommon->add(2, "#保護してます"); // 2 - 保護してます
+    }
+    
     /**
      * Add method
      *
@@ -426,189 +269,12 @@ class CatsController extends AppController
      */
     public function addLost()
     {
-        $this->CatImages = TableRegistry::get('CatImages');
-        
-        $this->Questions = TableRegistry::get('Questions');
-        $questions = $this->Questions->find('all');
-        $this->set(compact('questions'));
-        $this->set('_serialize', ['questions']);
-        
-        
-        if ($this->request->is('post')) {
-            
-            $data = $this->request->data;
-            
-            $this->log($this->request->data);
-
-            $time = time();
-            $locate = (string)$data['locate'];
-            $address = (string)$data['address'];
-            $comment = (string)$data['comment'];
-            $ear_shape = 0;
-            $name = (string)$data['name'];
-            
-            // ユーザーIDを付与
-            $uid = 0;
-            if(!empty($this->Auth->user()['id'])){
-                $uid = $this->Auth->user()['id'];
-            }
-            
-            // if(empty($address)){
-            //     $query = array(
-            //         "latlng" => h($locate),
-            //         "language" => "ja",
-            //         "sensor" => false
-            //     );
-                
-            //     $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
-            //     if(count($res["results"])>0)
-            //         $address = $res["results"][0]["formatted_address"];
-            //     else
-            //         $address = "";
-            // }
-
-            $cat = $this->Cats->newEntity();
-            $cat->locate = $locate;
-            $cat->address = $address;
-            $cat->ear_shape = $ear_shape;
-            $cat->flg = 1; //TODO:定数定義
-            $cat->users_id = $uid;
-            if ($this->Cats->save($cat)) {
-                $this->Flash->success('ねこを登録しました。');
-                
-                $session = $this->request->session();
-                $session->delete('Last.Submit.Cat.Data');
-                $session->delete('Last.Submit.Cat.Shown');
-                if($uid == 0){
-                    $session->write('Last.Submit.Cat.Data', $cat);
-                }
-            }
-            
-            $this->Questions = TableRegistry::get('Questions');
-            $questions = $this->Questions->find('all');
-            foreach($questions as $question){
-                if($question->name === 'name'){
-                    $answer = $this->Cats->Answers->newEntity();
-                    $answer->cats_id = $cat->id;
-                    $answer->questions_id = $question->id;
-                    $answer->value = $data[$question->name];
-                    if ($this->Cats->Answers->save($answer)) {
-                    }
-                }
-            }
-            
-            if(mb_strlen($comment) > 0){
-                $this->_addComment($comment, $cat->id, $uid);
-            }
-            $this->_addComment("#迷子猫探してます", $cat->id, $uid);
-           
-            if (isset($data["image"])) {
-                
-                for($i=0; $i<count($data["image"]); $i++){
-                    if(is_uploaded_file($data["image"][$i]["tmp_name"])){
-                    
-                        // アップロード処理
-                        $file = $data["image"][$i];
-                        $this->saveCatImage($file, $cat->id, $uid);
-                    }
-                }
-            }
-            
-            return $this->redirect('/');
-        }
+        $this->CatsCommon->add(1, "#迷子猫探してます"); //1 - 迷子ネコ
     }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
-     */
+    
     public function add()
     {
-        $this->CatImages = TableRegistry::get('CatImages');
-        
-        $this->Questions = TableRegistry::get('Questions');
-        $questions = $this->Questions->find('all');
-        $this->set(compact('questions'));
-        $this->set('_serialize', ['questions']);
-        
-        
-        if ($this->request->is('post')) {
-            
-            $data = $this->request->data;
-            
-            $this->log($this->request->data);
-
-            $time = time();
-            $locate = (string)$data['locate'];
-            $comment = (string)$data['comment'];
-            $address = (string)$data['address'];
-            $ear_shape = $data['ear_shape'];
-            
-            // ユーザーIDを付与
-            $uid = 0;
-            if(!empty($this->Auth->user()['id'])){
-                $uid = $this->Auth->user()['id'];
-            }
-            
-            // $query = array(
-            //     "latlng" => h($locate),
-            //     "language" => "ja",
-            //     "sensor" => false
-            // );
-            
-            // $res = $this->NekoUtil->callApi("GET", "https://maps.googleapis.com/maps/api/geocode/json", $query);
-            // if(count($res["results"])>0)
-            //     $address = $res["results"][0]["formatted_address"];
-            // else
-            //     $address = "";
-
-            $cat = $this->Cats->newEntity();
-            $cat->locate = $locate;
-            $cat->address = $address;
-            $cat->ear_shape = $ear_shape;
-            $cat->flg = 0; //TODO:定数定義
-            $cat->users_id = $uid;
-            if ($this->Cats->save($cat)) {
-                $this->Flash->success('猫を保存しました。');
-                
-                $session = $this->request->session();
-                $session->delete('Last.Submit.Cat.Data');
-                $session->delete('Last.Submit.Cat.Shown');
-                if($uid == 0){
-                    $session->write('Last.Submit.Cat.Data', $cat);
-                }
-            }
-            
-            $this->Questions = TableRegistry::get('Questions');
-            $questions = $this->Questions->find('all');
-            foreach($questions as $question){
-                $answer = $this->Cats->Answers->newEntity();
-                $answer->cats_id = $cat->id;
-                $answer->questions_id = $question->id;
-                $answer->value = $data[$question->name];
-                if ($this->Cats->Answers->save($answer)) {
-                }
-            }
-            
-            if(mb_strlen($comment) > 0){
-                $this->_addComment($comment, $cat->id, $uid);
-            }
-           
-            if (isset($data["image"])) {
-                
-                for($i=0; $i<count($data["image"]); $i++){
-                    if(is_uploaded_file($data["image"][$i]["tmp_name"])){
-                    
-                        // アップロード処理
-                        $file = $data["image"][$i];
-                        $this->saveCatImage($file, $cat->id, $uid);
-                    }
-                }
-            }
-            
-            return $this->redirect('/');
-        }
+        $this->CatsCommon->add(0, null);
     }
     
     public function add2(){
@@ -629,7 +295,7 @@ class CatsController extends AppController
         ]);
         
         
-        if(!$this->isCurrentUser($cat->users_id)){
+        if(!$this->CatsCommon->isCurrentUser($cat->users_id)){
             return $this->redirect('/');
         }
         
@@ -772,7 +438,7 @@ class CatsController extends AppController
                 $comment = json_encode(array('comment' => $comment, 'media' => $commentAdd));
             }
             
-            $this->_addComment($comment, $cat_id, $uid);
+            $this->CatsCommon->addComment($comment, $cat_id, $uid);
             
             $comments = $this->Cats->Comments
                 ->find('all', ['order' => ['Comments.created' => 'DESC']])

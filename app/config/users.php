@@ -15,7 +15,8 @@ use Cake\Routing\Router;
 $config = [
     'Users' => [
         //Table used to manage users
-        'table' => 'CakeDC/Users.Users',
+        // 'table' => 'CakeDC/Users.Users',
+        'table' => 'MyUsers',
         //configure Auth component
         'auth' => true,
         //Password Hasher

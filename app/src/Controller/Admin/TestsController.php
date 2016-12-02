@@ -14,7 +14,11 @@ class TestsController extends AdminAppController
     
     public function ocrTest(){
         
-    }  
+    }
+    
+    public function postShelteredTest(){
+        
+    }
     
     /***
      * Vision APIで猫が写っているか確認するサンプル

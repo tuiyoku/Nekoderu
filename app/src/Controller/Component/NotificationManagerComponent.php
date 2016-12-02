@@ -8,6 +8,9 @@ use Cake\ORM\TableRegistry;
 
 class NotificationManagerComponent extends Component {
     
+    
+    public $components = ['CatsCommon'];
+    
     public function initialize(array $config) {
         $this->Controller = $this->_registry->getController();
         $this->Notifications = TableRegistry::get("Notifications");
@@ -56,7 +59,7 @@ class NotificationManagerComponent extends Component {
    
    public function markRead($id){
        $not = $this->Notifications->get($id);
-       if($this->Controller->isCurrentUser($not->users_id)){
+       if($this->CatsCommon->isCurrentUser($not->users_id)){
            $not->unread = false;
            if($this->Notifications->save($not)){
                // $this->Flash->success('通知を保存しました');

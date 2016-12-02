@@ -16,6 +16,7 @@ class MyUsersTable extends UsersTable
      */
     public function initialize(array $config)
     {
+        
         parent::initialize($config);
         $this->displayField('name');
         
@@ -32,5 +33,5 @@ class MyUsersTable extends UsersTable
             'foreignKey' => 'users_id'
         ]);
     }
-
+    
 }
