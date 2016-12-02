@@ -223,7 +223,7 @@ $(function(){
                     <?php if($cat->flg === 1): ?>
                     <div class="w3-panel w3-info" style="margin-top:0px!important; margin-bottom:0px!important;">
                         <small>
-                        <div><strong>飼っていた場所</strong> <i id='address-info' class="glyphicon glyphicon-question-sign"></i></div>
+                        <div><strong>飼っていた場所</strong> <i class="glyphicon glyphicon-question-sign address-info"></i></div>
                         <?php if(!empty($cat->address) && trim($cat->address) !== false): ?>
                             <div><?= $cat->address ?></div>
                         <?php else: ?>
@@ -306,7 +306,7 @@ $(function(){
 
 $(function(){
     
-    setModal("modal-address", "#address-info", null);
+    setModal("modal-address", ".address-info", null);
     
     function encourage_popup(e){
         <?php if (!$auth): ?>

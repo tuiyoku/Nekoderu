@@ -106,7 +106,7 @@
     <?php if($cat->flg === 1): ?>
     <div class="w3-panel w3-info">
         <small>
-        <div><strong>飼っていた場所</strong> <i id='address-info' class="glyphicon glyphicon-question-sign"></i></div>
+        <div><strong>飼っていた場所</strong> <i class="glyphicon glyphicon-question-sign address-info"></i></div>
         <?php if(!empty($cat->address) && trim($cat->address) !== false): ?>
             <div><?= $cat->address ?></div>
         <?php else: ?>
@@ -255,7 +255,7 @@ input[type="text"] {
 
 <script>
 $(function(){
-    setModal("modal-address", "#address-info", null);
+    setModal("modal-address", ".address-info", null);
     setModal("modal-status", "#status-info", null);
     setModal("modal-report", ".report-form", function(name, e){
         var cat_id = $(e.target).parent().attr('target')
