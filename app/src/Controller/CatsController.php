@@ -468,7 +468,7 @@ class CatsController extends AppController
             $cat->locate = $locate;
             $cat->address = $address;
             $cat->ear_shape = $ear_shape;
-            $cat->flg = 4;
+            $cat->flg = 1; //TODO:定数定義
             $cat->users_id = $uid;
             if ($this->Cats->save($cat)) {
                 $this->Flash->success('ねこを登録しました。');
@@ -563,7 +563,7 @@ class CatsController extends AppController
             $cat->locate = $locate;
             $cat->address = $address;
             $cat->ear_shape = $ear_shape;
-            $cat->flg = 4;
+            $cat->flg = 0; //TODO:定数定義
             $cat->users_id = $uid;
             if ($this->Cats->save($cat)) {
                 $this->Flash->success('猫を保存しました。');

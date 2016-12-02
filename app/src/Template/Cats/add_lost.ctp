@@ -28,7 +28,7 @@
             <span style="text-align:right" class="close">閉じる</span>
         </div>
         <h3 style="margin-top:10px;margin-bottom:20px;">位置情報について？</h3>
-        <p>ねこの行動範囲は限られています限られています。お探しのねこを飼っていた場所をご記入ください。位置情報は一般には公開しません。</p>
+        <p>ねこの行動範囲は限られています限られています。お探しのねこを飼っていた場所をご記入ください。<strong>位置情報はサイト上に公開されます</strong></p>
         <h3 style="margin-top:10px;margin-bottom:20px;">位置情報が取れませんか？</h3>
         <p>本体の設定から位置情報の利用を許可してください。</p>
     </div>
@@ -68,6 +68,7 @@
         <div class="memo-title">
             ２．場所を設定する <sup class="required">※必須</sup> <i id='gps-info' class="glyphicon glyphicon-question-sign"></i>
             <br><a id='get_gps' href="#">クリックしてGPSから取得</a> 
+            <div><strong>迷子ねことして登録した位置情報は公開されます</strong></div>
         </div>
         
         <?php echo $this->Form->input('', 

@@ -36,4 +36,5 @@ class Cat extends Entity
     protected $_hidden = [
         'address', 'locate'
     ];
+    
 }

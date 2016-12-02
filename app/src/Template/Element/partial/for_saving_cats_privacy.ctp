@@ -1,10 +1,4 @@
 <?php if(is_null($cookieHelper->read('Notify_CatsPrivacy'))): ?>
-<link rel="stylesheet" href="/css/w3.css">
-<style>
-.w3-note{background-color:#ffffcc;border-left:6px solid #ffeb3b}
-.w3-warning{background-color:#ffdddd;border-left:6px solid #f44336}
-.w3-info{background-color:#ddffdd;border-left:6px solid #4CAF50}
-</style>
 <div id="for-saving-cats-privacy-panel" class="w3-panel w3-note">
     <h3>おねがい</h3>
     <p>

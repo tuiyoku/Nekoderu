@@ -14,11 +14,18 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/jquery.onoff.css">
+    <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/w3.css">
+    
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/base.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/app.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/cats.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/index.css">
     <link rel="stylesheet" href="<?php echo$this->Url->build('/', false); ?>css/post.css">
+    <style>
+        .w3-note{background-color:#ffffcc;border-left:6px solid #ffeb3b}
+        .w3-warning{background-color:#ffdddd;border-left:6px solid #f44336}
+        .w3-info{background-color:#ddffdd;border-left:6px solid #4CAF50}
+    </style>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

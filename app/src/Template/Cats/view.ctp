@@ -87,7 +87,15 @@
             <?php endforeach; ?>
         </ul>
     </div>
-   
+    
+    <?php if($cat->flg === 1): ?>
+    <div class="w3-panel w3-info">
+        <small>
+        <div><strong>飼っていた場所</strong></div>
+        <div><?= $cat->address ?></div>
+        </small>
+    </div>
+    <?php endif; ?>
     <div class="row">
         <?= $this->element('partial/for_saving_cats_privacy'); ?>
         <?php

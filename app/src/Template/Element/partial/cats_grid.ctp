@@ -196,13 +196,21 @@ $(function(){
                             <div class="name"><?= $cat->answers[0]->value ?></div>
                         <?php endif; ?>
                     <?php if($image->thumbnail):?>
-                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>詳しく見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
+                        <div style="padding-bottom: 5px;"><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>詳しく見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->thumbnail ?>" width="100%"></img></a></div>
                     <?php else: ?>
-                        <div><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>詳しく見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
+                        <div style="padding-bottom: 5px;"><a title="<a class='more' href='/cats/view/<?=$cat->id ?>'>詳しく見る</a>" class='gallery' href="<?= $image->url ?>"><img src="<?= $image->url ?>" width="100%"></img></a></div>
                     <?php endif; ?>
                     </div>
                     <?php if(!empty($cat->user->username)): ?>
                         <div class="user"><a href="/profiles/user/<?= h($cat->user->username) ?>" >@<?= h($cat->user->username) ?></a></div>
+                    <?php endif; ?>
+                    <?php if($cat->flg === 1): ?>
+                    <div class="w3-panel w3-info" style="margin-top:0px!important; margin-bottom:0px!important;">
+                        <small>
+                        <div><strong>飼っていた場所</strong></div>
+                        <div><?= $cat->address ?></div>
+                        </small>
+                    </div>
                     <?php endif; ?>
                     <div>
                         <?php foreach ($cat->comments as $idx => $comment): ?>
