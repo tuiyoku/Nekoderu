@@ -104,9 +104,9 @@
 <!--</div>-->
 <script>
 $(function(){
-    setModal("modal-ear", "#ear-info", null);
+    // setModal("modal-ear", "#ear-info", null);
     setModal("modal-gps", "#gps-info", null);
-    setModal("modal-detail", "#detail-info", null);
+    // setModal("modal-detail", "#detail-info", null);
 });
 
 $("form").submit(function(e) {

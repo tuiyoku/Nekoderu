@@ -49,6 +49,21 @@
     </div>
 </div>
 
+<!-- The Modal -->
+<div id="modal-address" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="container clearfix">
+            <span style="text-align:right" class="close">閉じる</span>
+        </div>
+        <h3 style="margin-top:10px;margin-bottom:20px;">どうして位置が表示されているの？</h3>
+        <p>
+            これは迷子ねこ登録フォームからの投稿です。
+        </p>
+        <p>迷子情報を提供していただくため、また、今現在のねこちゃんの位置ではなく危険は無いため、表示しています。</p>
+    </div>
+</div>
+
 <div class="cats view large-9 medium-8 columns content">
     <?php if($auth && $cat->user && $auth['id'] == $cat->user->id): ?>
         <div class="row user_menu">
@@ -91,11 +106,16 @@
     <?php if($cat->flg === 1): ?>
     <div class="w3-panel w3-info">
         <small>
-        <div><strong>飼っていた場所</strong></div>
-        <div><?= $cat->address ?></div>
+        <div><strong>飼っていた場所</strong> <i id='address-info' class="glyphicon glyphicon-question-sign"></i></div>
+        <?php if(!empty($cat->address) && trim($cat->address) !== false): ?>
+            <div><?= $cat->address ?></div>
+        <?php else: ?>
+            <div>未登録</div>
+        <?php endif; ?>
         </small>
     </div>
     <?php endif; ?>
+    
     <div class="row">
         <?= $this->element('partial/for_saving_cats_privacy'); ?>
         <?php
@@ -235,10 +255,9 @@ input[type="text"] {
 
 <script>
 $(function(){
+    setModal("modal-address", "#address-info", null);
     setModal("modal-status", "#status-info", null);
     setModal("modal-report", ".report-form", function(name, e){
-        // console.log(e);
-        // debugger;
         var cat_id = $(e.target).parent().attr('target')
         $('#report-cat-id').attr('value', cat_id);
         $('#report-description').attr('value', "");

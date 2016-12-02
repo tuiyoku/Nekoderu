@@ -180,6 +180,21 @@ $(function(){
 <?php $this->end(); ?>
 <?= $this->fetch('content-head') ?>
 
+<!-- The Modal -->
+<div id="modal-address" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="container clearfix">
+            <span style="text-align:right" class="close">閉じる</span>
+        </div>
+        <h3 style="margin-top:10px;margin-bottom:20px;">どうして位置が表示されているの？</h3>
+        <p>
+            これは迷子ねこ登録フォームからの投稿です。
+        </p>
+        <p>迷子情報を提供していただくため、また、今現在のねこちゃんの位置ではなく危険は無いため、表示しています。</p>
+    </div>
+</div>
+
 <div class="row">
     <div class="grid">
         <div class="grid-sizer"></div>
@@ -204,14 +219,20 @@ $(function(){
                     <?php if(!empty($cat->user->username)): ?>
                         <div class="user"><a href="/profiles/user/<?= h($cat->user->username) ?>" >@<?= h($cat->user->username) ?></a></div>
                     <?php endif; ?>
+
                     <?php if($cat->flg === 1): ?>
                     <div class="w3-panel w3-info" style="margin-top:0px!important; margin-bottom:0px!important;">
                         <small>
-                        <div><strong>飼っていた場所</strong></div>
-                        <div><?= $cat->address ?></div>
+                        <div><strong>飼っていた場所</strong> <i id='address-info' class="glyphicon glyphicon-question-sign"></i></div>
+                        <?php if(!empty($cat->address) && trim($cat->address) !== false): ?>
+                            <div><?= $cat->address ?></div>
+                        <?php else: ?>
+                            <div>未登録</div>
+                        <?php endif; ?>
                         </small>
                     </div>
                     <?php endif; ?>
+                    
                     <div>
                         <?php foreach ($cat->comments as $idx => $comment): ?>
                             <?php if($idx >= 3) break; ?>
@@ -284,6 +305,9 @@ $(function(){
 
 
 $(function(){
+    
+    setModal("modal-address", "#address-info", null);
+    
     function encourage_popup(e){
         <?php if (!$auth): ?>
             e.preventDefault();
