@@ -83,6 +83,9 @@
         <p>
             <?= $this->Html->link(__('ユーザ情報変更'), ['controller' => 'Profiles', 'action' => 'edit'], ['class' => 'btn btn-default']); ?>
         </p>
+        <p>
+            <?= $this->Html->link(__('目標確認'), ['controller' => 'Profiles', 'action' => 'archivements',0], ['class' => 'btn btn-default']); ?>
+        </p>
         <?php endif; ?>
     </div>
 </div>

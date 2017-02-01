@@ -271,5 +271,82 @@ class ProfilesController extends AppController
         $this->viewBuilder()->layout('nekoderu');
     }
 
+    public function archivements($id){
+    
+        $this->Users = TableRegistry::get('Users');
+        $this->Archives = TableRegistry::get('Archives');
+        $this->Cats = TableRegistry::get('Cats');
+        $this->Comments = TableRegistry::get('Comments');
+        $this->Favorites = TableRegistry::get('Favorites');
+        $this->Notifications = TableRegistry::get('Notifications');
+   
+       
+        $pushCount = $this->Cats->find('all')->select(['id'])->where(['users_id =' => $this->Auth->user('id')])->count();
+        $commentsCount = $this->Comments->find('all')->select(['id'])->where(['users_id =' => $this->Auth->user('id')])->count();
+        $favoritesCount = $this->Favorites->find('all')->select(['id'])->where(['users_id =' => $this->Auth->user('id')])->count();
+        $popularCount = $this->Notifications->find('all')->select(['id'])->where(['users_id =' => $this->Auth->user('id'),'title =' => "あなたの猫ちゃんに「いいね」がありました！"])->count();
+        // $dateCount = $today->diff($this->Users->find('all')->select(['activation_date'])->where(['users_id =' => $this->Auth->user('id')]));
+      
+        
+       
+    
+
+      
+      
+        $pushData = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['requirements >' => $pushCount ])->where(['types =' => 'push'])->first();
+        $commentsData = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['requirements >' => $commentsCount ])->where(['types =' => 'comments'])->first();
+        $favoritesData = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['requirements >' => $favoritesCount ])->where(['types =' => 'favorites'])->first();
+        $popularData = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['requirements >' => $popularCount ])->where(['types =' => 'popular'])->first();
+        
+        $pushArchives = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['requirements <=' => $pushCount ])->where(['types =' => 'push']);
+        $commentsArchives = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['requirements <=' => $commentsCount ])->where(['types =' => 'comments']);
+        $favoritesArchives = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['requirements <=' => $favoritesCount ])->where(['types =' => 'favorites']);
+        $popularArchives = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['requirements <=' => $popularCount ])->where(['types =' => 'popular']);
+        $otherArchives = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['requirements <=' => $otherCount ])->where(['types =' => 'other']);
+        
+        if($id==0){$archives = $this->Archives->find('all');}
+        else if($id==1){$archives = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['types =' => 'push']);$counts=$pushCount;}
+        else if($id==2){$archives = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['types =' => 'comments']);$counts=$commentsCount;}
+        else if($id==3){$archives = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['types =' => 'favorites']);$counts=$favoritesCount;}
+        else if($id==4){$archives = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['types =' => 'popular']);$counts=$popularCount;}
+        else if($id==5){$archives = $this->Archives->find('all',array('order' => array('requirements ASC')))->where(['types =' => 'date']);$counts=$dateCount;}
+       
+    
+        $this->set(compact('pushCount'));$this->set('_serialize', ['pushCount']);
+        $this->set(compact('commentsCount'));$this->set('_serialize', ['commentsCount']);
+        $this->set(compact('favoritesCount'));$this->set('_serialize', ['favoritesCount']);
+        $this->set(compact('popularCount'));$this->set('_serialize', ['popularCount']);
+        $this->set(compact('otherCount'));$this->set('_serialize', ['otherCount']);
+        
+        $this->set(compact('pushData'));$this->set('_serialize', ['pushData']);
+        $this->set(compact('commentsData'));$this->set('_serialize', ['commentsData']);
+        $this->set(compact('favoritesData'));$this->set('_serialize', ['favoritesData']);
+        $this->set(compact('popularData'));$this->set('_serialize', ['popularData']);
+        $this->set(compact('otherData'));$this->set('_serialize', ['otherData']);
+        
+        $this->set(compact('pushArchives'));$this->set('_serialize', ['pushArchives']);
+        $this->set(compact('commentsArchives'));$this->set('_serialize', ['commentsArchives']);
+        $this->set(compact('favoritesArchives'));$this->set('_serialize', ['favoritesArchives']);
+        $this->set(compact('popularArchives'));$this->set('_serialize', ['popularArchives']);
+        $this->set(compact('otherArchives'));$this->set('_serialize', ['otherArchives']);
+        
+        $this->set(compact('counts'));$this->set('_serialize', ['counts']);
+        $this->set(compact('archives'));$this->set('_serialize', ['archives']);
+        $this->set(compact('id'));$this->set('_serialize', ['id']);
+       
+        
+        
+        //称号設定
+        // $users = $this-> Users->get($this->Auth->user('id'));
+        // if($id!=null){
+        //         $users->archives_id = $id;
+        //         $this->Users->save($users);
+        // }
+        // $now = $this->Archives->find('all')->select(['reward'])->where(['id =' => $users->archives_id]);
+        // $this->set(compact('now'));
+        // $this->set('_serialize', ['now']);
+        
+    }
+    
     
 }
